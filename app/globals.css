@@ -19,6 +19,10 @@
   }
 }
 
+button[aria-label="Close"] {
+  display: none !important;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   /* background: linear-gradient(
