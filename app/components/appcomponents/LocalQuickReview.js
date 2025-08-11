@@ -209,24 +209,18 @@ const LocalQuickReviewModal = ({ setIsLocalQuickReviewModalVisible }) => {
             endDate: formattedToday,
           };
 
-          // Fetch funerals for today and tomorrow
+          // Fetch funerals for today and tomorrow (2 days range)
           const funeralParams = {
             city: parsedUser.city,
             startDate: formattedToday,
             endDate: formattedTomorrow,
           };
 
-          console.log("Fetching obituaries with params:", obituaryParams);
-          console.log("Fetching funerals with params:", funeralParams);
-
           // Fetch both obituaries and funerals
           const [obituaryResponse, funeralResponse] = await Promise.all([
             obituaryService.getObituary(obituaryParams),
             obituaryService.getFunerals(funeralParams),
           ]);
-
-          console.log("Obituary response:", obituaryResponse);
-          console.log("Funeral response:", funeralResponse);
 
           // Set obituaries data
           setObituaries(obituaryResponse?.obituaries || []);
