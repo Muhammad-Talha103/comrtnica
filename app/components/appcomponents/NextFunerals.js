@@ -44,7 +44,7 @@ const NextFunerals = () => {
               className="hidden desktop:flex w-[94.79px] h-[159.08px] mr-[97.38px]"
             />
 
-            <div className="flex h-[148px] mobile:h-[117px] flex-col justify-between desktop:items-center z-10">
+            <div className="flex h-[148px] mobile:h-[117px] flex-col justify-between desktop:items-center z-60">
               <div className="mobile:hidden flex text-[40px] font-normal text-[#414141] font-variation-customOpt40 leading-[47px]">
                 Pogrebi v naslednjih dneh
               </div>

@@ -2,11 +2,11 @@
 import React from 'react';
 import Dropdown from '@/app/components/appcomponents/Dropdown';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import regionsAndCities from '@/utils/regionAndCities';
-const FuneralsLocalFloristComp = () => {
 
- 
- 
+const FuneralsLocalFloristComp = () => {
+  const router = useRouter();
   const [selectedCity, setSelectedCity] = useState(null);
   
   
@@ -31,8 +31,8 @@ const cityOptions =  [
       return
     }
     setSelectedCity(item.place);
-    setSelectedRegion(null);
-   
+    // Redirect to funerals page with selected city
+    router.push(`/pogrebi?city=${encodeURIComponent(item.place)}`);
   };
   return (
     <div className=' mx-auto w-full mobile:hidden tablet:block desktop:block'>
@@ -70,7 +70,7 @@ const cityOptions =  [
               isFromFlowerGreenBgTablet={true}
               data={cityOptions}
               selectedValue={selectedCity}
-              onSelect={()=>handleCitySelect()}
+              onSelect={handleCitySelect}
             />
           </div>
         </div>
