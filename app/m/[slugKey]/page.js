@@ -62,8 +62,6 @@ const MemoryPageContent = ({ params }) => {
           userId: currentUser?.id || null,
         });
 
-        console.log(visitRespone, "visit =========");
-
         if (visitRespone.error) {
           toast.error(
             visitRespone.error || "Something went wrong. Please try again!"
@@ -114,7 +112,6 @@ const MemoryPageContent = ({ params }) => {
         type: type,
       };
 
-      console.log(queryParams);
       const response = await obituaryService.getMemoryId(queryParams);
 
       const data = response;

@@ -22,10 +22,11 @@ const getObituary = async (queryParams?: {
   date?: string;
   limit?: number;
   days?: number;
+  startDate?: string;
+  endDate?: string;
 }) => {
   try {
     const endpoint = "/obituary";
-    console.log(endpoint, { params: queryParams });
     const response = await axios.get(endpoint, { params: queryParams });
     return response.data;
   } catch (error: unknown) {
@@ -38,9 +39,7 @@ const getObituary = async (queryParams?: {
 const getMemory = async (queryParams?: { slugKey?: string }) => {
   try {
     const endpoint = "/obituary/memory";
-    console.log(endpoint, { params: queryParams });
     const response = await axios.get(endpoint, { params: queryParams });
-    console.log(response.data);
     return response.data;
   } catch (error: unknown) {
     console.error("Error fetching obituaries:", error);
@@ -59,7 +58,6 @@ const getFunerals = async (queryParams?: {
     const endpoint = "/obituary/funerals";
 
 
-    console.log(endpoint, queryParams);
     const response = await axios.get(endpoint, { params: queryParams });
     return response.data;
   } catch (error: unknown) {
