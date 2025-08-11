@@ -66,40 +66,42 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
       .join(" ");
   };
   const burnCandle = async () => {
-    const candleData = {
-      userId: user?.id || null,
-    };
+    if (!user) {
+      toast.error("Please sign in to light a candle");
+      return;
+    }
+
+    const candleData = { userId: user.id };
 
     try {
       const response = await obituaryService.burnCandle(data.id, candleData);
 
-      toast.success("Candle Burnt Successfully");
-      set_Id("3");
-      setModal(true);
-      const updatedCandles = [
-        {
-          ...data.candles[0],
-          totalCandles: (data.candles[0]?.totalCandles || 0) + 1,
+      if (response.status === 201) {
+        toast.success("Candle Burnt Successfully");
+        set_Id("3");
+        setModal(true);
+
+        const updatedCandles = {
+          ...data.candles,
+          totalCandles: (data.candles?.totalCandles || 0) + 1,
           lastBurnedCandleTime: new Date().toISOString(),
           myLastBurntCandleTime: new Date(),
-        },
-        ...data.candles.slice(1),
-      ];
+        };
 
-      updateObituary({
-        ...data,
-        candles: updatedCandles,
-      });
+        updateObituary({
+          ...data,
+          candles: updatedCandles,
+        });
+      }
     } catch (error) {
       console.error("Failed to burn candle:", error);
 
       if (error.status === 409) {
         toast.error("You can only burn one candle per 24 hours.");
       } else {
-        toast.error(
-          error.data?.message || "Error burning candle. Please try again."
-        );
+        toast.error(error.data?.message || "Error burning candle. Please try again.");
       }
+
       set_Id("3");
       setModal(true);
     }
@@ -715,7 +717,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                     <div className="flex flex-col mt-[5px]  tablet:mt-0 desktop:mt-0">
                       <div className="flex h-6 tablet:h-[40px] desktop:h-[36px] justify-end">
                         <p className="text-[#1E2125] text-[16px] font-variation-customOpt16 font-normal ">
-                          Skupno svečk: {data?.candles?.[0]?.totalCandles || 0}
+                          Skupno svečk: {data.totalCandles}
                         </p>
                       </div>
                       <div className="flex h-[29px] tablet:h-[40]  desktop:h-[40px]">

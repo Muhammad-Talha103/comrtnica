@@ -699,28 +699,22 @@ const Modals = ({
   const [timeLeft, setTimeLeft] = useState(0);
 
   useEffect(() => {
-    if (
-      !data?.candles ||
-      data.candles.length === 0 ||
-      !data.candles[0]?.myLastBurntCandleTime
-    )
-      return;
+    if (!data?.candles?.lastBurnedCandleTime) return;
 
     const targetDate =
-      new Date(data?.candles[0].myLastBurntCandleTime).getTime() +
+      new Date(data.candles.lastBurnedCandleTime).getTime() +
       24 * 60 * 60 * 1000;
 
     const updateCountdown = () => {
-      const now = new Date().getTime();
+      const now = Date.now();
       const difference = targetDate - now;
       setTimeLeft(difference > 0 ? difference : 0);
     };
 
-    updateCountdown(); // Initial call
+    updateCountdown();
     const timer = setInterval(updateCountdown, 1000);
-
     return () => clearInterval(timer);
-  }, [data?.candles]);
+  }, [data?.candles?.lastBurnedCandleTime]);
 
   const formatTime = (milliseconds) => {
     const totalSeconds = Math.floor(milliseconds / 1000);
@@ -763,9 +757,8 @@ const Modals = ({
                   setIsSelectedReligion("");
                 }
               }}
-              className={`p-[10px] ${
-                isSelectedRelegion === "1" ? "shadow-custom-dark-to-white" : ""
-              }`}
+              className={`p-[10px] ${isSelectedRelegion === "1" ? "shadow-custom-dark-to-white" : ""
+                }`}
             >
               <Image
                 src={"/icon_cross.png"}
@@ -783,9 +776,8 @@ const Modals = ({
                   setIsSelectedReligion("");
                 }
               }}
-              className={`p-[10px] ${
-                isSelectedRelegion === "2" ? "shadow-custom-dark-to-white" : ""
-              }`}
+              className={`p-[10px] ${isSelectedRelegion === "2" ? "shadow-custom-dark-to-white" : ""
+                }`}
             >
               <Image
                 src={"/img_plus2.png"}
@@ -803,9 +795,8 @@ const Modals = ({
                   setIsSelectedReligion("");
                 }
               }}
-              className={`py-[20px] px-[10px] ${
-                isSelectedRelegion === "3" ? "shadow-custom-dark-to-white" : ""
-              }`}
+              className={`py-[20px] px-[10px] ${isSelectedRelegion === "3" ? "shadow-custom-dark-to-white" : ""
+                }`}
             >
               <Image
                 src={"/img_moon_star.png"}
@@ -823,9 +814,8 @@ const Modals = ({
                   setIsSelectedReligion("");
                 }
               }}
-              className={`p-[10px] ${
-                isSelectedRelegion === "4" ? "shadow-custom-dark-to-white" : ""
-              }`}
+              className={`p-[10px] ${isSelectedRelegion === "4" ? "shadow-custom-dark-to-white" : ""
+                }`}
             >
               <Image
                 src={"/img_plus3.png"}
@@ -843,9 +833,8 @@ const Modals = ({
                   setIsSelectedReligion("");
                 }
               }}
-              className={`p-[10px] ${
-                isSelectedRelegion === "5" ? "shadow-custom-dark-to-white" : ""
-              }`}
+              className={`p-[10px] ${isSelectedRelegion === "5" ? "shadow-custom-dark-to-white" : ""
+                }`}
             >
               <Image
                 src={"/img_star.png"}
@@ -1712,7 +1701,7 @@ const Modals = ({
             </div>
 
             <div className="text-[14px] text-[#1E2125] leading-[16px] font-variation-customOpt14 font-medium">
-              {formatDate(data?.candles?.[0]?.lastBurnedCandleTime)}
+              {formatDate(data?.candles?.lastBurnedCandleTime)}
             </div>
           </div>
         </div>
@@ -1783,9 +1772,8 @@ const Modals = ({
               Osmrtnica in več informacij na strani:
             </div>
             <div className="flex mobile:hidden text-base font-normal text-[#0A85C2] mt-1 underline ">
-              {`${
-                typeof window !== "undefined" ? window.location.origin : ""
-              }/m/${data?.slugKey}`}
+              {`${typeof window !== "undefined" ? window.location.origin : ""
+                }/m/${data?.slugKey}`}
             </div>
             <div className="hidden mobile:flex text-sm font-medium text-[#6D778E] ">
               Osmrtnica in več informacij na strani:
@@ -2284,9 +2272,8 @@ function CommonStyle({ item, index, key }) {
   return (
     <div
       key={key}
-      className={` ${
-        index % 2 !== 0 ? "bg-[#E8F0F6]" : "bg-white popup-custom-shadow"
-      }  h-14 flex-row flex items-center border-b-[1px] border-[#D4D4D4] mobile:flex-row-reverse mobile:justify-between mobile:pr-[4px] relative `}
+      className={` ${index % 2 !== 0 ? "bg-[#E8F0F6]" : "bg-white popup-custom-shadow"
+        }  h-14 flex-row flex items-center border-b-[1px] border-[#D4D4D4] mobile:flex-row-reverse mobile:justify-between mobile:pr-[4px] relative `}
     >
       <div
         className={`py-[10px] border-2 text-[#6D778E]
