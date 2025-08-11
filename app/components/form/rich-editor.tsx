@@ -22,7 +22,7 @@ function RichTexEditor({ value, handleChange }: Props) {
         value={value}
         onChange={handleChange}
         formats={[
-          "header",
+          // "header",
           "bold",
           "italic",
           "blockquote",
@@ -36,8 +36,8 @@ function RichTexEditor({ value, handleChange }: Props) {
         modules={{
           toolbar: {
             container: [
-              [{ header: [3, 4, 5, 6, false] }],
-              ["bold", "italic", "underline", "strike", "blockquote"],
+              // [{ header: [3, 4, 5, 6, false] }],
+              ["bold", "italic", "underline"],
               [{ align: [] }],
               // [
               //   {

@@ -9,18 +9,18 @@ const defaultCemeteries = [
     address: "Pokopališče na Sveti Gorici na Kozjanskem",
     city: "Trbovlje",
   },
-  {
-    image: "/place2.png",
-    name: "Pokopališče",
-    address: "Dobovcu",
-    city: "Trbovlje",
-  },
-  {
-    image: "/pok.avif",
-    name: "Tretja",
-    address: "Tukaj smo mi",
-    city: "Planini",
-  },
+  // {
+  //   image: "/place2.png",
+  //   name: "Pokopališče",
+  //   address: "Dobovcu",
+  //   city: "Trbovlje",
+  // },
+  // {
+  //   image: "/pok.avif",
+  //   name: "Tretja",
+  //   address: "Tukaj smo mi",
+  //   city: "Planini",
+  // },
 ];
 const Cemeteries = ({ data }) => {
   const [cemeteries, setCemeteries] = useState([]);
