@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
-import { NextRequest } from "next/server";
-import { isDev } from "./config/apiConfig";
+import type { NextRequest } from "next/server";
 
 const PUBLIC_ROUTES = ["/", "/registracija"];
-
 const USER_ROUTES = [
   "/moj-racun",
   "/moji-prispevki",
@@ -13,77 +11,83 @@ const USER_ROUTES = [
   "/user-accounts-dashboard",
   "/potrditev-objave",
 ];
-
-const ADMIN_ROUTES = ["/admin"];
-
 const FLORIST_ROUTES = ["spletna-stran", "nasi_podatki"];
 const FUNERAL_ROUTES = ["spletna-stran", "nasi_podatki"];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const token = request.cookies.get("accessToken")?.value;
+  const accessToken = request.cookies.get("accessToken")?.value;
+  const refreshToken = request.cookies.get("refreshToken")?.value;
   const role = request.cookies.get("role")?.value;
   const slugKey = request.cookies.get("slugKey")?.value;
 
   const pathParts = pathname.split("/").filter(Boolean);
-  const lastSegment = pathParts[pathParts.length - 1];
+  const lastSegment = pathParts.at(-1);
+  const isRoleBasedRoute =
+    pathname.startsWith("/c/") ||
+    pathname.startsWith("/p/") ||
+    pathname.startsWith("/u/");
 
-  const isRoleBasedRoute = pathname.startsWith('/c/') || pathname.startsWith('/p/') || pathname.startsWith('/u/');
-  
-  if (isRoleBasedRoute && token && role && slugKey) {
+  if (request.cookies.get("attempting-refresh")?.value === "true") {
+    // Allow the request through without redirecting
     return NextResponse.next();
   }
 
-  if (pathname === "/registracija" && token && role && slugKey) {
-    if (role === "Florist") {
+  // If no access token but refresh token exists, attempt refresh
+  if (!accessToken && refreshToken) {
+    const response = NextResponse.redirect(new URL(pathname, request.url));
+    response.cookies.set("attempting-refresh", "true");
+    return response;
+  }
+
+  if (isRoleBasedRoute && accessToken && role && slugKey)
+    return NextResponse.next();
+
+  if (pathname === "/registracija" && accessToken && role && slugKey) {
+    if (role === "Florist")
       return NextResponse.redirect(new URL(`/c/${slugKey}/menu`, request.url));
-    }
-    if (role === "Funeral") {
+    if (role === "Funeral")
       return NextResponse.redirect(new URL(`/p/${slugKey}/menu`, request.url));
-    }
-    if (role === "User") {
+    if (role === "User")
       return NextResponse.redirect(
         new URL(`/u/${slugKey}/moj-racun`, request.url)
       );
-    }
-    if (role === "SUPERADMIN") {
-      return NextResponse.redirect( new URL('/admin/obituaries', request.url));
-    }
+    if (role === "SUPERADMIN")
+      return NextResponse.redirect(new URL("/admin/obituaries", request.url));
   }
 
-  const isPublicRoute = PUBLIC_ROUTES.includes(pathname);
-  const isUserRoute = USER_ROUTES.includes(pathname);
-  const isAdminRoute = pathname.startsWith("/admin");
-
-  if (isPublicRoute) {
-    return NextResponse.next();
-  }
-
-  if (!token) {
+  if (PUBLIC_ROUTES.includes(pathname)) return NextResponse.next();
+  if (!accessToken)
     return NextResponse.redirect(new URL("/registracija", request.url));
-  }
 
-  // Admin route protection - only SUPERADMIN can access
-  if (isAdminRoute && role !== "SUPERADMIN") {
+  if (pathname.startsWith("/admin") && role !== "SUPERADMIN") {
     return NextResponse.redirect(new URL("/access-denied", request.url));
   }
 
-  if (isUserRoute && role !== "User") {
+  if (USER_ROUTES.includes(pathname) && role !== "User") {
     return NextResponse.rewrite(new URL("/access-denied", request.url));
   }
 
-  if (role === "Florist" && FLORIST_ROUTES.includes(lastSegment) && slugKey && !isRoleBasedRoute) {
-    const targetUrl = `/c/${slugKey}/${lastSegment}`;
-    if (pathname !== targetUrl) {
-      return NextResponse.redirect(new URL(targetUrl, request.url));
-    }
+  if (
+    role === "Florist" &&
+    FLORIST_ROUTES.includes(lastSegment!) &&
+    slugKey &&
+    !isRoleBasedRoute
+  ) {
+    return NextResponse.redirect(
+      new URL(`/c/${slugKey}/${lastSegment}`, request.url)
+    );
   }
 
-  if (role === "Funeral" && FUNERAL_ROUTES.includes(lastSegment) && slugKey && !isRoleBasedRoute) {
-    const targetUrl = `/p/${slugKey}/${lastSegment}`;
-    if (pathname !== targetUrl) {
-      return NextResponse.redirect(new URL(targetUrl, request.url));
-    }
+  if (
+    role === "Funeral" &&
+    FUNERAL_ROUTES.includes(lastSegment!) &&
+    slugKey &&
+    !isRoleBasedRoute
+  ) {
+    return NextResponse.redirect(
+      new URL(`/p/${slugKey}/${lastSegment}`, request.url)
+    );
   }
 
   return NextResponse.next();
@@ -91,6 +95,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
+    "/",
     "/registracija",
     "/moj-racun",
     "/moji-prispevki",
