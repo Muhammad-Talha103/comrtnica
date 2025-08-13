@@ -10,7 +10,12 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import CompanyPreview from "../components/company-preview";
 
-export default function Step6({ data, onChange, handleStepChange }) {
+export default function Step6({
+  data,
+  onChange,
+  handleStepChange,
+  setIsRender,
+}) {
   const [openBlock, setOpenBlock] = useState(1);
   const router = useRouter();
   const [shops, setShops] = useState([
@@ -189,7 +194,9 @@ export default function Step6({ data, onChange, handleStepChange }) {
                 </div>
               </div>
             </div>
-            {companyId && <CompanyPreview companyData={data} />}
+            {companyId && (
+              <CompanyPreview companyData={data} setIsRender={setIsRender} />
+            )}
           </div>
           <div className="space-y-[8px]">
             <OpenableBlock
