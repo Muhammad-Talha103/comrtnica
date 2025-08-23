@@ -117,12 +117,12 @@ const SunflowerFlorist = ({ data }) => {
             )}
           </div>
 
-          <div className="tablet:hidden desktop:flex mobile:flex flex h-[180px] w-[370px] justify-center flex-row mobile:w-[297px] mobile:h-[240px] mobile:mt-[18px] mx-auto tablet:mt-[33px] mt-[56px]">
+          <div className="tablet:hidden desktop:flex mobile:flex flex h-[180px] w-[370px] justify-center flex-row mobile:w-[200px] mobile:h-[120px] mobile:mt-[0px] mobile:ml-0 mobile:mr-20 tablet:mt-[33px] mt-[56px]">
             <img
               key={`${data?.id}-${currentIndex}-logo-${currentShop?.id}`}
               src={getLogo(data?.logo)}
               alt="sunflower_img"
-              className="w-full h-full object-contain rounded-md"
+              className="w-full h-full object-cover rounded-md"
             />
           </div>
 

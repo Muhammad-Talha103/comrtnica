@@ -82,7 +82,7 @@ const Qualityflowers = ({ data }) => {
                                      backdrop-blur border-[2px] border-[#FFFFFF] rounded-[16px] flex flex-col items-center"
               >
                 <Image
-                  src={`${data.box_one_icon}`}
+                  src={`${data.box_one_icon.split(",")[1]}`}
                   width={70}
                   height={70}
                   alt="vehicle"
