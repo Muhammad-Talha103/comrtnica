@@ -32,8 +32,7 @@ function Header({ onMenuCLick, from, isMegaMenuVisible }) {
             </Link>
             {/* <Link href={"/loginpage"}> */}
             <button
-              disabled
-              className=" rounded-full hover:bg-gray-100 active:bg-gray-200  transition duration-200 ease-in-out cursor-not-allowed transform-gpu active:scale-95"
+              className=" rounded-full hover:bg-gray-100 active:bg-gray-200  transition duration-200 ease-in-out  transform-gpu active:scale-95"
               onClick={() => {
                 setShowCloseButton(!showCloseButton);
                 onMenuCLick();
