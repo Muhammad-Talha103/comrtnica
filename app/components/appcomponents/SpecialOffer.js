@@ -99,7 +99,7 @@ const SpecialOffer = ({ data }) => {
                   className=" absolute bottom-2 left-2 mobile:flex hidden h-[36px] shadow-custom-light-dark-with-white-button bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] justify-center items-center rounded-lg w-[36px] px-2"
                 >
                   <img
-                    src="img_back_mob.png"
+                    src="/img_back_mob.png"
                     alt="back"
                     className="h-[13.79px] w-[8.43px]"
                   />

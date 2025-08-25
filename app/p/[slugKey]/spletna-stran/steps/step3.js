@@ -76,7 +76,8 @@ export default function Step3({ data, onChange, handleStepChange }) {
       const nonEmptyCemeteries = cemetries.filter(
         (cemetery) =>
           cemetery.name.trim() !== "" &&
-          cemetery.address.trim() !== "" &&
+          // currently address is hidden in UI so not validating it
+          // cemetery.address.trim() !== "" &&
           cemetery.image !== null
       );
 
