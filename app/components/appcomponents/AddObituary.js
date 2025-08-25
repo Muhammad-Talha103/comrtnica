@@ -286,10 +286,11 @@ const AddObituary = ({ set_Id, setModal }) => {
   const handleSubmit = async () => {
     // Check permission before allowing submission
     const currentUser = JSON.parse(localStorage.getItem("user") || "{}");
-    if (!currentUser.createObituaryPermission) {
-      toast.error("You don't have permission to create obituaries.");
-      return;
-    }
+    // Temporarily commented
+    // if (!currentUser.createObituaryPermission) {
+    //   toast.error("You don't have permission to create obituaries.");
+    //   return;
+    // }
 
     if (!validateFields()) return;
 
@@ -377,18 +378,18 @@ const AddObituary = ({ set_Id, setModal }) => {
         .getDate()
         .toString()
         .padStart(2, "0")}${(responseDeathDate.getMonth() + 1)
-        .toString()
-        .padStart(2, "0")}${responseDeathDate
-        .getFullYear()
-        .toString()
-        .slice(2)}`;
+          .toString()
+          .padStart(2, "0")}${responseDeathDate
+            .getFullYear()
+            .toString()
+            .slice(2)}`;
 
       setObituaryResponse(response);
     } catch (error) {
       console.error("Error creating obituary:", error);
       toast.error(
         error?.response?.data?.error ||
-          "Failed to create obituary. Please try again."
+        "Failed to create obituary. Please try again."
       );
     } finally {
       setLoading(false);
@@ -432,11 +433,10 @@ const AddObituary = ({ set_Id, setModal }) => {
         {/* Container for top three buttons */}
         <div className="mx-auto mt-[44px] flex flex-row gap-[6px] mobile:flex-wrap mobile:justify-center">
           <div
-            className={`${
-              activeDivtype === "KORAK 1"
+            className={`${activeDivtype === "KORAK 1"
                 ? "shadow-custom-light-dark-box-image rounded-[10px] border-[#0A85C2] border-[2px] bg-gradient-to-b from-[#FFFFFF] to-[#DADADA] text-[16px] font-semibold leading-[24px] font-variation-customOpt16 text-[#1E2125]"
                 : "text-[16px] font-sourcesans text-[#1E2125] bg-gradient-to-b from-[#E3E8EC] to-[#FFFFFF10] rounded-[8px] shadow-custom-dark-to-white leading-[24px] font-variation-customOpt16 border-[1px] border-[#FFFFFF]"
-            }`}
+              }`}
           >
             <button
               onClick={() => setActiveDivType("KORAK 1")}
@@ -447,11 +447,10 @@ const AddObituary = ({ set_Id, setModal }) => {
           </div>
 
           <div
-            className={`${
-              activeDivtype === "KORAK 2"
+            className={`${activeDivtype === "KORAK 2"
                 ? "shadow-custom-light-dark-box-image rounded-[10px] border-[#0A85C2] font-semibold border-[2px] bg-gradient-to-b from-[#FFFFFF] to-[#DADADA] text-[16px] leading-[24px] font-variation-customOpt16 text-[#1E2125]"
                 : "text-[16px] font-sourcesans text-[#1E2125] bg-gradient-to-b from-[#E3E8EC] to-[#FFFFFF10] rounded-[8px] shadow-custom-dark-to-white leading-[24px] font-variation-customOpt16 border-[1px] border-[#FFFFFF]"
-            }`}
+              }`}
           >
             <button
               onClick={() => setActiveDivType("KORAK 2")}
@@ -462,11 +461,10 @@ const AddObituary = ({ set_Id, setModal }) => {
           </div>
 
           <div
-            className={`${
-              activeDivtype === "POTRDITEV"
+            className={`${activeDivtype === "POTRDITEV"
                 ? "shadow-custom-light-dark-box-image rounded-[10px] border-[#0A85C2] font-semibold border-[2px] bg-gradient-to-b from-[#FFFFFF] to-[#DADADA] text-[16px] leading-[24px] font-variation-customOpt16 text-[#1E2125]"
                 : "text-[16px] font-sourcesans text-[#1E2125] rounded-[8px] bg-gradient-to-b from-[#E3E8EC] to-[#FFFFFF10] shadow-custom-dark-to-white leading-[24px] font-variation-customOpt16 border-[1px] border-[#FFFFFF]"
-            }`}
+              }`}
           >
             <button
               onClick={() => setActiveDivType("POTRDITEV")}
@@ -479,11 +477,10 @@ const AddObituary = ({ set_Id, setModal }) => {
 
         {/*Main Container for details */}
         <div
-          className={`px-[50px] mx-auto desktop:max-w-[650px]  desktop:w-full tablet:max-w-[650px]  tablet:w-full ${
-            activeDivtype === "KOREK 1"
+          className={`px-[50px] mx-auto desktop:max-w-[650px]  desktop:w-full tablet:max-w-[650px]  tablet:w-full ${activeDivtype === "KOREK 1"
               ? "pt-[61px] pb-[44px]"
               : "pt-[45px] pb-[39px]"
-          } mt-[51px] flex flex-col
+            } mt-[51px] flex flex-col
      bg-gradient-to-br from-[#FFFFFF] to-[#FFFFFF30] backdrop-blur rounded-2xl border-[4px] border-[#FFFFFF] shadow-lg
      mobile:px-[15px] mobile:min-w-[360px] mobile:mt-[39px] mobile:pb-[23px]
      `}
@@ -1076,10 +1073,10 @@ const AddObituary = ({ set_Id, setModal }) => {
                       }}
                       isSelectText={
                         selectedFuneralMinute !== null &&
-                        selectedFuneralMinute !== undefined
+                          selectedFuneralMinute !== undefined
                           ? `${selectedFuneralMinute
-                              .toString()
-                              .padStart(2, "0")}`
+                            .toString()
+                            .padStart(2, "0")}`
                           : "Min:"
                       }
                     />
@@ -1345,10 +1342,10 @@ const AddObituary = ({ set_Id, setModal }) => {
                             }}
                             isSelectText={
                               event.eventMinute !== null &&
-                              event.eventMinute !== undefined
+                                event.eventMinute !== undefined
                                 ? `${event.eventMinute
-                                    .toString()
-                                    .padStart(2, "0")}`
+                                  .toString()
+                                  .padStart(2, "0")}`
                                 : "Min:"
                             }
                           />
@@ -1465,11 +1462,11 @@ const AddObituary = ({ set_Id, setModal }) => {
                         >
                           {inputValueName
                             ? inputValueName.charAt(0).toUpperCase() +
-                              inputValueName.slice(1)
+                            inputValueName.slice(1)
                             : ""}{" "}
                           {inputValueSirName
                             ? inputValueSirName.charAt(0).toUpperCase() +
-                              inputValueSirName.slice(1)
+                            inputValueSirName.slice(1)
                             : ""}
                         </div>
                       </div>
@@ -1487,7 +1484,7 @@ const AddObituary = ({ set_Id, setModal }) => {
                         >
                           {inputValueEnd
                             ? inputValueEnd.charAt(0).toUpperCase() +
-                              inputValueEnd.slice(1)
+                            inputValueEnd.slice(1)
                             : ""}
                         </div>
                       </div>
@@ -1508,10 +1505,10 @@ const AddObituary = ({ set_Id, setModal }) => {
                           >
                             {birthDate
                               ? birthDate.toLocaleDateString("sl-SI", {
-                                  day: "2-digit",
-                                  month: "2-digit",
-                                  year: "numeric",
-                                })
+                                day: "2-digit",
+                                month: "2-digit",
+                                year: "numeric",
+                              })
                               : ""}
                           </div>
                         </div>
@@ -1529,10 +1526,10 @@ const AddObituary = ({ set_Id, setModal }) => {
                           >
                             {deathDate
                               ? deathDate.toLocaleDateString("sl-SI", {
-                                  day: "2-digit",
-                                  month: "2-digit",
-                                  year: "numeric",
-                                })
+                                day: "2-digit",
+                                month: "2-digit",
+                                year: "numeric",
+                              })
                               : ""}
                           </div>
                         </div>
@@ -1552,8 +1549,8 @@ const AddObituary = ({ set_Id, setModal }) => {
                           {inputValueGender === "Male"
                             ? "M"
                             : inputValueGender === "Female"
-                            ? "Ž"
-                            : ""}
+                              ? "Ž"
+                              : ""}
                         </div>
                       </div>
                     </div>
@@ -1582,21 +1579,21 @@ const AddObituary = ({ set_Id, setModal }) => {
                           <div className="text-[18px] font-normal text-[#1E2125] mobile:text-[16px]">
                             {funeralDate
                               ? funeralDate.toLocaleDateString("sl-SI", {
-                                  day: "2-digit",
-                                  month: "2-digit",
-                                  year: "numeric",
-                                })
+                                day: "2-digit",
+                                month: "2-digit",
+                                year: "numeric",
+                              })
                               : ""}
                           </div>
 
                           <div className="mobile:ml-6 text-[18px] font-normal text-[#1E2125] mobile:text-[16px] ml-3">
                             {selectedFuneralHour !== null &&
-                            selectedFuneralHour !== undefined &&
-                            selectedFuneralMinute !== null &&
-                            selectedFuneralMinute !== undefined
+                              selectedFuneralHour !== undefined &&
+                              selectedFuneralMinute !== null &&
+                              selectedFuneralMinute !== undefined
                               ? `${selectedFuneralHour
-                                  .toString()
-                                  .padStart(2, "0")}:${selectedFuneralMinute
+                                .toString()
+                                .padStart(2, "0")}:${selectedFuneralMinute
                                   .toString()
                                   .padStart(2, "0")}`
                               : ""}
@@ -1647,24 +1644,24 @@ const AddObituary = ({ set_Id, setModal }) => {
                               <div className="text-[18px] font-normal text-[#1E2125] mobile:text-[16px]">
                                 {event.eventDate
                                   ? event.eventDate.toLocaleDateString(
-                                      "sl-SI",
-                                      {
-                                        day: "2-digit",
-                                        month: "2-digit",
-                                        year: "numeric",
-                                      }
-                                    )
+                                    "sl-SI",
+                                    {
+                                      day: "2-digit",
+                                      month: "2-digit",
+                                      year: "numeric",
+                                    }
+                                  )
                                   : ""}
                               </div>
 
                               <div className="mobile:ml-6 text-[18px] font-normal text-[#1E2125] mobile:text-[16px] ml-3">
                                 {event.eventHour !== null &&
-                                event.eventHour !== undefined &&
-                                event.eventMinute !== null &&
-                                event.eventMinute !== undefined
+                                  event.eventHour !== undefined &&
+                                  event.eventMinute !== null &&
+                                  event.eventMinute !== undefined
                                   ? `${event.eventHour
-                                      .toString()
-                                      .padStart(2, "0")}:${event.eventMinute
+                                    .toString()
+                                    .padStart(2, "0")}:${event.eventMinute
                                       .toString()
                                       .padStart(2, "0")}`
                                   : ""}
@@ -1768,11 +1765,10 @@ const AddObituary = ({ set_Id, setModal }) => {
                   </div>
                   <div
                     onClick={!loading ? handleSubmit : null} // Disable onClick when isLoading is true
-                    className={`flex flex-1 px-[90px] py-3 mobile:px-10 text-center justify-center items-center rounded-lg shadow-custom-dual text-[16px] cursor-pointer ${
-                      loading
+                    className={`flex flex-1 px-[90px] py-3 mobile:px-10 text-center justify-center items-center rounded-lg shadow-custom-dual text-[16px] cursor-pointer ${loading
                         ? "bg-gray-400 cursor-not-allowed" // Disabled styles
                         : "bg-gradient-to-b from-[#0d94e8] to-[#1860a3] text-[#ffffff]" // Enabled styles
-                    }`}
+                      }`}
                   >
                     {loading ? "Shranjujem..." : "Objavi novo osmrtnico"}
                   </div>

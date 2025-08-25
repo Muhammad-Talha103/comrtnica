@@ -1,10 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import AddObituary from "../components/appcomponents/AddObituary";
-import HeaderRegistration from "../components/appcomponents/HeaderRegistration";
-import LoginFooter from "../components/appcomponents/LoginFooter";
-import ModalLibrary from "../components/appcomponents/ModalLibrary";
-import Layout from "../components/appcomponents/Layout";
+import UpdateObituary from "../../components/appcomponents/UpdateObituary";
+import HeaderRegistration from "../../components/appcomponents/HeaderRegistration";
+import LoginFooter from "../../components/appcomponents/LoginFooter";
+import ModalLibrary from "../../components/appcomponents/ModalLibrary";
+import Layout from "../../components/appcomponents/Layout";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 
@@ -102,7 +102,7 @@ const Obituaryform = () => {
         />
         {/* <HeaderRegistration isfrom={"ObituaryForm"} /> */}
 
-        <AddObituary set_Id={setSelect_Id} setModal={setIsShowModal} />
+        <UpdateObituary set_Id={setSelect_Id} setModal={setIsShowModal} />
       </div>
     </Layout>
   );

@@ -354,6 +354,11 @@ const uploadObituaryTemplateCards = async (id: string, data: FormData) => {
   }
 };
 
+const getSingleObituaryById = async (id: any) => {
+  const response = await axios.get(`/obituary?id=${id}`);
+  return response.data || null;
+};
+
 const obituaryService = {
   getObituaryById,
   createObituary,
@@ -382,6 +387,7 @@ const obituaryService = {
   getMonthlyCompanyData,
   getCompanyLogs,
   uploadObituaryTemplateCards,
+  getSingleObituaryById
 };
 
 export default obituaryService;
