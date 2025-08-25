@@ -237,7 +237,7 @@ const FloristlistCom = ({ item, index }) => {
   return (
     <div className={`${index == 0 ? "flex mt-0 w-full" : "flex mt-8 w-full"}`}>
       <Link
-        href={"/floristdetails"}
+        href={`/floristdetails/${item.id}`}
         className="
              flex 
              w-[310px] h-[123px] pl-3 pr-1 py-1

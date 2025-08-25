@@ -4,7 +4,7 @@ const createShop = async (data: any) => {
   const endpoint = `/florist_shop/`;
 
   const response = await axios.post(endpoint, data, {
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "multipart/form-data" },
   });
   return response.data;
 };
