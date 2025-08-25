@@ -72,7 +72,7 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
           "2.5px 2.5px 5px 0px #A6ABBD inset, -1.5px -1.5px 5px 0px #A6ABBDBF inset",
       }}
     >
-      <div className="mx-auto mobile:flex-col mobile:items-center desktop:w-[900px] lg:w-[750px] mobile:w-[370px] tablet:mt-[110px] mobile:mt-[110px] md:w-[650px]  mobile:px-[30px]  lg:mb-24">
+      <div className="mx-auto mobile:flex-col mobile:items-center desktop:w-[900px] lg:w-[750px] mobile:w-[370px] tablet:mt-[110px] mobile:mt-[110px] md:w-[650px]  mobile:px-[30px]  lg:mb-24 ">
         <div className="flex justify-between mobile:gap-[12px] lg:pt-[100px] ">
           <div className="leading-[46.88px] cursor-pointer text-[28px] desktop:text-[40px] font-variation-customOpt40 text-[#1E2125]  ">
             Cvetličarne
@@ -90,11 +90,11 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
         </div>
       </div>
       <div className="lg:h-[664px] md:h-[880px] sm:h-[790px] w-full pt-[10px] pb-[10px] bg-[#F8EDE3]">
-        <div className="  mx-auto mobile:w-[370px] md:w-[700px] lg:w-[1150px] w-[400px] xl:w-[1300px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6     mobile:justify-center place-items-center items-end ">
+        <div className="  mx-auto mobile:w-[370px] md:w-[700px] lg:w-[700px] w-[400px] xl:w-[1150px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6     mobile:justify-center place-items-center items-end ">
           {/* Sponsor Card */}
           {data?.Company && (
             <div
-              className="bg-[#36556C] lg:h-[230px] lg:w-[182px] md:h-[230px] md:w-[182px] h-[184px] w-[150px]      rounded-[8px] mobile:rounded-[2px] overflow-hidden relative flex flex-col items-center justify-center px-[12px] mobile:mb-5"
+              className="bg-[#36556C] lg:h-[230px] lg:w-[182px] md:h-[230px] md:w-[182px] h-[184px] w-[150px]      rounded-[8px] mobile:rounded-[2px] overflow-hidden relative flex flex-col items-center justify-center px-[12px] mobile:mb-5 md:mb-5 lg:mb-5 xl:mb-0 first-letter:"
               style={{
                 boxShadow: "0px 50px 40px -40px rgba(60, 62, 65, 1)",
               }}
@@ -120,7 +120,7 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
             data.cardImages.map((img, index) => (
               <div
                 key={index}
-                className="bg-white lg:w-[180px] lg:h-[160px] md:w-[195px] md:h-[160px] w-[150px] h-[130px]  lg:rounded-[8px] md:rounded-[8px] mobile:border mobile:border-[rgba(54,85,108,0.6)] flex flex-col items-center justify-center relative overflow-hidden  mobile:justify-end mobile:my-5 md:my-5 lg:my-0 xl:my-0 my-6 lg:mx-2"
+                className="bg-white lg:w-[180px] lg:h-[160px] md:w-[195px] md:h-[160px] w-[150px] h-[130px]  lg:rounded-[8px] md:rounded-[8px] mobile:border mobile:border-[rgba(54,85,108,0.6)] flex flex-col items-center justify-center relative overflow-hidden  mobile:justify-end mobile:my-5 md:my-5 lg:my-5 xl:my-0 my-6 lg:mx-2"
                 style={{
                   boxShadow: "0px 50px 40px -40px rgba(60, 62, 65, 1)",
                 }}
