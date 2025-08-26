@@ -95,7 +95,7 @@ export default function ImageCarousel({ images }) {
             key={index}
             className="relative h-[320px] rounded-lg overflow-hidden"
           >
-            <img
+            <Image
               src={
                 cemetery.image.includes("cemetryUploads")
                   ? `${API_BASE_URL}/${cemetery.image}`
@@ -106,7 +106,9 @@ export default function ImageCarousel({ images }) {
               className="object-cover w-full h-full"
             />
             <div className="absolute bottom-0 left-0 w-full p-4 bg-black/40 backdrop-blur-md text-white text-sm">
-              {cemetery.name} {cemetery.address && "v"} {cemetery.address}
+              {cemetery.name}
+
+              {/* {cemetery.address && "v"} {cemetery.address} */}
             </div>
           </div>
         ))}

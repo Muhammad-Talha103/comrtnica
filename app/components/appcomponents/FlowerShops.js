@@ -85,7 +85,7 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
             onClick={() => setIsOpen(false)}
           />
         </div>
-        <div className="text-[#0A85C2] text-[32px] jdmobile:text-[24px] leading-[24px] font-variation-customOpt16 mt-[18px] jdmobile:mt-[8px] jdtablet:mb-[40px] jdmobile:w-full jdmobile:mb-[50px]">
+        <div className="text-[#0A85C2] text-[32px] jdmobile:text-[24px] leading-[24px] font-variation-customOpt16 mt-[18px] jdmobile:mt-[8px] jdtablet:mb-[40px] jddesktop:mb-[40px] jdmobile:w-full jdmobile:mb-[50px]">
           {" "}
           {data?.city}
         </div>

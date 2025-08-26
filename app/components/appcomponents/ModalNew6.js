@@ -4,19 +4,21 @@ import React, { useEffect, useRef, useState } from "react";
 import { Modal, ModalContent } from "@nextui-org/react";
 import cancle_icon from "@/public/cancle_icon.png";
 import Image from "next/image";
+import shopService from "@/services/shop-service";
+import DropdownWithSearch from "./DropdownWithSearch";
+import toast from "react-hot-toast";
 
 export default function ModalNew6({
   isShowModal,
   setIsShowModal,
-  select_id,
-  set_Id,
-  selectedImage,
   data,
-  updateObituary,
+  onChange
 }) {
   const [scrollBehavior, setScrollBehavior] = React.useState("outside");
   const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedRegion, setSelectedRegion] = useState("");
   const inputFileRef = useRef(null);
+  const [selectedCity, setSelectedCity] = useState("");
 
   const handleFileChange = (e) => {
     const file = e.target.files?.[0];
@@ -33,10 +35,59 @@ export default function ModalNew6({
 
   const handleDragOver = (e) => e.preventDefault();
 
+  const handleRegionSelect = (item) => {
+    setSelectedRegion(item);
+  };
+
+  const handleCitySelect = (item) => {
+    setSelectedCity(item);
+  };
+
+  const resetForm = () => {
+    setSelectedCity('');
+    setSelectedRegion('');
+    setSelectedFile(null);
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const isEmpty =
+        !selectedRegion?.trim() &&
+        !selectedCity?.trim() &&
+        !selectedFile
+      if (isEmpty) {
+        return;
+      }
+
+      // Prepare form data
+      const formData = new FormData();
+      const fields = { ...data, shops: JSON.stringify(data.shops), city: selectedCity };
+
+      Object.entries(fields).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+
+      if (selectedFile) {
+        formData.append("picture", selectedFile);
+      }
+
+      await shopService.createShop(formData);
+      toast.success("Trgovine so ustvarjene, podjetje je poslano za odobritev");
+      setIsShowModal(false);
+      onChange(null);
+      resetForm();
+    } catch (error) {
+      toast.error("Napaka pri shranjevanju podatkov");
+    }
+  }
+
   return (
     <Modal
       isOpen={isShowModal}
-      onOpenChange={(open) => setIsShowModal(open)}
+      onOpenChange={(open) => {
+        setIsShowModal(open);
+        resetForm();
+      }}
       scrollBehavior={scrollBehavior}
       classNames={{ backdrop: "bg-[#344054B2] bg-opacity-70" }}
     >
@@ -46,6 +97,7 @@ export default function ModalNew6({
             <div
               onClick={() => {
                 setIsShowModal(false);
+                resetForm();
               }}
               className="self-end "
             >
@@ -78,13 +130,17 @@ export default function ModalNew6({
                   />
                   <div
                     className="mt-2 px-4 py-6 w-full mobile:w-auto rounded-[6px] bg-[#F2F8FF66] shadow-custom-dark-to-white flex flex-col items-center justify-center cursor-pointer  border-[#ACAAAA]"
-                    onClick={() => inputFileRef.current.click()}
+                    onClick={(e) => {
+                      // Prevent any automatic trigger or bubbling
+                      e.preventDefault();
+                      inputFileRef.current?.click();
+                    }}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
                   >
                     {!selectedFile ? (
                       <>
-                        <p className="w-[214px]  flex justify-center items-center mobile:w-[150px] mobile:h-8 h-[40px] rounded-[4px] bg-gradient-to-b from-[#0D94E8] to-[#0A85C2] text-white leading-6 text-md">
+                        <p className="w-[214px] flex justify-center items-center mobile:w-[150px] mobile:h-8 h-[40px] rounded-[4px] bg-gradient-to-b from-[#0D94E8] to-[#0A85C2] text-white leading-6 text-md">
                           Dodaj logo
                         </p>
                         <span className="text-sm text-[#939393] mt-1">
@@ -105,6 +161,7 @@ export default function ModalNew6({
                     )}
                   </div>
                 </label>
+
                 <label className="flex flex-row text-[#3C3E41] items-center mb-4 mt-4 gap-2">
                   OBČINA
                   <span className="text-[#6D778E]">(kjer bo objavljano)</span>
@@ -112,17 +169,16 @@ export default function ModalNew6({
                 {/* Your existing dropdown and button */}
                 <div className="text-[#6D778E] text-[16px] leading-[20px] font-[400] w-full h-[40px] flex flex-col justify-start items-start mb-4">
                   <div className="relative px-[10px] mobile:pl-4 pl-6 h-[40px] rounded-[6px] bg-[#F2F8FF66] shadow-custom-dark-to-white w-full flex items-center">
-                    <select
-                      className="w-full h-full bg-transparent focus:outline-none text-[#ACAAAA] appearance-none pr-8"
-                      defaultValue=""
-                    >
-                      <option value="" disabled hidden></option>
-                      <option value="new-york">New York</option>
-                      <option value="los-angeles">Los Angeles</option>
-                      <option value="chicago">Chicago</option>
-                      <option value="houston">Houston</option>
-                      <option value="miami">Miami</option>
-                    </select>
+                    <DropdownWithSearch
+                      onSelectRegion={handleRegionSelect}
+                      onSelectCity={handleCitySelect}
+                      selectedRegion={selectedRegion}
+                      selectedCity={selectedCity}
+                      defaultStyles={{
+                        backgroundColor: "transparent",
+                        border: "transparent"
+                      }}
+                    />
                     {/* Down arrow */}
                     <svg
                       className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none"
@@ -142,6 +198,7 @@ export default function ModalNew6({
                     boxShadow: "5px 5px 10px #A6ABBD, -5px -5px 10px #FAFBFF",
                   }}
                   className="mt-10 mb-2 bg-[#09C1A3] w-full h-[50px] rounded-[10px] text-white flex items-center justify-center gap-x-[5px]"
+                  onClick={handleSubmit}
                 >
                   Objavi cvetličarno
                 </button>

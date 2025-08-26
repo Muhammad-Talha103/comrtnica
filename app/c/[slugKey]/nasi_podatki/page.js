@@ -10,6 +10,8 @@ import DropdownWithSearch from "@/app/components/appcomponents/DropdownWithSearc
 import userService from "@/services/user-service";
 import toast from "react-hot-toast";
 import ModalNew from "../../../components/appcomponents/ModalNew";
+import shopService from "@/services/shop-service";
+import ModalNew6 from "../../../components/appcomponents/ModalNew6";
 
 export default function AccountSettings() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -18,17 +20,41 @@ export default function AccountSettings() {
   useEffect(() => {
     getCompleteCompanyData();
   }, []);
+
   const [data, setData] = useState({});
   const [selectedCity, setSelectedCity] = useState(null);
   const [isShowModal1, setIsShowModal1] = useState(false);
+  const [isShowModal6, setIsShowModal6] = useState(false);
   const [select_id, setSelect_Id] = useState("");
+  const [firstPayload, setFirstPayload] = useState(null);
+
+  const toggleModal6 = () => {
+    setIsShowModal1(false);
+    setIsShowModal6(!isShowModal6);
+  }
 
   const getCompleteCompanyData = async () => {
     try {
       const queryParams = {};
       queryParams.type = "FLORIST";
       const response = await companyService.getCompleteCompany(queryParams);
-      setData(response.user);
+
+      // Get user ID from local storage
+      const user = JSON.parse(localStorage.getItem("user"));
+      const userId = user?.id;
+
+      const shopData = await shopService.getFloristShops({
+        companyId: data?.CompanyPage?.id,
+        userId: userId
+      });
+
+      setData({
+        ...response.user,
+        CompanyPage: {
+          ...response.user.CompanyPage,
+          FloristShops: shopData?.shops,
+        },
+      });
     } catch (error) {
       console.log(error);
     }
@@ -46,14 +72,20 @@ export default function AccountSettings() {
       .sort((a, b) => a.place.localeCompare(b.place, "sl")),
   ];
 
-  const handleCitySelect = async (item) => {
+  const handleCitySelect = async (item, deleted = '') => {
     try {
-      const response = await userService.updateMyUser({ secondaryCity: item });
+      let cityPayload = data?.secondaryCity ? { thirdCity: item } : { secondaryCity: item };
+      if (deleted === 'secondary') {
+        cityPayload = { secondaryCity: item };
+      } else if (deleted === 'third') {
+        cityPayload = { thirdCity: item };
+      }
+      const response = await userService.updateMyUser(cityPayload);
       toast.success("City Updated Successfully");
       setSelectedCity(item);
       setData((prevData) => ({
         ...prevData,
-        secondaryCity: item,
+        ...cityPayload
       }));
     } catch (error) {
       console.log(error);
@@ -129,7 +161,7 @@ export default function AccountSettings() {
           </div>
         </div>
         <hr className="my-[28px]" />
-        
+
         {/* FLORIST SHOPS SECTION - Only show when there are shops */}
         {hasFloristShops && (
           <div className="space-y-4 text-[#6D778E] text-[14px]">
@@ -177,7 +209,7 @@ export default function AccountSettings() {
             </div>
           </div>
         )}
-        
+
         <div className="space-y-4 text-[#6D778E] text-[14px]">
           <div className="space-y-1">
             <span className="uppercase">OBČINA:</span>
@@ -194,19 +226,6 @@ export default function AccountSettings() {
                     placeholder={"Dodaj še drugo mesto"}
                   />
                 </div>
-                <Link
-                  href=""
-                  className="inline-flex items-center gap-3 tabletUserAcc:hidden mobileUserAcc:hidden"
-                >
-                  <img
-                    src="/question_icon_blue.png"
-                    alt="add icon"
-                    className="size-6"
-                  />
-                  <span className="text-[#2c7ba3] text-[14px] uppercase underline">
-                    Preveri, kako gre
-                  </span>
-                </Link>
               </div>
             </div>
             {data?.secondaryCity && (
@@ -216,7 +235,21 @@ export default function AccountSettings() {
                   {data?.secondaryCity}
                   <span
                     className="text-[red]"
-                    onClick={() => handleCitySelect(null)}
+                    onClick={() => handleCitySelect(null, 'secondary')}
+                  >
+                    (Zbriši)
+                  </span>
+                </span>
+              </div>
+            )}
+            {data?.thirdCity && (
+              <div className="flex items-center gap-[12px] px-6">
+                <span className="uppercase">Dodatno:</span>
+                <span className="text-[#3C3E41]">
+                  {data?.thirdCity}
+                  <span
+                    className="text-[red]"
+                    onClick={() => handleCitySelect(null, 'third')}
                   >
                     (Zbriši)
                   </span>
@@ -237,18 +270,18 @@ export default function AccountSettings() {
             onClick={() => setIsPrivilegijiExpanded(!isPrivilegijiExpanded)}
           >
             Privilegiji
-            <svg 
-              className={`ml-2 w-5 h-5 transition-transform ${isPrivilegijiExpanded ? 'rotate-180' : ''}`} 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24" 
+            <svg
+              className={`ml-2 w-5 h-5 transition-transform ${isPrivilegijiExpanded ? 'rotate-180' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </h4>
-          
-          <div 
+
+          <div
             className={`space-y-3 overflow-hidden transition-all duration-300 ${isPrivilegijiExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}
           >
             {/* Florist List Publication */}
@@ -391,11 +424,11 @@ export default function AccountSettings() {
           <div className="flex items-center gap-10 tabletUserAcc:col-span-2 mobileUserAcc:col-span-2">
             <div className="flex items-center gap-[12px]">
               <span className="uppercase">naročnina:</span>
-              <span className="text-[#3C3E41]">Letno - gratis</span>
+              <span className="text-[#3C3E41]">Gratis</span>
             </div>
             <div className="flex items-center gap-[12px]">
               <span className="uppercase">do:</span>
-              <span className="text-[#3C3E41]">14.05.2025</span>
+              <span className="text-[#3C3E41]">10.10.2025</span>
             </div>
           </div>
         </div>
@@ -410,15 +443,19 @@ export default function AccountSettings() {
         select_id={select_id}
         set_Id={setSelect_Id}
         data={data?.CompanyPage}
-        onChange={(updatedShops) => {
-          console.log(updatedShops, "====");
-          setData((prevData) => ({
-            ...prevData,
-            CompanyPage: {
-              ...prevData.CompanyPage,
-              FloristShops: updatedShops,
-            },
-          }));
+        onChange={(updatedPayload) => {
+          setFirstPayload(updatedPayload);
+        }}
+        toggleModal6={toggleModal6}
+      />
+
+      <ModalNew6
+        isShowModal={isShowModal6}
+        setIsShowModal={setIsShowModal6}
+        data={firstPayload}
+        onChange={(updatedPayload) => {
+          setFirstPayload(updatedPayload);
+          getCompleteCompanyData();
         }}
       />
     </CompanyAccountLayout>

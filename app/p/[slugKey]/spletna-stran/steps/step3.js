@@ -76,7 +76,8 @@ export default function Step3({ data, onChange, handleStepChange }) {
       const nonEmptyCemeteries = cemetries.filter(
         (cemetery) =>
           cemetery.name.trim() !== "" &&
-          cemetery.address.trim() !== "" &&
+          // currently address is hidden in UI so not validating it
+          // cemetery.address.trim() !== "" &&
           cemetery.image !== null
       );
 
@@ -278,7 +279,7 @@ function SliderBlock({ index, title, cemetery, onChange }) {
             placeholder="Pokopališče v Gabrskem"
           />
         </div>
-        <div className="space-y-[8px]">
+        <div className="space-y-[8px] hidden">
           <label className="text-[16px] text-[#3C3E41] font-normal leading-[24px]">
             Naslov pokopališča {index}
           </label>
