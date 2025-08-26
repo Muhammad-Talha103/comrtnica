@@ -66,14 +66,15 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
 
   return showShop ? (
     <div
-      className="lg:h-[700px] md:h-[800px] mobile:h-[800px] w-full flex flex-col  justify-center  items-center  bg-[#F8EDE3] relative"
+      className="jddesktop:h-[700px] jdtablet:h-[800px] jdmobile:h-[800px] w-full flex flex-col  justify-center  items-center  bg-[#F8EDE3] relative"
       style={{
         boxShadow:
           "2.5px 2.5px 5px 0px #A6ABBD inset, -1.5px -1.5px 5px 0px #A6ABBDBF inset",
       }}
     >
-      <div className="mx-auto mobile:flex-col mobile:items-center desktop:w-[900px] lg:w-[750px] mobile:w-[370px] tablet:mt-[110px] mobile:mt-[110px] md:w-[650px]  mobile:px-[30px]  lg:mb-24 ">
-        <div className="flex justify-between mobile:gap-[12px] lg:pt-[100px] ">
+      <div className="mx-auto jdmobile:flex-col jdmobile:items-center jdmobile:w-[370px] jdmobile:mt-[110px] jdmobile:px-[30px] jdtablet:w-[650px] jdtablet:mt-[110px] jddesktop:w-[900px]">
+        {" "}
+        <div className="flex justify-between jdmobile:gap-[12px] jddesktop:pt-[100px]">
           <div className="leading-[46.88px] cursor-pointer text-[28px] desktop:text-[40px] font-variation-customOpt40 text-[#1E2125]  ">
             Cvetličarne
           </div>
@@ -84,17 +85,17 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
             onClick={() => setIsOpen(false)}
           />
         </div>
-
-        <div className="text-[#0A85C2] text-[32px] mobile:text-[24px] leading-[24px] font-variation-customOpt16 mt-[18px] mobile:mt-[8px] md:mb-[40px] mobile:w-full mobile:mb-[50px]">
+        <div className="text-[#0A85C2] text-[32px] jdmobile:text-[24px] leading-[24px] font-variation-customOpt16 mt-[18px] jdmobile:mt-[8px] jdtablet:mb-[40px] jdmobile:w-full jdmobile:mb-[50px]">
+          {" "}
           {data?.city}
         </div>
       </div>
-      <div className="lg:h-[664px] md:h-[880px] sm:h-[790px] w-full pt-[10px] pb-[10px] bg-[#F8EDE3]">
-        <div className="  mx-auto mobile:w-[370px] md:w-[700px] lg:w-[700px] w-[400px] xl:w-[1150px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6     mobile:justify-center place-items-center items-end ">
+      <div className="jdmobile:h-[790px] jdtablet:h-[880px] jddesktop:h-[664px] w-full pt-[10px] pb-[10px] bg-[#F8EDE3]">
+        <div className="mx-auto jdmobile:w-[370px] jdtablet:w-[700px] jddesktop:w-[1150px] w-[400px] grid grid-cols-2 jdtablet:grid-cols-3 jddesktop:grid-cols-6 jdmobile:justify-center place-items-center items-end">
           {/* Sponsor Card */}
           {data?.Company && (
             <div
-              className="bg-[#36556C] lg:h-[230px] lg:w-[182px] md:h-[230px] md:w-[182px] h-[184px] w-[150px]      rounded-[8px] mobile:rounded-[2px] overflow-hidden relative flex flex-col items-center justify-center px-[12px] mobile:mb-5 md:mb-5 lg:mb-5 xl:mb-0 first-letter:"
+              className="bg-[#36556C] jddesktop:h-[230px] jddesktop:w-[182px] jdtablet:h-[230px] jdtablet:w-[182px] jdmobile:h-[184px] jdmobile:w-[150px] rounded-[8px] jdmobile:rounded-[2px] overflow-hidden relative flex flex-col items-center justify-center px-[12px] jdmobile:mb-5 jdtablet:mb-5 jddesktop:mb-5"
               style={{
                 boxShadow: "0px 50px 40px -40px rgba(60, 62, 65, 1)",
               }}
@@ -120,7 +121,7 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
             data.cardImages.map((img, index) => (
               <div
                 key={index}
-                className="bg-white lg:w-[180px] lg:h-[160px] md:w-[195px] md:h-[160px] w-[150px] h-[130px]  lg:rounded-[8px] md:rounded-[8px] mobile:border mobile:border-[rgba(54,85,108,0.6)] flex flex-col items-center justify-center relative overflow-hidden  mobile:justify-end mobile:my-5 md:my-5 lg:my-5 xl:my-0 my-6 lg:mx-2"
+                className=" bg-white jddesktop:w-[180px] jddesktop:h-[160px] jdtablet:w-[195px] jdtablet:h-[160px] jdmobile:w-[150px] jdmobile:h-[130px] jddesktop:rounded-[8px] jdtablet:rounded-[8px] jdmobile:border jdmobile:border-[rgba(54,85,108,0.6)] flex flex-col items-center justify-center relative overflow-hidden jdmobile:justify-end jdmobile:my-5 jdtablet:my-5 jddesktop:my-5 my-6 jddesktop:mx-2"
                 style={{
                   boxShadow: "0px 50px 40px -40px rgba(60, 62, 65, 1)",
                 }}
