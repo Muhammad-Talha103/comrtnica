@@ -66,15 +66,16 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
 
   return showShop ? (
     <div
-      className="lg:h-[700px] md:h-[800px] mobile:h-[800px] w-full flex flex-col mobile:justify-center desktop:justify-center items-center  bg-[#F8EDE3] relative"
+      className="jddesktop:h-[700px] jdtablet:h-[800px] jdmobile:h-[800px] w-full flex flex-col  justify-center  items-center  bg-[#F8EDE3] relative"
       style={{
         boxShadow:
           "2.5px 2.5px 5px 0px #A6ABBD inset, -1.5px -1.5px 5px 0px #A6ABBDBF inset",
       }}
     >
-      <div className="mx-auto mobile:flex-col mobile:items-center desktop:w-[800px] tablet:mt-[110px] tablet:w-[600px] mobile:max-w-[560.17px] mobile:px-[30px] mobile:w-full lg:mb-24">
-        <div className="flex justify-between mobile:gap-[12px] lg:pt-[100px] ">
-          <div className="leading-[46.88px] cursor-pointer text-[28px] desktop:text-[40px] font-variation-customOpt40 text-[#1E2125] mobile:w-full ">
+      <div className="mx-auto jdmobile:flex-col jdmobile:items-center jdmobile:w-[370px] jdmobile:mt-[110px] jdmobile:px-[30px] jdtablet:w-[650px] jdtablet:mt-[110px] jddesktop:w-[900px]">
+        {" "}
+        <div className="flex justify-between jdmobile:gap-[12px] jddesktop:pt-[100px]">
+          <div className="leading-[46.88px] cursor-pointer text-[28px] desktop:text-[40px] font-variation-customOpt40 text-[#1E2125]  ">
             Cvetličarne
           </div>
           <img
@@ -84,83 +85,17 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
             onClick={() => setIsOpen(false)}
           />
         </div>
-
-        <div className="text-[#0A85C2] text-[32px] mobile:text-[24px] leading-[24px] font-variation-customOpt16 mt-[18px] mobile:mt-[8px] md:mb-[40px] mobile:w-full mobile:mb-[50px]">
+        <div className="text-[#0A85C2] text-[32px] jdmobile:text-[24px] leading-[24px] font-variation-customOpt16 mt-[18px] jdmobile:mt-[8px] jdtablet:mb-[40px] jddesktop:mb-[40px] jdmobile:w-full jdmobile:mb-[50px]">
+          {" "}
           {data?.city}
         </div>
       </div>
-      {/* <div className="relative mt-[100px] tablet:mt-[32px] mb-[76px] tablet:mb-[34px] tablet:w-[629px] mobile:mt-[40px]">
-        <div className="w-[1076px] mobile:w-full mobile:grid-cols-2 mobile:gap-[22px] mobile:px-[19px] mx-auto grid grid-cols-6 items-end relative z-10">
-          {data?.floristShops?.length > 0 &&
-            data?.floristShops?.map((item, index) =>
-              item.own ? (
-                <div
-                  key={index}
-                  className="bg-[#36556C] mobile:shadow-lg h-[229px] mobile:h-[129px] mobile:w-[150px] w-full rounded-[4px] overflow-hidden relative"
-                  style={{
-                    boxShadow:
-                      "33px 33px 44px 0px #FF984E1A, -33px -33px 44px 0px #FF984E1A",
-                  }}
-                >
-                  <div className="text-[#FF984E] text-[24px] mobile:text-[16px] leading-[130%] font-semibold text-center mt-[50px] mobile:mt-[30px] ">
-                    Cvetličarna <br /> {item.shopName}
-                  </div>
-                  <div className="text-[#F9F9F9] text-[14px] mobile:text-[12px] leading-[150%] font-normal text-center mt-[24px] mobile:mt-[25px]">
-                    {item.city}
-                  </div>
-                  <div className="bg-[#FF984E] absolute top-[calc(100%-15px)] mobile:top-[calc(100%-8px)] left-[119px] mobile:left-[113px] w-[36px] mobile:w-[19px] h-[30px] mobile:h-[16px] rounded-full"></div>
-                  <div className="bg-gradient-to-r from-[#FF984E] to-[#36556C] absolute top-0 left-0 w-full h-[3px]"></div>
-                  <div className="bg-gradient-to-b from-[#FF984E] to-[#36556C] absolute top-0 left-0 w-[3px] h-full"></div>
-                </div>
-              ) : (
-                <div
-                  key={index}
-                  className="bg-[#FFFFFF] mobile:shadow-lg mobile:!border-[1px] mobile:!border-[#36556C99] h-[160px] mobile:h-[129px] w-full overflow-hidden relative flex mobile:flex-col items-center justify-center"
-                  style={{
-                    border: "1px solid #36556C1A",
-                  }}
-                  onClick={() => {
-                    changeSelectedFlorist(item);
-                  }}
-                >
-                  <Image
-                    src={`${API_BASE_URL}/${item.logo}`}
-                    alt={item.shopName}
-                    width={120}
-                    height={120}
-                    className="w-[120px] h-[120px] mobile:w-[97px] mobile:h-[97px]"
-                  />
-                  <div className="bg-[#36556C] text-white text-[12px] hidden mobile:flex w-full h-[30px] items-center justify-center leading-[130%] font-normal text-center">
-                    {item.city}
-                  </div>
-                </div>
-              )
-            )}
-        </div>
-
-        <div className="bg-[#000000] blur-lg absolute top-[100%] left-1/2 w-[90%] rounded-full -translate-x-1/2 h-[12px] mobile:hidden"></div>
-      </div> */}
-      {/* <div className="tablet:w-[629px] hidden tablet:flex items-center justify-end mb-[34px]">
-        <Image src="/page_scroller_memory_page.png" width={64} height={64} />
-      </div>
-      <div className="w-[320px] h-[125px] hidden mobile:block bg-[#36556C] relative mb-[40px] overflow-hidden">
-        <p className="font-semibold text-[20px] text-[#E9EAF5] text-center mt-[14px]">
-          Cvetličarna Kalimero
-        </p>
-        <div className="flex items-center justify-between w-full px-[38px] mt-[12px]">
-          <Image src="/memory_demo/phone.png" width={55} height={55} />
-          <Image src="/memory_demo/info.png" width={55} height={55} />
-        </div>
-        <div className="bg-[#FF984E] absolute bottom-[calc(100%-8px)] left-[282px] w-[19px] h-[16px] rounded-full z-10"></div>
-        <div className="bg-gradient-to-r from-[#FF984E] to-[#36556C] absolute top-0 left-0 w-full h-[3px]"></div>
-        <div className="bg-gradient-to-b from-[#FF984E] to-[#36556C] absolute top-0 left-0 w-[3px] h-full"></div>
-      </div> */}
-      <div className="lg:h-[664px] md:h-[880px] sm:h-[790px] w-full pt-[10px] pb-[10px] bg-[#F8EDE3]">
-        <div className=" lg:mx-24 md:mx-14 mx-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6   items-end  mobile:justify-center">
+      <div className="jdmobile:h-[790px] jdtablet:h-[880px] jddesktop:h-[664px] w-full pt-[10px] pb-[10px] bg-[#F8EDE3]">
+        <div className="mx-auto jdmobile:w-[370px] jdtablet:w-[700px] jddesktop:w-[1150px] w-[400px] grid grid-cols-2 jdtablet:grid-cols-3 jddesktop:grid-cols-6 jdmobile:justify-center place-items-center items-end">
           {/* Sponsor Card */}
           {data?.Company && (
             <div
-              className="bg-[#36556C] lg:h-[230px] lg:w-[182px] md:h-[230px] md:w-[182px] h-[184px] w-[150px]      rounded-[8px] mobile:rounded-[2px] overflow-hidden relative flex flex-col items-center justify-center px-[12px]"
+              className="bg-[#36556C] jddesktop:h-[230px] jddesktop:w-[182px] jdtablet:h-[230px] jdtablet:w-[182px] jdmobile:h-[184px] jdmobile:w-[150px] rounded-[8px] jdmobile:rounded-[2px] overflow-hidden relative flex flex-col items-center justify-center px-[12px] jdmobile:mb-5 jdtablet:mb-5 jddesktop:mb-5"
               style={{
                 boxShadow: "0px 50px 40px -40px rgba(60, 62, 65, 1)",
               }}
@@ -186,7 +121,7 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
             data.cardImages.map((img, index) => (
               <div
                 key={index}
-                className="bg-white lg:w-[195px] lg:h-[160px] md:w-[195px] md:h-[160px] w-[150px] h-[130px]  lg:rounded-[8px] md:rounded-[8px] mobile:border mobile:border-[rgba(54,85,108,0.6)] flex flex-col items-center justify-center relative overflow-hidden mobile:mt-[29px] mobile:justify-end "
+                className=" bg-white jddesktop:w-[180px] jddesktop:h-[160px] jdtablet:w-[195px] jdtablet:h-[160px] jdmobile:w-[150px] jdmobile:h-[130px] jddesktop:rounded-[8px] jdtablet:rounded-[8px] jdmobile:border jdmobile:border-[rgba(54,85,108,0.6)] flex flex-col items-center justify-center relative overflow-hidden jdmobile:justify-end jdmobile:my-5 jdtablet:my-5 jddesktop:my-5 my-6 jddesktop:mx-2"
                 style={{
                   boxShadow: "0px 50px 40px -40px rgba(60, 62, 65, 1)",
                 }}

@@ -56,6 +56,9 @@ const config: Config = {
         desktopUserAcc: { min: "1280px" },
         tabletUserAcc: { min: "739px", max: "1279px" },
         mobileUserAcc: { max: "740px" },
+        jdmobile: { min: "360px", max: "743px" }, // 360px–743px
+        jdtablet: { min: "744px", max: "1199px" }, // 744px–1199px
+        jddesktop: { min: "1280px" }, // 1280px and up
       },
       fontVariationSettings: {
         customOpt12:
