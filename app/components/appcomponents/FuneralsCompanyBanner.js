@@ -17,10 +17,11 @@ const getBackgroundImage = (data) => {
 
 const getLogoImage = (data) => {
   if (!data) return "/logo_funeral_company.png";
-  if (data.logo && data.logo.includes("companyUploads")) {
-    return `${API_BASE_URL}/${data.logo}`;
+  const logoPath = data.company_logo;
+  if (typeof logoPath === "string" && logoPath.includes("companyUploads")) {
+    return `${API_BASE_URL}/${logoPath}`;
   }
-  return data.logo || "/logo_funeral_company.png";
+  return logoPath || "/logo_funeral_company.png";
 };
 
 const IconLinkComponent = ({ link, icon, alt, className }) => {

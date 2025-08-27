@@ -30,7 +30,7 @@ export default function Step1({ data, onChange, handleStepChange }) {
       if (data.email !== null) setEmail(data.email);
       if (data.phone !== null) setPhone(data.phone);
       if (data.website !== null) setWebsite(data.website);
-      if (data.logo !== null) setLogo(data.logo);
+      if (data.company_logo !== null) setLogo(data.company_logo);
       if (data.background !== null) setBackground(data.background);
       if (data.id !== null) setCompanyId(data.id);
     }
@@ -67,7 +67,8 @@ export default function Step1({ data, onChange, handleStepChange }) {
       if (website != null) formData.append("website", website);
 
       if (logo instanceof File) {
-        formData.append("logo", logo);
+        formData.append("company_logo", logo);
+        // formData.append("logo", logo);
       }
 
       if (background instanceof File) {
