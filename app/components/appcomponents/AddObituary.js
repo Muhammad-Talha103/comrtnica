@@ -287,10 +287,10 @@ const AddObituary = ({ set_Id, setModal }) => {
     // Check permission before allowing submission
     const currentUser = JSON.parse(localStorage.getItem("user") || "{}");
     // Temporarily commented
-    if (!currentUser.createObituaryPermission) {
-      toast.error("You don't have permission to create obituaries.");
-      return;
-    }
+    // if (!currentUser.createObituaryPermission) {
+    //   toast.error("You don't have permission to create obituaries.");
+    //   return;
+    // }
 
     if (!validateFields()) return;
 
@@ -383,7 +383,7 @@ const AddObituary = ({ set_Id, setModal }) => {
             .getFullYear()
             .toString()
             .slice(2)}`;
-
+      console.log('>>>>>>>>>>>>>>>>>>>>>>> obit', response);
       setObituaryResponse(response);
     } catch (error) {
       console.error("Error creating obituary:", error);
@@ -416,7 +416,7 @@ const AddObituary = ({ set_Id, setModal }) => {
   return (
     <>
       {obituaryResponse?.id && (
-        <MobileCards cardRefs={cardRefs} data={obituaryResponse} />
+        <MobileCards cardRefs={cardRefs} data={obituaryResponse} cemetery={selectedCemeteryLabel} />
       )}
       {loading && <BackDropLoader />}
       {/* Main Container for all the content and background */}
