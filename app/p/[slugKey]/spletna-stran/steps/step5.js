@@ -142,7 +142,6 @@ export default function Step5({ data, onChange, handleStepChange }) {
       setFaqs(faqs);
       const updatedCompany = { ...data, faqs: faqs };
       onChange(updatedCompany);
-      console.log("FAQ deleted successfully");
       toast.success("Faq's Deleted Successfully");
     } catch (err) {
       console.error("Failed to delete FAQ", err);
