@@ -46,7 +46,7 @@ const SadProgram = ({ data }) => {
                       typeof item.image === "string" &&
                       item.image.includes("packageUploads")
                         ? `${API_BASE_URL}/${item.image}`
-                        : item.image || ""
+                        : item.image
                     }
                     alt={item.title || "package image"}
                     className="w-[119.65px] h-[135.08px] mt-[58.27px]"
@@ -73,7 +73,7 @@ const SadProgram = ({ data }) => {
                     typeof item.image === "string" &&
                     item.image.includes("packageUploads")
                       ? `${API_BASE_URL}/${item.image}`
-                      : item.image || ""
+                      : item.image
                   }
                   alt={item.title || "package image"}
                   className="w-[119.65px] h-[135.08px] mt-[58.27px]"
