@@ -10,24 +10,51 @@ import DropdownWithSearch from "@/app/components/appcomponents/DropdownWithSearc
 import userService from "@/services/user-service";
 import toast from "react-hot-toast";
 import ModalNew from "../../../components/appcomponents/ModalNew";
+import shopService from "@/services/shop-service";
+import ModalNew6 from "../../../components/appcomponents/ModalNew6";
 
 export default function AccountSettings() {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isPrivilegijiExpanded, setIsPrivilegijiExpanded] = useState(false);
 
   useEffect(() => {
     getCompleteCompanyData();
   }, []);
+
   const [data, setData] = useState({});
   const [selectedCity, setSelectedCity] = useState(null);
   const [isShowModal1, setIsShowModal1] = useState(false);
+  const [isShowModal6, setIsShowModal6] = useState(false);
   const [select_id, setSelect_Id] = useState("");
+  const [firstPayload, setFirstPayload] = useState(null);
+
+  const toggleModal6 = () => {
+    setIsShowModal1(false);
+    setIsShowModal6(!isShowModal6);
+  }
 
   const getCompleteCompanyData = async () => {
     try {
       const queryParams = {};
       queryParams.type = "FLORIST";
       const response = await companyService.getCompleteCompany(queryParams);
-      setData(response.user);
+
+      // Get user ID from local storage
+      const user = JSON.parse(localStorage.getItem("user"));
+      const userId = user?.id;
+
+      const shopData = await shopService.getFloristShops({
+        companyId: data?.CompanyPage?.id,
+        userId: userId
+      });
+
+      setData({
+        ...response.user,
+        CompanyPage: {
+          ...response.user.CompanyPage,
+          FloristShops: shopData?.shops,
+        },
+      });
     } catch (error) {
       console.log(error);
     }
@@ -45,14 +72,20 @@ export default function AccountSettings() {
       .sort((a, b) => a.place.localeCompare(b.place, "sl")),
   ];
 
-  const handleCitySelect = async (item) => {
+  const handleCitySelect = async (item, deleted = '') => {
     try {
-      const response = await userService.updateMyUser({ secondaryCity: item });
+      let cityPayload = data?.secondaryCity ? { thirdCity: item } : { secondaryCity: item };
+      if (deleted === 'secondary') {
+        cityPayload = { secondaryCity: item };
+      } else if (deleted === 'third') {
+        cityPayload = { thirdCity: item };
+      }
+      const response = await userService.updateMyUser(cityPayload);
       toast.success("City Updated Successfully");
       setSelectedCity(item);
       setData((prevData) => ({
         ...prevData,
-        secondaryCity: item,
+        ...cityPayload
       }));
     } catch (error) {
       console.log(error);
@@ -95,7 +128,7 @@ export default function AccountSettings() {
             {!hasFloristShops && (
               <button
                 onClick={() => setIsShowModal1(true)}
-                className="inline-flex items-center gap-3 tabletUserAcc:hidden mobileUserAcc:hidden"
+                className="inline-flex items-center gap-3"
               >
                 <span className="text-[#2c7ba3] text-[14px]">
                   DODAJ CVETLIČARNO
@@ -128,7 +161,7 @@ export default function AccountSettings() {
           </div>
         </div>
         <hr className="my-[28px]" />
-        
+
         {/* FLORIST SHOPS SECTION - Only show when there are shops */}
         {hasFloristShops && (
           <div className="space-y-4 text-[#6D778E] text-[14px]">
@@ -176,7 +209,7 @@ export default function AccountSettings() {
             </div>
           </div>
         )}
-        
+
         <div className="space-y-4 text-[#6D778E] text-[14px]">
           <div className="space-y-1">
             <span className="uppercase">OBČINA:</span>
@@ -193,19 +226,6 @@ export default function AccountSettings() {
                     placeholder={"Dodaj še drugo mesto"}
                   />
                 </div>
-                <Link
-                  href=""
-                  className="inline-flex items-center gap-3 tabletUserAcc:hidden mobileUserAcc:hidden"
-                >
-                  <img
-                    src="/question_icon_blue.png"
-                    alt="add icon"
-                    className="size-6"
-                  />
-                  <span className="text-[#2c7ba3] text-[14px] uppercase underline">
-                    Preveri, kako gre
-                  </span>
-                </Link>
               </div>
             </div>
             {data?.secondaryCity && (
@@ -215,7 +235,21 @@ export default function AccountSettings() {
                   {data?.secondaryCity}
                   <span
                     className="text-[red]"
-                    onClick={() => handleCitySelect(null)}
+                    onClick={() => handleCitySelect(null, 'secondary')}
+                  >
+                    (Zbriši)
+                  </span>
+                </span>
+              </div>
+            )}
+            {data?.thirdCity && (
+              <div className="flex items-center gap-[12px] px-6">
+                <span className="uppercase">Dodatno:</span>
+                <span className="text-[#3C3E41]">
+                  {data?.thirdCity}
+                  <span
+                    className="text-[red]"
+                    onClick={() => handleCitySelect(null, 'third')}
                   >
                     (Zbriši)
                   </span>
@@ -229,22 +263,35 @@ export default function AccountSettings() {
         {/* PRIVILEGES SECTION */}
         <div className="space-y-4 text-[#6D778E] mt-[60px] text-[14px]">
           <h4
-            className="text-[#2c7ba3] text-[20px] font-medium pb-2"
+            className="text-[#2c7ba3] text-[20px] font-medium pb-2 flex items-center cursor-pointer hover:text-[#1d5a78] transition-colors"
             style={{
               fontVariationSettings: "'wdth' 50,'opsz' 26",
             }}
+            onClick={() => setIsPrivilegijiExpanded(!isPrivilegijiExpanded)}
           >
             Privilegiji
+            <svg
+              className={`ml-2 w-5 h-5 transition-transform ${isPrivilegijiExpanded ? 'rotate-180' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
           </h4>
-          
-          <div className="space-y-3">
+
+          <div
+            className={`space-y-3 overflow-hidden transition-all duration-300 ${isPrivilegijiExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}
+          >
             {/* Florist List Publication */}
             <div className="flex items-center gap-3">
               <input
                 type="checkbox"
                 checked={data?.createObituaryPermission}
+                disabled
                 readOnly
-                className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2"
+                className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2 cursor-not-allowed disabled:opacity-100 disabled:bg-[#0A85C2] disabled:checked:bg-[#0A85C2]"
               />
               <span className="text-[#3C3E41]">
                 Objava na seznamu cvetličarn
@@ -259,8 +306,9 @@ export default function AccountSettings() {
               <input
                 type="checkbox"
                 checked={false}
+                disabled
                 readOnly
-                className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2"
+                className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2 cursor-not-allowed disabled:opacity-100 disabled:bg-[#0A85C2] disabled:checked:bg-[#0A85C2]"
               />
               <span className="text-[#3C3E41]">Spletna stran</span>
               <span className="text-[#6D778E] text-[12px]">(kmalu)</span>
@@ -271,8 +319,9 @@ export default function AccountSettings() {
               <input
                 type="checkbox"
                 checked={data?.createObituaryPermission}
+                disabled
                 readOnly
-                className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2"
+                className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2 cursor-not-allowed disabled:opacity-100 disabled:bg-[#0A85C2] disabled:checked:bg-[#0A85C2]"
               />
               <span className="text-[#3C3E41]">Objava osmrtnic</span>
               <span className="text-[#6D778E] text-[12px]">
@@ -285,8 +334,9 @@ export default function AccountSettings() {
               <input
                 type="checkbox"
                 checked={data?.assignKeeperPermission}
+                disabled
                 readOnly
-                className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2"
+                className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2 cursor-not-allowed disabled:opacity-100 disabled:bg-[#0A85C2] disabled:checked:bg-[#0A85C2]"
               />
               <span className="text-[#3C3E41]">Mesečni skrbniki</span>
               <span className="text-[#6D778E] text-[12px]">
@@ -299,8 +349,9 @@ export default function AccountSettings() {
               <input
                 type="checkbox"
                 checked={data?.sendMobilePermission}
+                disabled
                 readOnly
-                className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2"
+                className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2 cursor-not-allowed disabled:opacity-100 disabled:bg-[#0A85C2] disabled:checked:bg-[#0A85C2]"
               />
               <span className="text-[#3C3E41]">Digitalne mobi kartice</span>
               <span className="text-[#6D778E] text-[12px]">(kmalu)</span>
@@ -311,8 +362,9 @@ export default function AccountSettings() {
               <input
                 type="checkbox"
                 checked={!!data?.secondaryCity}
+                disabled
                 readOnly
-                className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2"
+                className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2 cursor-not-allowed disabled:opacity-100 disabled:bg-[#0A85C2] disabled:checked:bg-[#0A85C2]"
               />
               <span className="text-[#3C3E41]">Dodatna občina</span>
               <span className="text-[#6D778E] text-[12px]">
@@ -325,8 +377,9 @@ export default function AccountSettings() {
               <input
                 type="checkbox"
                 checked={data?.sendGiftsPermission}
+                disabled
                 readOnly
-                className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2"
+                className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2 cursor-not-allowed disabled:opacity-100 disabled:bg-[#0A85C2] disabled:checked:bg-[#0A85C2]"
               />
               <span className="text-[#3C3E41]">Sodelovanje na spominskih straneh</span>
             </div>
@@ -336,8 +389,9 @@ export default function AccountSettings() {
               <input
                 type="checkbox"
                 checked={true}
+                disabled
                 readOnly
-                className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2"
+                className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2 cursor-not-allowed disabled:opacity-100 disabled:bg-[#0A85C2] disabled:checked:bg-[#0A85C2]"
               />
               <span className="text-[#3C3E41]">Promocija BREZ RIZIKA</span>
               <span className="text-[#6D778E] text-[12px]">(odpri)</span>
@@ -370,11 +424,11 @@ export default function AccountSettings() {
           <div className="flex items-center gap-10 tabletUserAcc:col-span-2 mobileUserAcc:col-span-2">
             <div className="flex items-center gap-[12px]">
               <span className="uppercase">naročnina:</span>
-              <span className="text-[#3C3E41]">Letno - gratis</span>
+              <span className="text-[#3C3E41]">Gratis</span>
             </div>
             <div className="flex items-center gap-[12px]">
               <span className="uppercase">do:</span>
-              <span className="text-[#3C3E41]">14.05.2025</span>
+              <span className="text-[#3C3E41]">10.10.2025</span>
             </div>
           </div>
         </div>
@@ -389,15 +443,19 @@ export default function AccountSettings() {
         select_id={select_id}
         set_Id={setSelect_Id}
         data={data?.CompanyPage}
-        onChange={(updatedShops) => {
-          console.log(updatedShops, "====");
-          setData((prevData) => ({
-            ...prevData,
-            CompanyPage: {
-              ...prevData.CompanyPage,
-              FloristShops: updatedShops,
-            },
-          }));
+        onChange={(updatedPayload) => {
+          setFirstPayload(updatedPayload);
+        }}
+        toggleModal6={toggleModal6}
+      />
+
+      <ModalNew6
+        isShowModal={isShowModal6}
+        setIsShowModal={setIsShowModal6}
+        data={firstPayload}
+        onChange={(updatedPayload) => {
+          setFirstPayload(updatedPayload);
+          getCompleteCompanyData();
         }}
       />
     </CompanyAccountLayout>

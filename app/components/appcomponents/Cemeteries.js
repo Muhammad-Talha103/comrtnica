@@ -106,7 +106,8 @@ const Cemeteries = ({ data }) => {
                     key={`${cemetery.id}-cemetery-${index}-${cemetery.companyId}`}
                     className="text-[16px] text-[#414141] font-variation-customOpt16 pl-[6px]"
                   >
-                    {cemetery.name} {cemetery.address && "v"} {cemetery.address}
+                    {cemetery.name}
+                    {/* {cemetery.address && "v"} {cemetery.address} */}
                   </li>
                 ))}
             </ol>

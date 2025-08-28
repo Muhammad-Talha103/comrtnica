@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: ["localhost"],
+    domains: ["localhost", "dev111.osmrtnica.com"],
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
@@ -41,7 +41,6 @@ const nextConfig = {
         port: "4000",
         pathname: "/api/packageUploads/**",
       },
-      
       // dev111 patterns
       {
         protocol: "https",
@@ -56,22 +55,22 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "dev111.osmrtnica.com",
-        pathname: "/be//api/cemetryUploads/**",
+        pathname: "/be/api/cemetryUploads/**",
       },
       {
         protocol: "https",
         hostname: "dev111.osmrtnica.com",
-        pathname: "/be//api/floristShopUploads/**",
+        pathname: "/be/api/floristShopUploads/**",
       },
       {
         protocol: "https",
         hostname: "dev111.osmrtnica.com",
-        pathname: "/be//api/floristSlideUploads/**",
+        pathname: "/be/api/floristSlideUploads/**",
       },
       {
         protocol: "https",
         hostname: "dev111.osmrtnica.com",
-        pathname: "/be//api/packageUploads/**",
+        pathname: "/be/api/packageUploads/**",
       },
     ],
   },

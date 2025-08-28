@@ -75,7 +75,7 @@ const SpecialOffer = ({ data }) => {
         {slides && slides.length > 0 && (
           <div
             key={`${activeSlide?.id}-${currentIndex}`}
-            className="h-full max-w-[1023px] w-full py-[100px] tablet:py-8 mobile:py-6 flex desktop:flex-row flex-col-reverse justify-between items-center"
+            className="h-full max-w-[1023px] w-full py-[100px] tablet:py-8 mobile:py-12 flex desktop:flex-row flex-col-reverse justify-between items-center"
           >
             <div className=" flex  flex-col w-[450px] mobile:w-[300px]">
               <div className="text-[32px] leading-[47px] mobile:leading-[38px] font-variation-customOpt40  text-[#000000] mobile:text-[24px] ">
@@ -99,7 +99,7 @@ const SpecialOffer = ({ data }) => {
                   className=" absolute bottom-2 left-2 mobile:flex hidden h-[36px] shadow-custom-light-dark-with-white-button bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] justify-center items-center rounded-lg w-[36px] px-2"
                 >
                   <img
-                    src="img_back_mob.png"
+                    src="/img_back_mob.png"
                     alt="back"
                     className="h-[13.79px] w-[8.43px]"
                   />

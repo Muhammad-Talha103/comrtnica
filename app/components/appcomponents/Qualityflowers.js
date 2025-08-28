@@ -3,6 +3,14 @@ import Image from "next/image";
 import API_BASE_URL from "@/config/apiConfig";
 
 const Qualityflowers = ({ data }) => {
+  const resolveIconSrc = (s) => {
+    if (!s) return "";
+    const candidate = s.split(",").filter(Boolean).pop().trim();
+    if (/^https?:\/\//.test(candidate) || candidate.startsWith("/"))
+      return candidate;
+    return `${API_BASE_URL}/${candidate}`;
+  };
+
   return (
     <div className=" w-full relative h-[278px] desktop:mt-5 tablet:bg-[#FFFFFF] mobile:bg-[#FFFFFF] tablet:h-[337px] mobile:h-[537px] overflow-hidden mx-auto flex flex-col items-center">
       {data?.showBoxBackground === false && (
@@ -82,7 +90,7 @@ const Qualityflowers = ({ data }) => {
                                      backdrop-blur border-[2px] border-[#FFFFFF] rounded-[16px] flex flex-col items-center"
               >
                 <Image
-                  src={`${data.box_one_icon}`}
+                  src={resolveIconSrc(data.box_one_icon)}
                   width={70}
                   height={70}
                   alt="vehicle"

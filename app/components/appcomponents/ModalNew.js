@@ -24,6 +24,7 @@ export default function ModalNew2({
   data,
   onChange,
   updateObituary,
+  toggleModal6 = () => { }
 }) {
   const [scrollBehavior, setScrollBehavior] = React.useState("outside");
   const [shops, setShops] = useState([{}]);
@@ -50,19 +51,16 @@ export default function ModalNew2({
         userId: userId, // Add userId to payload
         shops,
       };
-      console.log("first", payload);
 
-      const response = await shopService.createShop(payload);
-      onChange(response?.shops);
-      toast.success("Trgovine so ustvarjene, podjetje je poslano za odobritev");
-
-      console.log(response);
-
+      onChange(payload);
       // Close the modal after successful submission
       setIsShowModal(false);
 
       // Optional: Reset the form
       setShops([{}]);
+
+      // Take to step 2
+      toggleModal6();
     } catch (error) {
       console.log(error);
       // Optional: Show error toast

@@ -9,6 +9,10 @@ const DropdownWithCustomDesign = ({
   selectedRegion,
   selectedCity,
   isDisabled = false,
+  defaultStyles = {
+    backgroundColor: "#f1fffe",
+    border: "1px solid #d4d4d4"
+  }
 }) => {
   const flattenedOptions = Object.keys(regionsAndCities)
     .flatMap((region) =>
@@ -60,8 +64,7 @@ const DropdownWithCustomDesign = ({
         styles={{
           control: (base) => ({
             ...base,
-            backgroundColor: "#f1fffe",
-            border: "1px solid #d4d4d4", // Light gray border
+            ...defaultStyles, // Light gray border
             boxShadow: "none", // Remove default shadow
             borderRadius: "4px",
             "&:hover": { borderColor: "#105ccf" }, // Change border on hover
