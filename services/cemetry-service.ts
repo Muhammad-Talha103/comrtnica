@@ -21,11 +21,16 @@ const getCemeteries = async (queryParams?: {}) => {
 };
 
 const deleteCemetery = async (id: number) => {
-  const endpoint = `/cemetry/${id}`;
-  const response = await axios.delete(endpoint, {
-    headers: { "Content-Type": "application/json" },
-  });
-  return response.data;
+  try {
+    const endpoint = `/cemetry/${id}`;
+    const response = await axios.delete(endpoint, {
+      headers: { "Content-Type": "application/json" },
+    });
+    return response.data;
+  } catch (error: unknown) {
+    console.error("Error deleting cemetery:", error);
+    throw new Error("Failed to delete cemetery");
+  }
 };
 
 const cemetryService = {

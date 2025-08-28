@@ -133,9 +133,12 @@ export default function Step3({ data, onChange, handleStepChange }) {
   };
 
   const handleDeleteCemtery = async (cemetery) => {
+    if (!cemetery?.id) {
+      toast.error("Cemetery is not saved yet.");
+      return;
+    }
     console.log("Deleting cemetery with ID:", cemetery);
     try {
-      console.log("Deleting FAQ with ID:", faq);
       const { cemeteries } = await cemetryService.deleteCemetery(cemetery.id);
       setCemetries(cemeteries);
       const updateCompany = {
@@ -143,10 +146,9 @@ export default function Step3({ data, onChange, handleStepChange }) {
         cemeteries: cemeteries,
       };
       onChange(updateCompany);
-      console.log("Cemeteries deleted successfully");
-      toast.success("Cemeteries Deleted Successfully");
+      toast.success("Cemetery deleted successfully");
     } catch (err) {
-      console.error("Failed to delete FAQ", err);
+      console.error("Failed to delete Cemetery", err);
     }
   };
 
