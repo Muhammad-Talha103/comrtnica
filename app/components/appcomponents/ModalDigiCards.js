@@ -61,10 +61,11 @@ export default function ModalDigiCards({
                                     <div className="flex justify-center mt-5">
                                         {data?.map((item) => {
                                             return (
-                                                <div className="w-[23%]">
+                                                <div key={item.id} className="w-[23%]">
                                                     <Image
                                                         src={`${API_BASE_URL}/${item?.cardImage}`}
                                                         alt={`Digi card`}
+                                                        loading="lazy"
                                                         width={500}
                                                         height={500}
                                                         className="w-[100%]"
