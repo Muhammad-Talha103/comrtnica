@@ -1,17 +1,11 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
-import Image from "next/image";
-import { Checkbox } from "@headlessui/react";
-import { CheckIcon } from "@heroicons/react/16/solid";
-import Link from "next/link";
-import DropdownWithCustomDesign from "./DropdownWithSearch";
 import obituaryService from "@/services/obituary-service";
 import Select from "react-select";
 import cardService from "@/services/card-service";
 import toast from "react-hot-toast";
-import keeperService from "@/services/keeper-service";
 import { useRouter } from "next/navigation";
-import MobileCards from "./MobileCards";
+import MobileCardGift from "./MobileCardGift";
 import { getCardsImageAndPdfsFiles } from "@/utils/downloadCards";
 
 const OrbetoryFormComp = ({
@@ -27,6 +21,7 @@ const OrbetoryFormComp = ({
   const [search, setSearch] = useState(null);
   const [showSelect, setShowSelect] = useState(false);
   const [selectedObituary, setSelectedObituary] = useState(null);
+  const [selectedObitData, setSelectedObitData] = useState(null);
   const [inputValue, setInputValue] = useState("");
   const [cardSelected, setCardSelected] = useState(null);
   const [KeeperExpiry, setKeeperExpiry] = useState(null);
@@ -34,6 +29,7 @@ const OrbetoryFormComp = ({
   const router = useRouter();
   const [email, setEmail] = useState("");
   const cardRefs = useRef([]);
+  const [obitOptions, setObitOptions] = useState([]);
 
   const [debouncedValue, setDebouncedValue] = useState("");
 
@@ -57,18 +53,28 @@ const OrbetoryFormComp = ({
 
       const response = await obituaryService.getObituary(queryParams);
       setObituaries(response.obituaries);
+
+      if (response.obituaries && response.obituaries.length) {
+        const data = response.obituaries?.map((item) => ({
+          value: item.id,
+          label: `${item.name} ${item.sirName}`,
+        }));
+        setObitOptions(data);
+      }
+
+
     } catch (error) {
       console.log(error);
     }
   };
 
-  const selectedObitData = selectedObituary && obituaries.find((option) => option.id === selectedObituary.value);
+  useEffect(() => {
+    const selectedObitObj = selectedObituary && obituaries.find((option) => option.id === selectedObituary.value);
+    setSelectedObitData(selectedObitObj);
+  }, [selectedObituary])
 
-  const data = obituaries?.map((item) => ({
-    value: item.id,
-    label: `${item.name} ${item.sirName}`,
-  }));
   const handleChange = (selectedOption) => {
+    setCardSelected(null);
     setSelectedObituary(selectedOption);
     setObituaryId(selectedOption.value);
     console.log("Selected Obituary:", selectedOption);
@@ -81,11 +87,15 @@ const OrbetoryFormComp = ({
 
     return () => clearTimeout(timer);
   }, [inputValue]);
+
   useEffect(() => {
     if (debouncedValue.trim() !== "") {
       getObituaries(debouncedValue);
+    } else {
+      getObituaries('');
     }
   }, [debouncedValue]);
+
   const handleInputChange = (input) => {
     setInputValue(input);
   };
@@ -110,14 +120,13 @@ const OrbetoryFormComp = ({
     try {
       if (!validateData()) return;
 
-      // Wait for cardRefs to be populated
       let attempts = 0;
       while (!cardRefs.current && attempts < 10) {
         await new Promise((resolve) => setTimeout(resolve, 50));
         attempts++;
       }
       if (!cardRefs.current) return;
-      const { images, pdfs } = await getCardsImageAndPdfsFiles([cardRefs.current[cardSelected.value - 1]]);
+      const { images, pdfs } = await getCardsImageAndPdfsFiles([cardRefs.current[0]]);
       const formData = new FormData();
       images.forEach((image) => {
         formData.append(`cardImages`, image);
@@ -141,29 +150,35 @@ const OrbetoryFormComp = ({
       }
     }
   };
+  
   const cards = [
     {
       value: 1,
       label: `1. Info o pogrebu. Temna, s sliko`,
+      disabled: false
     },
     {
       value: 2,
       label: `2. Info o pogrebu. Bela, s križem`,
+      disabled: false
     },
     ,
     {
       value: 3,
       label: `3. Info o pogrebu. Modra, brez slike`,
+      disabled: false
     },
     ,
     {
       value: 4,
       label: `4. Sožalje`,
+      disabled: false
     },
     ,
     {
       value: 5,
       label: `5. Zahvala`,
+      disabled: false
     },
   ];
   const KeeperData = [
@@ -191,16 +206,17 @@ const OrbetoryFormComp = ({
     ,
   ];
   const getUpdatedCards = () => {
-    const selected = obituaries.find(
-      (option) => option.id === selectedObituary
+    const selected = selectedObituary && selectedObituary?.value && obituaries.find(
+      (option) => option.id === selectedObituary.value
     );
 
     const shouldDisableFirstThree = !selected?.funeralTimestamp;
 
-    return cards.map((card, index) => ({
+    const allOptions = cards.map((card, index) => ({
       ...card,
       isDisabled: shouldDisableFirstThree && index <= 3,
     }));
+    return allOptions ?? [];
   };
   const validateData = () => {
     if (!selectedObituary) {
@@ -233,8 +249,8 @@ const OrbetoryFormComp = ({
     "
     >
 
-      {selectedObitData?.id && (
-        <MobileCards cardRefs={cardRefs} data={selectedObitData} cemetery={''} />
+      {selectedObitData && cardSelected?.value && (
+        <MobileCardGift cardRefs={cardRefs} data={selectedObitData} cemetery={''} cardId={cardSelected?.value} />
       )}
 
       {/* Fixed background image for desktop */}
@@ -287,7 +303,10 @@ const OrbetoryFormComp = ({
           ) : (
             <button
               type="button"
-              disabled
+               onClick={() => {
+                setSelectedBtn(1);
+                showForms(true);
+              }}
               className="w-[144px] h-[47px] rounded-[8px] bg-[linear-gradient(180deg,_#999999_0%,_#666666_100%)] border-[2px] border-[solid] border-[#CCCCCC] font-sourcesans text-[16px] font-normal leading-[24px] text-[#ffffff] opacity-60 cursor-not-allowed
                tablet:w-[133px] tablet:font-normal
                mobile:w-[95px] mobile:font-normal
@@ -383,7 +402,7 @@ const OrbetoryFormComp = ({
             <div>
               <div className="w-full mx-auto">
                 <Select
-                  options={data} // Use flattened options without grouping
+                  options={obitOptions} // Use flattened options without grouping
                   onChange={handleChange}
                   onInputChange={handleInputChange}
                   value={
@@ -394,9 +413,9 @@ const OrbetoryFormComp = ({
                   inputValue={inputValue}
                   placeholder={'Pokojni/ca'}
                   isSearchable
-                  filterOption={(option, inputValue) =>
-                    option.label.toLowerCase().startsWith(inputValue.toLowerCase())
-                  }
+                  // filterOption={(option, inputValue) =>
+                  //   option.label.toLowerCase().startsWith(inputValue.toLowerCase())
+                  // }
                   styles={{
                     control: (base) => ({
                       ...base,
@@ -547,7 +566,7 @@ const OrbetoryFormComp = ({
             <div>
               <div className="w-full mx-auto">
                 <Select
-                  options={data}
+                  options={obitOptions}
                   onChange={handleChange}
                   onInputChange={handleInputChange}
                   value={
@@ -558,9 +577,9 @@ const OrbetoryFormComp = ({
                   inputValue={inputValue}
                   placeholder={'Pokojni/ca'}
                   isSearchable
-                  filterOption={(option, inputValue) =>
-                    option.label.toLowerCase().startsWith(inputValue.toLowerCase())
-                  }
+                  // filterOption={(option, inputValue) =>
+                  //   option.label.toLowerCase().startsWith(inputValue.toLowerCase())
+                  // }
                   styles={{
                     control: (base) => ({
                       ...base,

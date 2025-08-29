@@ -14,9 +14,9 @@ export default function ModalKeeperNotification({
     setIsShowModal,
     keeperId
 }) {
-
+    console.log('>>>>>> keeperId', keeperId);
     const updateStatus = async () => {
-        await userService.updateKeeperStatus(keeperId);
+        await userService.updateKeeperStatus(keeperId?.id);
     };
 
     return (
@@ -48,7 +48,8 @@ export default function ModalKeeperNotification({
                         <div className="flex w-[500px] mobile:w-[344px] z-50 mobile:px-[2px] px-7 pb-11 mobile:mt-11 mt-12  items-center justify-center">
                             <div className="mobile:w-[314px] w-[910px] bg-[#E1E6EC]  rounded-2xl border-[#6D778E] border pt-12 mobile:px-6 px-8 pb-7 flex flex-col">
                                 <h1 className="text-[#1E2125] text-2xl mobile:text-xl font-medium mb-2.5 text-center">
-                                    Zdaj si čuvaj
+                                    Postal si Skrbnik spominske strani {keeperId?.obit?.name} {keeperId?.obit?.sirName}
+                                    {/* {keeperId?.userData?.company} ti podarja status skrbnika za {keeperId?.obit?.name} {keeperId?.obit?.sirName} */}
                                 </h1>
                             </div>
                         </div>

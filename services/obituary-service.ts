@@ -65,9 +65,9 @@ const getFunerals = async (queryParams?: {
     throw new Error("Network error or no response");
   }
 };
-const updateObituary = async (id: string, formData: FormData) => {
+const updateObituary = async (id: string, formData: FormData, allow: string = '') => {
   try {
-    const endpoint = `/obituary/${id}`;
+    const endpoint = `/obituary/${id}?allow=${allow}`;
     const response = await axios.patch(endpoint, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });

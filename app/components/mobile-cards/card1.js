@@ -70,12 +70,9 @@ const Card1 = ({ data, cardRefs, index, cemetery }) => {
 
             <div className="mt-[153px]">
               <h1 className="text-[#D89B1C] text-[24px] font-semibold">
-                {data?.funeralTimestamp ? (
-                  <>{dayName} ob {time}</>
-                ) : <>
-                  &nbsp;
-                </>}
+                {data?.funeralTimestamp ? `${dayName} ob ${time}` : '\u00A0'}
               </h1>
+
               <p className="">
                 {data?.funeralTimestamp ? (
                   <>{formatDate(data?.funeralTimestamp)}</>

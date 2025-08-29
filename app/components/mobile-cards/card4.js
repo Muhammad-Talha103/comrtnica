@@ -4,6 +4,7 @@ const Card4 = ({ cardRefs, index, cemetery }) => {
   return (
     <div
       ref={(el) => {
+        console.log('>>>>>>>>>> el 4', el);
         if (cardRefs?.current) {
           cardRefs.current[index] = el;
         }

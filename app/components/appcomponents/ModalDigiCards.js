@@ -12,7 +12,9 @@ import { toast } from "react-hot-toast";
 export default function ModalDigiCards({
     isShowModal,
     setIsShowModal,
-    data
+    data,
+    setShownCard,
+    shownCard
 }) {
     const downloadCard = (id) => {
         const downloadURL = `${API_BASE_URL}/user/me/download/${id}`;
@@ -29,7 +31,10 @@ export default function ModalDigiCards({
     return (
         <Modal
             isOpen={isShowModal}
-            onOpenChange={(open) => setIsShowModal(open)}
+            onOpenChange={(open) => {
+                setIsShowModal(open);
+                setShownCard(0);
+            }}
             scrollBehavior={'outside'}
             classNames={{
                 backdrop: "bg-[#344054B2] bg-opacity-70",
@@ -42,6 +47,7 @@ export default function ModalDigiCards({
                         <div
                             onClick={() => {
                                 setIsShowModal(false);
+                                setShownCard(0);
                             }}
                             className="self-end "
                         >
@@ -58,29 +64,40 @@ export default function ModalDigiCards({
                                 </h1>
 
                                 {data && data?.length ? (
-                                    <div className="flex justify-center mt-5">
+                                    <div className="flex justify-center mt-5 flex-wrap">
                                         {data?.map((item) => {
-                                            return (
-                                                <div key={item.id} className="w-[23%]">
-                                                    <Image
-                                                        src={`${API_BASE_URL}/${item?.cardImage}`}
-                                                        alt={`Digi card`}
-                                                        loading="lazy"
-                                                        width={500}
-                                                        height={500}
-                                                        className="w-[100%]"
-                                                    />
-                                                    <button
-                                                        onClick={() => downloadCard(item?.id)}
-                                                        style={{
-                                                            boxShadow: "5px 5px 10px #A6ABBD, -5px -5px 10px #FAFBFF",
-                                                        }}
-                                                        className="w-full h-[60px] rounded-[10px] bg-[#09C1A3] text-white font-semibold text-xl mt-4"
-                                                    >
-                                                        Prenesi
-                                                    </button>
-                                                </div>
-                                            )
+                                            if (item.id === shownCard) {
+                                                return (
+                                                    <div key={item.id} className="sm:w-[32%] mb-5">
+                                                        <div className="h-[500px]  w-[260px] w-[100%]">
+                                                            <div className="mockup-phone h-[500px] w-[260px] shadow-custom-light-dark-box-image-wall ">
+                                                                <div style={{ height: 25, width: 120 }} className=" camera" />
+                                                                <div className="display w-full h-full flex justify-center items-center">
+                                                                    <img
+                                                                        src={`${API_BASE_URL}/${item?.cardImage}`}
+                                                                        alt={`Digi card`}
+                                                                        className={`relative object-cover h-full w-full`}
+                                                                        onError={(e) => {
+                                                                            e.target.src = defaultImages[index];
+                                                                        }}
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="px-3">
+                                                            <button
+                                                                onClick={() => downloadCard(item?.id)}
+                                                                style={{
+                                                                    boxShadow: "5px 5px 10px #A6ABBD, -5px -5px 10px #FAFBFF",
+                                                                }}
+                                                                className="w-full h-[60px] rounded-[10px] bg-[#09C1A3] text-white font-semibold text-xl mt-4"
+                                                            >
+                                                                Prenesi
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            }
                                         })}
                                     </div>
                                 ) : null}

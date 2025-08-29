@@ -55,17 +55,9 @@ const Card3 = ({ data = {}, cardRefs, index, cemetery }) => {
 
         <div className="name-year-container text-[#F8EDE3] mt-[177px]">
           <h1 className="text-center text-[24px] font-medium h-[20px]">
-            {data?.funeralTimestamp ? (
-              <>
-                {formatToDottedDate(data?.funeralTimestamp)} ob{" "}
-                {formatDayAndTimeSlovenian(data?.funeralTimestamp).time}
-              </>
-            ) : (
-              <>
-                &nbsp;{" "}
-                &nbsp;
-              </>
-            )}
+            {data?.funeralTimestamp
+              ? `${formatToDottedDate(data.funeralTimestamp)} ob ${formatDayAndTimeSlovenian(data.funeralTimestamp).time}`
+              : '\u00A0\u00A0'}
           </h1>
           <p className="text-center mx-auto mt-[16px] text-[18px] h-[20px]">
             {data?.funeralTimestamp ? (

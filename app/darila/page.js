@@ -55,6 +55,7 @@ const FloristsGifts = () => {
   const handleAssignKeeper = async () => {
     // Check permission before allowing submission
     const currentUser = JSON.parse(localStorage.getItem("user") || "{}");
+    // Temporarily commented
     if (!currentUser.assignKeeperPermission) {
       toast.error("You don't have permission to assign keepers.");
       return;
@@ -83,7 +84,8 @@ const FloristsGifts = () => {
       toast.success("Keeper Assigned Successfully");
       console.log(response);
     } catch (error) {
-      toast.error("Some Error Occured");
+      console.log('>>>>>>>>> error', error);
+      toast.error(error?.data?.error ?? "Some Error Occured");
     }
   };
 
