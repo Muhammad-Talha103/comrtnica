@@ -2,6 +2,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import API_BASE_URL from "@/config/apiConfig";
 import packageService from "@/services/pacakge-service";
+import Link from "next/link";
 // const FlowerShops = ({ set_Id, setModal }) => {
 //   return (
 //     <div className="desktop:h-[426px] mx-auto tablet:h-[450px] mobile:h-[430px] w-full flex flex-col mobile:justify-center desktop:justify-center items-center  bg-[#F8EDE3]"
@@ -91,7 +92,7 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
         </div>
       </div>
       <div className="jdmobile:h-[790px] jdtablet:h-[880px] jddesktop:h-[664px] w-full pt-[10px] pb-[10px] bg-[#F8EDE3]">
-        <div className="mx-auto jdmobile:w-[370px] jdtablet:w-[700px] jddesktop:w-[1150px] w-[400px] grid grid-cols-2 jdtablet:grid-cols-3 jddesktop:grid-cols-6 jdmobile:justify-center place-items-center items-end">
+        <div className="mx-auto jdmobile:w-[370px] jdtablet:w-[700px] jddesktop:w-[1280px] w-[400px] grid grid-cols-2 jdtablet:grid-cols-3 jddesktop:grid-cols-6 jdmobile:justify-center place-items-center items-end">
           {/* Sponsor Card */}
           {data?.Company && (
             <div
@@ -117,9 +118,10 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
           )}
 
           {/* Cards (from cardImages) */}
-          {data?.cardImages?.length > 0 &&
-            data.cardImages.map((img, index) => (
-              <div
+          {data?.floristShops?.length > 0 &&
+            data.floristShops.map((item, index) => (
+              <Link
+                href={`/floristdetails/${item.id}`}
                 key={index}
                 className=" bg-white jddesktop:w-[180px] jddesktop:h-[160px] jdtablet:w-[195px] jdtablet:h-[160px] jdmobile:w-[150px] jdmobile:h-[130px] jddesktop:rounded-[8px] jdtablet:rounded-[8px] jdmobile:border jdmobile:border-[rgba(54,85,108,0.6)] flex flex-col items-center justify-center relative overflow-hidden jdmobile:justify-end jdmobile:my-5 jdtablet:my-5 jddesktop:my-5 my-6 jddesktop:mx-2"
                 style={{
@@ -127,17 +129,34 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
                 }}
               >
                 <Image
-                  src={`${API_BASE_URL}/${img}`}
+                  src={
+                    (item?.logo || item?.CompanyPage?.logo)?.includes(
+                      "floristShopUploads"
+                    ) ||
+                    (item?.logo || item?.CompanyPage?.logo)?.includes(
+                      "companyUploads"
+                    )
+                      ? `${API_BASE_URL}/${
+                          item?.logo || item?.CompanyPage?.logo
+                        }`
+                      : item?.logo || item?.CompanyPage?.logo
+                  }
                   alt={`Card ${index + 1}`}
                   width={120}
                   height={70}
                   className="w-[120px] h-[70px] object-contain mobile:w-[97px] mobile:h-[55px]"
                 />
-                <div className="text-[#6D778E] text-[13px] mt-[6px] mobile:bg-[#36556C] mobile:w-full mobile:text-white text-center mobile:py-2">
+                <div className="text-[#9FA6B7] text-[13px] mt-[35px] mobile:bg-[#36556C] mobile:w-full mobile:text-white text-center mobile:py-2">
                   Spominska kartica {index + 1}
                 </div>
-              </div>
+              </Link>
             ))}
+
+          {data?.floristShops?.length === 0 && (
+            <div className="text-[#3C3E41] text-[16px] leading-[24px] mt-[16px] jdmobile:w-full jdmobile:text-center flex items-center h-full">
+              Še ni vnešenih cvetličarn.
+            </div>
+          )}
         </div>
       </div>
     </div>
