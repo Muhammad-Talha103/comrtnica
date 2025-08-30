@@ -125,7 +125,7 @@ const AddFuneralModal = ({ setModalVisible }) => {
   const handleObituaryInputChange = (input) => {
     setObituaryInputValue(input);
     if (cemeteryData.length == 1) {
-      setSelectedCemetery(cemeteryData[0]['value']);
+      // setSelectedCemetery(cemeteryData[0]['value']);
     }
   };
   const handleCemeteryInputChange = (input) => {

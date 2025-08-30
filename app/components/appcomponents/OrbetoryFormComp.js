@@ -49,6 +49,7 @@ const OrbetoryFormComp = ({
       const today = new Date().toISOString();
       queryParams.date = today;
       queryParams.city = user?.city;
+      queryParams.allow = 'allow';
       console.log(queryParams, "here------------");
 
       const response = await obituaryService.getObituary(queryParams);
