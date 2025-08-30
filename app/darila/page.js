@@ -65,7 +65,8 @@ const FloristsGifts = () => {
       toast.success("Keeper Assigned Successfully");
       console.log(response);
     } catch (error) {
-      toast.error("Some Error Occured");
+      console.log('>>>>>>>>> error', error);
+      toast.error(error?.data?.error ?? "Some Error Occured");
     }
   };
 

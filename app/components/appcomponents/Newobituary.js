@@ -66,7 +66,7 @@ const Newobituary = ({ focusRef, setFile, setName, setRelation, onSubmit }) => {
             <input
               type="file"
               onChange={handleEmailInput}
-              className="w-full h-[48px] bg-transparent focus:outline-none text-[16px] text-[#848484] font-normal placeholder:text-[#ACAAAA] border border-[#6D778E] rounded-[8px] px-12"
+              className="w-full h-[48px] pt-[7px] bg-transparent focus:outline-none text-[16px] text-[#848484] font-normal placeholder:text-[#ACAAAA] border border-[#6D778E] rounded-[8px] px-12"
               placeholder="Poišči sliko"
               style={{
                 backgroundImage: "url('/emailbox.png')",

@@ -63,6 +63,7 @@ const AddFuneralModal = ({ setModalVisible }) => {
       console.log(error);
     }
   };
+
   const obituaryData = obituaries?.map((item) => ({
     value: item.id,
     label: `${item.name} ${item.sirName}`,
@@ -77,6 +78,15 @@ const AddFuneralModal = ({ setModalVisible }) => {
       label: "Pokopališče",
     },
   ];
+
+  useEffect(() => {
+    if (obituaries && obituaries?.length && selectedObituary) {
+      const filteredObit = obituaries.filter((item) => item.id === selectedObituary);
+      if (filteredObit && filteredObit?.length && filteredObit[0]?.id) {
+        setSelectedCity(filteredObit[0]['city']);
+      }
+    }
+  }, [obituaries, selectedObituary])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -101,6 +111,8 @@ const AddFuneralModal = ({ setModalVisible }) => {
   useEffect(() => {
     if (debouncedObituaryValue.trim() !== "") {
       getObituaries(debouncedObituaryValue);
+    } else {
+      getObituaries("");
     }
   }, [debouncedObituaryValue]);
   const handleObituaryChange = (selectedOption) => {
@@ -112,6 +124,9 @@ const AddFuneralModal = ({ setModalVisible }) => {
 
   const handleObituaryInputChange = (input) => {
     setObituaryInputValue(input);
+    if (cemeteryData.length == 1) {
+      // setSelectedCemetery(cemeteryData[0]['value']);
+    }
   };
   const handleCemeteryInputChange = (input) => {
     setCemeteryInputValue(input);
@@ -175,9 +190,14 @@ const AddFuneralModal = ({ setModalVisible }) => {
 
       response = await obituaryService.updateObituary(
         selectedObituary,
-        formData
+        formData,
+        'allow'
       );
       toast.success("Obituary updated successfully!");
+
+      if(typeof window !== 'undefined'){
+        window.location.reload();
+      }
 
       if (response?.error) {
         toast.error(
@@ -192,7 +212,7 @@ const AddFuneralModal = ({ setModalVisible }) => {
         console.error("Error creating obituary:", error);
         toast.error(
           error?.response?.data?.error ||
-            "Failed to create obituary. Please try again."
+          "Failed to create obituary. Please try again."
         );
       }
     } finally {
@@ -245,18 +265,18 @@ const AddFuneralModal = ({ setModalVisible }) => {
                   value={
                     selectedObituary
                       ? obituaryData.find(
-                          (option) => option.id === selectedObituary
-                        )
+                        (option) => option.id === selectedObituary
+                      )
                       : null
                   }
                   inputValue={obituaryInputValue}
                   placeholder={""}
                   isSearchable
-                  filterOption={(option, obituaryInputValue) =>
-                    option.label
-                      .toLowerCase()
-                      .startsWith(obituaryInputValue.toLowerCase())
-                  }
+                  // filterOption={(option, obituaryInputValue) =>
+                  //   option.label
+                  //     .toLowerCase()
+                  //     .startsWith(obituaryInputValue.toLowerCase())
+                  // }
                   styles={{
                     control: (base) => ({
                       ...base,
@@ -312,8 +332,8 @@ const AddFuneralModal = ({ setModalVisible }) => {
                   value={
                     selectedCity
                       ? flattenedOptions.find(
-                          (option) => option.value === selectedCity
-                        )
+                        (option) => option.value === selectedCity
+                      )
                       : null
                   }
                   onInputChange={handleCityInputChange}
@@ -361,6 +381,7 @@ const AddFuneralModal = ({ setModalVisible }) => {
                       fontSize: "18px",
                     }),
                   }}
+                  isDisabled
                 />
               </div>
             </div>
@@ -380,8 +401,8 @@ const AddFuneralModal = ({ setModalVisible }) => {
                   value={
                     selectedCemetery
                       ? cemeteryData.find(
-                          (option) => option.id === selectedCemetery
-                        )
+                        (option) => (option.id === selectedCemetery || option.value === selectedCemetery)
+                      )
                       : null
                   }
                   inputValue={cemeteryInputValue}
@@ -567,7 +588,7 @@ const AddFuneralModal = ({ setModalVisible }) => {
                     }}
                     isSelectText={
                       selectedFuneralMinute !== null &&
-                      selectedFuneralMinute !== undefined
+                        selectedFuneralMinute !== undefined
                         ? `${selectedFuneralMinute.toString().padStart(2, "0")}`
                         : "Min:"
                     }
@@ -595,11 +616,10 @@ const AddFuneralModal = ({ setModalVisible }) => {
             </div>
             <div className="my-10 flex flex-col">
               <button
-                className={`flex flex-1 px-[90px] py-3 mobile:px-10 text-center justify-center items-center rounded-lg shadow-custom-dual text-[16px] cursor-pointer ${
-                  loading
-                    ? "bg-gray-400 cursor-not-allowed" // Disabled styles
-                    : "bg-gradient-to-b from-[#0d94e8] to-[#1860a3] text-[#ffffff]" // Enabled styles
-                }`}
+                className={`flex flex-1 px-[90px] py-3 mobile:px-10 text-center justify-center items-center rounded-lg shadow-custom-dual text-[16px] cursor-pointer ${loading
+                  ? "bg-gray-400 cursor-not-allowed" // Disabled styles
+                  : "bg-gradient-to-b from-[#0d94e8] to-[#1860a3] text-[#ffffff]" // Enabled styles
+                  }`}
                 type="button"
                 onClick={handleSubmit}
               >

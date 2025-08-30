@@ -10,6 +10,7 @@ import cancle_icon from "@/public/cancle_icon.png";
 import imgUp from "@/public/ico_up.png";
 import Image from "next/image";
 import Modals from "./Modals";
+import { usePathname } from "next/navigation";
 
 export default function ModalLibrary({
   isShowModal,
@@ -21,13 +22,14 @@ export default function ModalLibrary({
   updateObituary,
 }) {
   const [scrollBehavior, setScrollBehavior] = React.useState("outside");
+  const pathname = usePathname();
 
   return (
     <Modal
       isOpen={isShowModal}
-      onOpenChange={() => {}}
+      onOpenChange={() => { }}
       scrollBehavior={scrollBehavior}
-     classNames={{
+      classNames={{
         backdrop: "bg-[#00000070] min-h-screen flex items-center justify-center py-10",
       }}
 
@@ -40,6 +42,9 @@ export default function ModalLibrary({
             <div
               onClick={() => {
                 setIsShowModal(false);
+                if (typeof window !== 'undefined' && select_id == '3') {
+                  window.location.reload();
+                }
               }}
               className="self-end "
             >

@@ -41,9 +41,6 @@ const MemoryPageContent = ({ params }) => {
     fetchMemory();
   }, []);
   console.log(obituary, "is obituary");
-  useEffect(() => {
-    console.log("set is modal:", isShowModal);
-  }, [isShowModal]);
 
   const fetchMemory = async () => {
     try {
@@ -56,7 +53,9 @@ const MemoryPageContent = ({ params }) => {
         return;
       }
 
-      setObituary(response.obituary);
+      console.log('>>>>>>>>>> memory fetched', response);
+
+      let finalResponse = response.obituary;
 
       if (response?.obituary) {
         const visitRespone = await obituaryService.updateObituaryVisits({
@@ -70,8 +69,7 @@ const MemoryPageContent = ({ params }) => {
           );
           return;
         }
-
-        setObituary(visitRespone);
+        finalResponse = visitRespone;
         if (visitRespone.Condolences.length === 0) {
           const persons = [
             {
@@ -84,6 +82,7 @@ const MemoryPageContent = ({ params }) => {
           updateObituary({ ["Condolences"]: persons });
         }
       }
+      setObituary(finalResponse);
     } catch (err) {
       console.error("Error fetching obituary:", err);
       toast.error(err.message || "Failed to fetch obituary.");
@@ -156,8 +155,9 @@ const MemoryPageContent = ({ params }) => {
           <MemorialPageTopComp
             set_Id={setSelect_Id}
             setModal={setIsShowModal}
-            data={obituary}
+            data={obituary || {}}
             updateObituary={updateObituary}
+            fetchMemory={fetchMemory}
           />
 
           {obituary?.Keepers?.length === 0 && <AnnouncementBlock />}
