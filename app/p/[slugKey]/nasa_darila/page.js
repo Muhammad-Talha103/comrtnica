@@ -20,7 +20,6 @@ export default function Darila() {
       console.log(error, "==============");
     }
   };
-  console.log('>>>>>>>>> logs', logs);
   return (
     <CompanyAccountLayout>
       <div className="w-full max-w-[969px]">

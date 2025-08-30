@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import MobileCardGift from "./MobileCardGift";
 import { getCardsImageAndPdfsFiles } from "@/utils/downloadCards";
 import { KeeperData } from "@/utils/commonUtils";
+import { useAuth } from "@/hooks/useAuth";
 
 const OrbetoryFormComp = ({
   setModalVisible,
@@ -17,6 +18,8 @@ const OrbetoryFormComp = ({
   setExpiry,
   setObituaryId,
 }) => {
+  const { user, isAuthenticated } = useAuth();
+
   const [selectedBtn, setSelectedBtn] = useState(0);
   const [obituaries, setObituaries] = useState([]);
   const [search, setSearch] = useState(null);
@@ -26,22 +29,12 @@ const OrbetoryFormComp = ({
   const [inputValue, setInputValue] = useState("");
   const [cardSelected, setCardSelected] = useState(null);
   const [KeeperExpiry, setKeeperExpiry] = useState(null);
-  const [user, setUser] = useState(null);
   const router = useRouter();
   const [email, setEmail] = useState("");
   const cardRefs = useRef([]);
   const [obitOptions, setObitOptions] = useState([]);
 
   const [debouncedValue, setDebouncedValue] = useState("");
-
-  // Get user data and check permissions
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      setUser(parsedUser);
-    }
-  }, []);
 
   const getObituaries = async (query) => {
     try {
@@ -112,12 +105,11 @@ const OrbetoryFormComp = ({
 
   const submitMobileCard = async () => {
     // Check permission before allowing submission
-    const currentUser = JSON.parse(localStorage.getItem("user") || "{}");
-    // Temporarily commented
-    // if (!currentUser.sendMobilePermission) {
-    //   toast.error("You don't have permission to send mobile cards.");
-    //   return;
-    // }
+    const currentUser = isAuthenticated ? user : {};
+    if (!currentUser.sendMobilePermission) {
+      toast.error("You don't have permission to send mobile cards.");
+      return;
+    }
 
     try {
       if (!validateData()) return;
@@ -212,14 +204,6 @@ const OrbetoryFormComp = ({
     }
     return true;
   };
-
-  useEffect(() => {
-    const currUser = localStorage.getItem("user");
-    if (currUser) {
-      setUser(JSON.parse(currUser));
-      console.log(JSON.parse(currUser));
-    }
-  }, [router]);
 
   return (
     <div

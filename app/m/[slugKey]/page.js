@@ -16,16 +16,18 @@ import AnnouncementBlock from "../../components/appcomponents/AnnouncementBlock"
 import { FlowerShops2 } from "../../components/appcomponents/FlowerShops";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getTemplateCardImages } from "@/utils/commonUtils";
+import { useAuth } from "@/hooks/useAuth";
 
 const MemoryPageContent = ({ params }) => {
   const { slugKey } = params;
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  const { user } = useAuth();
+
   const [isShowModal, setIsShowModal] = useState(false);
   const [select_id, setSelect_Id] = useState("");
   const [selectedImage, setSelectedImage] = useState("");
-  const [currentUser, setCurrentUser] = useState(null);
   const [showShops, setShowShops] = useState(false);
   const [showImageView, setShowImageView] = useState(false);
   const [imageId, setImageId] = useState("0");
@@ -39,6 +41,9 @@ const MemoryPageContent = ({ params }) => {
     fetchMemory();
   }, []);
   console.log(obituary, "is obituary");
+  useEffect(() => {
+    console.log("set is modal:", isShowModal);
+  }, [isShowModal]);
 
   const fetchMemory = async () => {
     try {
@@ -58,7 +63,7 @@ const MemoryPageContent = ({ params }) => {
       if (response?.obituary) {
         const visitRespone = await obituaryService.updateObituaryVisits({
           obituaryId: response?.obituary?.id,
-          userId: currentUser?.id || null,
+          userId: user?.id || null,
         });
 
         if (visitRespone.error) {
@@ -93,13 +98,6 @@ const MemoryPageContent = ({ params }) => {
       ...updatedData,
     }));
   };
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setCurrentUser(JSON.parse(storedUser));
-    }
-  }, []);
 
   const handleMemoryChange = async (type) => {
     try {
