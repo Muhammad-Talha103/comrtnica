@@ -41,9 +41,6 @@ const MemoryPageContent = ({ params }) => {
     fetchMemory();
   }, []);
   console.log(obituary, "is obituary");
-  useEffect(() => {
-    console.log("set is modal:", isShowModal);
-  }, [isShowModal]);
 
   const fetchMemory = async () => {
     try {

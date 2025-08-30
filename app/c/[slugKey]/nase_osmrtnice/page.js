@@ -143,7 +143,7 @@ export default function Obituaries() {
                       <td>
                         <div className="inline-flex gap-[16px] items-center">
                           <div className="space-y-[1px]">
-                            <Link href={`/m/${obituary.slugKey}`} className="text-[14px] text-[#6D778E]" target="_blank">
+                            <Link href={`/m/${obituary.slugKey}`} className="text-[14px] text-[#6D778E]" target="_blank" rel="noopener noreferrer">
                               {obituary.name}
                             </Link>
                             <div className="text-[#3C3E41] text-[16px]">

@@ -25,8 +25,8 @@ import { getYear, getMonth } from "date-fns"; // To extract year and month info
 import obituaryService from "@/services/obituary-service";
 import toast from "react-hot-toast";
 import keeperService from "@/services/keeper-service";
-import { usePathname } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
+import { usePathname } from "next/navigation";
 
 const Modals = ({
   select_id,
@@ -36,8 +36,6 @@ const Modals = ({
   updateObituary,
   setIsShowModal,
 }) => {
-  const { user } = useAuth();
-
   const musicList = [
     "BREZ glasbe",
     "Prva izbira",
@@ -59,8 +57,8 @@ const Modals = ({
   const [verse, setVerse] = useState(null);
   const [keeperEmail, setKeeperEmail] = useState(null);
   const [keeperMessage, setKeeperMessage] = useState(null);
+  const { user } = useAuth();
 
-  //
   const closeModal = () => {
     setIsShowModal(false);
     if (typeof window !== 'undefined' && select_id == '3') {
