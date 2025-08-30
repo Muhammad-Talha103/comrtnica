@@ -25,6 +25,7 @@ import { getYear, getMonth } from "date-fns"; // To extract year and month info
 import obituaryService from "@/services/obituary-service";
 import toast from "react-hot-toast";
 import keeperService from "@/services/keeper-service";
+import { usePathname } from "next/navigation";
 
 const Modals = ({
   select_id,
@@ -60,6 +61,9 @@ const Modals = ({
   //
   const closeModal = () => {
     setIsShowModal(false);
+    if (typeof window !== 'undefined' && select_id == '3') {
+      window.location.reload();
+    }
   };
   //sorrow book
   const [name, setName] = useState(null);
@@ -490,10 +494,12 @@ const Modals = ({
   }, []);
 
   const isCompany = () => {
-    if (user && user.id === data.id) {
-      return true;
-    }
+    // This is not needed for now
     return false;
+    // if (user && user.id === data.id) {
+    //   return true;
+    // }
+    // return false;
   };
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
