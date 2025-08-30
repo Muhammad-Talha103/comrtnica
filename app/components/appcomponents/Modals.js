@@ -26,6 +26,7 @@ import obituaryService from "@/services/obituary-service";
 import toast from "react-hot-toast";
 import keeperService from "@/services/keeper-service";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/hooks/useAuth";
 
 const Modals = ({
   select_id,
@@ -54,9 +55,9 @@ const Modals = ({
   const [uploadedPicture, setUploadedPicture] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [verse, setVerse] = useState(null);
-  const [user, setUser] = useState(null);
   const [keeperEmail, setKeeperEmail] = useState(null);
   const [keeperMessage, setKeeperMessage] = useState(null);
+  const { user } = useAuth();
 
   //
   const closeModal = () => {
@@ -484,14 +485,6 @@ const Modals = ({
   const minutes = Array.from({ length: 4 }, (_, i) => i * 15);
 
   const [selectMusic, setSelectMusic] = useState("");
-
-  //get current user
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
 
   const isCompany = () => {
     // This is not needed for now
