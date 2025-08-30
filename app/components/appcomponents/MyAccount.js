@@ -126,6 +126,10 @@ const MyAccount = () => {
     }
   }
 
+  useEffect(() => {
+    getAllCards();
+  }, []); 
+
   const handleCitySelect = async (item) => {
     try {
       const response = await userService.updateMyUser({ city: item });

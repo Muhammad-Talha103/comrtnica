@@ -32,7 +32,6 @@ function HomeContent(props) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { user } = useAuth();
-  console.log("user: ", user);
 
   // 17 September 2024
   const arrPlace = [
