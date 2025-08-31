@@ -10,8 +10,10 @@ import DropdownWithSearch from "@/app/components/appcomponents/DropdownWithSearc
 import userService from "@/services/user-service";
 import toast from "react-hot-toast";
 import ModalNew3 from "@/app/components/appcomponents/ModalNew3";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function AccountSettings() {
+  const { updateUserAndRefreshSession } = useAuth();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isPrivilegijiExpanded, setIsPrivilegijiExpanded] = useState(false);
 
@@ -51,13 +53,17 @@ export default function AccountSettings() {
 
   const handleCitySelect = async (item) => {
     try {
-      const response = await userService.updateMyUser({ secondaryCity: item });
-      toast.success("City Updated Successfully");
-      setSelectedCity(item);
-      setData((prevData) => ({
-        ...prevData,
-        secondaryCity: item,
-      }));
+      const result = await updateUserAndRefreshSession({ secondaryCity: item });
+      if (result.success) {
+        toast.success("City Updated Successfully");
+        setSelectedCity(item);
+        setData((prevData) => ({
+          ...prevData,
+          secondaryCity: item,
+        }));
+      } else {
+        toast.error("Error Updating City");
+      }
     } catch (error) {
       console.log(error);
       toast.error("Error Updating City");

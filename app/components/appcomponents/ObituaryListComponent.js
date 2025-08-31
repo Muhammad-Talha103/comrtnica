@@ -181,10 +181,10 @@ const ObituaryListComponent = ({ city }) => {
         setItemsPerPage(12); // 6+6
       } else if (width >= 768) {
         // Tablet
-        setItemsPerPage(8); // 5+5
+        setItemsPerPage(16); // 5+5
       } else {
         // Mobile
-        setItemsPerPage(8); // Single column
+        setItemsPerPage(16); // Single column
       }
     };
 

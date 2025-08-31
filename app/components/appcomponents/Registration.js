@@ -391,9 +391,9 @@ const Registration = () => {
           >
             <div
               link
-              className="border-[1px] border-[#FFFFFF] rounded-[8px] tablet:shadow-custom-light-dark desktop:shadow-custom-light-dark bg-transparent mobile:border-[0px]"
+              className="border-[1px] border-[#000] rounded-[8px] tablet:shadow-custom-light-dark desktop:shadow-custom-light-dark bg-transparent mobile:border-[0px]"
             >
-              <div className="px-[25px] mobile:px-[10px] py-[12px] text-[16px] text-[#FFFFFF] mobile:text-[#414141] leading-[19px] font-variation-customOpt16">
+              <div className="px-[25px] mobile:px-[10px] py-[12px] text-[16px] text-[#000] mobile:text-[#414141] leading-[19px] font-variation-customOpt16">
                 Registracija za podjetja
               </div>
             </div>

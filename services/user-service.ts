@@ -128,6 +128,16 @@ const updateKeeperStatus = async (id: string) => {
   return response.data;
 };
 
+const saveContact = async (payload: any) => {
+  const endpoint = `/post/contact`;
+
+  const response = await axios.post(
+    endpoint, payload
+  );
+
+  return response.data;
+};
+
 const userService = {
   registerUser,
   getMyUser,
@@ -138,7 +148,8 @@ const userService = {
   getMyCards,
   downloadCard,
   getMyKeeperStatus,
-  updateKeeperStatus
+  updateKeeperStatus,
+  saveContact
 };
 
 export default userService;

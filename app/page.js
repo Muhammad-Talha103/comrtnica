@@ -382,7 +382,7 @@ function HomeContent(props) {
         <HomePageBox />
         <IphoneView />
 
-        <div className="w-full bg-black mx-auto">
+        <div className="w-full bg-black mx-auto z-[1]">
           <div className="relative flex max-w-[1280px] mx-auto justify-center overflow-visible dekstop:h-[284px] tablet:h-[284px] mobile:h-[235px]">
             <img
               src="/viola_ozadje.avif"

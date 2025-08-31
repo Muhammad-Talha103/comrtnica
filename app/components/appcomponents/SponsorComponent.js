@@ -12,7 +12,7 @@ const SponsorComponent = ({ text = "" }) => {
                     w-[1084px] h-[139.45px] 
                     tablet:w-[603px] tablet:h-[123.75px]
                     mobile:w-[360px] mobile:h-[90.52px]">
-        <div className={`flex h-[28px] text-[#1E2125] mt-[-3px] font-variation-customOpt24 text-[24px] ${text ? 'mobile:text-[16px]' : ''
+        <div className={`flex h-[28px] text-[#1E2125] mt-[-3px] font-variation-customOpt24 text-[24px] mobile:text-[20px] ${text ? 'mobile:text-[16px]' : ''
           }`}>
           {text ? `${text}` : "S podporo naših najtesnejših partnerjev"}
         </div>

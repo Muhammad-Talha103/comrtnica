@@ -8,7 +8,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function ChangeUrlSlug({open, setOpen}) {
-  const { user } = useAuth();
+  const { user, changeSlugAndRefreshSession } = useAuth();
   const [slug, setSlug] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [newSlug, setNewSlug] = useState("");
@@ -18,14 +18,13 @@ export default function ChangeUrlSlug({open, setOpen}) {
   const handleChangeSlug = async () => {
     setIsLoading(true);
     try {
-    const response = await userService.changeSlug(newSlug);
-    if(!response.error) {
-      //  TODO: Add session refresh so that user object in session reflects the new slug
-      setSlug(newSlug);
-      setOpen(false);
-      toast.success("Naslov strani je bil uspešno spremenjen");
-      router.push(`/c/${newSlug}/${pathname.split("/").pop()}`);
-    } else {
+      const result = await changeSlugAndRefreshSession(newSlug);
+      if (result.success) {
+        setSlug(newSlug);
+        setOpen(false);
+        toast.success("Naslov strani je bil uspešno spremenjen");
+        router.push(`/c/${newSlug}/${pathname.split("/").pop()}`);
+      } else {
         toast.error("Prišlo je do napake pri spreminjanju naslova strani");
       }
     } catch (error) {
