@@ -2,14 +2,15 @@
 import React, { useState } from "react";
 import strings from "../../strings";
 import Link from "next/link";
-
+import userService from "@/services/user-service";
+import toast from "react-hot-toast";
 
 const ContactFormPage = () => {
-
   const [inputValueEmail, setInputValueEmail] = useState("");
   const [inputValueTodo, setInputValueTodo] = useState("");
   const [inputValueMessage, setInputValueMessage] = useState("");
   const [inputValueMatter, setInputValueMatter] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleEmailInput = (event) => {
     setInputValueEmail(event.target.value);
@@ -26,6 +27,36 @@ const ContactFormPage = () => {
   const handleValueMatterInput = (event) => {
     setInputValueMatter(event.target.value);
   };
+
+  const resetForm = () => {
+    setInputValueEmail('');
+    setInputValueTodo('');
+    setInputValueMessage('');
+    setInputValueMatter('');
+  }
+
+  const handleSubmit = async () => {
+    try {
+      if (!inputValueEmail || !inputValueTodo || !inputValueMessage || !inputValueMatter) {
+        toast.error('Fill all details');
+        return;
+      }
+      setLoading(true);
+      await userService.saveContact({
+        name: inputValueTodo,
+        email: inputValueEmail,
+        subject: inputValueMessage,
+        message: inputValueMatter
+      });
+      resetForm();
+      setLoading(false);
+      toast.success('Povpraševanje je bilo uspešno poslano.');
+    } catch (err) {
+      resetForm();
+      setLoading(false);
+      toast.error('Some error occured');
+    }
+  }
 
   return (
     // Main Container for all the content and background
@@ -107,13 +138,15 @@ const ContactFormPage = () => {
           </div>
 
           {/*Button Container*/}
-          <div className="h-[48px] mt-[52px] px-[98.85px] py-[13px] mx-auto bg-gradient-to-b from-[#0D94E8] to-[#1860A3] rounded-lg shadow-custom-light-dark-with-white">
-            <Link
-              href={"#"}
+          <div className={`h-[48px] mt-[52px] px-[98.85px] cursor-pointer py-[13px] mx-auto rounded-lg shadow-custom-light-dark-with-white ${loading ? '!bg-[grey]' : 'bg-gradient-to-b from-[#0D94E8] to-[#1860A3]'}`}
+            onClick={() => {
+              !loading && handleSubmit()
+            }}>
+            <span
               className="flex items-center justify-center text-[20px] leading-[24px] font-variation-customOpt16 text-[#FFFFFF]"
             >
               {strings.Pošlji}
-            </Link>
+            </span>
           </div>
 
           {/*Bottom text*/}

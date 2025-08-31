@@ -42,7 +42,7 @@ export default function Faq1() {
                 Vsa pridružena pogrebna podjetja{" "}
                 <span className="font-bold underline">
                   {" "}
-                  do 20. septembra 2025{" "}
+                  do 5. oktobra 2025{" "}
                 </span>
                 prejmejo
               </p>

@@ -96,7 +96,7 @@ const NextFunerals = () => {
             <Image
               src={nodeTie}
               alt="Slika"
-              className="hidden tablet:flex mobile:flex mobile:absolute w-[94.79px] h-[159.08px] mobile:w-[135px] mobile:h-[191px] ml-[45px]"
+              className="hidden tablet:flex mobile:flex mobile:absolute w-[94.79px] h-[159.08px] mobile:w-[135px] mobile:h-[191px] ml-[45px] mobile:z-[0]"
             />
           </div>
         </div>

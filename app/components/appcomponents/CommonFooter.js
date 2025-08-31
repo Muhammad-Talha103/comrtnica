@@ -24,18 +24,20 @@ const footerLinkSets = {
     { label: "Cvetličarne", path: "/cvetlicarne  ", showOnMobile: true },
   ],
   "/pogrebna-p": [
-    { label: "Prva stran", path: "/", showOnMobile: false },
-    { label: "Osmrtnice", path: "/osmrtnice ", showOnMobile: true },
-    { label: "Pogrebi", path: "/pogrebi ", showOnMobile: true },
-    { label: "Spominske", path: "/osmrtnice ", showOnMobile: true },
-    { label: "Cvetličarne", path: "/cvetlicarne  ", showOnMobile: true },
+    { label: "Prva stran", path: "/", showOnMobile: true },
+    { label: "Cvetličarne", path: "/cvetlicarne", showOnMobile: true },
+    { label: "Osmrtnice", path: "/osmrtnice ", showOnMobile: false },
+    { label: "Pogrebi", path: "/pogrebi ", showOnMobile: false },
+    { label: "Spominske", path: "/osmrtnice ", showOnMobile: false },
+    { label: "Cvetličarne", path: "/cvetlicarne  ", showOnMobile: false },
   ],
   "/cvetlicarne": [
-    { label: "Prva stran", path: "/", showOnMobile: false },
-    { label: "Osmrtnice", path: "/osmrtnice ", showOnMobile: true },
-    { label: "Pogrebi", path: "/pogrebi ", showOnMobile: true },
-    { label: "Spominske", path: "/osmrtnice ", showOnMobile: true },
-    { label: "Cvetličarne", path: "/cvetlicarne  ", showOnMobile: true },
+    { label: "Prva stran", path: "/", showOnMobile: true },
+    { label: "Pogrebna podjetja", path: "/pogrebna-p", showOnMobile: true },
+    { label: "Osmrtnice", path: "/osmrtnice ", showOnMobile: false },
+    { label: "Pogrebi", path: "/pogrebi ", showOnMobile: false },
+    { label: "Spominske", path: "/osmrtnice ", showOnMobile: false },
+    { label: "Cvetličarne", path: "/cvetlicarne  ", showOnMobile: false },
   ],
   "/zalna-stran": [
     { label: "Prva stran", path: "/", showOnMobile: false },
@@ -85,13 +87,13 @@ const CommonFooter = ({ currentPage = "/" }) => {
             <React.Fragment key={link.label}>
               <Link
                 href={link.path}
-                className={`text-[#1860A3] underline ${link.showOnMobile === false ? "mobile:hidden" : ""}`}
+                className={`text-[#1860A3] underline ${link.showOnMobile === false ? "mobile:hidden" : "sm:hidden"}`}
               >
                 {link.label}
               </Link>
               {index < linksToRender.length - 1 && (
                 <div
-                  className={`w-[5px] h-[5px] bg-[#1860A3] rounded-full ${link.showOnMobile === false ? "mobile:hidden" : ""}`}
+                  className={`w-[5px] h-[5px] bg-[#1860A3] rounded-full ${link.showOnMobile === false ? "mobile:hidden" : "sm:hidden"}`}
                 ></div>
               )}
             </React.Fragment>
