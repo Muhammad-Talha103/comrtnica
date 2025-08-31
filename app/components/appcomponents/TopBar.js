@@ -14,7 +14,7 @@ const TopBar = ({
   const popuButtonRef = React.useRef();
 
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuth();
 
   const isDesktop = () => window.innerWidth >= 758;
 
@@ -34,7 +34,7 @@ const TopBar = ({
     if (isUser && desktop) {
       router.push(`/u/${user.slugKey}/moj-racun`);
     } else if (isUser && !desktop) {
-      router.push("/user-accounts-dashboard");
+      router.push(`/u/${user.slugKey}/moj-racun`   );
     } else if (isFuneral && desktop) {
       router.push(`/p/${slugKey}/nasi_podatki`);
     } else if (isFuneral && !desktop) {
@@ -92,7 +92,7 @@ const TopBar = ({
               />
             </button>
           </div>
-          {user === null && (
+          {!isAuthenticated && (
             <div
               className="flex -z-10  tablet:w-[100%] tablet:justify-center  tablet:absolute 
                     desktop:absolute desktop:w-[1200px] desktop:justify-center items-center "
@@ -113,7 +113,7 @@ const TopBar = ({
               </button>
             </div>
           )}
-          {user !== null && (
+          {isAuthenticated && (
             <div
               className="flex -z-10  tablet:w-[100%] tablet:justify-center  tablet:absolute 
                     desktop:absolute desktop:w-[1200px] desktop:justify-center items-center "

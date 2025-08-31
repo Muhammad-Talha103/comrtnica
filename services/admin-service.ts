@@ -46,11 +46,11 @@ const adminService = {
   },
 
   // Create superadmin account
-  createSuperadmin: async () => {
+  createSuperadmin: async (email: string, password: string) => {
     try {
       const response = await axios.post("/user/create-superadmin", {
-        email: "gamspob@yahoo.com",
-        password: "trbovlj3:142o"
+        email: email,
+        password: password,
       });
       return response.data;
     } catch (error) {

@@ -34,6 +34,8 @@ const Layout = ({
 }) => {
   const { user, isAuthenticated } = useAuth();
 
+  console.log("isAuthenticated", isAuthenticated);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isMessageModalVisible, setIsMessageModalVisible] = useState(false);
@@ -109,7 +111,7 @@ const Layout = ({
             </div>
           )}
 
-          {isLocalQuickModalVisible && user === null && (
+          {isLocalQuickModalVisible && (
             <div className="flex">
               <LocalQuickReview
                 setIsLocalQuickModalVisible={setIsLocalQuickModalVisible}
@@ -118,7 +120,7 @@ const Layout = ({
           )}
 
           {isLocalQuickReviewModalVisible &&
-            user !== null && ( // Fixed prop name
+            isAuthenticated && ( // Fixed prop name
               <div className="flex">
                 <LocalQuickReviewModal
                   setIsLocalQuickReviewModalVisible={

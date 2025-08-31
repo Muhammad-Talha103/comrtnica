@@ -261,7 +261,7 @@ const LocalQuickReviewModal = ({ setIsLocalQuickReviewModalVisible }) => {
     return `${dayName}, ${day}.${month}.${year}`;
   };
 
-  if (loading) {
+  if (loading || isLoading) {
     return (
       <div
         className="fixed z-[1000] top-0 left-0 w-full bg-[#000000B2] h-screen py-[80px]"

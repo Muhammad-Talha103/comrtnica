@@ -15,13 +15,15 @@ import ModalNew6 from "../../../components/appcomponents/ModalNew6";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function AccountSettings() {
-  const { user } = useAuth();
+  const { user, isLoading, isAuthenticated, refreshUserSession } =
+    useAuth();
+
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isPrivilegijiExpanded, setIsPrivilegijiExpanded] = useState(false);
 
   useEffect(() => {
     getCompleteCompanyData();
-  }, []);
+  }, [user, isLoading, isAuthenticated]);
 
   const [data, setData] = useState({});
   const [selectedCity, setSelectedCity] = useState(null);
@@ -29,7 +31,7 @@ export default function AccountSettings() {
   const [isShowModal6, setIsShowModal6] = useState(false);
   const [select_id, setSelect_Id] = useState("");
   const [firstPayload, setFirstPayload] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const toggleModal6 = () => {
     setIsShowModal1(false);
@@ -38,6 +40,10 @@ export default function AccountSettings() {
 
   const getCompleteCompanyData = async () => {
     try {
+      if (!user) {
+        console.log("user not found");
+        return;
+      }
       const queryParams = {};
       queryParams.type = "FLORIST";
       const response = await companyService.getCompleteCompany(queryParams);
@@ -83,13 +89,25 @@ export default function AccountSettings() {
       } else if (deleted === "third") {
         cityPayload = { thirdCity: item };
       }
-      const response = await userService.updateMyUser(cityPayload);
-      toast.success("City Updated Successfully");
-      setSelectedCity(item);
-      setData((prevData) => ({
-        ...prevData,
-        ...cityPayload,
-      }));
+      setLoading(true);
+      try {
+        const response = await userService.updateMyUser(cityPayload);
+
+        if (response) {
+          await refreshUserSession();
+
+        // const result = await updateUserAndRefreshSession({ city: newCity });
+        // if (result.success) {
+          toast.success("City updated and session refreshed!");
+          setSelectedCity(item);
+        } else {
+          toast.error("Failed to update city");
+        }
+      } catch (error) {
+        toast.error("Error updating city");
+      } finally {
+        setLoading(false);
+      }
     } catch (error) {
       console.log(error);
       toast.error("Error Updating City");
@@ -106,7 +124,7 @@ export default function AccountSettings() {
     data?.CompanyPage?.FloristShops?.length > 0;
 
   const deleteShop = async (id) => {
-    setIsLoading(true);
+    setLoading(true);
     try {
       const response = await shopService.deleteShop(id);
       if (response.staus === 200) {
@@ -116,7 +134,7 @@ export default function AccountSettings() {
     } catch (error) {
       toast.error("Error deleting florist shop.");
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
@@ -231,7 +249,7 @@ export default function AccountSettings() {
                           ? "opacity-50 cursor-not-allowed pointer-events-none"
                           : "cursor-pointer"
                       }`}
-                      onClick={!isLoading ? () => deleteShop(item?.id) : null}
+                      onClick={!loading ? () => deleteShop(item?.id) : null}
                     >
                       (Zbriši)
                     </span>

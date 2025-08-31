@@ -12,10 +12,11 @@ import Dropdown from "@/app/components/appcomponents/Dropdown";
 import userService from "@/services/user-service";
 import toast from "react-hot-toast";
 import { useAuth } from "@/hooks/useAuth";
+import { useSession } from "next-auth/react";
 
 const MyAccount = () => {
-  const { user } = useAuth();
-
+  const { user, isLoading, isAuthenticated, updateUserAndRefreshSession} = useAuth();
+  
   const [isShowModal, setIsShowModal] = useState(false);
   const [isShowCards, setIsShowCards] = useState(false);
   const [shownCard, setShownCard] = useState(0);
@@ -109,9 +110,7 @@ const MyAccount = () => {
     try {
       const response = await userService.getMyCards();
       if (response?.userCards?.length) {
-        const myCards = response?.userCards?.filter(
-          (item) => item?.cardPdf && item?.cardImage
-        );
+        const myCards = response?.userCards?.filter((item) => item?.cardPdf && item?.cardImage);
         setDigiCards(myCards);
       } else {
         setDigiCards([]);
@@ -126,16 +125,18 @@ const MyAccount = () => {
       toast.error("Napaka pri pridobivanju kartic.");
       console.error("getAllCards failed:", e);
     }
-  };
+  }
 
   useEffect(() => {
     getAllCards();
-  }, []);
+  }, []); 
 
   const handleCitySelect = async (item) => {
     try {
-      const response = await userService.updateMyUser({ city: item });
-      if (response.ok) toast.success("City Updated Successfully");
+      const response = await updateUserAndRefreshSession({ city: item });
+      if (response.success === true) {
+        toast.success("City Updated Successfully");
+      }
       setSelectedCity(item);
     } catch (error) {
       console.log(error);
@@ -160,9 +161,8 @@ const MyAccount = () => {
             {digiCards.map((digiCard) => {
               return (
                 <span
-                  key={digiCard}
-                  className="inline-flex items-center text-[14px] text-[#4B5563] font-variation-customOpt14 mobileUserAcc:text-[#9CA3AF] mobileUserAcc:text-[13px] mobileUserAcc:font-variation-customOpt13 font-semibold mb-1 space-x-3 transition-colors duration-300 hover:text-[#2563EB]"
-                >
+                key={digiCard}
+                  className="inline-flex items-center text-[14px] text-[#4B5563] font-variation-customOpt14 mobileUserAcc:text-[#9CA3AF] mobileUserAcc:text-[13px] mobileUserAcc:font-variation-customOpt13 font-semibold mb-1 space-x-3 transition-colors duration-300 hover:text-[#2563EB]">
                   {/* Stylish Gift Icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -172,36 +172,20 @@ const MyAccount = () => {
                     stroke="currentColor"
                     strokeWidth={1.8}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M20 12v7a2 2 0 01-2 2H6a2 2 0 01-2-2v-7"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M2 12h20"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 12V7a4 4 0 10-4 4h8a4 4 0 10-4-4v5"
-                    />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M20 12v7a2 2 0 01-2 2H6a2 2 0 01-2-2v-7" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2 12h20" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 12V7a4 4 0 10-4 4h8a4 4 0 10-4-4v5" />
                   </svg>
                   {/* Text */}
-                  <span
-                    className="relative cursor-pointer"
-                    onClick={() => {
-                      setIsShowCards(true);
-                      setShownCard(digiCard.id);
-                    }}
-                  >
-                    {digiCard.user.company} ti pošilja digitalno kartico{" "}
-                    {digiCard.obit.name} {digiCard.obit.sirName}
+                  <span className="relative cursor-pointer" onClick={() => {
+                    setIsShowCards(true);
+                    setShownCard(digiCard.id);
+                  }}>
+                    {digiCard.user.company} ti pošilja digitalno kartico {digiCard.obit.name} {digiCard.obit.sirName}
                     <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   </span>
                 </span>
-              );
+              )
             })}
           </>
         ) : null}
@@ -334,8 +318,8 @@ const MyAccount = () => {
                   {user?.city
                     ? user.city
                     : selectedCity
-                    ? selectedCity
-                    : "Izberi občino"}
+                      ? selectedCity
+                      : "Izberi občino"}
                 </span>
               </div>
               <div className="hidden  h-5 w-24   justify-between pl-0 pr-0 items-center mobileUserAcc:flex">
@@ -441,18 +425,8 @@ const MyAccount = () => {
         />
       </div>
 
-      <ModalDigiCards
-        isShowModal={isShowCards}
-        setIsShowModal={setIsShowCards}
-        data={digiCards}
-        setShownCard={setShownCard}
-        shownCard={shownCard}
-      />
-      <ModalKeeperNotification
-        isShowModal={showKeeperModal}
-        setIsShowModal={setShowKeeperModal}
-        keeperId={keeperId}
-      />
+      <ModalDigiCards isShowModal={isShowCards} setIsShowModal={setIsShowCards} data={digiCards} setShownCard={setShownCard} shownCard={shownCard} />
+      <ModalKeeperNotification isShowModal={showKeeperModal} setIsShowModal={setShowKeeperModal} keeperId={keeperId} />
     </div>
   );
 };
