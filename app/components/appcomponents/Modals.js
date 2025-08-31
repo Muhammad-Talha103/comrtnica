@@ -1750,7 +1750,7 @@ const Modals = ({
             Obvesti sorodnike, prijatelje, znance
           </div>
           {emails.map((email, index) => (
-            <div className="relative">
+            <div className="relative" key={item}>
               <div key={index} className="flex mt-6">
                 <TextFieldComp
                   placeholder={index === 0 ? "Dodaj naslov prijatelja" : "Dodaj e-naslov še drugega prijatelja, znanca"}
