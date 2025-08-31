@@ -27,6 +27,7 @@ import toast from "react-hot-toast";
 import keeperService from "@/services/keeper-service";
 import { useAuth } from "@/hooks/useAuth";
 import { usePathname } from "next/navigation";
+import userService from "@/services/user-service";
 
 const Modals = ({
   select_id,
@@ -58,6 +59,25 @@ const Modals = ({
   const [keeperEmail, setKeeperEmail] = useState(null);
   const [keeperMessage, setKeeperMessage] = useState(null);
   const { user } = useAuth();
+
+  const [emails, setEmails] = useState([""]);
+  const [notifyMessage, setNotifyMessage] = useState([""]);
+
+  const handleEmailChange = (index, value) => {
+    const updatedEmails = [...emails];
+    updatedEmails[index] = value;
+    setEmails(updatedEmails);
+  };
+
+  const removeEmailField = (index) => {
+    if (emails.length === 1) return;
+    const updatedEmails = emails.filter((_, i) => i !== index);
+    setEmails(updatedEmails);
+  };
+
+  const addEmailField = () => {
+    setEmails([...emails, ""]);
+  };
 
   const closeModal = () => {
     setIsShowModal(false);
@@ -738,6 +758,26 @@ const Modals = ({
       ? `${name.substring(0, maxLength)}...${extension}`
       : fileName; // If name is short, return original
   };
+
+  const submitNotification = async () => {
+    console.log('>>>>>>>> 123', data)
+    try {
+      if (!emails.length || !notifyMessage) {
+        toast.error('Fill all details');
+        return;
+      }
+
+      await userService.saveObitNotification({
+        emails,
+        message: notifyMessage,
+        obituaryId: data.id
+      });
+      setIsShowModal(false);
+      toast.success('Request submitted successfully');
+    } catch (err) {
+      toast.error('Some error occured');
+    }
+  }
 
   return (
     <div className="w-full bg-[#E1E6EC] py-8 px-[12px] mobile:px-[8px] rounded-2xl border-[1px] border-[#6D778E] ">
@@ -1709,18 +1749,34 @@ const Modals = ({
           <div className="text-[#1E2125] mobile:text-xl text-2xl font-medium ">
             Obvesti sorodnike, prijatelje, znance
           </div>
-          <div className="hidden mobile:flex mt-6">
-            <TextFieldComp placeholder={"Njihov e-mail naslov"} />
-          </div>
-          <div className=" flex mobile:hidden mt-6">
-            <TextFieldComp placeholder={"Dodaj naslov prijatelja"} />
-          </div>
-          <div className="flex mobile:hidden mt-2">
+          {emails.map((email, index) => (
+            <div className="relative">
+              <div key={index} className="flex mt-6">
+                <TextFieldComp
+                  placeholder={index === 0 ? "Dodaj naslov prijatelja" : "Dodaj e-naslov še drugega prijatelja, znanca"}
+                  value={email}
+                  onChange={(e) => handleEmailChange(index, e.target.value)}
+                />
+              </div>
+              {index > 0 && (
+                <button
+                  type="button"
+                  onClick={() => removeEmailField(index)}
+                  className="text-red-500 hover:text-red-700 text-xl font-bold absolute top-9 right-2 cursor-pointer"
+                  title="Odstrani polje"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          ))}
+
+          {/* <div className="flex mobile:hidden mt-2">
             <TextFieldComp
               placeholder={"Dodaj e-naslov še drugega prijatelja, znanca"}
             />
-          </div>
-          <div className="flex w-full mt-2 tablet:items-center desktop:items-center ">
+          </div> */}
+          <div className="flex w-full mt-2 tablet:items-center desktop:items-center " onClick={addEmailField}>
             {/* //icon_plus_round */}
             <Image
               src={"/icon_plus_round.png"}
@@ -1738,24 +1794,20 @@ const Modals = ({
               </div>
             </div>
           </div>
-          <div className="flex mobile:hidden mt-6">
+          <div className="flex mt-6">
             <DescriptionFieldComp
               placeholder={"Tvoje sporočilo"}
               height={"80px"}
-            />
-          </div>
-          <div className="hidden mobile:flex h-[112px] mt-6">
-            <DescriptionFieldComp
-              placeholder={"Tvoje sporočilo"}
-              height={"112px"}
+              value={notifyMessage}
+              onChange={(e) => setNotifyMessage(e.target.value)}
             />
           </div>
           <div className=" flex mt-2 text-[#6D778E] text-xs font-normal">
             Op. ne pozabi dopisati svoje ime, morda tudi priimek, da bodo
             vedeli, kdo pošilja
           </div>
-          <div className=" flex mobile:hidden mt-6 text-[#6D778E] text-xs font-normal">
-            K sporočilu bo spodaj dodana še povezava do te strani:
+          <div className=" flex mt-6 text-[#6D778E] text-xs font-normal">
+            45354K sporočilu bo spodaj dodana še povezava do te strani:
           </div>
           <div className="hidden mobile:flex mt-8 text-[#6D778E] text-xs font-normal">
             Da bodo lažje našli stran in informacije, bo k sporočilu spodaj
@@ -1773,15 +1825,9 @@ const Modals = ({
               {`${typeof window !== "undefined" ? window.location.origin : ""
                 }/m/${data?.slugKey}`}
             </div>
-            <div className="hidden mobile:flex text-sm font-medium text-[#6D778E] ">
-              Osmrtnica in več informacij na strani:
-            </div>
-            <div className="hidden mobile:flex text-sm font-normal text-[#0A85C2] ml-1 underline ">
-              tukaj
-            </div>
           </div>
           <div className="mobile:w-[100%] w-[254px] mt-8">
-            <ButtonBlueBorder placeholder={"Pošlji"} />
+            <ButtonBlueBorder placeholder={"Pošlji"} onClick={submitNotification} />
           </div>
         </div>
       ) : null}

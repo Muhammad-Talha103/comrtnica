@@ -20,6 +20,8 @@ const FloristsGifts = () => {
 
   const { user, isLoading, isAuthenticated } = useAuth();
 
+  console.log('>>>>>>>>>> selectedFile', selectedFile);
+
   const funcShowForms = (shouldShow) => {
     setShowBelowForms(shouldShow);
   };
@@ -37,6 +39,7 @@ const FloristsGifts = () => {
   const handleAssignKeeper = async () => {
     // Check permission before allowing submission
     const currentUser = isAuthenticated ? user : {};
+    // Temporarily commented
     if (!currentUser.assignKeeperPermission) {
       toast.error("You don't have permission to assign keepers.");
       return;

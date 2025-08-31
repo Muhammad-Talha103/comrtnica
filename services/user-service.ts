@@ -138,6 +138,16 @@ const saveContact = async (payload: any) => {
   return response.data;
 };
 
+const saveObitNotification = async (payload: any) => {
+  const endpoint = `/post/obit-notification`;
+
+  const response = await axios.post(
+    endpoint, payload
+  );
+
+  return response.data;
+};
+
 const userService = {
   registerUser,
   getMyUser,
@@ -149,7 +159,8 @@ const userService = {
   downloadCard,
   getMyKeeperStatus,
   updateKeeperStatus,
-  saveContact
+  saveContact,
+  saveObitNotification
 };
 
 export default userService;

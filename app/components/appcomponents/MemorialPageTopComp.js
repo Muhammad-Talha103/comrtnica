@@ -34,12 +34,12 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary, fetchMemo
     setModal(false);
   }
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const storedUser = localStorage.getItem("user");
+  //   if (storedUser) {
+  //     setUser(JSON.parse(storedUser));
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {

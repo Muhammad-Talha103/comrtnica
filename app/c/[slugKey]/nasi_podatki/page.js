@@ -110,9 +110,9 @@ export default function AccountSettings() {
     try {
       const response = await shopService.deleteShop(id);
       if (response.staus === 200) {
-        getCompleteCompanyData();
         toast.success("Florist shop deleted successfully.");
       }
+      getCompleteCompanyData();
     } catch (error) {
       toast.error("Error deleting florist shop.");
     } finally {
@@ -216,7 +216,7 @@ export default function AccountSettings() {
                     key={index}
                     className="flex flex-col gap-2 text-[#3C3E41]"
                   >
-                    <div className="my-5 flex flex-col space-y-2">
+                    <div className="mt-5 flex flex-col space-y-2">
                       <span className="text-[#3C3E41]">{item.shopName}</span>
                       <span className="text-[#3C3E41]">{item.address}</span>
                       <span className="text-[#3C3E41]">{item.telephone}</span>
@@ -226,14 +226,14 @@ export default function AccountSettings() {
                       ) : null}
                     </div>
                     <span
-                      className={`text-[#a4a4a4] table w-[50px] transition-opacity duration-200 ${
+                      className={`text-[#a4a4a4] table w-[50px] transition-opacity duration-200 mt-[-5px] ${
                         isLoading
                           ? "opacity-50 cursor-not-allowed pointer-events-none"
                           : "cursor-pointer"
                       }`}
                       onClick={!isLoading ? () => deleteShop(item?.id) : null}
                     >
-                      Zbriši
+                      (Zbriši)
                     </span>
                   </div>
                 ))}

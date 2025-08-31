@@ -24,6 +24,7 @@ const Obituaryform = () => {
     }
 
     // Check if user has permission to create obituaries
+    // Temporarily commented
     if (!isLoading && !isAuthenticated && !user.createObituaryPermission) {
       toast.error("You don't have permission to create obituaries.");
       router.push("/");

@@ -3,13 +3,33 @@ import { Checkbox } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/16/solid";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const Newobituary = ({ focusRef, setFile, setName, setRelation, onSubmit }) => {
   const [inputValuePic, setInputValuePic] = useState("");
   const [nameValue, setNameValue] = useState("");
   const [relationValue, setRelationValue] = useState("");
   const [confirmationCheck, setConfirmationCheck] = useState(true);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const inputFileRef = useRef(null);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files?.[0];
+    if (file) setSelectedFile(file);
+    if (file) setFile(file);
+    setInputValuePic(e.target.value);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files?.[0];
+    if (file && file.type.startsWith("image/")) {
+      setSelectedFile(file); 
+      setFile(file); 
+    }
+  };
+
+  const handleDragOver = (e) => e.preventDefault();
 
   const handleEmailInput = (event) => {
     setInputValuePic(event.target.value);
@@ -58,12 +78,53 @@ const Newobituary = ({ focusRef, setFile, setName, setRelation, onSubmit }) => {
           </p>
         </div>
 
-        <div className="w-[470px] h-[48px] mobile:w-[297px] mobile:h-auto desktop:mt-[50px] mobile:mt-[20px] mx-auto flex flex-col">
-          <label className="text-[#3C3E41] text-[16px] font-normal mb-2">
-            Priloži Potrdilo o smrti
-          </label>
+        <div className="w-[470px] mobile:w-[297px] mobile:h-auto desktop:mt-[50px] mobile:mt-[20px] mx-auto flex flex-col">
           <div className="relative w-full">
-            <input
+            <label className="flex text-[#3C3E41] flex-col mb-4 mt-4">
+              Priloži Potrdilo o smrti
+              <input
+                type="file"
+                accept="image/*"
+                hidden
+                ref={inputFileRef}
+                onChange={handleFileChange}
+              />
+              <div
+                className="mt-2 px-4 py-6 w-full mobile:w-auto rounded-[6px] bg-[#F2F8FF66] shadow-custom-dark-to-white flex flex-col items-center justify-center cursor-pointer  border-[#ACAAAA]"
+                onClick={(e) => {
+                  // Prevent any automatic trigger or bubbling
+                  e.preventDefault();
+                  inputFileRef.current?.click();
+                }}
+                onDrop={handleDrop}
+                onDragOver={handleDragOver}
+              >
+                {!selectedFile ? (
+                  <>
+                    <p className="w-[214px] flex justify-center items-center mobile:w-[150px] mobile:h-8 h-[40px] rounded-[4px] bg-gradient-to-b from-[#7D88A2] to-[#5E677B] text-white leading-6 text-md">
+                      Izberi sliko in jo prenesi
+                    </p>
+                    <span className="text-sm text-[#939393] mt-1">
+                      Format: jpg, png, webp
+                    </span>
+                  </>
+                ) : (
+                  <div className="flex flex-col items-center">
+                    <img
+                      src={URL.createObjectURL(selectedFile)}
+                      alt="preview"
+                      className="w-32 h-32 object-contain rounded mb-2"
+                    />
+                    <p className="text-[#414141] text-xs truncate w-full text-center">
+                      Izbrana datoteka: {selectedFile.name}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </label>
+
+
+            {/* <input
               type="file"
               onChange={handleEmailInput}
               className="w-full h-[48px] pt-[7px] bg-transparent focus:outline-none text-[16px] text-[#848484] font-normal placeholder:text-[#ACAAAA] border border-[#6D778E] rounded-[8px] px-12"
@@ -74,11 +135,11 @@ const Newobituary = ({ focusRef, setFile, setName, setRelation, onSubmit }) => {
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "20px 20px",
               }}
-            />
+            /> */}
           </div>
         </div>
 
-        <div className="w-[470px] mobile:w-[297px] h-[48px] desktop:mt-[40px] tablet:mt-[40px] mobile:mt-[10px] mx-auto">
+        {/* <div className="w-[470px] mobile:w-[297px] h-[48px] desktop:mt-[40px] tablet:mt-[40px] mobile:mt-[10px] mx-auto">
           <Link
             href={"#"}
             className="flex w-full h-full bg-white items-center justify-center text-[16px] leading-[24px] font-variation-customOpt16 text-[#FFFFFF] bg-gradient-to-b from-[#6D778E] to-[#5D6579] rounded-lg"
@@ -92,9 +153,9 @@ const Newobituary = ({ focusRef, setFile, setName, setRelation, onSubmit }) => {
             />
             NALOŽI
           </Link>
-        </div>
+        </div> */}
 
-        <div className="w-[470px] mobile:w-[297px] h-[48px] mt-[40px] mx-auto">
+        <div className="w-[470px] mobile:w-[297px] h-[48px] mt-[10px] mx-auto">
           <button
             onClick={onSubmit}
             className="flex w-full h-full bg-white items-center justify-center text-[16px] leading-[24px] font-variation-customOpt16 text-[#FFFFFF] bg-gradient-to-b from-[#0D94E8] to-[#1860A3] rounded-lg"

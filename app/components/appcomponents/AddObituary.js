@@ -276,6 +276,8 @@ const AddObituary = ({ set_Id, setModal }) => {
 
   const handleSubmit = async () => {
     const currentUser = isAuthenticated ? user : {};
+
+    // Temporarily commented
     if (!currentUser.createObituaryPermission) {
       toast.error("You don't have permission to create obituaries.");
       return;
