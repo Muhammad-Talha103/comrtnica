@@ -34,8 +34,6 @@ export default function Spominske() {
     }
   };
 
-  console.log('>>>>>>>> currentMonthData', currentMonthData);
-
   useEffect(() => {
     getObituaries();
   }, []);

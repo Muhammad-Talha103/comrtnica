@@ -43,41 +43,37 @@ const ImageSlider = () => {
   const ImageSliderBlock = ({ image, index, key }) => {
     return (
       <div
-        className={`absolute items-center  h-full w-full flex object-cover transition-opacity duration-500 ease-in-out ${
-          index === currentIndex
-            ? " justify-center rounded-xl "
-            : index > currentIndex
+        className={`absolute items-center  h-full w-full flex object-cover transition-opacity duration-500 ease-in-out ${index === currentIndex
+          ? " justify-center rounded-xl "
+          : index > currentIndex
             ? "justify-end"
             : "justify-start"
-        }
-              ${
-                index === currentIndex
-                  ? "z-30"
-                  : index === currentIndex + 2 || index === currentIndex - 2
-                  ? "z-10"
-                  : index === currentIndex + 1 || index === currentIndex - 1
-                  ? " z-20"
-                  : "z-0"
-              }
+          }
+              ${index === currentIndex
+            ? "z-30"
+            : index === currentIndex + 2 || index === currentIndex - 2
+              ? "z-10"
+              : index === currentIndex + 1 || index === currentIndex - 1
+                ? " z-20"
+                : "z-0"
+          }
               `}
       >
         <img
           key={index}
           src={image}
           alt={`Slide ${index}`}
-          className={`relative object-cover${
-            index === currentIndex
-              ? " border-8 border-white rounded-3xl"
-              : "border-0"
-          } ${
-            index === currentIndex
+          className={`relative object-cover${index === currentIndex
+            ? " border-8 border-white rounded-3xl"
+            : "border-0"
+            } ${index === currentIndex
               ? "h-full  w-[493px] tablet:w-[323.3px]  mobile:w-[279.77px]"
               : index === currentIndex + 2 || index === currentIndex - 2
-              ? "h-[211px] w-[294px] tablet:w-[189.41px] tablet:h-[153.55px] mobile:w-[162.57px] mobile:h-[153.55px]"
-              : index === currentIndex + 1 || index === currentIndex - 1
-              ? "h-[279px] w-[387px] mx-[45.8px] tablet:mx-[29.5px] mobile:mx-[25.32px] tablet:w-[249.32px] tablet:h-[203.04px] mobile:w-[214px] mobile:h-[203.04px]"
-              : "h-0 w-0 hidden"
-          }`}
+                ? "h-[211px] w-[294px] tablet:w-[189.41px] tablet:h-[153.55px] mobile:w-[162.57px] mobile:h-[153.55px]"
+                : index === currentIndex + 1 || index === currentIndex - 1
+                  ? "h-[279px] w-[387px] mx-[45.8px] tablet:mx-[29.5px] mobile:mx-[25.32px] tablet:w-[249.32px] tablet:h-[203.04px] mobile:w-[214px] mobile:h-[203.04px]"
+                  : "h-0 w-0 hidden"
+            }`}
         />
       </div>
     );
@@ -105,7 +101,7 @@ const ImageSlider = () => {
 
       <div className="relative  w-[931.34px] tablet:w-[600px] mobile:w-full h-[345px] tablet:h-[267.07px] mobile:h-[267.07px]">
         {images.map((image, index) => (
-          <ImageSliderBlock image={image} index={index} key={index} />
+          <ImageSliderBlock image={image} index={index} />
         ))}
       </div>
       <div className="absolute bottom-[86px] mobile:bottom-[66px] z-30 w-[931.34px] tablet:w-[600px] mobile:w-full h-[345px] tablet:h-[267.07px] mobile:h-[267.07px] flex items-center ">
