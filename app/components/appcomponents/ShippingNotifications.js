@@ -71,11 +71,11 @@ const ShippingNotifications = ({
       prevIndex === images.length - 1 ? prevIndex : prevIndex + 1
     );
   };
-  const ImageSliderBlock = ({ image, index, key }) => {
+  const ImageSliderBlock = ({ image, index }) => {
     return (
       <>
         {index === currentIndex ? (
-          <div className="h-[500px]  w-[260px] ">
+          <div className="h-[500px]  w-[260px] " key={index}>
             <div className="mockup-phone h-[500px] w-[260px] shadow-custom-light-dark-box-image-wall ">
               <div style={{ height: 25, width: 120 }} className=" camera" />
               <div className="display w-full h-full flex justify-center items-center">
@@ -172,9 +172,10 @@ const ShippingNotifications = ({
               </button>
               <div className="inline-flex flex-row gap-[10px] desktop:hidden">
                 {images.map((image, index) => (
-                  <>
+                  <div key={index}>
                     {index === currentIndex ? (
                       <div
+                        key={index}
                         className="w-[16px] h-[16px] bg-white rounded-full"
                         style={{
                           background:
@@ -185,6 +186,7 @@ const ShippingNotifications = ({
                       ></div>
                     ) : (
                       <div
+                        key={index}
                         className="w-[16px] h-[16px] bg-white rounded-full"
                         style={{
                           background:
@@ -192,7 +194,7 @@ const ShippingNotifications = ({
                         }}
                       ></div>
                     )}
-                  </>
+                  </div>
                 ))}
               </div>
               <button

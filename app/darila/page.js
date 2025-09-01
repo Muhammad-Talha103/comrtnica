@@ -20,8 +20,6 @@ const FloristsGifts = () => {
 
   const { user, isLoading, isAuthenticated } = useAuth();
 
-  console.log('>>>>>>>>>> selectedFile', selectedFile);
-
   const funcShowForms = (shouldShow) => {
     setShowBelowForms(shouldShow);
   };

@@ -35,8 +35,6 @@ const MemorialPageView = () => {
     }
   };
 
-  console.log('>>>>>>> obituaries', obituaries);
-
   return (
     <>
       {obituaries && obituaries?.length ? (

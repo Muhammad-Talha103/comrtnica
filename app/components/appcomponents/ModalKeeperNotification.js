@@ -14,7 +14,6 @@ export default function ModalKeeperNotification({
     setIsShowModal,
     keeperId
 }) {
-    console.log('>>>>>> keeperId', keeperId);
     const updateStatus = async () => {
         await userService.updateKeeperStatus(keeperId?.id);
     };
