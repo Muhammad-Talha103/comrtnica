@@ -24,6 +24,7 @@ jobs:
           cd /home/jenkins/deployment/obituary-app/staging-fe/obituary-app-fe
           sleep 1
           git checkout staging
+          git stash
           git pull origin staging
           npm install
           sleep 3
