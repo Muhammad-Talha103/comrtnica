@@ -159,7 +159,7 @@ export default function Faq1() {
               <a href="#" className="text-[#0A85C2] underline">
                 tukaj
               </a>
-              . Testirajte brezplačno in brez obveznosti 15. oktobra 2025. Ne
+              . Testirajte brezplačno in brez obveznosti do 15. oktobra 2025. Ne
               splača se čakati, ker prvih 60 naročnikov čaka nekaj posebej
               privlačnih dolgoročnih ugodnosti.
             </p>
