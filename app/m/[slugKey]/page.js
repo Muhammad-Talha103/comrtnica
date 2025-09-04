@@ -23,7 +23,7 @@ const MemoryPageContent = ({ params }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
 
   const [isShowModal, setIsShowModal] = useState(false);
   const [select_id, setSelect_Id] = useState("");
@@ -39,7 +39,7 @@ const MemoryPageContent = ({ params }) => {
 
   useEffect(() => {
     fetchMemory();
-  }, []);
+  }, [user, isLoading]);
 
   const fetchMemory = async () => {
     try {
