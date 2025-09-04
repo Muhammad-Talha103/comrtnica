@@ -31,23 +31,23 @@ const CompaniesWithApprovalReq = () => {
   console.log("session", session);
 
   // Fetch companies on mount
-  const fetchCompanies = async () => {
-    try {
-      setLoading(true);
-      const response = await adminService.getCompaniesWithApprovalRequest();
-      if (response.success) {
-        setCompanies(response.companies);
-      } else {
-        toast.error("Failed to fetch companies");
-      }
-    } catch (error) {
-      console.error("Error fetching companies:", error);
-      toast.error("Failed to load companies");
-    } finally {
-      setLoading(false);
-    }
-  };
   useEffect(() => {
+    const fetchCompanies = async () => {
+      try {
+        setLoading(true);
+        const response = await adminService.getCompaniesWithApprovalRequest();
+        if (response.success) {
+          setCompanies(response.companies);
+        } else {
+          toast.error("Failed to fetch companies");
+        }
+      } catch (error) {
+        console.error("Error fetching companies:", error);
+        toast.error("Failed to load companies");
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchCompanies();
   }, []);
 
@@ -57,7 +57,10 @@ const CompaniesWithApprovalReq = () => {
 
       if (response.data.success) {
         toast.success("Approved")
-        fetchCompanies();
+        setCompanies((curr) => {
+          const updatedList = curr.filter((company) => company?.id != id);
+          return updatedList;
+        })
       }
     } catch (error) {
       toast.error("Something went wrong, Please try later!")
@@ -66,10 +69,13 @@ const CompaniesWithApprovalReq = () => {
 
   const handleGhostLogin = async (userId) => {
     try {
+      setLoading(userId)
       const adminId = session?.user?.me?.id;
       await ghostLogin({ userId, adminId });
     } catch (err) {
       console.error('Error in ghost-login', err);
+    }finally{
+      setLoading(false);
     }
   }
 
@@ -103,7 +109,7 @@ const CompaniesWithApprovalReq = () => {
               </tr>
             </thead>
             <tbody>
-              {loading ? (
+              {loading === true ? (
                 <tr>
                   <td colSpan="10" className="text-center py-8">
                     <p className="text-[#6D778E]">Loading funeral companies...</p>
@@ -130,13 +136,13 @@ const CompaniesWithApprovalReq = () => {
                       <button
                         onClick={() => { handleGhostLogin(company?.userId) }}
                       >
-                        <Image
+                       { loading === company?.userId ? <span>Processing...</span> :<Image
                           src="/eye.png"
                           width={18}
                           height={18}
                           alt="Open page"
                           className="inline-block"
-                        />
+                        />}
                       </button>
                     </td>
                     <td className="px-4 py-4">{company?.modifiedTimestamp ? formatDate(company?.modifiedTimestamp) : "N/A"}</td>

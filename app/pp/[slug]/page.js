@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Layout from "@/app/components/appcomponents/Layout";
 import FuneralsCompanyBanner from "@/app/components/appcomponents/FuneralsCompanyBanner";
-import LastObituariesList from "@/app/components/appcomponents/LastObituariesList";
+import ObitList from "@/app/components/appcomponents/ObitList";
 import Cemeteries from "@/app/components/appcomponents/Cemeteries";
 import FuneralInFewDays from "@/app/components/appcomponents/FuneralInFewDays";
 import Pride from "@/app/components/appcomponents/Pride";
@@ -32,7 +32,7 @@ export default function FuneralPage() {
             console.log(error);
         }
     };
-    console.log('company', company);
+    console.log('>>>>>>>>> company', company);
 
     return (
         <>
@@ -56,7 +56,7 @@ export default function FuneralPage() {
                                     key={`${company?.id}-banner`}
                                     data={company}
                                 />
-                                <LastObituariesList key={`${company?.id}-last-obituaries`} />
+                                <ObitList key={`${company?.id}-last-obituaries`} userId={company?.userId} />
                                 <FuneralInFewDays
                                     key={`${company?.id}-funeral-in-few-days`}
                                     data={company}
