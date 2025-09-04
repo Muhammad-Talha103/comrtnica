@@ -66,7 +66,7 @@ function UserCompanyHeaderNew({
               {isGhost && adminId ? (
                 <button className="text-[#333]" onClick={async () => {
                   await ghostLogin({ userId: adminId, adminId: 0 })
-                }}>Back to admin</button>
+                }}>Nazaj k skrbniku</button>
               ) : null}
               <div className="flex items-center gap-[35px]">
                 <div className="flex hidden tabletUserAcc:hidden mobileUserAcc:hidden items-center gap-2">

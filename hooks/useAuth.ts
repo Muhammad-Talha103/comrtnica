@@ -67,7 +67,7 @@ export function useAuth() {
       }
 
       if (result?.ok) {
-        toast.success("Login successful!");
+        toast.success("Zahteva uspešna!");
         const newSession = await getSession();
         const user1 = newSession?.user.me as IUserComplete | undefined;
 
