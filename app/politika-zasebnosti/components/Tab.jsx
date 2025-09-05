@@ -5,7 +5,7 @@ import React from "react";
 export const Tab = () => {
     return (
         <main className="">
-            <div className="w-full mx-auto px-6 pb-12  text-[#3C3E41]">
+            <div>
                 <h1 className="text-3xl font-semibold mb-10 text-[#3C3E41]">ttttPolitika zasebnosti</h1>
 
                 <div className="space-y-10 text-[16px] leading-[27px] font-light">
