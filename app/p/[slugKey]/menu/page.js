@@ -1,6 +1,5 @@
 "use client";
 
-import UserAccountHeaderNew from "@/app/components/appcomponents/UserAccountHeaderNew";
 import Link from "next/link";
 import { Fragment, useEffect, useRef, useState } from "react";
 import ButtonWhiteBG, {
@@ -9,10 +8,8 @@ import ButtonWhiteBG, {
 import obituaryService from "@/services/obituary-service";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
-import ButtonLightGreen from "@/app/components/appcomponents/buttonLightGreen";
+import { useAuth } from "@/hooks/useAuth";
 import UserCompanyHeaderNew from "@/app/components/appcomponents/UserCompanyHeaderNew";
-import authService from "@/services/auth-service";
-import { useLogout } from "@/utils/authUtils";
 
 export default function Funeral() {
   const [isMobilSideBarOpen, setIsMobilSideBarOpen] = useState(true);
@@ -21,10 +18,8 @@ export default function Funeral() {
   const router = useRouter();
   const gotoTopRef = useRef(null);
   const pathname = usePathname();
-  
-  const { logout } = useLogout();
 
-  const [user, setUser] = useState(null);
+  const { logout, user, isLoading, isAuthenticated } = useAuth();
 
   useEffect(() => {
     fetchPendingPosts();
@@ -32,13 +27,7 @@ export default function Funeral() {
   }, []);
 
   const [pendingPosts, setPendingPosts] = useState([]);
-  useEffect(() => {
-    const currUser = localStorage.getItem("user");
-    if (currUser) {
-      setUser(JSON.parse(currUser));
-      console.log(JSON.parse(currUser));
-    }
-  }, []);
+
   const fetchPendingPosts = async () => {
     try {
       const response = await obituaryService.fetchPendingPosts();
@@ -99,7 +88,7 @@ export default function Funeral() {
           alt="funeral banner"
           className="w-full h-full object-cover absolute top-0 left-0 z-0"
         />
-        <div className="relative z-10 desktopUserAcc:pt-16 tabletUserAcc:pt-0">
+        <div className="relative z-10 mobile:mt-5 desktopUserAcc:pt-16 tabletUserAcc:pt-0">
           <div className="w-full tabletUserAcc:max-w-[620px] desktopUserAcc:w-[620px] mobileUserAcc:max-w-[310px] text-[16px]">
             <div
               className="text-[#0A85C2] text-[32px] leading-[38px] font-semibold mb-5"
@@ -303,44 +292,77 @@ export default function Funeral() {
               >
                 ZA STRANKE
               </div>
-              <Link
-                href={"/obituaryform"}
-                className="bg-white rounded-lg py-4 px-6 flex items-center gap-4 justify-between shadow-[5px_5px_10px_rgba(194,194,194,0.5)] mt-[2px] mobileUserAcc:mt-[5px] relative overflow-hidden min-h-[55px]"
-              >
-                <div className="absolute top-0 left-0 w-full h-full flex items-center justify-end bg-gradient-to-b from-[rgba(249,171,22,1)] to-[rgba(197,135,14,1)]">
-                  <div className="px-5">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={2.5}
-                      stroke="#fff"
-                      className="size-4"
+              {user?.createObituaryPermission ? (
+                <Link
+                  href={"/osmrtnice-vpis"}
+                  className="bg-white rounded-lg py-4 px-6 flex items-center gap-4 justify-between shadow-[5px_5px_10px_rgba(194,194,194,0.5)] mt-[2px] mobileUserAcc:mt-[5px] relative overflow-hidden min-h-[55px]"
+                >
+                  <div className="absolute top-0 left-0 w-full h-full flex items-center justify-end bg-gradient-to-b from-[rgba(249,171,22,1)] to-[rgba(197,135,14,1)]">
+                    <div className="px-5">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2.5}
+                        stroke="#fff"
+                        className="size-4"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-5 absolute top-[2px] left-[2px] w-[calc(100%-55px)] h-[51px] bg-white rounded-s-md px-3">
+                    <img
+                      src="/user/plus.png"
+                      alt="predloge"
+                      className="w-6 h-6 object-contain"
+                    />
+                    <Link
+                      href={"/osmrtnice-vpis"}
+                      className="text-[16px] text-[#6D778E]"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="m8.25 4.5 7.5 7.5-7.5 7.5"
-                      />
-                    </svg>
+                      DODAJ OSMRTNICO
+                    </Link>
+                  </div>
+                </Link>
+              ) : (
+                <div className="bg-gray-200 rounded-lg py-4 px-6 flex items-center gap-4 justify-between shadow-[5px_5px_10px_rgba(194,194,194,0.5)] mt-[2px] mobileUserAcc:mt-[5px] relative overflow-hidden min-h-[55px] cursor-not-allowed">
+                  <div className="absolute top-0 left-0 w-full h-full flex items-center justify-end bg-gradient-to-b from-[rgba(128,128,128,1)] to-[rgba(96,96,96,1)]">
+                    <div className="px-5">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2.5}
+                        stroke="#fff"
+                        className="size-4"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-5 absolute top-[2px] left-[2px] w-[calc(100%-55px)] h-[51px] bg-gray-100 rounded-s-md px-3">
+                    <img
+                      src="/user/plus.png"
+                      alt="predloge"
+                      className="w-6 h-6 object-contain opacity-50"
+                    />
+                    <span className="text-[16px] text-[#999999]">
+                      DODAJ OSMRTNICO (ZAPRTO)
+                    </span>
                   </div>
                 </div>
-                <div className="flex items-center gap-5 absolute top-[2px] left-[2px] w-[calc(100%-55px)] h-[51px] bg-white rounded-s-md px-3">
-                  <img
-                    src="/user/plus.png"
-                    alt="predloge"
-                    className="w-6 h-6 object-contain"
-                  />
-                  <Link
-                    href={"/osmrtnice-vpis"}
-                    className="text-[16px] text-[#6D778E]"
-                  >
-                    DODAJ OSMRTNICO
-                  </Link>
-                </div>
-              </Link>
+              )}
               <Link
-                href={"/floristsgifts"}
+                href={"/darila"}
                 className="bg-white rounded-lg py-4 px-6 flex items-center gap-4 justify-between shadow-[5px_5px_10px_rgba(194,194,194,0.5)] mt-[9px] mobileUserAcc:mt-[15px] relative overflow-hidden min-h-[55px]"
               >
                 <div className="absolute top-0 left-0 w-full h-full flex items-center justify-end bg-gradient-to-b from-[rgba(10,133,194,1)] to-[rgba(24,96,163,1)]">
@@ -378,7 +400,7 @@ export default function Funeral() {
               </Link>
               <div className="w-[314] h-[55px] mt-[8px] py-[2px] px-[2px] rounded-[10px] shadow-custom-light-dark-box-image bg-transparent mobileUserAcc:hidden"></div>
               <Link
-                href={"/floristsgifts"}
+                href={"/darila"}
                 className="bg-white rounded-lg py-4 px-6 flex items-center gap-4 justify-between shadow-[5px_5px_10px_rgba(194,194,194,0.5)] mt-[9px] mobileUserAcc:mt-[15px] relative overflow-hidden min-h-[55px]"
               >
                 <div className="absolute top-0 left-0 w-full h-full flex items-center justify-end bg-gradient-to-b from-[rgba(249,22,214,1)] to-[rgba(157,32,138,1)]">

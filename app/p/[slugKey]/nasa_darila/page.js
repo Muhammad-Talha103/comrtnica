@@ -1,6 +1,7 @@
 "use client";
 import CompanyAccountLayout from "@/app/components/appcomponents/CompanyAccountLayout";
 import obituaryService from "@/services/obituary-service";
+import { getKeeperTypeById } from "@/utils/commonUtils";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -19,7 +20,6 @@ export default function Darila() {
       console.log(error, "==============");
     }
   };
-  console.log('>>>>>>>>> logs', logs);
   return (
     <CompanyAccountLayout>
       <div className="w-full max-w-[969px]">
@@ -121,6 +121,7 @@ export default function Darila() {
 
                   const isEven = index % 2 === 0;
                   const rowBg = isEven ? "bg-white/40" : "bg-[#e3e9f0]";
+                  const keeperTime = getKeeperTypeById(log.time);
 
                   return (
                     <tr key={index} className={`${rowBg} text-[#3C3E41]`}>
@@ -151,7 +152,7 @@ export default function Darila() {
                         {log.giftedTo}
                       </td>
                       <td className="p-4 leading-[19px] font-variation-customOpt16 border-t border-b border-r rounded-r border-[#A1B1D4] text-[14px]">
-                        {log.typeInSL}
+                        {log.time ? keeperTime?.text : log.typeInSL}
                       </td>
                     </tr>
                   );

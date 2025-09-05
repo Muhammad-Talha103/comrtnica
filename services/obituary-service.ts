@@ -24,6 +24,7 @@ const getObituary = async (queryParams?: {
   days?: number;
   startDate?: string;
   endDate?: string;
+  allow?: string;
 }) => {
   try {
     const endpoint = "/obituary";
@@ -57,7 +58,6 @@ const getFunerals = async (queryParams?: {
   try {
     const endpoint = "/obituary/funerals";
 
-
     const response = await axios.get(endpoint, { params: queryParams });
     return response.data;
   } catch (error: unknown) {
@@ -65,9 +65,13 @@ const getFunerals = async (queryParams?: {
     throw new Error("Network error or no response");
   }
 };
-const updateObituary = async (id: string, formData: FormData) => {
+const updateObituary = async (
+  id: string,
+  formData: FormData,
+  allow: string = ""
+) => {
   try {
-    const endpoint = `/obituary/${id}`;
+    const endpoint = `/obituary/${id}?allow=${allow}`;
     const response = await axios.patch(endpoint, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
@@ -80,7 +84,7 @@ const updateObituary = async (id: string, formData: FormData) => {
 
 const updateObituaryVisits = async (data: any) => {
   try {
-    const endpoint = `/obituary/visits/${data.obituaryId}`;
+    const endpoint = `/obituary/visits/${data.obituaryId}?isNoFloristLimit=true`;
     const response = await axios.patch(endpoint, data);
     return response.data;
   } catch (error: unknown) {
@@ -387,7 +391,7 @@ const obituaryService = {
   getMonthlyCompanyData,
   getCompanyLogs,
   uploadObituaryTemplateCards,
-  getSingleObituaryById
+  getSingleObituaryById,
 };
 
 export default obituaryService;

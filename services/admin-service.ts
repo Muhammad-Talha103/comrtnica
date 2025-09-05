@@ -46,11 +46,11 @@ const adminService = {
   },
 
   // Create superadmin account
-  createSuperadmin: async () => {
+  createSuperadmin: async (email: string, password: string) => {
     try {
       const response = await axios.post("/user/create-superadmin", {
-        email: "gamspob@yahoo.com",
-        password: "trbovlj3:142o"
+        email: email,
+        password: password,
       });
       return response.data;
     } catch (error) {
@@ -67,6 +67,26 @@ const adminService = {
     } catch (error) {
       console.error("Error fetching funeral companies:", error);
       throw error;
+    }
+  },
+
+  // Get companies with approval request
+  getCompaniesWithApprovalRequest: async () => {
+    try {
+      const response = await axios.get("/admin/compines-for-approval");
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching companies:", error);
+    }
+  },
+
+  // PATCH Approve company's request
+  approveCompanyRequest: async (id: string) => {
+    try {
+      const response = await axios.patch(`/admin/approve-request/${id}`);
+      return response;
+    } catch (error) {
+      console.error("Error in aprroval:", error);
     }
   },
 

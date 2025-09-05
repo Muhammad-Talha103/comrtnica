@@ -16,11 +16,14 @@ import AnnouncementBlock from "../../components/appcomponents/AnnouncementBlock"
 import { FlowerShops2 } from "../../components/appcomponents/FlowerShops";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getTemplateCardImages } from "@/utils/commonUtils";
+import { useAuth } from "@/hooks/useAuth";
 
 const MemoryPageContent = ({ params }) => {
   const { slugKey } = params;
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  const { user, isLoading } = useAuth();
 
   const [isShowModal, setIsShowModal] = useState(false);
   const [select_id, setSelect_Id] = useState("");
@@ -37,13 +40,7 @@ const MemoryPageContent = ({ params }) => {
 
   useEffect(() => {
     fetchMemory();
-  }, []);
-  console.log(obituary, "is obituary");
-  useEffect(() => {
-    console.log("set is modal:", isShowModal);
-  }, [isShowModal]);
-
-  console.log('>>>>>>>>> obituary', obituary);
+  }, [user, isLoading]);
 
   const fetchMemory = async () => {
     try {

@@ -8,6 +8,8 @@ import ModalNew3 from "../components/appcomponents/ModalNew3";
 import ModalNew4 from "../components/appcomponents/ModalNew4";
 import ModalNew5 from "../components/appcomponents/ModalNew5";
 import ModalNew6 from "../components/appcomponents/ModalNew6";
+import MemoryModal from "../components/appcomponents/MemoryModal";
+import InfoModal from "../components/appcomponents/InfoModal";
 
 const MemoryPage = ({ params }) => {
   const handleMemoryChange = () => {
@@ -23,7 +25,8 @@ const MemoryPage = ({ params }) => {
   const [isShowModal4, setIsShowModal4] = useState(false);
   const [isShowModal5, setIsShowModal5] = useState(false);
   const [isShowModal6, setIsShowModal6] = useState(false);
-
+  const [memoryPopupOpen, setMemoryPopupOpen] = useState(false);
+  const [infoPopupOpen, setInfoPopupOpen] = useState(false);
   return (
     <Layout
       from={"3"}
@@ -73,6 +76,19 @@ const MemoryPage = ({ params }) => {
           set_Id={setSelect_Id}
         />
 
+        <MemoryModal
+          isOpen={memoryPopupOpen}
+          onClose={() => setMemoryPopupOpen(false)}
+        />
+        <InfoModal
+          icon={"/giftbox.svg"}
+          heading={"Company's name"}
+          text={"ti podarja digitalno kartico"}
+          name={"Name Lastname"}
+          isOpen={infoPopupOpen}
+          onClose={() => setInfoPopupOpen(false)}
+        />
+
         {/* Button Box */}
         <div className="bg-zinc-400 shadow-md rounded-xl p-8 w-full max-w-md space-y-4 text-center">
           <h1 className="text-2xl font-semibold text-gray-800">
@@ -116,6 +132,18 @@ const MemoryPage = ({ params }) => {
               className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200"
             >
               Modal 6
+            </button>
+            <button
+              onClick={() => setMemoryPopupOpen(true)}
+              className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200"
+            >
+              Modal 7
+            </button>
+            <button
+              onClick={() => setInfoPopupOpen(true)}
+              className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200"
+            >
+              Modal 8
             </button>
           </div>
         </div>

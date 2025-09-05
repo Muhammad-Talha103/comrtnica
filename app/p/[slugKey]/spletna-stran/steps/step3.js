@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import Link from "next/link";
 import FuneralCompanyPreview from "../components/funeral-company-preview";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Step3({ data, onChange, handleStepChange }) {
   const [cemetries, setCemetries] = useState([
@@ -21,15 +22,8 @@ export default function Step3({ data, onChange, handleStepChange }) {
     },
   ]);
   const [companyId, setCompanyId] = useState(null);
-  const [user, setUser] = useState(null);
-  const router = useRouter();
-  useEffect(() => {
-    const currUser = localStorage.getItem("user");
-    if (!currUser) {
-      return;
-    }
-    setUser(JSON.parse(currUser));
-  }, [router]);
+  const { user } = useAuth();
+
   useEffect(() => {
     if (data && data !== null) {
       setCompanyId(data.id);
@@ -90,6 +84,7 @@ export default function Step3({ data, onChange, handleStepChange }) {
         formData.append(`cemeteries[${index}][name]`, cemetery.name);
         formData.append(`cemeteries[${index}][address]`, cemetery.address);
         formData.append(`cemeteries[${index}][city]`, user?.city ?? "");
+        formData.append(`cemeteries[${index}][updated]`, true);
 
         // If image is selected, append it
         if (cemetery.image) {
@@ -250,6 +245,9 @@ export default function Step3({ data, onChange, handleStepChange }) {
           alt="Spletna stran"
           className="w-full h-full object-contain"
         />
+      </div>
+      <div className="w-full text-[16px] text-[#6D778E] leading-[24px] mt-[29px] italic col-span-2">
+        Op. Shranjevanje lahko včasih traja tudi pol minute. Počakajte prosim.
       </div>
     </>
   );

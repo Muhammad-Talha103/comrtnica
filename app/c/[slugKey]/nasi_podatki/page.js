@@ -1,7 +1,6 @@
 "use client";
 import CompanyAccountLayout from "@/app/components/appcomponents/CompanyAccountLayout";
 import companyService from "@/services/company-service";
-import API_BASE_URL from "@/config/apiConfig";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import ChangePasswordModal from "../../../components/appcomponents/ChangePasswordModal";
@@ -12,14 +11,18 @@ import toast from "react-hot-toast";
 import ModalNew from "../../../components/appcomponents/ModalNew";
 import shopService from "@/services/shop-service";
 import ModalNew6 from "../../../components/appcomponents/ModalNew6";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function AccountSettings() {
+  const { user, isLoading, isAuthenticated, refreshUserSession } =
+    useAuth();
+
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isPrivilegijiExpanded, setIsPrivilegijiExpanded] = useState(false);
 
   useEffect(() => {
     getCompleteCompanyData();
-  }, []);
+  }, [user, isLoading, isAuthenticated]);
 
   const [data, setData] = useState({});
   const [selectedCity, setSelectedCity] = useState(null);
@@ -27,26 +30,28 @@ export default function AccountSettings() {
   const [isShowModal6, setIsShowModal6] = useState(false);
   const [select_id, setSelect_Id] = useState("");
   const [firstPayload, setFirstPayload] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const toggleModal6 = () => {
     setIsShowModal1(false);
     setIsShowModal6(!isShowModal6);
-  }
+  };
 
   const getCompleteCompanyData = async () => {
     try {
+      if (!user) {
+        console.log("user not found");
+        return;
+      }
       const queryParams = {};
       queryParams.type = "FLORIST";
       const response = await companyService.getCompleteCompany(queryParams);
 
-      // Get user ID from local storage
-      const user = JSON.parse(localStorage.getItem("user"));
       const userId = user?.id;
 
       const shopData = await shopService.getFloristShops({
         companyId: data?.CompanyPage?.id,
-        userId: userId
+        userId: userId,
       });
 
       setData({
@@ -73,21 +78,35 @@ export default function AccountSettings() {
       .sort((a, b) => a.place.localeCompare(b.place, "sl")),
   ];
 
-  const handleCitySelect = async (item, deleted = '') => {
+  const handleCitySelect = async (item, deleted = "") => {
     try {
-      let cityPayload = data?.secondaryCity ? { thirdCity: item } : { secondaryCity: item };
-      if (deleted === 'secondary') {
+      let cityPayload = data?.secondaryCity
+        ? { thirdCity: item }
+        : { secondaryCity: item };
+      if (deleted === "secondary") {
         cityPayload = { secondaryCity: item };
-      } else if (deleted === 'third') {
+      } else if (deleted === "third") {
         cityPayload = { thirdCity: item };
       }
-      const response = await userService.updateMyUser(cityPayload);
-      toast.success("City Updated Successfully");
-      setSelectedCity(item);
-      setData((prevData) => ({
-        ...prevData,
-        ...cityPayload
-      }));
+      setLoading(true);
+      try {
+        const response = await userService.updateMyUser(cityPayload);
+
+        if (response) {
+          await refreshUserSession();
+
+        // const result = await updateUserAndRefreshSession({ city: newCity });
+        // if (result.success) {
+          toast.success("City updated and session refreshed!");
+          setSelectedCity(item);
+        } else {
+          toast.error("Failed to update city");
+        }
+      } catch (error) {
+        toast.error("Error updating city");
+      } finally {
+        setLoading(false);
+      }
     } catch (error) {
       console.log(error);
       toast.error("Error Updating City");
@@ -99,15 +118,24 @@ export default function AccountSettings() {
   }, [data]);
 
   // Check if there are any florist shops
-  const hasFloristShops = data?.CompanyPage?.FloristShops && data?.CompanyPage?.FloristShops?.length > 0;
+  const hasFloristShops =
+    data?.CompanyPage?.FloristShops &&
+    data?.CompanyPage?.FloristShops?.length > 0;
 
   const deleteShop = async (id) => {
-    setIsLoading(true);
-    await shopService.deleteShop(id);
-    setIsLoading(false);
-    getCompleteCompanyData();
-    toast.success('Florist shop deleted successfully.');
-  }
+    setLoading(true);
+    try {
+      const response = await shopService.deleteShop(id);
+      if (response.staus === 200) {
+        toast.success("Florist shop deleted successfully.");
+      }
+      getCompleteCompanyData();
+    } catch (error) {
+      toast.error("Error deleting florist shop.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <CompanyAccountLayout>
@@ -205,21 +233,25 @@ export default function AccountSettings() {
                     key={index}
                     className="flex flex-col gap-2 text-[#3C3E41]"
                   >
-                    <div className="my-5 flex flex-col space-y-2">
+                    <div className="mt-5 flex flex-col space-y-2">
                       <span className="text-[#3C3E41]">{item.shopName}</span>
                       <span className="text-[#3C3E41]">{item.address}</span>
                       <span className="text-[#3C3E41]">{item.telephone}</span>
                       <span className="text-[#3C3E41]">{item.email}</span>
-                      {item?.website ? <span className="text-[#3C3E41]">{item?.website}</span> : null}
+                      {item?.website ? (
+                        <span className="text-[#3C3E41]">{item?.website}</span>
+                      ) : null}
                     </div>
                     <span
-                      className={`text-[#a4a4a4] table w-[50px] transition-opacity duration-200 ${isLoading ? 'opacity-50 cursor-not-allowed pointer-events-none' : 'cursor-pointer'
-                        }`}
-                      onClick={!isLoading ? () => deleteShop(item?.id) : null}
+                      className={`text-[#a4a4a4] table w-[50px] transition-opacity duration-200 mt-[-5px] ${
+                        isLoading
+                          ? "opacity-50 cursor-not-allowed pointer-events-none"
+                          : "cursor-pointer"
+                      }`}
+                      onClick={!loading ? () => deleteShop(item?.id) : null}
                     >
-                      Zbriši
+                      (Zbriši)
                     </span>
-
                   </div>
                 ))}
               </div>
@@ -252,7 +284,7 @@ export default function AccountSettings() {
                   {data?.secondaryCity}
                   <span
                     className="text-[red]"
-                    onClick={() => handleCitySelect(null, 'secondary')}
+                    onClick={() => handleCitySelect(null, "secondary")}
                   >
                     (Zbriši)
                   </span>
@@ -266,7 +298,7 @@ export default function AccountSettings() {
                   {data?.thirdCity}
                   <span
                     className="text-[red]"
-                    onClick={() => handleCitySelect(null, 'third')}
+                    onClick={() => handleCitySelect(null, "third")}
                   >
                     (Zbriši)
                   </span>
@@ -288,18 +320,29 @@ export default function AccountSettings() {
           >
             Privilegiji
             <svg
-              className={`ml-2 w-5 h-5 transition-transform ${isPrivilegijiExpanded ? 'rotate-180' : ''}`}
+              className={`ml-2 w-5 h-5 transition-transform ${
+                isPrivilegijiExpanded ? "rotate-180" : ""
+              }`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
             </svg>
           </h4>
 
           <div
-            className={`space-y-3 overflow-hidden transition-all duration-300 ${isPrivilegijiExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}
+            className={`space-y-3 overflow-hidden transition-all duration-300 ${
+              isPrivilegijiExpanded
+                ? "max-h-[1000px] opacity-100"
+                : "max-h-0 opacity-0"
+            }`}
           >
             {/* Florist List Publication */}
             <div className="flex items-center gap-3">
@@ -398,7 +441,9 @@ export default function AccountSettings() {
                 readOnly
                 className="w-4 h-4 text-[#0A85C2] bg-gray-100 border-gray-300 rounded focus:ring-[#0A85C2] focus:ring-2 cursor-not-allowed disabled:opacity-100 disabled:bg-[#0A85C2] disabled:checked:bg-[#0A85C2]"
               />
-              <span className="text-[#3C3E41]">Sodelovanje na spominskih straneh</span>
+              <span className="text-[#3C3E41]">
+                Sodelovanje na spominskih straneh
+              </span>
             </div>
 
             {/* Risk-Free Promotion */}

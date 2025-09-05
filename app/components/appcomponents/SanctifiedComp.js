@@ -275,7 +275,6 @@ const SanctifiedComp = ({ set_Id, setModal, dedications }) => {
           <ImageSliderBlock
             item={dedications[currentIndex]}
             index={currentIndex}
-            key={currentIndex}
           />
         </div>
         <div

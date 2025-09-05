@@ -71,11 +71,11 @@ const ShippingNotifications = ({
       prevIndex === images.length - 1 ? prevIndex : prevIndex + 1
     );
   };
-  const ImageSliderBlock = ({ image, index, key }) => {
+  const ImageSliderBlock = ({ image, index }) => {
     return (
       <>
         {index === currentIndex ? (
-          <div className="h-[500px]  w-[260px] ">
+          <div className="h-[500px]  w-[260px] " key={index}>
             <div className="mockup-phone h-[500px] w-[260px] shadow-custom-light-dark-box-image-wall ">
               <div style={{ height: 25, width: 120 }} className=" camera" />
               <div className="display w-full h-full flex justify-center items-center">
@@ -128,13 +128,23 @@ const ShippingNotifications = ({
           <div className="text-[20px] font-normal text-[#0977AE] mt-2">
             Vabilo
           </div>
-          <div className=" mobile:hidden flex flex-row items-end mt-20 mobile:justify-center whitespace-nowrap">
-            <div className="text-[28px] tablet:text-[28px] mobile:[24px] mobile:leading-[28px] leading-[38px] font-normal text-[#1E2125]">
-              BREZPLAČNO
+          <div className="mobile:hidden flex flex-col items-start mt-20 mobile:justify-center whitespace-nowrap">
+            {/* Row for BREZPLAČNO + v vaši cvetličarni */}
+            <div className="flex flex-row items-end">
+              <div className="text-[28px] tablet:text-[28px] mobile:text-[24px] mobile:leading-[28px] leading-[38px] font-normal text-[#1E2125]">
+                BREZPLAČNO
+              </div>
+              <div className="text-[20px] font-normal text-[#1E2125] ml-[5px]">
+                v vaši cvetličarni
+              </div>
             </div>
-            <div className="text-[20px] font-normal text-[#1E2125] ml-[5px]">
-              v vaši cvetličarni
-            </div>
+
+            {/* Paragraph underneath */}
+            <p className="text-[#6D778E] text-[14px] jdmobile:text-[12px] pt-5">
+              Op. Datum in kraj pogreba ob času objave osmrtnice običajno
+              <br />
+              niso znani in so vnešeni kasneje (velja za prve tri kartice).
+            </p>
           </div>
         </div>
         <div className="relative flex w-full desktop:ml-10 flex-col">
@@ -172,9 +182,10 @@ const ShippingNotifications = ({
               </button>
               <div className="inline-flex flex-row gap-[10px] desktop:hidden">
                 {images.map((image, index) => (
-                  <>
+                  <div key={index}>
                     {index === currentIndex ? (
                       <div
+                        key={index}
                         className="w-[16px] h-[16px] bg-white rounded-full"
                         style={{
                           background:
@@ -185,6 +196,7 @@ const ShippingNotifications = ({
                       ></div>
                     ) : (
                       <div
+                        key={index}
                         className="w-[16px] h-[16px] bg-white rounded-full"
                         style={{
                           background:
@@ -192,7 +204,7 @@ const ShippingNotifications = ({
                         }}
                       ></div>
                     )}
-                  </>
+                  </div>
                 ))}
               </div>
               <button
@@ -208,19 +220,29 @@ const ShippingNotifications = ({
               </button>
             </div>
 
-            <div className="mobile:flex hidden flex-row items-end mt-5 mobile:justify-center whitespace-nowrap">
-              <div
-                onClick={() => {
-                  set_Id("drugega");
-                  setModal(true);
-                }}
-                className="text-[24px] cursor-pointer leading-[28px] font-normal text-[#1E2125]"
-              >
-                BREZPLAČNO
+            <div className="mobile:flex hidden flex-col items-center mt-5 whitespace-nowrap">
+              {/* Row for BREZPLAČNO + v vaši cvetličarni */}
+              <div className="flex flex-row items-end mobile:justify-center">
+                <div
+                  onClick={() => {
+                    set_Id("drugega");
+                    setModal(true);
+                  }}
+                  className="text-[24px] cursor-pointer leading-[28px] font-normal text-[#1E2125]"
+                >
+                  BREZPLAČNO
+                </div>
+                <div className="text-[20px] font-normal text-[#1E2125] ml-[5px]">
+                  v vaši cvetličarni
+                </div>
               </div>
-              <div className="text-[20px] font-normal text-[#1E2125] ml-[5px]">
-                v vaši cvetličarni
-              </div>
+
+              {/* Paragraph underneath */}
+              <p className="text-[#6D778E] text-[14px] jdmobile:text-[12px] pt-3 text-center">
+                Op. Datum in kraj pogreba ob času objave osmrtnice običajno
+                <br />
+                niso znani in so vnešeni kasneje (velja za prve tri kartice).
+              </p>
             </div>
           </div>
         </div>

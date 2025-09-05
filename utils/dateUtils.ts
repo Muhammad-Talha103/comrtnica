@@ -40,6 +40,7 @@ export function formatDayAndTimeSlovenian(
   const time = date.toLocaleTimeString("sl-SI", {
     hour: "2-digit",
     minute: "2-digit",
+    hour12: false
   });
   return { dayName, time };
 }

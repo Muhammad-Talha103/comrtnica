@@ -7,6 +7,7 @@ import faqService from "@/services/faq-service";
 import { toast } from "react-hot-toast";
 import FuneralCompanyPreview from "../components/funeral-company-preview";
 import RichTexEditor from "@/app/components/form/rich-editor";
+import { useAuth } from "@/hooks/useAuth";
 
 const defaultFaqs = [
   {
@@ -37,15 +38,8 @@ export default function Step5({ data, onChange, handleStepChange }) {
   });
 
   const [companyId, setCompanyId] = useState(data?.id);
-  const [user, setUser] = useState(null);
-  const router = useRouter();
-  useEffect(() => {
-    const currUser = localStorage.getItem("user");
-    if (!currUser) {
-      return;
-    }
-    setUser(JSON.parse(currUser));
-  }, []);
+
+  const { user } = useAuth();
 
   const handleFaqChange = (index, updatedFaq) => {
     const updatedFaqs = [...faqs];
@@ -237,6 +231,9 @@ export default function Step5({ data, onChange, handleStepChange }) {
           alt="Spletna stran"
           className="w-full h-full object-contain"
         />
+      </div>
+      <div className="w-full text-[16px] text-[#6D778E] leading-[24px] mt-[29px] italic col-span-2">
+        Op. Shranjevanje lahko včasih traja tudi pol minute. Počakajte prosim.
       </div>
     </>
   );

@@ -6,11 +6,11 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import companyService from "@/services/company-service";
 import FuneralCompanyPreview from "../components/funeral-company-preview";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Step6({ data, onChange, handleStepChange }) {
   const [openBlock, setOpenBlock] = useState(1);
   const [companyId, setCompanyId] = useState(null);
-  const [user, setUser] = useState(null);
   const [workingHours, setWorkingHours] = useState(null);
   const [emergencyPhone, setEmergencyPhone] = useState(null);
   const [workingHourHighlightText, setWorkingHourHighlightText] =
@@ -23,20 +23,13 @@ export default function Step6({ data, onChange, handleStepChange }) {
     },
   ]);
 
-  console.log(openBlock);
+  const { user } = useAuth();
+
 
   const addSliderBlock = () => {
     setSliderBlocks([...sliderBlocks, { id: sliderBlocks.length + 1 }]);
   };
 
-  const router = useRouter();
-  useEffect(() => {
-    const currUser = localStorage.getItem("user");
-    if (!currUser) {
-      return;
-    }
-    setUser(JSON.parse(currUser));
-  }, [router]);
   useEffect(() => {
     if (data && data !== null) {
       setCompanyId(data.id);
@@ -94,25 +87,28 @@ export default function Step6({ data, onChange, handleStepChange }) {
       console.error("Error:", error);
       toast.error(
         error?.response?.data?.error ||
-          "Failed to update company. Please try again."
+        "Failed to update company. Please try again."
       );
       return false;
     }
   };
 
-  const handlePublish = async () => {
+  const handlePublish = async (send = '') => {
     try {
-      if (data && data.status === "DRAFT") {
+      if (data && data.status === "SENT_FOR_APPROVAL") {
         toast.error("Company is already sent for approval");
         return false;
       }
       const formData = new FormData();
       formData.append("status", "DRAFT");
+      if (send) {
+        formData.append("allowStatus", send);
+      }
 
       const response = await companyService.updateCompany(formData, companyId);
       onChange(response.company);
-      toast.success("Company Sent For Approval Successfully");
-      router.push(`/funeralcompany/${companyId}`);
+      toast.success("Poslano v potrditev. Hvala.");
+      // router.push(`/funeralcompany/${companyId}`);
 
       return true;
       console.log(response);
@@ -234,7 +230,7 @@ export default function Step6({ data, onChange, handleStepChange }) {
                     setOpenBlock(2);
                   }
                 } else {
-                  handlePublish();
+                  handlePublish('send');
                   handleStepChange(6);
                 }
               }}
@@ -250,6 +246,9 @@ export default function Step6({ data, onChange, handleStepChange }) {
           alt="Spletna stran"
           className="w-full h-full object-contain"
         />
+      </div>
+      <div className="w-full text-[16px] text-[#6D778E] leading-[24px] mt-[29px] italic col-span-2">
+        Op. Shranjevanje lahko včasih traja tudi pol minute. Počakajte prosim.
       </div>
     </>
   );

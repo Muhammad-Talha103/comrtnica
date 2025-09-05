@@ -1,9 +1,12 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import imgFlag from "@/public/img_Flag.png";
 import { format } from "date-fns";
+import { useRouter } from "next/navigation";
 
 const ObituaryPublished = ({ set_Id, setModal, data }) => {
+  const router = useRouter();
   return (
     <>
       <div className="mx-auto border-t-[1px] border-b-[1px] border-[#DCE4E4] w-full flex items-center overflow-hidden bg-[#FFFAF826] py-[68px] mobile:py-[30px]">
@@ -30,9 +33,9 @@ const ObituaryPublished = ({ set_Id, setModal, data }) => {
               {/* <div className="block text-[14px] text-[#36556C] leading-[100%] mb-[12px] mobile:hidden">
                 {data?.Company?.address}
               </div> */}
-              <div className="block text-[14px] text-[#36556C] leading-[100%] mb-[12px] mobile:hidden">
+              {/* <div className="block text-[14px] text-[#36556C] leading-[100%] mb-[12px] mobile:hidden">
                 Tel. {data?.Company?.phone}
-              </div>
+              </div> */}
               {/* {data?.Company?.type === "FLORIST" ? (
                 <div className="block text-[14px] text-[#36556C] leading-[100%] mobile:hidden">
                   {`${
@@ -46,12 +49,12 @@ const ObituaryPublished = ({ set_Id, setModal, data }) => {
                   }/p/funeralcompany/${data?.User?.slugKey}`}
                 </div>
               )} */}
-              <div className="text-[16px] text-[#1E2125] leading-[100%] mb-[12px] hidden mobile:block">
-                Name of funeral company:{data?.User?.name}
+              <div className="text-[16px] text-[#36556C] leading-[100%] mb-[12px] hidden mobile:block">
+                {data?.User?.name}
               </div>
-              <div className="text-[14px] text-[#1E2125] leading-[100%] mb-[16px] hidden mobile:block">
+              {/* <div className="text-[14px] text-[#1E2125] leading-[100%] mb-[16px] hidden mobile:block">
                 Tel. {data?.Company?.phone}
-              </div>
+              </div> */}
               {/* <div className="block tablet:hidden mobile:hidden text-[16px] text-[#1E2125] leading-[18.75px] font-variation-customOpt16 ml-[2px]">
               This obituary was published on{" "}
               {data && data.createdTimestamp
@@ -103,9 +106,10 @@ const ObituaryPublished = ({ set_Id, setModal, data }) => {
                 </div>
                 <div
                   onClick={() => {
-                    set_Id("error_report"), setModal(true);
+                    // set_Id("error_report"), setModal(true);
+                    router.push("/kontakt");
                   }}
-                  className="mt-[1px] "
+                  className="mt-[1px] cursor-pointer"
                 >
                   Sporoči napake
                 </div>

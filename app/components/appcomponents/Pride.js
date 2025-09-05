@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import API_BASE_URL from "@/config/apiConfig";
 const Pride = ({ data }) => {
   return (
     <div
@@ -47,7 +46,7 @@ const Pride = ({ data }) => {
         >
           {data?.secondary_image ? (
             <Image
-              src={`${API_BASE_URL}/${data.secondary_image}`}
+              src={data.secondary_image}
               alt="Pride_img"
               width={0}
               height={0}
@@ -77,7 +76,7 @@ const Pride = ({ data }) => {
         </div>
       </div>
 
-      {!data.id && (
+      {!data?.id && (
         <div
           className="hidden z-[45] absolute desktop:w-[1200px] tablet:w-[680px] mobile:w-[360px] justify-end
                 mobile:mt-[4050px] tablet:mt-[3700px] desktop:mt-[10%] desktop:flex

@@ -34,8 +34,6 @@ export default function Spominske() {
     }
   };
 
-  console.log('>>>>>>>> currentMonthData', currentMonthData);
-
   useEffect(() => {
     getObituaries();
   }, []);
@@ -70,9 +68,9 @@ export default function Spominske() {
               <div className="flex justify-between items-start mb-[2px]">
                 <h2 className="text-[32px] text-[#CCCCCC] font-light leading-none flex items-end gap-[10px]">
                   <span className="font-bold text-[#6D778E] text-[40px]">
-                    {currentMonthData?.obituaries?.length ?? 0}
+                    {obituaries?.length ?? 0}
                   </span>
-                  I <span>{monthData.currentMonthCount}</span>
+                  I <span>{currentMonthData?.obituaries?.length ?? 0}</span>
                 </h2>
                 <img
                   src="/ico_pregled.png"

@@ -40,10 +40,10 @@ const Dropdown = ({
             ? "dropdown w-[306px] mobile:w-[240px] h-[48.48px]"
             : "dropdown w-[306px] h-[48.48px] "
           : isFromFlower
-          ? "dropdown w-[476px] h-[48px] tablet:w-[302px] mobile:w-full"
+          ? "dropdown w-[476px] h-[48px] tablet:w-[320px] mobile:w-[302px]"
           : isFromFlowerGreenBgTablet
           ? "dropdown w-[292px] desktop:w-[476px] h-[48px] tablet:w-[476px]"
-          : "dropdown w-[292px] desktop:w-[227px] h-[48px]  "
+          : "dropdown w-[292px] desktop:w-[227px] h-[48px]  z-[1]"
       }
     >
       <div

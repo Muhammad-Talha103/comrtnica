@@ -41,7 +41,7 @@ export default function Faq1() {
           Brezplačni vpis in oglaševanje
         </h1>
         <h2 className="text-[22px] mobile:hidden block mt-2 font-semibold text-center">
-          Za prvih 60 cvetličarn oziroma do konca septembra
+          Za prvih 60 cvetličarn oziroma 15. oktobra 2025
         </h2>
 
         <h2 className="text-[22px] mobile:block hidden mobile:font-[20px] mt-2 font-semibold text-center">
@@ -56,8 +56,7 @@ export default function Faq1() {
               stranke potrebujejo.
               <br />
               <br />
-              Brezplačno izdelavo vaše strani. Dva meseca (to je do konca
-              septembra 2025) brezplačne uporabe in oglaševanja in ekskluzivne
+              Brezplačno izdelavo vaše strani. Dva meseca (Poldrugi mesec) brezplačne uporabe in oglaševanja in ekskluzivne
               dodatne popuste kasneje. In seveda celo vrsto brezplačnih
               digitalnih produktov za vaše stranke. Prve pridružene cvetličarne
               pa bodo deležne še nekaj dodatnih ugodnosti.
@@ -160,7 +159,7 @@ export default function Faq1() {
               <a href="#" className="text-[#0A85C2] underline">
                 tukaj
               </a>
-              . Testirajte brezplačno in brez obveznosti do konca septembra. Ne
+              . Testirajte brezplačno in brez obveznosti do 15. oktobra 2025. Ne
               splača se čakati, ker prvih 60 naročnikov čaka nekaj posebej
               privlačnih dolgoročnih ugodnosti.
             </p>

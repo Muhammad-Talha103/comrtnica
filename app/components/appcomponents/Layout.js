@@ -18,6 +18,7 @@ import {
   LocalQuickReviewModal,
 } from "@/app/components/appcomponents/LocalQuickReview";
 import MemoryHeader from "./MemoryHeader";
+import { useAuth } from "@/hooks/useAuth";
 
 const Layout = ({
   children,
@@ -31,8 +32,11 @@ const Layout = ({
   handleCloseModal = () => {},
   isModalLayout = false,
 }) => {
+  const { user, isAuthenticated } = useAuth();
+
+  console.log("isAuthenticated", isAuthenticated);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [user, setUser] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isMessageModalVisible, setIsMessageModalVisible] = useState(false);
   const [isLocalQuickModalVisible, setIsLocalQuickModalVisible] =
@@ -43,13 +47,6 @@ const Layout = ({
   const OnDrawerButtonClicked = (item) => {
     console.log(item.name);
   };
-
-  useEffect(() => {
-    const currUser = localStorage.getItem("user");
-    if (currUser) {
-      setUser(JSON.parse(currUser));
-    }
-  }, []);
 
   return (
     <div>
@@ -114,7 +111,7 @@ const Layout = ({
             </div>
           )}
 
-          {isLocalQuickModalVisible && user === null && (
+          {isLocalQuickModalVisible && (
             <div className="flex">
               <LocalQuickReview
                 setIsLocalQuickModalVisible={setIsLocalQuickModalVisible}
@@ -123,7 +120,7 @@ const Layout = ({
           )}
 
           {isLocalQuickReviewModalVisible &&
-            user !== null && ( // Fixed prop name
+            isAuthenticated && ( // Fixed prop name
               <div className="flex">
                 <LocalQuickReviewModal
                   setIsLocalQuickReviewModalVisible={

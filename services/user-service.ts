@@ -128,6 +128,47 @@ const updateKeeperStatus = async (id: string) => {
   return response.data;
 };
 
+const saveContact = async (payload: any) => {
+  const endpoint = `/post/contact`;
+
+  const response = await axios.post(
+    endpoint, payload
+  );
+
+  return response.data;
+};
+
+const saveObitNotification = async (payload: any) => {
+  const endpoint = `/post/obit-notification`;
+
+  const response = await axios.post(
+    endpoint, payload
+  );
+
+  return response.data;
+};
+
+const getMyKeeperNotifications = async () => {
+  try {
+    const endpoint = "/user/me/keeper-gifts";
+
+    const response = await axios.get(endpoint);
+    return response.data;
+  } catch (error: unknown) {
+    return new Error("Network error or no response");
+  }
+};
+
+const updateCardStatus = async (id: string) => {
+  const endpoint = `/user/me/notify/${id}`;
+
+  const response = await axios.post(
+    endpoint
+  );
+
+  return response.data;
+};
+
 const userService = {
   registerUser,
   getMyUser,
@@ -138,7 +179,11 @@ const userService = {
   getMyCards,
   downloadCard,
   getMyKeeperStatus,
-  updateKeeperStatus
+  updateKeeperStatus,
+  saveContact,
+  saveObitNotification,
+  getMyKeeperNotifications,
+  updateCardStatus
 };
 
 export default userService;

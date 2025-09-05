@@ -130,7 +130,13 @@ const Carousel = () => {
               className="flex flex-row items-center border-b border-[#D4D4D4] w-full h-[64px] last:border-b-0"
             >
               <h1 className="text-[#0A85C2] font-normal text-sm mobile:text-lg tablet:text-lg desktop:text-xl w-[50px] mobile:w-[60px] tablet:w-[75px] desktop:w-[97px] text-center flex-shrink-0">
-                {item.funeralTimestamp ? new Date(item.funeralTimestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '--:--'}
+                {item.funeralTimestamp
+                  ? new Date(item.funeralTimestamp).toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                  })
+                  : '--:--'}
               </h1>
               <h3 className="text-[#3C3E41] font-semibold text-[12px] mobile:text-[14px] tablet:text-[16px] desktop:text-[18px] flex-1 min-w-0 pl-[8px] mobile:pl-[12px] tablet:pl-[16px] desktop:pl-[22px] truncate">
                 {item.name} {item.sirName}

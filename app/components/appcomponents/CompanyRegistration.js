@@ -354,7 +354,8 @@ const CompanyRegistration = ({ set_Id, setModal }) => {
 
         <div
           onClick={() => {
-            set_Id("error_report"), setModal(true);
+            // set_Id("error_report"), setModal(true);
+            router.push('/kontakt')
           }}
           className="text-[16px] cursor-pointer px-[25px] mobile:py-[8px] text-[#414B5A] h-full flex items-center bg-white/50 rounded-[8px] 
         shadow-custom-dark-to-white leading-[24px] font-variation-customOpt18 border-[1px] border-[#FFFFFF]"

@@ -3,7 +3,6 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import omr from "@/public/omr.png";
-import back_icon from "@/public/back_icon.png";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import ButtonWhiteBG from "./buttonwhitebg";
@@ -11,6 +10,9 @@ import ButtonLightGreen from "./buttonLightGreen";
 import FooterMobile from "../appcomponents/FooterMobile";
 import CompanyFooterMobile from "./CompanyFooterMobile";
 import { usePathname } from "next/navigation";
+import backIcon from "@/public/memory_header_left.png";
+import { useSession } from "next-auth/react";
+import { useAuth } from "@/hooks/useAuth";
 
 function UserCompanyHeaderNew({
   onMenuClick,
@@ -24,8 +26,12 @@ function UserCompanyHeaderNew({
 }) {
   const router = useRouter();
   const pathname = usePathname();
-
+  const { ghostLogin } = useAuth();
+  const { data: session } = useSession();
+  const isGhost = session?.user?.me?.isGhost;
+  const adminId = session?.user?.me?.adminId;
   const [isButtonHide, setIsButtonHide] = useState(false);
+  console.log('>>>>>> adminId', adminId, isGhost, session);
 
   const absolutePath = pathname.startsWith("/c") ? "/c" : "/p";
 
@@ -34,24 +40,20 @@ function UserCompanyHeaderNew({
       <header className="fixed top-0 left-0 right-0 bg-white shadow-lg z-50 ">
         <div className=" flex w-full justify-center">
           {/* 17 October 2024 */}
-          <div
-            className=" flex 
-                        w-full px-[15.6px] h-[80px]
-                        tabletUserAcc:max-w-[764px] tabletUserAcc:w-full 
-                        desktopUserAcc:w-[1260px] desktopUserAcc:px-[18px] justify-between items-center
-                        "
-          >
+          <div className="flex w-full h-[68px] tablet:w-[744px] mobile:w-[360px] mobile:px-0 mx-auto tablet:h-[80px] px-4 tablet:px-6 desktop:w-[1200px] desktop:h-[92.02px] desktop:px-[18px]">
             <div className="flex items-center gap-3 justify-between w-full mx-5">
-              <Link href={"/"} className="flex items-center ">
+              <Link href="/" className="flex">
                 <Image
                   src={omr}
                   alt="App Logo"
-                  className="box-border h-[21px] w-[166.76px]"
+                  width={500}
+                  height={500}
+                  className="box-border relative bottom-[2px] h-[22px] w-[182.76px] desktop:w-[255.31px] desktop:h-[32px]"
                 />
               </Link>
 
               <div
-                className=" flex flex-col tabletUserAcc:hidden mobileUserAcc:hidden items-center cursor-pointer "
+                className=" hidden flex-col tabletUserAcc:hidden mobileUserAcc:hidden items-center cursor-pointer "
                 onClick={onMenuClick}
               >
                 <Image
@@ -61,8 +63,13 @@ function UserCompanyHeaderNew({
                   className="w-[32px] h-[25px]"
                 />
               </div>
-              <div className="hidden tabletUserAcc:flex mobileUserAcc:flex items-center gap-[35px]">
-                <div className="flex items-center gap-2">
+              {isGhost && adminId ? (
+                <button className="text-[#333]" onClick={async () => {
+                  await ghostLogin({ userId: adminId, adminId: 0 })
+                }}>Nazaj k skrbniku</button>
+              ) : null}
+              <div className="flex items-center gap-[35px]">
+                <div className="flex hidden tabletUserAcc:hidden mobileUserAcc:hidden items-center gap-2">
                   <img
                     src="/bell_icon.png"
                     alt="back"
@@ -72,15 +79,17 @@ function UserCompanyHeaderNew({
                     2
                   </span>
                 </div>
-                <div
-                  className="flex items-center"
-                  onClick={() => {
-                    // 23 October 2024
-                    router.back();
-                  }}
+                <button
+                  onClick={() => router.back()}
+                  className="p-1 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                  title="Nazaj"
                 >
-                  <Image src={back_icon} width={30} height={32} />
-                </div>
+                  <Image
+                    src={backIcon}
+                    alt="Back"
+                    className="h-8 w-8 mobile:h-7 mobile:w-7"
+                  />
+                </button>
               </div>
             </div>
           </div>
@@ -189,17 +198,17 @@ function UserCompanyHeaderNew({
 
                       {memories && memories.length > 0
                         ? memories.map((item, index) => (
-                            <Link
-                              href={"/memorypage"}
-                              className="my-5"
-                              key={index}
-                            >
-                              <ButtonLightGreen
-                                isMobile={true}
-                                placeholderText={`${item.name} ${item.sirName}`}
-                              />
-                            </Link>
-                          ))
+                          <Link
+                            href={"/memorypage"}
+                            className="my-5"
+                            key={index}
+                          >
+                            <ButtonLightGreen
+                              isMobile={true}
+                              placeholderText={`${item.name} ${item.sirName}`}
+                            />
+                          </Link>
+                        ))
                         : null}
                     </div>
                   )}
@@ -317,16 +326,16 @@ function UserCompanyHeaderNew({
 
                       {memories && memories.length > 0
                         ? memories.map((item, index) => (
-                            <Link
-                              href={"/memorypage"}
-                              className="mt-[10px]"
-                              key={index}
-                            >
-                              <ButtonLightGreen
-                                placeholderText={`${item.name} ${item.sirName}`}
-                              />
-                            </Link>
-                          ))
+                          <Link
+                            href={"/memorypage"}
+                            className="mt-[10px]"
+                            key={index}
+                          >
+                            <ButtonLightGreen
+                              placeholderText={`${item.name} ${item.sirName}`}
+                            />
+                          </Link>
+                        ))
                         : null}
                     </React.Fragment>
                   )}

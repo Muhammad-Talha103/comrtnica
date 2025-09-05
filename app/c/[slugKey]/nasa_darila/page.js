@@ -1,6 +1,7 @@
 "use client";
 import CompanyAccountLayout from "@/app/components/appcomponents/CompanyAccountLayout";
 import obituaryService from "@/services/obituary-service";
+import { getKeeperTypeById } from "@/utils/commonUtils";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -25,7 +26,7 @@ export default function Darila() {
       <div className="w-full max-w-[969px]">
         <div className="flex items-center gap-[37px] text-[#6D778E] mt-[62px]">
           <Link
-            href="/user/funeral/notifications"
+            href="/darila"
             className="bg-white rounded-lg py-4 px-6 flex items-center gap-4 justify-between shadow-[5px_5px_10px_rgba(194,194,194,0.5)] mt-[9px] relative overflow-hidden min-h-[55px] w-[320px]"
           >
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-end bg-gradient-to-b from-[rgba(10,133,194,1)] to-[rgba(24,96,163,1)]">
@@ -62,7 +63,7 @@ export default function Darila() {
             </div>
           </Link>
           <Link
-            href="/user/funeral/notifications"
+            href="/darila"
             className="bg-white rounded-lg py-4 px-6 flex items-center gap-4 justify-between shadow-[5px_5px_10px_rgba(194,194,194,0.5)] mt-[9px] relative overflow-hidden min-h-[55px] w-[320px]"
           >
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-end bg-gradient-to-b from-[#F916D6] to-[#9D208A]">
@@ -127,6 +128,7 @@ export default function Darila() {
 
                   const isEven = index % 2 === 0;
                   const rowBg = isEven ? "bg-white/40" : "bg-[#e3e9f0]";
+                  const keeperTime = getKeeperTypeById(log.time);
 
                   return (
                     <tr key={index} className={`${rowBg} text-[#3C3E41]`}>
@@ -157,7 +159,7 @@ export default function Darila() {
                         {log.giftedTo}
                       </td>
                       <td className="p-4 leading-[19px] font-variation-customOpt16 border-t border-b border-r rounded-r border-[#A1B1D4] text-[14px]">
-                        {log.typeInSL}
+                        {log.time ? keeperTime?.text : log.typeInSL}
                       </td>
                     </tr>
                   );

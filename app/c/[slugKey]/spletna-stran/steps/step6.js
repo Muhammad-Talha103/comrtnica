@@ -104,7 +104,7 @@ export default function Step6({
     return true;
   };
 
-  const handleShopSubmit = async () => {
+  const handleShopSubmit = async (send = '') => {
     try {
       // if (!validateFields()) return;
 
@@ -122,15 +122,16 @@ export default function Step6({
       const payload = {
         companyId,
         shops: JSON.stringify(shopsToSend),
+        allowStatus: send ?? ''
       };
       await handlePublish();
       const response = await shopService.createShop(payload);
-      onChange({
-        ...data,
-        shops: response.shops,
-      });
-      toast.success("Trgovine so ustvarjene, podjetje je poslano za odobritev");
-      router.push(`/floristdetails/${companyId}`);
+      // onChange({
+      //   ...data,
+      //   shops: response.shops,
+      // });
+      toast.success("Poslano v potrditev");
+      // router.push(`/floristdetails/${companyId}`);
 
       console.log(response);
     } catch (error) {
@@ -362,7 +363,7 @@ export default function Step6({
                   if (openBlock === 1) {
                     setOpenBlock(2);
                   } else {
-                    handleShopSubmit();
+                    handleShopSubmit('send');
                     handleStepChange(6);
                   }
                 }}

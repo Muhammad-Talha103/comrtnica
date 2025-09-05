@@ -7,12 +7,12 @@ import { CheckIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
 import { toast } from "react-hot-toast";
 import userService from "@/services/user-service";
-import authService from "@/services/auth-service";
 import { redirectToRoleBasedRoute } from "@/utils/navigationUtils";
-import { isAuthenticated, getUser } from "@/utils/authUtils";
+import { useAuth } from "@/hooks/useAuth";
 
 const Registration = () => {
   const router = useRouter();
+  const { login, user, isLoadingm, isAuthenticated} = useAuth();
 
   const [inputValueEmail, setInputValueEmail] = useState("");
   const [inputValueGeslo, setInputValueGeslo] = useState("");
@@ -31,13 +31,12 @@ const Registration = () => {
   
   // Check if user is already logged in and redirect
   useEffect(() => {
-    if (isAuthenticated()) {
-      const user = getUser();
+    if (isAuthenticated) {
       if (user && user.role && user.slugKey) {
         redirectToRoleBasedRoute(user.role, user.slugKey, isDesktop);
       }
     }
-  }, [isDesktop]);
+  }, [user, isAuthenticated, isDesktop]);
 
   const [activeDiv, setActiveDiv] = useState("login");
 
@@ -111,23 +110,25 @@ const Registration = () => {
     }
 
     try {
-      const payload = {
+      const credentials = {
         email: inputValueEmail,
         password: inputValueGeslo,
       };
 
-      const response = await authService.login(payload);
-      console.log(response);
-      if (response.error) {
+      const response = await login(credentials);
+      console.log("loginResponse", response);
+
+      if (response.status === 401) {
+        toast.error(
+          response.error || "Invalid Credentials!"
+        );
+        return;
+      } else if (response.error) {
         toast.error(
           response.error || "Something went wrong. Please try again!"
         );
         return;
       }
-
-      localStorage.setItem("user", JSON.stringify(response.user));
-
-      toast.success(response.message || "Login successful!");
 
       if (response?.user) {
         const role = response.user.role;
@@ -137,6 +138,7 @@ const Registration = () => {
         redirectToRoleBasedRoute(role, slugKey, isDesktop);
       }
     } catch (error) {
+      console.log(error);
       toast.error("Login failed. Please check your credentials.");
     }
   };
@@ -156,7 +158,7 @@ const Registration = () => {
       />
 
       {/* Content Container */}
-      <form className="relative z-10 max-w-[1920px] min-h-screen mobile:pb-[41px] mobile:pt-[71px] w-full desktop:mt-[92.02px] mobile:mt-[72px] tablet:mt-[79px] flex flex-col justify-center items-center mx-auto">
+      <form className="relative z-10 max-w-[1920px] min-h-screen mobile:pb-[10px] mobile:pt-[0px] w-full desktop:mt-[92.02px] mobile:mt-[0px] tablet:mt-[79px] flex flex-col justify-center items-center mx-auto">
         <div
           className="w-[550px] tablet:pt-[79px] tablet:pb-[54px] desktop:pt-[79px] desktop:pb-[54px] mobile:max-w-[340px] mobile:w-full mobile:mx-2 flex flex-col
        tablet:bg-gray-300/30 desktop:bg-gray-300/30 desktop:backdrop-blur tablet:backdrop-blur rounded-2xl border-[2px] border-[#FFFFFF] desktop:shadow-lg tablet:shadow-lg mobile:border-[0px]"
@@ -389,9 +391,9 @@ const Registration = () => {
           >
             <div
               link
-              className="border-[1px] border-[#FFFFFF] rounded-[8px] tablet:shadow-custom-light-dark desktop:shadow-custom-light-dark bg-transparent mobile:border-[0px]"
+              className="border-[1px] border-[#000] rounded-[8px] tablet:shadow-custom-light-dark desktop:shadow-custom-light-dark bg-transparent mobile:border-[0px]"
             >
-              <div className="px-[25px] mobile:px-[10px] py-[12px] text-[16px] text-[#FFFFFF] mobile:text-[#414141] leading-[19px] font-variation-customOpt16">
+              <div className="px-[25px] mobile:px-[10px] py-[12px] text-[16px] text-[#000] mobile:text-[#414141] leading-[19px] font-variation-customOpt16">
                 Registracija za podjetja
               </div>
             </div>

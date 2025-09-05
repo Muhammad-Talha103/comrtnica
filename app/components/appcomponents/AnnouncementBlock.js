@@ -25,7 +25,7 @@ export default function AnnouncementBlock() {
           <span className="mobile:hidden">
             o Skrbniku je
             <Link
-              href={"/spominska-stran"}
+              href={"/spominska"}
               className="underline text-[#41C0FF] font-variation-customOpt16 font-normal italic"
             >
               tukaj

@@ -31,8 +31,8 @@ const cityOptions =  [
       return
     }
     setSelectedCity(item.place);
-    // Redirect to funerals page with selected city
-    router.push(`/pogrebi?city=${encodeURIComponent(item.place)}`);
+    // Redirect to florist page with selected city
+    router.push(`/cvetlicarne?city=${encodeURIComponent(item.place)}`);
   };
   return (
     <div className=' mx-auto w-full mobile:hidden tablet:block desktop:block'>
@@ -58,7 +58,7 @@ const cityOptions =  [
               <div className='text-[40px] customOpt40 leading-[46.88px] font-[400px] desktop:text-[#3C3E41] hidden desktop:block mobile:text-[28px] mobile:leading-[32.81px] whitespace-nowrap'>
                 Lokalne cvetličarne
               </div>
-              <div className='text-[40px] customOpt40 leading-[46.88px] font-[400px] tablet:text-white hidden tablet:block mobile:text-[28px] mobile:leading-[32.81px] whitespace-nowrap'>
+              <div className='text-[40px] customOpt40 leading-[46.88px] font-[400px] tablet:text-white hidden tablet:block mobile:text-[28px] tablet:text-[32px] mobile:leading-[32.81px] whitespace-nowrap'>
                 Poišči lokalne cvetličarne
               </div>
             </div>

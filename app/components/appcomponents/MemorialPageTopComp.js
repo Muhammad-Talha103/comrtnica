@@ -1,26 +1,50 @@
-import API_BASE_URL from "@/config/apiConfig";
 import Image from "next/image";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { format } from "date-fns";
 import toast from "react-hot-toast";
+import { useAuth } from "@/hooks/useAuth";
 
 import obituaryService from "@/services/obituary-service";
+import { useRouter } from "next/navigation";
 
-const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
+const MemorialPageTopComp = ({
+  set_Id,
+  setModal,
+  data,
+  updateObituary,
+  fetchMemory,
+}) => {
+  const { user } = useAuth();
+  const router = useRouter();
   const [currentURL, setCurrentURL] = useState("");
-  const [user, setUser] = useState(null);
   const [maxCondolances, setMaxCondolances] = useState(6);
   const [limitedCondolances, setLimitedCondolances] = useState([]);
+  const [currentCount, setCurrentCount] = useState(0);
+
+  const defaultMessage = {
+    message: "Počivaj v miru",
+    name: "osmrtnica.com",
+    relation: "",
+    createdTimestamp: data?.createdTimestamp ?? "",
+  };
+
+  useEffect(() => {
+    if (data && data?.id) {
+      setCurrentCount(data?.totalCandles);
+    }
+  }, [data]);
 
   const toggleText = () => {
     setShowFullObituaryText((prev) => !prev);
   };
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
+
+  const openCandleModal = () => {
+    setModal(true);
+  };
+
+  const closeCandleModal = () => {
+    setModal(false);
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -47,12 +71,12 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
   };
 
   const formattedBirthDate =
-    data && data.birthDate
-      ? format(new Date(data.birthDate), "dd.MM.yyyy")
+    data && data?.birthDate
+      ? format(new Date(data?.birthDate), "dd.MM.yyyy")
       : "";
   const formattedDeathDate =
-    data && data.deathDate
-      ? format(new Date(data.deathDate), "dd.MM.yyyy")
+    data && data?.deathDate
+      ? format(new Date(data?.deathDate), "dd.MM.yyyy")
       : "";
 
   const formatTitleCase = (str) => {
@@ -66,24 +90,25 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
       .join(" ");
   };
   const burnCandle = async () => {
-    if (!user) {
-      toast.error("Please sign in to light a candle");
-      return;
-    }
+    // if (!user) {
+    //   toast.error("Please sign in to light a candle");
+    //   return;
+    // }
 
-    const candleData = { userId: user.id };
+    const candleData = { userId: user ? user.id : null };
 
     try {
-      const response = await obituaryService.burnCandle(data.id, candleData);
+      const response = await obituaryService.burnCandle(data?.id, candleData);
 
-      if (response.status === 201) {
+      if (response?.candle?.id) {
         toast.success("Candle Burnt Successfully");
+        openCandleModal();
         set_Id("3");
-        setModal(true);
+        fetchMemory();
 
         const updatedCandles = {
-          ...data.candles,
-          totalCandles: (data.candles?.totalCandles || 0) + 1,
+          ...data?.candles,
+          totalCandles: (data?.candles?.totalCandles || 0) + 1,
           lastBurnedCandleTime: new Date().toISOString(),
           myLastBurntCandleTime: new Date(),
         };
@@ -97,15 +122,14 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
       console.error("Failed to burn candle:", error);
 
       if (error.status === 409) {
+        openCandleModal();
+        set_Id("3");
         toast.error("You can only burn one candle per 24 hours.");
       } else {
         toast.error(
           error.data?.message || "Error burning candle. Please try again."
         );
       }
-
-      set_Id("3");
-      setModal(true);
     }
   };
 
@@ -133,7 +157,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
   };
 
   useEffect(() => {
-    if (data.Condolences && data?.Condolences?.length > 0) {
+    if (data?.Condolences && data?.Condolences?.length > 0) {
       setLimitedCondolances(data?.Condolences.slice(0, maxCondolances));
     }
   }, [data, data?.Condolances, maxCondolances]);
@@ -195,13 +219,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                       }}
                     >
                       <Image
-                        src={
-                          data.image
-                            ? `${API_BASE_URL}/${data.image}`
-                            : data.gender === "Male"
-                            ? "/img_profile.png"
-                            : "/woman.png"
-                        }
+                        src={data?.image || "/user5.jpeg"}
                         alt="Slika"
                         width={1000}
                         height={1000}
@@ -214,22 +232,34 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                   </div>
                   <div className="flex flex-col justify-center mt-[50px]">
                     <div className="flex items-center justify-center h-[33px] tablet:h-[47px] desktop:h-[40px]">
-                      <h1 className="text-[#1E2125] text-[28px] tablet:text-[40px] desktop:text-[40px] font-variation-customOpt28 tablet:font-variation-customOpt40 desktop:font-variation-customOpt40 font-normal">
-                        {data.name && data.sirName
-                          ? `${formatTitleCase(data.name)} ${formatTitleCase(
-                              data.sirName
-                            )}`.length > 25
+                      {/* <h1 className="text-[#1E2125] text-[28px] tablet:text-[40px] desktop:text-[40px] font-variation-customOpt28 tablet:font-variation-customOpt40 desktop:font-variation-customOpt40 font-normal">
+                        {data?.name && data?.sirName
+                          ? `${formatTitleCase(data?.name)} ${formatTitleCase(
+                            data?.sirName
+                          )}`.length > 25
                             ? `${`${formatTitleCase(
-                                data.name
-                              )} ${formatTitleCase(data.sirName)}`.slice(
-                                0,
-                                25
-                              )}...`
-                            : `${formatTitleCase(data.name)} ${formatTitleCase(
-                                data.sirName
-                              )}`
+                              data?.name
+                            )} ${formatTitleCase(data?.sirName)}`.slice(
+                              0,
+                              25
+                            )}...`
+                            : `${formatTitleCase(data?.name)} ${formatTitleCase(
+                              data?.sirName
+                            )}`
                           : ""}
-                      </h1>
+                      </h1> */}
+                      {data?.name && data?.sirName && (
+                        <h1 className="text-[#1E2125] text-[28px] tablet:text-[40px] desktop:text-[40px] font-variation-customOpt28 tablet:font-variation-customOpt40 desktop:font-variation-customOpt40 font-normal">
+                          {(() => {
+                            const fullName = `${formatTitleCase(
+                              data?.name
+                            )} ${formatTitleCase(data?.sirName)}`;
+                            return fullName.length > 25
+                              ? `${fullName.slice(0, 25)}...`
+                              : fullName;
+                          })()}
+                        </h1>
+                      )}
                     </div>
                     <div className="flex items-center justify-center mt-[14px] h-[21px] tablet:h-[23px] desktop:h-[20px] ">
                       <div className="text-[#1E2125] text-[18px] tablet:text-[20px] desktop:text-[20px] font-variation-customOpt18 tablet:font-variation-customOpt20 desktop:font-variation-customOpt20 font-normal">
@@ -238,7 +268,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                     </div>
                     <div className="flex items-center justify-center mt-[14px] h-[21px] tablet:h-[23px] desktop:h-[20px] ">
                       <div className="text-[#414141] text-[18px] tablet:text-[20] desktop:text-[20px] font-variation-customOpt18 tablet:font-variation-customOpt20 desktop:font-variation-customOpt20 font-normal">
-                        {data.location ? formatTitleCase(data.location) : ""}
+                        {data?.location ? formatTitleCase(data?.location) : ""}
                       </div>
                     </div>
                     <div className="flex flex-col w-[100%] mt-[40px] tablet:[31px] desktop:mt-[30px] h-auto ">
@@ -254,7 +284,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                     </div>
                   </div>
                 </div>
-                {data && data.symbol && (
+                {data && data?.symbol && (
                   <>
                     <div
                       className="hidden desktop:flex tablet:flex absolute z-10  items-end w-[100%]  
@@ -265,7 +295,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                                               tablet:w-[90%] tablet:justify-end tablet:mt-[108px] desktop:w-[540px] desktop:pt-[0px] desktop:pl-[389px]
                                         "
                       >
-                        {data.symbol === "1" && (
+                        {data?.symbol === "1" && (
                           <Image
                             src={"/icon_cross.png"}
                             alt="Slika"
@@ -274,7 +304,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                             className="h-[94.29px] w-[73.19px] tablet:h-[116px] tablet:w-[89px] desktop:h-[105px] desktop:w-[89px] "
                           />
                         )}
-                        {data.symbol === "2" && (
+                        {data?.symbol === "2" && (
                           <Image
                             src={"/img_plus2.png"}
                             alt="Slika"
@@ -283,7 +313,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                             className="h-[94.29px] w-[73.19px] tablet:h-[116px] tablet:w-[89px] desktop:h-[105px] desktop:w-[89px] "
                           />
                         )}
-                        {data.symbol === "3" && (
+                        {data?.symbol === "3" && (
                           <Image
                             src={"/img_moon_star.png"}
                             alt="Slika"
@@ -292,7 +322,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                             className="h-[94.29px] w-[73.19px] tablet:h-[95px] tablet:w-[89px] desktop:h-[85px] desktop:w-[89px] "
                           />
                         )}
-                        {data.symbol === "4" && (
+                        {data?.symbol === "4" && (
                           <Image
                             src={"/img_plus3.png"}
                             alt="Slika"
@@ -301,7 +331,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                             className="h-[94.29px] w-[73.19px] tablet:h-[116px] tablet:w-[89px] desktop:h-[105px] desktop:w-[89px] "
                           />
                         )}
-                        {data.symbol === "5" && (
+                        {data?.symbol === "5" && (
                           <Image
                             src={"/img_star.png"}
                             alt="Slika"
@@ -314,7 +344,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                     </div>
                     <div className="flex tablet:hidden desktop:hidden absolute z-10 self-center  justify-end w-[330px] ">
                       <div className=" flex self-center mt-[86px] mr-[10px] ">
-                        {data.symbol === "1" && (
+                        {data?.symbol === "1" && (
                           <Image
                             src={"/icon_cross.png"}
                             alt="Slika"
@@ -323,7 +353,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                             className="h-[80.29px] w-[60.19px] "
                           />
                         )}
-                        {data.symbol === "2" && (
+                        {data?.symbol === "2" && (
                           <Image
                             src={"/img_plus2.png"}
                             alt="Slika"
@@ -332,7 +362,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                             className="h-[80.29px] w-[60.19px] "
                           />
                         )}
-                        {data.symbol === "3" && (
+                        {data?.symbol === "3" && (
                           <Image
                             src={"/img_moon_star.png"}
                             alt="Slika"
@@ -341,7 +371,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                             className="h-[65.29px] w-[60.19px] "
                           />
                         )}
-                        {data.symbol === "4" && (
+                        {data?.symbol === "4" && (
                           <Image
                             src={"/img_plus3.png"}
                             alt="Slika"
@@ -351,7 +381,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                           />
                         )}
 
-                        {data.symbol === "5" && (
+                        {data?.symbol === "5" && (
                           <Image
                             src={"/img_star.png"}
                             alt="Slika"
@@ -367,13 +397,13 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
               </div>
             </div>
             <div className="flex w-[100%]    desktop:mt-0 desktop:w-[50%]   ">
-              <div className="flex flex-col w-[100%]   desktop:items-end ">
+              <div className="flex flex-col w-[100%]   desktop:items-end items-center">
                 <div className="hidden desktop:flex h-[35px] w-full" />
                 <div
                   className="flex-col 
                   pt-4 w-[100%] mobile:px-[21px] mobile:pb-[19px]
                   tablet:px-[22px] tablet:pb-[15px]
-                  desktop:w-[517px] desktop:pl-[22px] desktop:pr-[17px] bg-gradient-to-br rounded-2xl from-[#E3E8EC] to-[#FFFFFF]"
+                  desktop:w-[517px] sm:w-[517px] desktop:pl-[22px] desktop:pr-[17px] bg-gradient-to-br rounded-2xl from-[#E3E8EC] to-[#FFFFFF]"
                   style={{
                     background:
                       "linear-gradient(113.63deg, #E3E8EC 0%, #FFFFFF 100%)",
@@ -421,11 +451,11 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                 <div
                   onClick={() => {
                     set_Id("14");
-                    setModal(true);
+                    openCandleModal();
                   }}
                   className="flex cursor-pointer self-end mt-[20px] pr-[7px] tablet:pr-[9px] tablet:mt-[12px] desktop:mt-[14px] h-[14px] tablet:h-[16px] desktop:h-[16px] items-center desktop:pr-[20px] tablet:mb-[26px] mobile:mb-[26px]"
                 >
-                  {/* {user && data.User && user.id === data.User.id && (
+                  {/* {user && data?.User && user.id === data?.User.id && (
                     <> */}
                   <Image
                     src={"/pan.png"}
@@ -442,15 +472,15 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                 </div>
 
                 {data &&
-                  (data.funeralTimestamp ||
+                  (data?.funeralTimestamp ||
                     (parsedEvents && parsedEvents.length > 0)) &&
                   [
-                    ...(data.funeralTimestamp
+                    ...(data?.funeralTimestamp
                       ? [
                           {
                             type: "funeral",
                             timestamp: new Date(
-                              data.funeralTimestamp
+                              data?.funeralTimestamp
                             ).getTime(),
                             details: data,
                           },
@@ -481,7 +511,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                       className="flex-col w-[100%] pt-4 
                       mobile:px-[21px]  mobile:pb-[25px] 
                       tablet:pb-[23px]  tablet:px-[22px]                          
-                      desktop:w-[517px]  desktop:pb-[14px] desktop:pl-[22px] desktop:pr-[17px] shadow-custom-light-dark-box bg-gradient-to-br rounded-2xl from-[#E3E8EC] to-[#FFFFFF] mb-[28px]"
+                      desktop:w-[517px] sm:w-[517px]  desktop:pb-[14px] desktop:pl-[22px] desktop:pr-[17px] shadow-custom-light-dark-box bg-gradient-to-br rounded-2xl from-[#E3E8EC] to-[#FFFFFF] mb-[28px]"
                       style={{
                         background:
                           "linear-gradient(113.63deg, #E3E8EC 0%, #FFFFFF 100%)",
@@ -496,12 +526,12 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                       </div>
                       <div className="bg-[#D4D4D4] h-[1px] w-[100%] my-4 " />
                       {[
-                        ...(data.funeralTimestamp
+                        ...(data?.funeralTimestamp
                           ? [
                               {
                                 type: "funeral",
                                 timestamp: new Date(
-                                  data.funeralTimestamp
+                                  data?.funeralTimestamp
                                 ).getTime(),
                                 details: data,
                               },
@@ -666,7 +696,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                 <div
                   className={`
                   flex-col pt-4 pl-[22px] pr-[18px] w-[100%]                       
-                  desktop:w-[517px]   desktop:pl-[22px] desktop:pr-[14px]
+                  desktop:w-[517px] sm:w-[517px]  desktop:pl-[22px] desktop:pr-[14px]
                   bg-gradient-to-br rounded-2xl from-[#E3E8EC] to-[#FFFFFF]
                   ${
                     parsedEvents.length === 90
@@ -720,12 +750,12 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                     <div className="flex flex-col mt-[5px]  tablet:mt-0 desktop:mt-0">
                       <div className="flex h-6 tablet:h-[40px] desktop:h-[36px] justify-end">
                         <p className="text-[#1E2125] text-[16px] font-variation-customOpt16 font-normal ">
-                          Skupno svečk: {data.totalCandles}
+                          Skupno svečk: {data?.totalCandles}
                         </p>
                       </div>
                       <div className="flex h-[29px] tablet:h-[40]  desktop:h-[40px]">
                         <p className="text-[#1E2125] text-[16px] font-variation-customOpt16 font-normal ">
-                          Skupno obiskov: {data.totalVisits}
+                          Skupno obiskov: {data?.totalVisits}
                         </p>
                       </div>
                     </div>
@@ -764,7 +794,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                             py-4      
                             pl-[21px] pr-[28px]
                             w-[100%] tablet:px-4 
-                            desktop:w-[517px] desktop:pl-[22px] desktop:pr-[17px] shadow-custom-light-dark-box bg-gradient-to-br rounded-2xl from-[#E3E8EC] to-[#FFFFFF]"
+                            desktop:w-[517px] sm:w-[517px] desktop:pl-[22px] desktop:pr-[17px] shadow-custom-light-dark-box bg-gradient-to-br rounded-2xl from-[#E3E8EC] to-[#FFFFFF]"
                   style={{
                     background:
                       "linear-gradient(113.63deg, #E3E8EC 0%, #FFFFFF 100%)",
@@ -786,7 +816,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                     <div
                       onClick={() => {
                         set_Id("4");
-                        setModal(true);
+                        openCandleModal();
                       }}
                       className="flex cursor-pointer flex-row items-center h-[50px] w-[209px] justify-center bg-[#f8ecda] border-[2px] border-[#d9a800] rounded-lg "
                     >
@@ -838,7 +868,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                             py-4      
                             pl-[21px] pr-[28px]
                             w-[100%] tablet:px-4 
-                            desktop:w-[517px] desktop:pl-[22px] desktop:pr-[17px]
+                            desktop:w-[517px] sm:w-[517px] desktop:pl-[22px] desktop:pr-[17px]
                              shadow-custom-light-dark-box bg-gradient-to-br rounded-2xl from-[#E3E8EC] to-[#FFFFFF]"
                   style={{
                     background:
@@ -866,9 +896,10 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
 
                 <div
                   onClick={() => {
-                    set_Id("error_report"), setModal(true);
+                    // set_Id("error_report"), openCandleModal();
+                    router.push("/kontakt");
                   }}
-                  className="flex self-end mt-4 tablet:mt-6 desktop:mt-6 h-[15px] desktop:h-[16px] items-center desktop:pr-[20px]"
+                  className="flex cursor-pointer self-end mt-4 tablet:mt-6 desktop:mt-6 h-[15px] desktop:h-[16px] items-center desktop:pr-[20px]"
                 >
                   <Image
                     src={"/flag.png"}
@@ -927,7 +958,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
               className="flex items-center mt-4 h-6 cursor-pointer"
               onClick={() => {
                 set_Id("20");
-                setModal(true);
+                openCandleModal();
               }}
             >
               <p className="text-[16px] text-[#414141] font-variation-customOpt16 font-normal">
@@ -939,13 +970,13 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
             <UserCircles
               onTextClick={() => {
                 set_Id("17");
-                setModal(true);
+                openCandleModal();
               }}
               onCircle={() => {
                 set_Id("20");
-                setModal(true);
+                openCandleModal();
               }}
-              users={data.SorrowBooks}
+              users={data?.SorrowBooks}
             />
           </div>
           {data?.Dedications && data?.Dedications.length > 0 ? null : (
@@ -953,7 +984,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
               className="ml-auto mr-[14px] mb-5 desktop:mr-[18%] flex items-center cursor-pointer "
               onClick={() => {
                 set_Id("13");
-                setModal(true);
+                openCandleModal();
               }}
             >
               <Image
@@ -973,7 +1004,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
               className="ml-auto mr-[14px] desktop:mr-[18%] flex items-center cursor-pointer "
               onClick={() => {
                 set_Id("6");
-                setModal(true);
+                openCandleModal();
               }}
             >
               <Image
@@ -998,15 +1029,15 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                 <div className="text-[#1E2125] text-[28px] tablet:text-[40px] desktop:text-[40px] font-variation-customOpt28 tablet:font-variation-customOpt40 desktop:font-variation-customOpt40 font-normal">
                   Posvetilo
                 </div>
-                <div className="text-[#0A85C2] text-[24px] font-[400] absolute top-[-3px] right-[-38px]">
+                {/* <div className="text-[#0A85C2] text-[24px] font-[400] absolute top-[-3px] right-[-38px]">
                   22
-                </div>
+                </div> */}
               </div>
               <div
                 className="flex items-center mt-4 h-6 cursor-pointer"
                 onClick={() => {
                   set_Id("13");
-                  setModal(true);
+                  openCandleModal();
                 }}
               >
                 <p className="text-[16px] text-[#414141] font-variation-customOpt16 font-normal text-center mobile:w-[306px] mobile:mx-auto">
@@ -1020,7 +1051,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
               className="mt-[30px] w-[720px] mobile:w-[321px] mx-auto flex items-center justify-end cursor-pointer mb-[18px] px-[10px]"
               onClick={() => {
                 set_Id("13");
-                setModal(true);
+                openCandleModal();
               }}
             >
               <Image
@@ -1035,7 +1066,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
               </p>
             </div>
 
-            <ContentSlider data={data.Dedications} />
+            <ContentSlider data={data?.Dedications} />
           </div>
         </div>
       )}
@@ -1046,9 +1077,9 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
               <div className="text-[#1E2125] text-[28px] tablet:text-[40px] desktop:text-[40px] font-variation-customOpt28 tablet:font-variation-customOpt40 desktop:font-variation-customOpt40 font-normal">
                 Nepozabni trenutki
               </div>
-              <div className="text-[#0A85C2] text-[24px] font-[400] absolute top-[-3px] right-[-38px]">
+              {/* <div className="text-[#0A85C2] text-[24px] font-[400] absolute top-[-3px] right-[-38px]">
                 22
-              </div>
+              </div> */}
             </div>
 
             <button
@@ -1058,7 +1089,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
               }}
               onClick={() => {
                 set_Id("6");
-                setModal(true);
+                openCandleModal();
               }}
             >
               <Image
@@ -1075,7 +1106,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
             <button
               onClick={() => {
                 set_Id("6");
-                setModal(true);
+                openCandleModal();
               }}
               className="flex gap-[8px] items-center justify-end w-[1024px] tablet:w-[610px] mobile:w-[321px] text-end desktop:hidden text-[#414141] text-[14px] font-[400] mt-3 mb-[20px]"
             >
@@ -1102,7 +1133,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                       }}
                     >
                       <Image
-                        src={`${API_BASE_URL}/${item.fileUrl}`}
+                        src={item.fileUrl}
                         alt="Slika"
                         width={200}
                         height={200}
@@ -1123,7 +1154,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                       }}
                     >
                       <Image
-                        src={`${API_BASE_URL}/${item.fileUrl}`}
+                        src={item.fileUrl}
                         alt="Slika"
                         width={200}
                         height={200}
@@ -1154,7 +1185,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
           }}
           onClick={() => {
             set_Id("sayings_condolence");
-            setModal(true);
+            openCandleModal();
           }}
         >
           <Image
@@ -1171,7 +1202,7 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
 
         <div className="w-[824px] tablet:w-[629px] mobile:w-[321px] grid grid-cols-2 mobile:grid-cols-1 mx-auto  gap-[24px]">
           <div className="flex flex-col gap-[27px]">
-            {limitedCondolances &&
+            {limitedCondolances?.length > 0 ? (
               limitedCondolances
                 .filter((_, index) => index % 2 === 0)
                 .map((item, index) => (
@@ -1199,7 +1230,32 @@ const MemorialPageTopComp = ({ set_Id, setModal, data, updateObituary }) => {
                       </span>
                     </div>
                   </div>
-                ))}
+                ))
+            ) : (
+              <div
+                className="bg-white rounded-[3px] text-[16px] text-[#414141]"
+                style={{
+                  boxShadow: "5px 5px 10px 0px #C2C2C280",
+                }}
+              >
+                <div className="px-[17px] pt-[14px] pb-[28px]">
+                  {defaultMessage.message}
+                </div>
+                <div className="bg-[#E1E7E8] text-[#6D778E] px-[16px] py-[4px] flex justify-between">
+                  <div className="flex items-end gap-[4px]">
+                    <span className="text-[16px] leading-none">
+                      {defaultMessage.name}
+                    </span>
+                    <span className="text-[12px] leading-none">
+                      {defaultMessage.relation}
+                    </span>
+                  </div>
+                  <span className="text-[12px] leading-none">
+                    {formatDate(defaultMessage?.createdTimestamp)}
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
           <div className="flex flex-col gap-[27px]">
             {limitedCondolances &&
@@ -1275,12 +1331,9 @@ const UserCircles = ({ onTextClick, onCircle, users }) => {
           ?.reverse()
           .slice(0, 7)
           .map((item, index) => (
-            <Container
-              item={item}
-              index={index}
-              key={index}
-              onCircleClick={onCircle}
-            />
+            <div key={index}>
+              <Container item={item} index={index} onCircleClick={onCircle} />
+            </div>
           ))}
         {users?.length > 7 && (
           <button className="flex border-2 backdrop-blur-lg cursor-pointer bg-gradient-to-br from-[#FFFFFF80] to-[#FFFFFF30] border-[#FFFFFF] items-center justify-center w-[64px] h-[64px] rounded-full ml-[-10px]">
@@ -1295,12 +1348,9 @@ const UserCircles = ({ onTextClick, onCircle, users }) => {
           ?.reverse()
           .slice(0, 4)
           .map((item, index) => (
-            <Container
-              item={item}
-              index={index}
-              key={index}
-              onCircleClick={onCircle}
-            />
+            <div key={index}>
+              <Container item={item} index={index} onCircleClick={onCircle} />
+            </div>
           ))}
 
         {users?.length > 4 && (
@@ -1329,7 +1379,7 @@ const getConsistentGradientClass = (input) => {
   return gradientStyles[index].class;
 };
 
-const Container = ({ index, item, key, onCircleClick }) => {
+const Container = ({ index, item, onCircleClick }) => {
   const userIdentifier = item?.createdTimestamp || "default";
   const gradientClass = useMemo(
     () => getConsistentGradientClass(userIdentifier),
@@ -1382,11 +1432,11 @@ const ContentSlider = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev === 0 ? data.length - 1 : prev - 1));
+    setActiveIndex((prev) => (prev === 0 ? data?.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev === data.length - 1 ? 0 : prev + 1));
+    setActiveIndex((prev) => (prev === data?.length - 1 ? 0 : prev + 1));
   };
   const currentDedication = data[activeIndex];
   const formatDate = (timestamp) => {

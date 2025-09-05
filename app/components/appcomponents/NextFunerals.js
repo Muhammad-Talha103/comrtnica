@@ -23,7 +23,6 @@ const NextFunerals = () => {
       .sort((a, b) => a.place.localeCompare(b.place, "sl")),
   ];
 
-  
   const handleCitySelect = (item) => {
     if (item.id === "allCities") {
       setSelectedCity(null);
@@ -52,7 +51,7 @@ const NextFunerals = () => {
                 Pogrebi
               </div>
 
-              <div className="w-full h-[48px] hidden desktop:flex">
+              <div className="w-full h-[48px] hidden desktop:flex relative z-[60]">
                 <input
                   type="email"
                   placeholder="Išči po imenu / priimku"
@@ -75,7 +74,7 @@ const NextFunerals = () => {
                 </Link>
               </div>
 
-              <div className="w-full h-[48px] flex desktop:hidden ">
+              <div className="w-full h-[48px] flex desktop:hidden relative z-[60]">
                 <Dropdown
                   data={cityOptions}
                   label={"Občina"}
@@ -96,7 +95,7 @@ const NextFunerals = () => {
             <Image
               src={nodeTie}
               alt="Slika"
-              className="hidden tablet:flex mobile:flex mobile:absolute w-[94.79px] h-[159.08px] mobile:w-[135px] mobile:h-[191px] ml-[45px]"
+              className="hidden tablet:flex mobile:flex mobile:absolute w-[94.79px] h-[159.08px] mobile:w-[135px] mobile:h-[191px] ml-[45px] mobile:z-[0]"
             />
           </div>
         </div>

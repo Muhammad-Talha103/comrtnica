@@ -25,6 +25,9 @@ import { getYear, getMonth } from "date-fns"; // To extract year and month info
 import obituaryService from "@/services/obituary-service";
 import toast from "react-hot-toast";
 import keeperService from "@/services/keeper-service";
+import { useAuth } from "@/hooks/useAuth";
+import { usePathname } from "next/navigation";
+import userService from "@/services/user-service";
 
 const Modals = ({
   select_id,
@@ -53,13 +56,34 @@ const Modals = ({
   const [uploadedPicture, setUploadedPicture] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [verse, setVerse] = useState(null);
-  const [user, setUser] = useState(null);
   const [keeperEmail, setKeeperEmail] = useState(null);
   const [keeperMessage, setKeeperMessage] = useState(null);
+  const { user } = useAuth();
 
-  //
+  const [emails, setEmails] = useState([""]);
+  const [notifyMessage, setNotifyMessage] = useState([""]);
+
+  const handleEmailChange = (index, value) => {
+    const updatedEmails = [...emails];
+    updatedEmails[index] = value;
+    setEmails(updatedEmails);
+  };
+
+  const removeEmailField = (index) => {
+    if (emails.length === 1) return;
+    const updatedEmails = emails.filter((_, i) => i !== index);
+    setEmails(updatedEmails);
+  };
+
+  const addEmailField = () => {
+    setEmails([...emails, ""]);
+  };
+
   const closeModal = () => {
     setIsShowModal(false);
+    if (typeof window !== "undefined" && select_id == "3") {
+      window.location.reload();
+    }
   };
   //sorrow book
   const [name, setName] = useState(null);
@@ -481,19 +505,13 @@ const Modals = ({
 
   const [selectMusic, setSelectMusic] = useState("");
 
-  //get current user
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
-
   const isCompany = () => {
-    if (user && user.id === data.id) {
-      return true;
-    }
+    // This is not needed for now
     return false;
+    // if (user && user.id === data.id) {
+    //   return true;
+    // }
+    // return false;
   };
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -741,6 +759,25 @@ const Modals = ({
       : fileName; // If name is short, return original
   };
 
+  const submitNotification = async () => {
+    try {
+      if (!emails.length || !notifyMessage) {
+        toast.error("Fill all details");
+        return;
+      }
+
+      await userService.saveObitNotification({
+        emails,
+        message: notifyMessage,
+        obituaryId: data.id,
+      });
+      setIsShowModal(false);
+      toast.success("Request submitted successfully");
+    } catch (err) {
+      toast.error("Some error occured");
+    }
+  };
+
   return (
     <div className="w-full bg-[#E1E6EC] py-8 px-[12px] mobile:px-[8px] rounded-2xl border-[1px] border-[#6D778E] ">
       {select_id == "religious_symbol" ? (
@@ -757,8 +794,9 @@ const Modals = ({
                   setIsSelectedReligion("");
                 }
               }}
-              className={`p-[10px] ${isSelectedRelegion === "1" ? "shadow-custom-dark-to-white" : ""
-                }`}
+              className={`p-[10px] ${
+                isSelectedRelegion === "1" ? "shadow-custom-dark-to-white" : ""
+              }`}
             >
               <Image
                 src={"/icon_cross.png"}
@@ -776,8 +814,9 @@ const Modals = ({
                   setIsSelectedReligion("");
                 }
               }}
-              className={`p-[10px] ${isSelectedRelegion === "2" ? "shadow-custom-dark-to-white" : ""
-                }`}
+              className={`p-[10px] ${
+                isSelectedRelegion === "2" ? "shadow-custom-dark-to-white" : ""
+              }`}
             >
               <Image
                 src={"/img_plus2.png"}
@@ -795,8 +834,9 @@ const Modals = ({
                   setIsSelectedReligion("");
                 }
               }}
-              className={`py-[20px] px-[10px] ${isSelectedRelegion === "3" ? "shadow-custom-dark-to-white" : ""
-                }`}
+              className={`py-[20px] px-[10px] ${
+                isSelectedRelegion === "3" ? "shadow-custom-dark-to-white" : ""
+              }`}
             >
               <Image
                 src={"/img_moon_star.png"}
@@ -814,8 +854,9 @@ const Modals = ({
                   setIsSelectedReligion("");
                 }
               }}
-              className={`p-[10px] ${isSelectedRelegion === "4" ? "shadow-custom-dark-to-white" : ""
-                }`}
+              className={`p-[10px] ${
+                isSelectedRelegion === "4" ? "shadow-custom-dark-to-white" : ""
+              }`}
             >
               <Image
                 src={"/img_plus3.png"}
@@ -833,8 +874,9 @@ const Modals = ({
                   setIsSelectedReligion("");
                 }
               }}
-              className={`p-[10px] ${isSelectedRelegion === "5" ? "shadow-custom-dark-to-white" : ""
-                }`}
+              className={`p-[10px] ${
+                isSelectedRelegion === "5" ? "shadow-custom-dark-to-white" : ""
+              }`}
             >
               <Image
                 src={"/img_star.png"}
@@ -1711,18 +1753,41 @@ const Modals = ({
           <div className="text-[#1E2125] mobile:text-xl text-2xl font-medium ">
             Obvesti sorodnike, prijatelje, znance
           </div>
-          <div className="hidden mobile:flex mt-6">
-            <TextFieldComp placeholder={"Njihov e-mail naslov"} />
-          </div>
-          <div className=" flex mobile:hidden mt-6">
-            <TextFieldComp placeholder={"Dodaj naslov prijatelja"} />
-          </div>
-          <div className="flex mobile:hidden mt-2">
+          {emails.map((email, index) => (
+            <div className="relative" key={index}>
+              <div key={index} className="flex mt-6">
+                <TextFieldComp
+                  placeholder={
+                    index === 0
+                      ? "Dodaj naslov prijatelja"
+                      : "Dodaj e-naslov še drugega prijatelja, znanca"
+                  }
+                  value={email}
+                  onChange={(e) => handleEmailChange(index, e.target.value)}
+                />
+              </div>
+              {index > 0 && (
+                <button
+                  type="button"
+                  onClick={() => removeEmailField(index)}
+                  className="text-red-500 hover:text-red-700 text-xl font-bold absolute top-9 right-2 cursor-pointer"
+                  title="Odstrani polje"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          ))}
+
+          {/* <div className="flex mobile:hidden mt-2">
             <TextFieldComp
               placeholder={"Dodaj e-naslov še drugega prijatelja, znanca"}
             />
-          </div>
-          <div className="flex w-full mt-2 tablet:items-center desktop:items-center ">
+          </div> */}
+          <div
+            className="flex w-full mt-2 tablet:items-center desktop:items-center "
+            onClick={addEmailField}
+          >
             {/* //icon_plus_round */}
             <Image
               src={"/icon_plus_round.png"}
@@ -1740,24 +1805,20 @@ const Modals = ({
               </div>
             </div>
           </div>
-          <div className="flex mobile:hidden mt-6">
+          <div className="flex mt-6">
             <DescriptionFieldComp
               placeholder={"Tvoje sporočilo"}
               height={"80px"}
-            />
-          </div>
-          <div className="hidden mobile:flex h-[112px] mt-6">
-            <DescriptionFieldComp
-              placeholder={"Tvoje sporočilo"}
-              height={"112px"}
+              value={notifyMessage}
+              onChange={(e) => setNotifyMessage(e.target.value)}
             />
           </div>
           <div className=" flex mt-2 text-[#6D778E] text-xs font-normal">
             Op. ne pozabi dopisati svoje ime, morda tudi priimek, da bodo
             vedeli, kdo pošilja
           </div>
-          <div className=" flex mobile:hidden mt-6 text-[#6D778E] text-xs font-normal">
-            K sporočilu bo spodaj dodana še povezava do te strani:
+          <div className=" flex mt-6 text-[#6D778E] text-xs font-normal">
+            45354K sporočilu bo spodaj dodana še povezava do te strani:
           </div>
           <div className="hidden mobile:flex mt-8 text-[#6D778E] text-xs font-normal">
             Da bodo lažje našli stran in informacije, bo k sporočilu spodaj
@@ -1772,18 +1833,16 @@ const Modals = ({
               Osmrtnica in več informacij na strani:
             </div>
             <div className="flex mobile:hidden text-base font-normal text-[#0A85C2] mt-1 underline ">
-              {`${typeof window !== "undefined" ? window.location.origin : ""
-                }/m/${data?.slugKey}`}
-            </div>
-            <div className="hidden mobile:flex text-sm font-medium text-[#6D778E] ">
-              Osmrtnica in več informacij na strani:
-            </div>
-            <div className="hidden mobile:flex text-sm font-normal text-[#0A85C2] ml-1 underline ">
-              tukaj
+              {`${
+                typeof window !== "undefined" ? window.location.origin : ""
+              }/m/${data?.slugKey}`}
             </div>
           </div>
           <div className="mobile:w-[100%] w-[254px] mt-8">
-            <ButtonBlueBorder placeholder={"Pošlji"} />
+            <ButtonBlueBorder
+              placeholder={"Pošlji"}
+              onClick={submitNotification}
+            />
           </div>
         </div>
       ) : null}
@@ -2085,11 +2144,7 @@ const Modals = ({
         <div className="flex flex-col w-full">
           <div className="rounded-md self-center mb-[10px]">
             <Image
-              src={
-                data.image
-                  ? `${API_BASE_URL}/${data.image}`
-                  : "/add_photo_place.png"
-              }
+              src={data?.image}
               alt=" photo"
               width={85}
               height={85}
@@ -2272,8 +2327,9 @@ function CommonStyle({ item, index, key }) {
   return (
     <div
       key={key}
-      className={` ${index % 2 !== 0 ? "bg-[#E8F0F6]" : "bg-white popup-custom-shadow"
-        }  h-14 flex-row flex items-center border-b-[1px] border-[#D4D4D4] mobile:flex-row-reverse mobile:justify-between mobile:pr-[4px] relative `}
+      className={` ${
+        index % 2 !== 0 ? "bg-[#E8F0F6]" : "bg-white popup-custom-shadow"
+      }  h-14 flex-row flex items-center border-b-[1px] border-[#D4D4D4] mobile:flex-row-reverse mobile:justify-between mobile:pr-[4px] relative `}
     >
       <div
         className={`py-[10px] border-2 text-[#6D778E]
