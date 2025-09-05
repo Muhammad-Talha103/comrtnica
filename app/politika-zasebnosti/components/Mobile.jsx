@@ -48,8 +48,8 @@ export const Mobile = () => {
 
                     <section>
                         <h2 className="font-medium text-[16px] leading-[27px] tracking-[0] mobile:text-[13px] mb-[5px]">2. Vrste osebnih podatkov</h2>
-                        <p className="font-light text-[16px] leading-[27px] tracking-[0] mobile:leading-[21px] mobile:text-[13px] mb-6">Upravljavec zbira in obdeluje naslednje osebne podatke:</p>
-                        <ul className="list-disc list-inside space-y-1">
+                        <p className="font-light text-[16px] leading-[27px] tracking-[0] mobile:leading-[21px] mobile:text-[13px]">Upravljavec zbira in obdeluje naslednje osebne podatke:</p>
+                        <ul className="list-disc list-inside space-y-1 mb-6">
                             <li>
                                 podatki ob registraciji: ime, priimek, e-naslov, geslo, podatki podjetja (če gre za poslovni račun),
                             </li>
@@ -70,7 +70,7 @@ export const Mobile = () => {
 
                     <section>
                         <h2 className="font-medium text-[16px] leading-[27px] tracking-[0] mobile:text-[13px] mb-[5px]">3. Namen obdelave</h2>
-                        <ul className="list-disc list-inside space-y-1">
+                        <ul className="list-disc list-inside space-y-1 mb-6">
                             <li>
                                 zagotavljanje storitev Spletne strani (objava osmrtnic, sožalij, vpisov na spominske strani, na sezname podjetij),
                             </li>
@@ -92,8 +92,8 @@ export const Mobile = () => {
 
                     <section>
                         <h2 className="font-medium text-[16px] leading-[27px] tracking-[0] mobile:text-[13px] mb-[5px]">4. Pravna podlaga</h2>
-                        <p className="font-light text-[16px] leading-[27px] tracking-[0] mobile:leading-[21px] mobile:text-[13px] mb-6">Pravna podlaga za obdelavo osebnih podatkov temelji na:</p>
-                        <ul className="list-disc list-inside space-y-1">
+                        <p className="font-light text-[16px] leading-[27px] tracking-[0] mobile:leading-[21px] mobile:text-[13px]">Pravna podlaga za obdelavo osebnih podatkov temelji na:</p>
+                        <ul className="list-disc list-inside space-y-1 mb-6">
                             <li>privolitvi posameznika (ob registraciji in uporabi določenih storitev),</li>
                             <li>
                                 pogodbenem razmerju med uporabnikom in upravljavcem (npr. ob sklenitvi naročnine ali objavi osmrtnice),
@@ -107,10 +107,10 @@ export const Mobile = () => {
 
                     <section>
                         <h2 className="font-medium text-[16px] leading-[27px] tracking-[0] mobile:text-[13px] mb-[5px]">5. Hramba osebnih podatkov</h2>
-                        <p className="font-light text-[16px] leading-[27px] tracking-[0] mobile:leading-[21px] mobile:text-[13px] mb-6">
+                        <p className="font-light text-[16px] leading-[27px] tracking-[0] mobile:leading-[21px] mobile:text-[13px]">
                             Osebni podatki se hranijo toliko časa, kolikor je nujno potrebno za dosego namenov, zaradi katerih so bili zbrani
                         </p>
-                        <ul className="list-disc list-inside space-y-1">
+                        <ul className="list-disc list-inside space-y-1 mb-6">
                             <li>
                                 Osebni podatki se hranijo toliko časa, kolikor je nujno potrebno za dosego namenov, zaradi katerih so bili zbrani
                             </li>
@@ -130,8 +130,8 @@ export const Mobile = () => {
 
                     <section>
                         <h2 className="font-medium text-[16px] leading-[27px] tracking-[0] mobile:text-[13px] mb-[5px]">6. Pravice uporabnikov</h2>
-                        <p className="font-light text-[16px] leading-[27px] tracking-[0] mobile:leading-[21px] mobile:text-[13px] mb-6">Uporabniki imajo pravico:</p>
-                        <ul className="list-disc list-inside space-y-1">
+                        <p className="font-light text-[16px] leading-[27px] tracking-[0] mobile:leading-[21px] mobile:text-[13px]">Uporabniki imajo pravico:</p>
+                        <ul className="list-disc list-inside space-y-0">
                             <li>dostopati do svojih osebnih podatkov,</li>
                             <li>zahtevati popravek netočnih ali nepopolnih podatkov,</li>
                             <li>zahtevati omejitev obdelave,</li>
@@ -162,18 +162,18 @@ export const Mobile = () => {
 
                     <section>
                         <h2 className="font-medium text-[16px] leading-[27px] tracking-[0] mobile:text-[13px] mb-[5px]">9. Uporaba storitve bunny.net</h2>
-                        <p className="font-light text-[16px] leading-[27px] tracking-[0] mobile:leading-[21px] mobile:text-[13px] mb-6">
+                        <p className="font-light text-[16px] leading-[27px] tracking-[0] mobile:leading-[21px] mobile:text-[13px]">
                             Za delovanje in optimizacijo naše spletne strani uporabljamo storitve ponudnika bunny.net (BunnyWay, informacijske storitve d.o.o., Dunajska cesta 165, 1000 Ljubljana, Slovenija).
                         </p>
                         <p className="font-light text-[16px] leading-[27px] tracking-[0] mobile:leading-[21px] mobile:text-[13px] mb-6">bunny.net deluje kot pogodbeni obdelovalec podatkov v skladu z 28. členom GDPR.</p>
-                        <p className="font-light text-[16px] leading-[27px] tracking-[0] mobile:leading-[21px] mobile:text-[13px] mb-6">Pri uporabi njihovih storitev se lahko obdelujejo naslednji osebni podatki:</p>
-                        <ul className="list-disc list-inside space-y-1">
+                        <p className="font-light text-[16px] leading-[27px] tracking-[0] mobile:leading-[21px] mobile:text-[13px]">Pri uporabi njihovih storitev se lahko obdelujejo naslednji osebni podatki:</p>
+                        <ul className="list-disc list-inside space-y-0 mb-6">
                             <li>IP naslovi in podatki o povezavi,</li>
                             <li>informacije o uporabnikovem brskalniku (User-Agent),</li>
                             <li>URL naslov strani, s katere je uporabnik prišel (referrer),</li>
                             <li>tehnični podatki potrebni za dostavo in varnost vsebine.</li>
                         </ul>
-                        <p className="font-light text-[16px] leading-[27px] tracking-[0] mobile:leading-[21px] mobile:text-[13px] mb-6">
+                        <p className="font-light text-[16px] leading-[27px] tracking-[0] mobile:leading-[21px] mobile:text-[13px]">
                             Obdelava se izvaja izključno za namen zagotavljanja varnega in hitrega delovanja spletne strani, preprečevanja zlorab, ter optimizacije dostave vsebin.
                         </p>
                         <p className="font-light text-[16px] leading-[27px] tracking-[0] mobile:leading-[21px] mobile:text-[13px] mb-6">
