@@ -8,7 +8,7 @@ import { Mobile } from "./components/Mobile";
 export default function PolitikaZasebnostiPage() {
 
     return (
-        <Layout from={"18"} megaMenu={""} forFooter={"memorypage"} currentPage="splosni-pogoji" isMegaMenuVisible={false}>
+        <Layout from={"18"} megaMenu={""} forFooter={"memorypage"} currentPage="politika-zasebnosti" isMegaMenuVisible={false}>
             <div className="w-full">
                 <div className="flex flex-col mx-auto bg-[#F5F7F9] w-full w-[100%] max-w-[700px] mt-[160px] text-[#3C3E41]">
                     <Tab />
