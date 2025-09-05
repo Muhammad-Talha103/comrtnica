@@ -16,7 +16,6 @@ export default function PolitikaZasebnostiPage() {
                             <Tab /> :
                             <Desktop />
                     }
-                    <Tab />
                 </div>
                 <TermsAndCond />
             </div>
