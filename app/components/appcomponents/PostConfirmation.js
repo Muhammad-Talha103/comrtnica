@@ -484,7 +484,7 @@ const PostConfirmation = () => {
           </div>
         ) : null}
       </div>
-      <div>
+      {/* <div>
         <h1>Assign Keeper</h1>
         <form onSubmit={handleSubmit}>
           <input
@@ -501,7 +501,7 @@ const PostConfirmation = () => {
           />
           <button type="submit">Assign</button>
         </form>
-      </div>
+      </div> */}
       {/*  responsive code for tablet */}
       <div className="desktopUserAcc:hidden">
         <div className="text-[14px] text-[#6D778E] mobileUserAcc:text-nowrap font-medium text-right mt-[50px]">
