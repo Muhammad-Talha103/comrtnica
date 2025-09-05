@@ -6,7 +6,7 @@ export const Mobile = () => {
     return (
         <main className="">
             <div className="w-[700px] mx-auto px-6 py-12 bg-[#ecf0f3] text-[#3C3E41]">
-                <h1 className="text-3xl font-semibold mb-10 text-[#3C3E41]">Politika zasebnosti</h1>
+                <h1 className="text-3xl font-semibold mb-10 text-[#3C3E41]">mmmmPolitika zasebnosti</h1>
 
                 <div className="space-y-10 text-[16px] leading-[27px] font-light">
                     <section>

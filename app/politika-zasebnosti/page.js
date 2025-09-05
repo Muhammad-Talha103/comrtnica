@@ -11,6 +11,11 @@ export default function PolitikaZasebnostiPage() {
         <Layout from={"18"} megaMenu={""} forFooter={"memorypage"} currentPage="politika-zasebnosti" isMegaMenuVisible={false}>
             <div className="w-full">
                 <div className="flex flex-col mx-auto bg-[#F5F7F9] w-full w-[100%] max-w-[700px] mt-[160px] text-[#3C3E41]">
+                    {window.innerWidth < 744 ? <Mobile /> :
+                        (window.innerWidth >= 744 && window.innerWidth <= 1279) ?
+                            <Tab /> :
+                            <Desktop />
+                    }
                     <Tab />
                 </div>
                 <TermsAndCond />
