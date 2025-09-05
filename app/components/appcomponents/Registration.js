@@ -310,8 +310,12 @@ const Registration = () => {
                       <CheckIcon className="hidden ml-[-1px] size-4 rotate-6 fill-white group-data-[checked]:block" />
                     </Checkbox>
                     Strinjam se s &nbsp;
-                    <Link href={"#"} className="underline">
-                      splošnimi pogoji in politiko zasebnosti{" "}
+                    <Link href={"/splosni-pogoji"} className="underline">
+                      splošnimi pogoji{" "}
+                    </Link>
+                    &nbsp;in&nbsp;
+                     <Link href={"/politika-zasebnosti"} className="underline">
+                      politiko zasebnosti{" "}
                     </Link>
                   </label>
                   {/*  */}
