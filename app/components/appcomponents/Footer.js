@@ -568,11 +568,11 @@ export function TermsAndCond() {
       <div className="flex justify-between items-center tablet:w-[695px] mobile:w-[340px] desktop:w-[1190px] px-[15px] mobile:px-[5px] mx-auto">
         <Image src={logoWhite} width={160} height={20} alt="c" className="w-[160px] h-[20px] mobile:hidden" />
         <div className="inline-flex gap-[10px] mobile:gap-[8px] text-[14px] items-center mobile:justify-center mobile:w-full">
-          <Link href="/" className="text-[#DAEBF1] ">Začetna</Link>
+          <Link href="/" className="text-[#DAEBF1] hidden md:inline">Začetna</Link>
+          <div className="w-[5px] h-[5px] bg-[#DAEBF1] rounded-full hidden md:inline"></div>
+          <Link href="/splosni-pogoji" className="text-[#DAEBF1] ">Splošni pogoji</Link>
           <div className="w-[5px] h-[5px] bg-[#DAEBF1] rounded-full"></div>
-          <Link href="/" className="text-[#DAEBF1] ">Splošni pogoji</Link>
-          <div className="w-[5px] h-[5px] bg-[#DAEBF1] rounded-full"></div>
-          <Link href="/" className="text-[#DAEBF1] ">Politika zasebnosti</Link>
+          <Link href="/politika-zasebnosti" className="text-[#DAEBF1] ">Politika zasebnosti</Link>
           <div className="w-[5px] h-[5px] bg-[#DAEBF1] rounded-full"></div>
           <Link href="/" className="text-[#DAEBF1] ">Piškotki</Link>
         </div>

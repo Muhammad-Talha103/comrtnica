@@ -3,8 +3,8 @@
 import Link from "next/link";
 
 const linksToRender = [
-    { label: "Splošni pogoji", path: "/", active: false },
-    { label: "Politika zasebnosti", path: "/", active: false },
+    { label: "Splošni pogoji", path: "/splosni-pogoji", active: false },
+    { label: "Politika zasebnosti", path: "/politika-zasebnosti", active: false },
     { label: "Piškotki", path: "/", active: false }
 ];
 
@@ -160,7 +160,7 @@ export default function Mobile() {
             {/* Section 17 */}
             <div>
                 <p className="font-medium text-[16px] leading-[27px] tracking-[0] mobile:text-[13px] mb-[5px]">17. Identifikacijski podatki podjetja</p>
-                <ul>
+                <ul className="list-disc marker:text-gray-400 pl-5 mobile:text-[13px] font-light">
                     <li>Podjetje: Aleja8, Saša Dolinšek s.p.</li>
                     <li>Sedež: Trg svobode 32, Trbovlje</li>
                     <li>Matična številka: 9971254000</li>

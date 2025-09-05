@@ -4,8 +4,8 @@ import Link from "next/link";
 import React from "react";
 
 const linksToRender = [
-    { label: "Splošni pogoji", path: "/", active: false },
-    { label: "Politika zasebnosti", path: "/", active: false },
+    { label: "Splošni pogoji", path: "/splosni-pogoji", active: false },
+    { label: "Politika zasebnosti", path: "/politika-zasebnosti", active: false },
     { label: "Piškotki", path: "/", active: false }
 ];
 
