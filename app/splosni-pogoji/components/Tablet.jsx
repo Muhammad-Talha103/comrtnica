@@ -1,6 +1,6 @@
 "use client";
 
-export default function Desktop() {
+export default function Tablet() {
     return (
         <div>
             <h1 className="font-medium text-[24px] leading-[27px] tracking-[0] mb-[25px]">Splošni pogoji poslovanja</h1>
