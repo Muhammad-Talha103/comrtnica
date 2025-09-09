@@ -70,14 +70,25 @@ const MemorialPageTopComp = ({
     return url.length > maxLength ? `${url.slice(0, maxLength)}...` : url;
   };
 
-  const formattedBirthDate =
-    data && data?.birthDate
-      ? format(new Date(data?.birthDate), "dd.MM.yyyy")
-      : "";
-  const formattedDeathDate =
-    data && data?.deathDate
-      ? format(new Date(data?.deathDate), "dd.MM.yyyy")
-      : "";
+  const formatObituaryDate = (dateString) => {
+    if (!dateString) return ""; // If date doesn't exist
+
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.getMonth() + 1; // 0-indexed
+    const year = date.getFullYear();
+
+    // If date is 31st December → show only year
+    if (day === 31 && month === 12) {
+      return `${year}`;
+    }
+
+    // Otherwise, show full date
+    return format(date, "dd.MM.yyyy");
+  };
+
+  const formattedBirthDate = formatObituaryDate(data?.birthDate);
+  const formattedDeathDate = formatObituaryDate(data?.deathDate);
 
   const formatTitleCase = (str) => {
     return str
@@ -477,14 +488,14 @@ const MemorialPageTopComp = ({
                   [
                     ...(data?.funeralTimestamp
                       ? [
-                          {
-                            type: "funeral",
-                            timestamp: new Date(
-                              data?.funeralTimestamp
-                            ).getTime(),
-                            details: data,
-                          },
-                        ]
+                        {
+                          type: "funeral",
+                          timestamp: new Date(
+                            data?.funeralTimestamp
+                          ).getTime(),
+                          details: data,
+                        },
+                      ]
                       : []),
                     ...(Array.isArray(parsedEvents) ? parsedEvents : [])
                       .filter((event) => {
@@ -528,14 +539,14 @@ const MemorialPageTopComp = ({
                       {[
                         ...(data?.funeralTimestamp
                           ? [
-                              {
-                                type: "funeral",
-                                timestamp: new Date(
-                                  data?.funeralTimestamp
-                                ).getTime(),
-                                details: data,
-                              },
-                            ]
+                            {
+                              type: "funeral",
+                              timestamp: new Date(
+                                data?.funeralTimestamp
+                              ).getTime(),
+                              details: data,
+                            },
+                          ]
                           : []),
                         ...(Array.isArray(parsedEvents) ? parsedEvents : [])
                           .filter((event) => {
@@ -575,9 +586,9 @@ const MemorialPageTopComp = ({
                             .getHours()
                             .toString()
                             .padStart(2, "0")}:${date
-                            .getMinutes()
-                            .toString()
-                            .padStart(2, "0")}`;
+                              .getMinutes()
+                              .toString()
+                              .padStart(2, "0")}`;
 
                           if (item.type === "funeral") {
                             return (
@@ -643,8 +654,8 @@ const MemorialPageTopComp = ({
                                     <div className="text-[#1E2125] text-[20px] font-medium">
                                       {item.details.eventName
                                         ? formatTitleCase(
-                                            item.details.eventName
-                                          )
+                                          item.details.eventName
+                                        )
                                         : ""}
                                     </div>
                                   </div>
@@ -656,14 +667,14 @@ const MemorialPageTopComp = ({
                                       {item.details.eventLocation
                                         ? item.details.eventLocation.length > 50
                                           ? `${formatTitleCase(
-                                              item.details.eventLocation.slice(
-                                                0,
-                                                50
-                                              )
-                                            )}...`
-                                          : formatTitleCase(
-                                              item.details.eventLocation
+                                            item.details.eventLocation.slice(
+                                              0,
+                                              50
                                             )
+                                          )}...`
+                                          : formatTitleCase(
+                                            item.details.eventLocation
+                                          )
                                         : ""}
                                     </p>
                                   </div>
@@ -698,11 +709,10 @@ const MemorialPageTopComp = ({
                   flex-col pt-4 pl-[22px] pr-[18px] w-[100%]                       
                   desktop:w-[517px] sm:w-[517px]  desktop:pl-[22px] desktop:pr-[14px]
                   bg-gradient-to-br rounded-2xl from-[#E3E8EC] to-[#FFFFFF]
-                  ${
-                    parsedEvents.length === 90
+                  ${parsedEvents.length === 90
                       ? "desktop:mt-2"
                       : "desktop:mt-[24px]"
-                  }
+                    }
                   `}
                   style={{
                     background:
@@ -763,11 +773,10 @@ const MemorialPageTopComp = ({
                 </div>
 
                 <div
-                  className={`flex self-end ${
-                    parsedEvents.length === 90
+                  className={`flex self-end ${parsedEvents.length === 90
                       ? "tablet:mt-2 desktop:mt-[10px] mobile:mt-[10px]"
                       : "tablet:mt-4 desktop:mt-[28px] mobile:mt-[28px]"
-                  } desktop:h-[0px] items-center desktop:pr-[20px]`}
+                    } desktop:h-[0px] items-center desktop:pr-[20px]`}
                 >
                   {false && (
                     <>
@@ -1300,7 +1309,7 @@ const MemorialPageTopComp = ({
             alt="Slika"
             width={74}
             height={74}
-            // className="mt-[24px] mb-[71px] mx-auto"
+          // className="mt-[24px] mb-[71px] mx-auto"
           />
         </div>
       </div>
