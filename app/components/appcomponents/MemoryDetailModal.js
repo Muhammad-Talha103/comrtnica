@@ -22,7 +22,6 @@ export function MemoryDetailModal({
     data
 }) {
     const [scrollBehavior, setScrollBehavior] = React.useState("outside");
-    console.log('LLLLLLLLLLL', data);
     const interaction = data?.interaction;
     return (
         <Modal
@@ -62,7 +61,7 @@ export function MemoryDetailModal({
                                         alt="img"
                                         className="w-[auto] h-[auto]"
                                     /></div>
-                                    : <p className="text-[#3C3E41] mobile:hidden text-[14px] mb-2">
+                                    : <p className="text-[#3C3E41] text-[14px] mb-2 whitespace-pre-line break-words">
                                         {interaction?.message}
                                     </p>}
 

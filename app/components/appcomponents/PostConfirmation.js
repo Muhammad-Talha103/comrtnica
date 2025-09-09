@@ -197,7 +197,11 @@ const PostConfirmation = () => {
   };
   return (
     <>
-      {<MemoryDetailModal isShowModal={interactionModal} setIsShowModal={setInteractionModal} data={interactionModal} />}
+      <MemoryDetailModal
+        isShowModal={interactionModal}
+        setIsShowModal={setInteractionModal}
+        data={interactionModal}
+      />
       <div className="tabletUserAcc:hidden mobileUserAcc:hidden flex flex-col mt-[86px] tabletUserAcc:mt-[46px] gap-y-5 mobileUserAcc:gap-y-3 mobileUserAcc:mt-[27px] desktopUserAcc:pr-[40px] pr-0 ">
         <div className="flex tabletUserAcc:gap-[26px] mobileUserAcc:gap-3 mobileUserAcc:flex-col tabletUserAcc:justify-between desktopUserAcc:justify-between ">
           <div className="ml-0 grid gap-4 grid-cols-2 mobileUserAcc:grid-cols-2 mobileUserAcc:ml-0 max-[360px]:grid-cols-2 ">
