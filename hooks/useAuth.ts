@@ -53,10 +53,8 @@ export function useAuth() {
     }
   };
 
-  const ghostLogin = async (credentials: {
-    userId: string;
-    adminId: string;
-  }) => {
+
+  const ghostLogin = async (credentials: { userId: string; adminId: string }) => {
     try {
       const result = await signIn("ghost-login", {
         ...credentials,
