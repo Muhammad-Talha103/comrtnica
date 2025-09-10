@@ -167,7 +167,8 @@ export function MemoryDetailModal({
                                                 )}
                                             </div>
                                         </div>)
-                                        : <p className="text-[#3C3E41] text-[14px] mb-2 whitespace-pre-line break-words">
+                                        :
+                                        <p className="text-[#3C3E41] text-[14px] mb-2 whitespace-pre-line break-words">
                                             <div className="flex flex-col items-end justify-end gap-[7px] mb-4 ">
                                                 <p className="text-[14px] leading-[14px] font-variation-customOpt16 font-normal text-[#36556CE5]">
                                                     {data?.userName}
@@ -176,7 +177,14 @@ export function MemoryDetailModal({
                                                     {formatDate(interaction?.createdTimestamp)}
                                                 </p>
                                             </div>
-                                            {interaction?.message}
+                                            <p>{interaction?.message}</p>
+                                            {interaction?.relation ?
+                                                <p className="flex items-center justify-start gap-2 mt-4">
+                                                    <label>Link: </label>
+                                                    <a href={interaction?.relation} className="text-blue-400 hover:text-blue-600 hover:underline hover:underline-offset-[5px]">{interaction?.relation}</a>
+                                                </p>
+                                                : null}
+
                                         </p>}
 
                             </div>
