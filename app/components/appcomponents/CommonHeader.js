@@ -155,8 +155,8 @@ function CommonHeader({ currentPage }) {
           />
         )}
 
-        <div className="flex w-full justify-center">
-          <div className="flex w-full h-[68px] tablet:w-[744px] mobile:w-[360px] mx-auto tablet:h-[80px] px-4 tablet:px-6 desktop:w-[1200px] desktop:h-[92.02px] desktop:px-[18px]">
+        <div className="flex w-full justify-between">
+          <div className="flex w-full h-[68px] tablet:w-[744px] mobile:w-[360px] mx-auto tablet:h-[80px] px-0 tablet:px-6 desktop:w-[1200px] desktop:h-[92.02px] desktop:px-[12px]">
             <div className="flex justify-between items-center w-full h-full">
               {/* Logo */}
               <Link href="/" className="flex">
@@ -214,7 +214,7 @@ function CommonHeader({ currentPage }) {
                 {/* Back Button */}
                 <button
                   onClick={() => router.back()}
-                  className="p-1 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                  className="p-1 rounded-lg hover:bg-gray-100 transition-colors duration-200 "
                   title="Nazaj"
                 >
                   <Image
