@@ -236,10 +236,10 @@ const AddObituary = ({ set_Id, setModal }) => {
       return false;
     }
 
-    // if (!uploadedDeathReport && user?.role !== "funeral_company") {
-    //   toast.error("Death report is mandatory for non-funeral company users.");
-    //   return false;
-    // }
+    if (!uploadedDeathReport && user?.role !== "funeral_company") {
+      toast.error("Death report is mandatory for non-funeral company users.");
+      return false;
+    }
 
     return true;
   };
@@ -300,6 +300,7 @@ const AddObituary = ({ set_Id, setModal }) => {
 
       const formData = new FormData();
 
+
       // ---- Birth date ----
       let formattedBirthDate = null;
       if (birthDate) {
@@ -322,8 +323,27 @@ const AddObituary = ({ set_Id, setModal }) => {
       }
 
       // ---- Funeral timestamp (can keep ISO here because you want exact datetime) ----
+
+      const formattedBirthDate = birthDate
+        ? birthDate.toISOString().split("T")[0]
+        : null;
+      const formattedDeathDate = deathDate
+        ? deathDate.toISOString().split("T")[0]
+        : null;
+
+      const fullName = `${inputValueName} ${inputValueSirName}`;
+      const obituaryText =
+        inputValueGender === "Male"
+          ? `Sporočamo žalostno vest, da nas je zapustil naš predragi ${fullName}. Vsi njegovi.`
+          : `Sporočamo žalostno vest, da nas je zapustila naša predraga ${fullName}. Vsi njeni.  `;
+
+
       let formattedFuneralTimestamp = null;
-      if (funeralDate && selectedFuneralHour !== null && selectedFuneralMinute !== null) {
+      if (
+        funeralDate &&
+        selectedFuneralHour !== null &&
+        selectedFuneralMinute !== null
+      ) {
         formattedFuneralTimestamp = new Date(
           funeralDate.getFullYear(),
           funeralDate.getMonth(),
@@ -346,6 +366,7 @@ const AddObituary = ({ set_Id, setModal }) => {
       formData.append("region", selectedRegion);
       formData.append("city", selectedCity);
       formData.append("gender", inputValueGender);
+
       formData.append("birthDate", formattedBirthDate);
       formData.append("deathDate", formattedDeathDate);
       formData.append("funeralLocation", selectedCity);
@@ -819,7 +840,17 @@ const AddObituary = ({ set_Id, setModal }) => {
                   </div>
                 </div>
 
-
+                {/* Info text */}
+                {/* <div className="mt-2">
+                  <p className="block md:hidden text-[14px] text-[#6D778E]">
+                    Vnašajte polne datume, ker samo tako bodo lahko svojci obveščeni o
+                    prihajajočih obletnicah.
+                  </p>
+                  <p className="hidden md:block text-[12px] text-[#6D778E]">
+                    Prosim, da vnašate polne datume, ne samo letnice, ker samo tako bodo svojci
+                    lahko obveščeni o prihajajočih obletnicah.
+                  </p>
+                </div> */}
 
                 {/* Date pickers */}
                 <div className="flex flex-row mobile:gap-x-[11px] gap-x-[32px] gap-y-[8px] flex-wrap mt-2">

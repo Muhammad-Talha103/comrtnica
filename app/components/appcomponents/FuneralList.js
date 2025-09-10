@@ -213,10 +213,10 @@ const FuneralList = () => {
 const FuneralBlock = ({ item, index, obituaryCount }) => {
   const router = useRouter();
   const handleClick = () => {
-    if (!item?.CompanyPage?.id) {
-      return;
-    }
-    router.push(`/funeralcompany/${item?.CompanyPage?.id}`);
+    // if (!item?.CompanyPage?.id) {
+    //   return;
+    // }
+    // router.push(`/funeralcompany/${item?.CompanyPage?.id}`);
   };
 
   return (
