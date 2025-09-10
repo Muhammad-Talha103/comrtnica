@@ -19,6 +19,7 @@ import { useAuth } from "@/hooks/useAuth";
 const AddObituary = ({ set_Id, setModal }) => {
   const router = useRouter();
   const { user, isAuthenticated } = useAuth();
+  const [deathMode, setDeathMode] = useState("full");
 
   const [selectedRegion, setSelectedRegion] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
@@ -48,7 +49,7 @@ const AddObituary = ({ set_Id, setModal }) => {
   const [dataExists, setDataExists] = useState(false);
   const [obituaryResponse, setObituaryResponse] = useState(null);
   const cardRefs = useRef([]);
-
+  const [birthMode, setBirthMode] = useState("full");
   const [events, setEvents] = useState([
     {
       eventName: "",
@@ -235,10 +236,10 @@ const AddObituary = ({ set_Id, setModal }) => {
       return false;
     }
 
-    // if (!uploadedDeathReport && user?.role !== "funeral_company") {
-    //   toast.error("Death report is mandatory for non-funeral company users.");
-    //   return false;
-    // }
+    if (!uploadedDeathReport && user?.role !== "funeral_company") {
+      toast.error("Death report is mandatory for non-funeral company users.");
+      return false;
+    }
 
     return true;
   };
@@ -291,39 +292,25 @@ const AddObituary = ({ set_Id, setModal }) => {
 
       const formData = new FormData();
 
-      let formattedBirthDate = null;
-      if (birthDate) {
-        if (birthMode === "year") {
-          // Only year selected → use Feb 29
-          formattedBirthDate = new Date(birthDate.getFullYear(), 11, 32).toISOString().split("T")[0];
-        } else {
-          // Full date selected
-          formattedBirthDate = birthDate.toISOString().split("T")[0];
-        }
-      }
-
-
-      console.log(formattedBirthDate)
-      // Handle death date
-      let formattedDeathDate = null;
-      if (deathDate) {
-        if (deathMode === "year") {
-          // Only year selected → use Feb 30
-          formattedDeathDate = new Date(deathDate.getFullYear(), 11, 32).toISOString().split("T")[0];
-        } else {
-          // Full date selected
-          formattedDeathDate = deathDate.toISOString().split("T")[0];
-        }
-      }
+      const formattedBirthDate = birthDate
+        ? birthDate.toISOString().split("T")[0]
+        : null;
+      const formattedDeathDate = deathDate
+        ? deathDate.toISOString().split("T")[0]
+        : null;
 
       const fullName = `${inputValueName} ${inputValueSirName}`;
       const obituaryText =
         inputValueGender === "Male"
           ? `Sporočamo žalostno vest, da nas je zapustil naš predragi ${fullName}. Vsi njegovi.`
-          : `Sporočamo žalostno vest, da nas je zapustila naša predraga ${fullName}. Vsi njeni.`;
+          : `Sporočamo žalostno vest, da nas je zapustila naša predraga ${fullName}. Vsi njeni.  `;
 
       let formattedFuneralTimestamp = null;
-      if (funeralDate && selectedFuneralHour !== null && selectedFuneralMinute !== null) {
+      if (
+        funeralDate &&
+        selectedFuneralHour !== null &&
+        selectedFuneralMinute !== null
+      ) {
         formattedFuneralTimestamp = new Date(
           funeralDate.getFullYear(),
           funeralDate.getMonth(),
@@ -339,9 +326,9 @@ const AddObituary = ({ set_Id, setModal }) => {
       formData.append("region", selectedRegion);
       formData.append("city", selectedCity);
       formData.append("gender", inputValueGender);
+
       formData.append("birthDate", formattedBirthDate);
       formData.append("deathDate", formattedDeathDate);
-
       formData.append("funeralLocation", selectedCity);
       if (inputValueFuneralCemetery !== "pokopalisce") {
         formData.append("funeralCemetery", inputValueFuneralCemetery);
@@ -622,232 +609,331 @@ const AddObituary = ({ set_Id, setModal }) => {
                 Spol dodajamo izključno zaradi ženske in moške oblike v besedilu
                 osmrtnice. Umrl / umrla ipd.
               </div>
-
-              <div className="flex flex-col mt-8">
-                <div className="text-[#6D778E] mobile:text-[#414B5A] font-normal text-[14px] leading-[24px] font-variation-customOpt14">
-                  DATUM ROJSTVA
-                </div>
-
-                <div className="flex flex-row mobile:gap-x-[11px] gap-x-[32px] gap-y-[8px] flex-wrap">
-                  <ModalDropBox
-                    placeholder={`Dan`}
-                    onClick={() => {
-                      togglePicker("birthDay");
-                    }}
-                    isSelectText={birthDate ? birthDate.getDate() : ""}
-                  />
-
-                  {openPicker === "birthDay" && (
-                    <div className="absolute mt-12 bg-white border rounded shadow-lg z-10 text-red">
-                      <DatePicker
-                        selected={birthDate}
-                        onChange={(date) => {
-                          setBirthDate(date); // Update only day
-                          setOpenPicker(null); // Close picker after selection
-                        }}
-                        dateFormat="d" // Show only day
-                        inline // Display as dropdown
-                        onClickOutside={() => {
-                          setOpenPicker(null);
-                        }}
-                        locale={sl}
-                        openToDate={birthDate || new Date(1951, 0, 1)}
-                      />
-                    </div>
-                  )}
-
-                  <div className="flex relative">
-                    <ModalDropBox
-                      placeholder={`Mesec`}
-                      onClick={() => {
-                        togglePicker("birthMonth");
-                      }}
-                      isSelectText={birthDate ? getMonth(birthDate) + 1 : ""}
-                    />
-
-                    {openPicker === "birthMonth" && (
-                      <div className="absolute mt-12 bg-white border rounded shadow-lg z-10">
-                        <DatePicker
-                          selected={birthDate}
-                          onChange={(date) => {
-                            const currentDate = birthDate || new Date();
-                            const updatedDate = new Date(
-                              currentDate.getFullYear(),
-                              date.getMonth(),
-                              currentDate.getDate()
-                            );
-                            setBirthDate(updatedDate); // Update only month
-                            setOpenPicker(null); // Close picker after selection
-                          }}
-                          dateFormat="MM" // Show only month
-                          showMonthYearPicker // Show only month selection
-                          inline
-                          onClickOutside={() => {
-                            setOpenPicker(null);
-                          }}
-                          locale={sl}
-                          openToDate={birthDate || new Date(1951, 0, 1)}
-                        />
-                      </div>
-                    )}
+              <div className="mt-8">
+                <p className="block md:hidden text-[14px] text-[#ACAAAA]">
+                  Vnašajte polne datume, ker samo tako bodo lahko svojci obveščeni o
+                  prihajajočih obletnicah.
+                </p>
+                <p className="hidden md:block text-[12px] text-[#ACAAAA]">
+                  Prosimo, da vnašate polne datume, ne samo letnice, ker samo tako bodo svojci
+                  lahko obveščeni o prihajajočih obletnicah.
+                </p>
+              </div>
+              {/* DATUM ROJSTVA */}
+              <div className="flex flex-col mt-2">
+                {/* Title + Toggle */}
+                <div className="flex items-center justify-start gap-x-4">
+                  <div className="text-[#6D778E] mobile:text-[#414B5A] font-normal text-[14px] leading-[24px] font-variation-customOpt14">
+                    DATUM ROJSTVA
                   </div>
 
-                  <ModalDropBox
-                    placeholder={`Leto`}
-                    onClick={() => {
-                      togglePicker("birthYear");
-                    }}
-                    isSelectText={birthDate ? getYear(birthDate) : ""}
-                  />
+                  <div className="flex gap-4">
 
-                  {openPicker === "birthYear" && (
-                    <div className="absolute mt-12 left-[56%] bg-white border rounded shadow-lg z-10">
-                      <DatePicker
-                        selected={birthDate}
-                        onChange={(date) => {
-                          const currentDate = birthDate || new Date();
-                          const updatedDate = new Date(
-                            date.getFullYear(),
-                            currentDate.getMonth(),
-                            currentDate.getDate()
-                          );
-                          setBirthDate(updatedDate); // Update only year
-                          setOpenPicker(null); // Close picker after selection
-                        }}
-                        dateFormat="yyyy" // Show only year
-                        showYearPicker // Show only year selection
-                        inline
-                        onClickOutside={() => {
-                          setOpenPicker(null);
-                        }}
-                        locale={sl}
-                        yearItemNumber={10}
-                        openToDate={birthDate || new Date(1951, 0, 1)}
-                        maxDate={new Date(new Date().getFullYear(), 11, 31)}
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        checked={birthMode === "year"}
+                        onChange={() => setBirthMode("year")}
                       />
-                    </div>
+                      <span className="text-[#6D778E] mobile:text-[#414B5A]">Samo leto</span>
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        checked={birthMode === "full"}
+                        onChange={() => setBirthMode("full")}
+                      />
+                      <span className="text-[#6D778E] mobile:text-[#414B5A]">Cel datum</span>
+                    </label>
+                  </div>
+                </div>
+
+                {/* Info text */}
+
+
+                {/* Date pickers */}
+                <div className="flex flex-row mobile:gap-x-[11px] gap-x-[32px] gap-y-[8px] flex-wrap mt-2">
+                  {birthMode === "year" && (
+                    <>
+                      <ModalDropBox
+                        placeholder={`Leto`}
+                        onClick={() => togglePicker("birthYear")}
+                        isSelectText={birthDate ? getYear(birthDate) : ""}
+                      />
+                      {openPicker === "birthYear" && (
+                        <div className="absolute mt-12 bg-white border rounded shadow-lg z-10">
+                          <DatePicker
+                            selected={birthDate}
+                            onChange={(date) => {
+                              if (date) {
+                                setBirthDate(new Date(date.getFullYear(), 0, 1));
+                              }
+                              setOpenPicker(null);
+                            }}
+                            dateFormat="yyyy"
+                            showYearPicker
+                            inline
+                            locale={sl}
+                            yearItemNumber={10}
+                            openToDate={birthDate || new Date(1951, 0, 1)}
+                            maxDate={new Date(new Date().getFullYear(), 11, 31)}
+                          />
+                        </div>
+                      )}
+                    </>
+                  )}
+
+                  {birthMode === "full" && (
+                    <>
+                      {/* Day */}
+                      <ModalDropBox
+                        placeholder={`Dan`}
+                        onClick={() => togglePicker("birthDay")}
+                        isSelectText={birthDate ? birthDate.getDate() : ""}
+                      />
+                      {openPicker === "birthDay" && (
+                        <div className="absolute mt-12 bg-white border rounded shadow-lg z-10">
+                          <DatePicker
+                            selected={birthDate}
+                            onChange={(date) => {
+                              setBirthDate(date);
+                              setOpenPicker(null);
+                            }}
+                            dateFormat="d"
+                            inline
+                            locale={sl}
+                            openToDate={birthDate || new Date(1951, 0, 1)}
+                          />
+                        </div>
+                      )}
+
+                      {/* Month */}
+                      <ModalDropBox
+                        placeholder={`Mesec`}
+                        onClick={() => togglePicker("birthMonth")}
+                        isSelectText={birthDate ? getMonth(birthDate) + 1 : ""}
+                      />
+                      {openPicker === "birthMonth" && (
+                        <div className="absolute mt-12 bg-white border rounded shadow-lg z-10">
+                          <DatePicker
+                            selected={birthDate}
+                            onChange={(date) => {
+                              const currentDate = birthDate || new Date();
+                              const updatedDate = new Date(
+                                currentDate.getFullYear(),
+                                date.getMonth(),
+                                currentDate.getDate()
+                              );
+                              setBirthDate(updatedDate);
+                              setOpenPicker(null);
+                            }}
+                            dateFormat="MM"
+                            showMonthYearPicker
+                            inline
+                            locale={sl}
+                            openToDate={birthDate || new Date(1951, 0, 1)}
+                          />
+                        </div>
+                      )}
+
+                      {/* Year */}
+                      <ModalDropBox
+                        placeholder={`Leto`}
+                        onClick={() => togglePicker("birthYear")}
+                        isSelectText={birthDate ? getYear(birthDate) : ""}
+                      />
+                      {openPicker === "birthYear" && (
+                        <div className="absolute mt-12 bg-white border rounded shadow-lg z-10">
+                          <DatePicker
+                            selected={birthDate}
+                            onChange={(date) => {
+                              const currentDate = birthDate || new Date();
+                              const updatedDate = new Date(
+                                date.getFullYear(),
+                                currentDate.getMonth(),
+                                currentDate.getDate()
+                              );
+                              setBirthDate(updatedDate);
+                              setOpenPicker(null);
+                            }}
+                            dateFormat="yyyy"
+                            showYearPicker
+                            inline
+                            locale={sl}
+                            yearItemNumber={10}
+                            openToDate={birthDate || new Date(1951, 0, 1)}
+                            maxDate={new Date(new Date().getFullYear(), 11, 31)}
+                          />
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
               </div>
 
-              {/* {/ 8th title /} */}
+              {/* DAN SLOVESA */}
               <div className="flex flex-col mt-8">
-                <div className="text-[#6D778E] mobile:text-[#414B5A] font-normal text-[14px] leading-[24px] font-variation-customOpt14">
-                  DAN SLOVESA
-                </div>
+                {/* Title + Toggle */}
+                <div className="flex items-center justify-start gap-x-4">
 
-<div className="flex flex-row mobile:gap-x-[11px] gap-x-[32px] gap-y-[8px] flex-wrap mt-2">
-  {deathMode === "year" && (
-    <ModalDropBox
-      placeholder={`Leto`}
-      onClick={() => togglePicker("deathYear")}
-      isSelectText={deathDate ? getYear(deathDate) : ""}
-    />
-  )}
-  {deathMode === "day" && (
-    <>
-      <ModalDropBox
-        placeholder={`Dan`}
-        onClick={() => togglePicker("deathDay")}
-        isSelectText={deathDate ? deathDate.getDate() : ""}
-      />
-      {openPicker === "deathDay" && (
-        <div className="absolute mt-12 bg-white border rounded shadow-lg z-10">
-          <DatePicker
-            selected={deathDate}
-            onChange={(date) => {
-              setDeathDate(date);
-              setOpenPicker(null);
-            }}
-            dateFormat="d"
-            inline
-            maxDate={new Date()}
-            onClickOutside={() => setOpenPicker(null)}
-            locale={sl}
-            openToDate={deathDate || new Date()}
-          />
-        </div>
-      )}
-    </>
-  )}
-</div>
-                      />
-                    </div>
-                  )}
-
-                  <div className="flex relative">
-                    <ModalDropBox
-                      placeholder={`Mesec`}
-                      onClick={() => {
-                        togglePicker("deathMonth");
-                      }}
-                      isSelectText={deathDate ? getMonth(deathDate) + 1 : ""}
-                    />
-
-                    {openPicker === "deathMonth" && (
-                      <div className="absolute mt-12 bg-white border rounded shadow-lg z-10">
-                        <DatePicker
-                          selected={deathDate}
-                          onChange={(date) => {
-                            const currentDate = deathDate || new Date();
-                            const updatedDate = new Date(
-                              currentDate.getFullYear(),
-                              date.getMonth(),
-                              currentDate.getDate()
-                            );
-                            setDeathDate(updatedDate); // Update only month
-                            setOpenPicker(null); // Close picker after selection
-                          }}
-                          dateFormat="MM" // Show only month
-                          showMonthYearPicker // Show only month selection
-                          inline
-                          maxDate={new Date()} // Restrict to current year
-                          onClickOutside={() => {
-                            setOpenPicker(null);
-                          }}
-                          locale={sl}
-                          openToDate={deathDate || new Date()}
-                        />
-                      </div>
-                    )}
+                  <div className="text-[#6D778E] mobile:text-[#414B5A] font-normal text-[14px] leading-[24px] font-variation-customOpt14">
+                    DAN SLOVESA
                   </div>
 
-                  <ModalDropBox
-                    placeholder={`Leto`}
-                    onClick={() => {
-                      togglePicker("deathYear");
-                    }}
-                    isSelectText={deathDate ? getYear(deathDate) : ""}
-                  />
+                  <div className="flex gap-4">
 
-                  {openPicker === "deathYear" && (
-                    <div className="absolute mt-12 left-[56%] bg-white border rounded shadow-lg z-10">
-                      <DatePicker
-                        selected={deathDate}
-                        onChange={(date) => {
-                          const currentDate = deathDate || new Date();
-                          const updatedDate = new Date(
-                            date.getFullYear(),
-                            currentDate.getMonth(),
-                            currentDate.getDate()
-                          );
-                          setDeathDate(updatedDate); // Update only year
-                          setOpenPicker(null); // Close picker after selection
-                        }}
-                        dateFormat="yyyy" // Show only year
-                        showYearPicker // Show only year selection
-                        inline
-                        maxDate={new Date()}
-                        onClickOutside={() => {
-                          setOpenPicker(null);
-                        }}
-                        locale={sl}
-                        openToDate={deathDate || new Date()}
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        checked={deathMode === "year"}
+                        onChange={() => setDeathMode("year")}
                       />
-                    </div>
+                      <span className="text-[#6D778E] mobile:text-[#414B5A]">Samo leto</span>
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        checked={deathMode === "full"}
+                        onChange={() => setDeathMode("full")}
+                      />
+                      <span className="text-[#6D778E] mobile:text-[#414B5A]">Cel datum</span>
+                    </label>
+                  </div>
+                </div>
+
+                {/* Info text */}
+                {/* <div className="mt-2">
+                  <p className="block md:hidden text-[14px] text-[#6D778E]">
+                    Vnašajte polne datume, ker samo tako bodo lahko svojci obveščeni o
+                    prihajajočih obletnicah.
+                  </p>
+                  <p className="hidden md:block text-[12px] text-[#6D778E]">
+                    Prosim, da vnašate polne datume, ne samo letnice, ker samo tako bodo svojci
+                    lahko obveščeni o prihajajočih obletnicah.
+                  </p>
+                </div> */}
+
+                {/* Date pickers */}
+                <div className="flex flex-row mobile:gap-x-[11px] gap-x-[32px] gap-y-[8px] flex-wrap mt-2">
+                  {deathMode === "year" && (
+                    <>
+                      <ModalDropBox
+                        placeholder={`Leto`}
+                        onClick={() => togglePicker("deathYear")}
+                        isSelectText={deathDate ? getYear(deathDate) : ""}
+                      />
+                      {openPicker === "deathYear" && (
+                        <div className="absolute mt-12 bg-white border rounded shadow-lg z-10">
+                          <DatePicker
+                            selected={deathDate}
+                            onChange={(date) => {
+                              if (date) {
+                                setDeathDate(new Date(date.getFullYear(), 0, 1));
+                              }
+                              setOpenPicker(null);
+                            }}
+                            dateFormat="yyyy"
+                            showYearPicker
+                            inline
+                            maxDate={new Date()}
+                            locale={sl}
+                            openToDate={deathDate || new Date()}
+                          />
+                        </div>
+                      )}
+                    </>
+                  )}
+
+                  {deathMode === "full" && (
+                    <>
+                      {/* Day */}
+                      <ModalDropBox
+                        placeholder={`Dan`}
+                        onClick={() => togglePicker("deathDay")}
+                        isSelectText={deathDate ? deathDate.getDate() : ""}
+                      />
+                      {openPicker === "deathDay" && (
+                        <div className="absolute mt-12 bg-white border rounded shadow-lg z-10">
+                          <DatePicker
+                            selected={deathDate}
+                            onChange={(date) => {
+                              setDeathDate(date);
+                              setOpenPicker(null);
+                            }}
+                            dateFormat="d"
+                            inline
+                            maxDate={new Date()}
+                            locale={sl}
+                            openToDate={deathDate || new Date()}
+                          />
+                        </div>
+                      )}
+
+                      {/* Month */}
+                      <ModalDropBox
+                        placeholder={`Mesec`}
+                        onClick={() => togglePicker("deathMonth")}
+                        isSelectText={deathDate ? getMonth(deathDate) + 1 : ""}
+                      />
+                      {openPicker === "deathMonth" && (
+                        <div className="absolute mt-12 bg-white border rounded shadow-lg z-10">
+                          <DatePicker
+                            selected={deathDate}
+                            onChange={(date) => {
+                              const currentDate = deathDate || new Date();
+                              const updatedDate = new Date(
+                                currentDate.getFullYear(),
+                                date.getMonth(),
+                                currentDate.getDate()
+                              );
+                              setDeathDate(updatedDate);
+                              setOpenPicker(null);
+                            }}
+                            dateFormat="MM"
+                            showMonthYearPicker
+                            inline
+                            maxDate={new Date()}
+                            locale={sl}
+                            openToDate={deathDate || new Date()}
+                          />
+                        </div>
+                      )}
+
+                      {/* Year */}
+                      <ModalDropBox
+                        placeholder={`Leto`}
+                        onClick={() => togglePicker("deathYear")}
+                        isSelectText={deathDate ? getYear(deathDate) : ""}
+                      />
+                      {openPicker === "deathYear" && (
+                        <div className="absolute mt-12 bg-white border rounded shadow-lg z-10">
+                          <DatePicker
+                            selected={deathDate}
+                            onChange={(date) => {
+                              const currentDate = deathDate || new Date();
+                              const updatedDate = new Date(
+                                date.getFullYear(),
+                                currentDate.getMonth(),
+                                currentDate.getDate()
+                              );
+                              setDeathDate(updatedDate);
+                              setOpenPicker(null);
+                            }}
+                            dateFormat="yyyy"
+                            showYearPicker
+                            inline
+                            maxDate={new Date()}
+                            locale={sl}
+                            openToDate={deathDate || new Date()}
+                          />
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
               </div>
+
+
 
               <div className="flex items-center  mt-[53.6px]">
                 <div className=" items-center justify-center">
