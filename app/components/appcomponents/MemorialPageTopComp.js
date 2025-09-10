@@ -69,15 +69,25 @@ const MemorialPageTopComp = ({
   const truncateURL = (url, maxLength) => {
     return url.length > maxLength ? `${url.slice(0, maxLength)}...` : url;
   };
+const formatObituaryDate = (dateString) => {
+    if (!dateString) return ""; // If date doesn't exist
 
-  const formattedBirthDate =
-    data && data?.birthDate
-      ? format(new Date(data?.birthDate), "dd.MM.yyyy")
-      : "";
-  const formattedDeathDate =
-    data && data?.deathDate
-      ? format(new Date(data?.deathDate), "dd.MM.yyyy")
-      : "";
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.getMonth() + 1; // 0-indexed
+    const year = date.getFullYear();
+
+    // If date is 31st December → show only year
+    if (day === 31 && month === 12) {
+      return `${year}`;
+    }
+
+    // Otherwise, show full date
+    return format(date, "dd.MM.yyyy");
+  };
+
+  const formattedBirthDate = formatObituaryDate(data?.birthDate);
+  const formattedDeathDate = formatObituaryDate(data?.deathDate);
 
   const formatTitleCase = (str) => {
     return str
