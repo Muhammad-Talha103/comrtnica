@@ -118,7 +118,7 @@ const Registration = () => {
       const response = await login(credentials);
       console.log("loginResponse", response);
 
-      if (response?.status === 401) {
+      if (response.status === 401) {
         toast.error(
           response.error || "Invalid Credentials!"
         );

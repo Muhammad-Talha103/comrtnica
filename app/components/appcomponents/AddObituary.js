@@ -236,10 +236,10 @@ const AddObituary = ({ set_Id, setModal }) => {
       return false;
     }
 
-    // if (!uploadedDeathReport && user?.role !== "funeral_company") {
-    //   toast.error("Death report is mandatory for non-funeral company users.");
-    //   return false;
-    // }
+    if (!uploadedDeathReport && user?.role !== "funeral_company") {
+      toast.error("Death report is mandatory for non-funeral company users.");
+      return false;
+    }
 
     return true;
   };
@@ -276,132 +276,140 @@ const AddObituary = ({ set_Id, setModal }) => {
     router.push(`/m/${obituaryResponse.slugKey}`);
   };
 
-  const handleSubmit = async () => {
-    const currentUser = isAuthenticated ? user : {};
+  // helper function: format date as YYYY-MM-DD without timezone shift
+  const formatDate = (date) => {
+    if (!date) return null;
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
 
-    // Temporarily commented
-    if (!currentUser.createObituaryPermission) {
-      toast.error("You don't have permission to create obituaries.");
+const handleSubmit = async () => {
+  const currentUser = isAuthenticated ? user : {};
+
+  if (!currentUser.createObituaryPermission) {
+    toast.error("You don't have permission to create obituaries.");
+    return;
+  }
+
+  if (!validateFields()) return;
+
+  try {
+    setLoading(true);
+
+    const formData = new FormData();
+
+    // ---- Birth date ----
+    let formattedBirthDate = null;
+    if (birthDate) {
+      if (birthMode === "year") {
+        formattedBirthDate = `${birthDate.getFullYear()}-12-31`;
+      } else {
+        formattedBirthDate = formatDate(birthDate);
+      }
+    }
+
+    // ---- Death date ----
+    let formattedDeathDate = null;
+    if (deathDate) {
+      if (deathMode === "year") {
+        formattedDeathDate = `${deathDate.getFullYear()}-12-31`;
+      } else {
+        formattedDeathDate = formatDate(deathDate);
+      }
+    }
+
+    // ---- Funeral timestamp ----
+    let formattedFuneralTimestamp = null;
+    if (
+      funeralDate &&
+      selectedFuneralHour !== null &&
+      selectedFuneralMinute !== null
+    ) {
+      formattedFuneralTimestamp = new Date(
+        funeralDate.getFullYear(),
+        funeralDate.getMonth(),
+        funeralDate.getDate(),
+        selectedFuneralHour,
+        selectedFuneralMinute
+      ).toISOString();
+    }
+
+    const fullName = `${inputValueName} ${inputValueSirName}`;
+    const obituaryText =
+      inputValueGender === "Male"
+        ? `Sporočamo žalostno vest, da nas je zapustil naš predragi ${fullName}. Vsi njegovi.`
+        : `Sporočamo žalostno vest, da nas je zapustila naša predraga ${fullName}. Vsi njeni.`;
+
+    // ---- Append data ----
+    formData.append("name", inputValueName);
+    formData.append("sirName", inputValueSirName);
+    formData.append("location", inputValueEnd);
+    formData.append("region", selectedRegion);
+    formData.append("city", selectedCity);
+    formData.append("gender", inputValueGender);
+    formData.append("birthDate", formattedBirthDate);
+    formData.append("deathDate", formattedDeathDate);
+    formData.append("funeralLocation", selectedCity);
+
+    if (inputValueFuneralCemetery !== "pokopalisce") {
+      formData.append("funeralCemetery", inputValueFuneralCemetery);
+    }
+
+    if (formattedFuneralTimestamp) {
+      formData.append("funeralTimestamp", formattedFuneralTimestamp);
+    }
+
+    formData.append("deathReportExists", isDeathReportConfirmed);
+    formData.append("events", JSON.stringify(events));
+    formData.append("obituary", obituaryText);
+
+    if (uploadedPicture) {
+      formData.append("picture", uploadedPicture);
+    }
+    if (uploadedDeathReport) {
+      formData.append("deathReport", uploadedDeathReport);
+    }
+
+    // ---- API request ----
+    let response;
+    if (dataExists) {
+      response = await obituaryService.updateObituary(user.id, formData);
+      toast.success("Obituary updated successfully!");
+    } else {
+      response = await obituaryService.createObituary(formData);
+      toast.success("Obituary created successfully!");
+    }
+
+    if (response.error) {
+      toast.error(response.error || "Something went wrong. Please try again!");
       return;
     }
 
-    if (!validateFields()) return;
-
-    try {
-      setLoading(true);
-
-      const formData = new FormData();
-
-      let formattedBirthDate = null;
-      if (birthDate) {
-        if (birthMode === "year") {
-          // Only year selected → use Feb 29
-          formattedBirthDate = new Date(birthDate.getFullYear(), 11, 32).toISOString().split("T")[0];
-        } else {
-          // Full date selected
-          formattedBirthDate = birthDate.toISOString().split("T")[0];
-        }
-      }
-
-
-      console.log(formattedBirthDate)
-      // Handle death date
-      let formattedDeathDate = null;
-      if (deathDate) {
-        if (deathMode === "year") {
-          // Only year selected → use Feb 30
-          formattedDeathDate = new Date(deathDate.getFullYear(), 11, 32).toISOString().split("T")[0];
-        } else {
-          // Full date selected
-          formattedDeathDate = deathDate.toISOString().split("T")[0];
-        }
-      }
-
-      const fullName = `${inputValueName} ${inputValueSirName}`;
-      const obituaryText =
-        inputValueGender === "Male"
-          ? `Sporočamo žalostno vest, da nas je zapustil naš predragi ${fullName}. Vsi njegovi.`
-          : `Sporočamo žalostno vest, da nas je zapustila naša predraga ${fullName}. Vsi njeni.`;
-
-      let formattedFuneralTimestamp = null;
-      if (funeralDate && selectedFuneralHour !== null && selectedFuneralMinute !== null) {
-        formattedFuneralTimestamp = new Date(
-          funeralDate.getFullYear(),
-          funeralDate.getMonth(),
-          funeralDate.getDate(),
-          selectedFuneralHour,
-          selectedFuneralMinute
-        ).toISOString();
-      }
-
-      formData.append("name", inputValueName);
-      formData.append("sirName", inputValueSirName);
-      formData.append("location", inputValueEnd);
-      formData.append("region", selectedRegion);
-      formData.append("city", selectedCity);
-      formData.append("gender", inputValueGender);
-      formData.append("birthDate", formattedBirthDate);
-      formData.append("deathDate", formattedDeathDate);
-
-      formData.append("funeralLocation", selectedCity);
-      if (inputValueFuneralCemetery !== "pokopalisce") {
-        formData.append("funeralCemetery", inputValueFuneralCemetery);
-      }
-
-      formattedFuneralTimestamp &&
-        formData.append("funeralTimestamp", formattedFuneralTimestamp);
-      formData.append("deathReportExists", isDeathReportConfirmed);
-      formData.append("events", JSON.stringify(events));
-      formData.append("obituary", obituaryText);
-
-      if (uploadedPicture) {
-        formData.append("picture", uploadedPicture);
-      }
-      if (uploadedDeathReport) {
-        formData.append("deathReport", uploadedDeathReport);
-      }
-      let response;
-      if (dataExists) {
-        // Update existing obituary
-        response = await obituaryService.updateObituary(user.id, formData);
-        toast.success("Obituary updated successfully!");
-      } else {
-        // Create new obituary
-        response = await obituaryService.createObituary(formData);
-        toast.success("Obituary created successfully!");
-      }
-
-      if (response.error) {
-        toast.error(
-          response.error || "Something went wrong. Please try again!"
-        );
-        return;
-      }
-
-      toast.success("Obituary created successfully!");
-
-      const responseDeathDate = new Date(response.deathDate);
-      const deathDateFormatted = `${responseDeathDate
-        .getDate()
+    const responseDeathDate = new Date(response.deathDate);
+    const deathDateFormatted = `${responseDeathDate
+      .getDate()
+      .toString()
+      .padStart(2, "0")}${(responseDeathDate.getMonth() + 1)
         .toString()
-        .padStart(2, "0")}${(responseDeathDate.getMonth() + 1)
+        .padStart(2, "0")}${responseDeathDate
+          .getFullYear()
           .toString()
-          .padStart(2, "0")}${responseDeathDate
-            .getFullYear()
-            .toString()
-            .slice(2)}`;
+          .slice(2)}`;
 
-      setObituaryResponse(response);
-    } catch (error) {
-      console.error("Error creating obituary:", error);
-      toast.error(
-        error?.response?.data?.error ||
+    setObituaryResponse(response);
+  } catch (error) {
+    console.error("Error creating obituary:", error);
+    toast.error(
+      error?.response?.data?.error ||
         "Failed to create obituary. Please try again."
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
+    );
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const [startDecade, setStartDecade] = useState(1950);
 
@@ -815,7 +823,17 @@ const AddObituary = ({ set_Id, setModal }) => {
                   </div>
                 </div>
 
-
+                {/* Info text */}
+                {/* <div className="mt-2">
+                  <p className="block md:hidden text-[14px] text-[#6D778E]">
+                    Vnašajte polne datume, ker samo tako bodo lahko svojci obveščeni o
+                    prihajajočih obletnicah.
+                  </p>
+                  <p className="hidden md:block text-[12px] text-[#6D778E]">
+                    Prosim, da vnašate polne datume, ne samo letnice, ker samo tako bodo svojci
+                    lahko obveščeni o prihajajočih obletnicah.
+                  </p>
+                </div> */}
 
                 {/* Date pickers */}
                 <div className="flex flex-row mobile:gap-x-[11px] gap-x-[32px] gap-y-[8px] flex-wrap mt-2">
