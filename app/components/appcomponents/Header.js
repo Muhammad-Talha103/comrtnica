@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import iconMenu from "@/public/icon_menu_black.png";
 import omr from "@/public/omr.png";
 import Link from "next/link";
+import SideMenu from "../ui/sideMenu";
 //test
 function Header({ onMenuCLick, from, isMegaMenuVisible }) {
   const [showCloseButton, setShowCloseButton] = useState(false);
@@ -13,11 +14,10 @@ function Header({ onMenuCLick, from, isMegaMenuVisible }) {
           className={`
         desktop:h-[92.02px] mobile:h-[72px] tablet:h-[79px]
         w-full  desktop:w-[1200px]
-        desktop:pl-[23px] ${
-          isMegaMenuVisible && from === "1"
-            ? "tablet:max-w-[700px] tablet:w-full mobile:max-w-[400px] mobile:w-full"
-            : ""
-        } desktop:pr-[27px] tablet:pl-[23px]  tablet:pr-[27px] mobile:px-[24px]
+        desktop:pl-[23px] ${isMegaMenuVisible && from === "1"
+              ? "tablet:max-w-[700px] tablet:w-full mobile:max-w-[400px] mobile:w-full"
+              : ""
+            } desktop:pr-[27px] tablet:pl-[23px]  tablet:pr-[27px] mobile:px-[24px]
         `}
         >
           <div className="mobile:h-[72px] tablet:h-[79px] desktop:h-[92.02px] w-full desktop:w-[1150px] flex justify-between items-center ">
@@ -32,11 +32,11 @@ function Header({ onMenuCLick, from, isMegaMenuVisible }) {
             </Link>
             {/* <Link href={"/loginpage"}> */}
             <button
-              className=" rounded-full hover:bg-gray-100 active:bg-gray-200  transition duration-200 ease-in-out  transform-gpu active:scale-95"
-              // onClick={() => {
-              //   setShowCloseButton(!showCloseButton);
-              //   onMenuCLick();
-              // }}
+              className=" hidden tablet:block desktop:block rounded-full hover:bg-gray-100 active:bg-gray-200  transition duration-200 ease-in-out  transform-gpu active:scale-95"
+              onClick={() => {
+                setShowCloseButton(!showCloseButton);
+                onMenuCLick();
+              }}
             >
               {showCloseButton === false && (
                 <Image
@@ -57,6 +57,7 @@ function Header({ onMenuCLick, from, isMegaMenuVisible }) {
               )}
             </button>
             {/* </Link> */}
+            <SideMenu />
           </div>
         </div>
       </div>

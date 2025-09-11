@@ -28,7 +28,6 @@ import SlideTwo from "./components/slidercomponents/SlideTwo";
 import { useAuth } from "@/hooks/useAuth";
 import { SelectDropdown } from "./components/appcomponents/SelectDropdown";
 
-
 function HomeContent(props) {
   const router = useRouter();
   const searchParams = useSearchParams();

@@ -34,7 +34,6 @@ export default function RootLayout({
       <body
         className={`${robotoFlex.className} ${sourceSerif.variable} ${greatVibes.variable}`}
       >
-        {/* <SideMenu /> */}
         <SessionProvider>
           <Toaster
             position="top-right"

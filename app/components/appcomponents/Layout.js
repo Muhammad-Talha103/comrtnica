@@ -19,7 +19,7 @@ import {
 } from "@/app/components/appcomponents/LocalQuickReview";
 import MemoryHeader from "./MemoryHeader";
 import { useAuth } from "@/hooks/useAuth";
-
+import SideMenu from "../ui/sideMenu";
 const Layout = ({
   children,
   from,
