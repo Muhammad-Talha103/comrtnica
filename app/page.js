@@ -27,7 +27,6 @@ import SlideOne from "./components/slidercomponents/SlideOne";
 import SlideTwo from "./components/slidercomponents/SlideTwo";
 import { useAuth } from "@/hooks/useAuth";
 
-
 function HomeContent(props) {
   const router = useRouter();
   const searchParams = useSearchParams();

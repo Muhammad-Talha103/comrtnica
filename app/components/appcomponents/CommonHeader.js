@@ -14,7 +14,7 @@ import {
   LocalQuickReview,
   LocalQuickReviewModal,
 } from "@/app/components/appcomponents/LocalQuickReview";
-
+import SideMenu from "../ui/sideMenu";
 const headerLinkSets = {
   "/osmrtnice": [
     { label: "Osmrtnice", path: "/osmrtnice", active: false },
@@ -181,9 +181,8 @@ function CommonHeader({ currentPage }) {
                       >
                         <Link
                           href={link.path}
-                          className={`font-normal hover:text-blue-500 transition duration-200 tablet:text-[18px] desktop:text-[20px] ${
-                            link.active ? "!text-[#0A85C2]" : "text-[#1E2125]"
-                          }`}
+                          className={`font-normal hover:text-blue-500 transition duration-200 tablet:text-[18px] desktop:text-[20px] ${link.active ? "!text-[#0A85C2]" : "text-[#1E2125]"
+                            }`}
                         >
                           {link.active && (
                             <span className="text-[#EB1D1D]">{">>"}</span>
@@ -223,6 +222,7 @@ function CommonHeader({ currentPage }) {
                     className="h-8 w-8 mobile:h-7 mobile:w-7"
                   />
                 </button>
+                <SideMenu />
               </div>
             </div>
           </div>

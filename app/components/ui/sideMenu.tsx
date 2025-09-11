@@ -13,14 +13,14 @@ const roboto = Roboto_Flex({
 });
 
 export default function SideMenu() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [showSubmenu, setShowSubmenu] = useState(true);
 
   return (
-    <menu className={`${roboto.className} relative`}>
+    <menu className={`${roboto.className} ml-2 relative  block mobile:block tablet:hidden desktop:hidden`}>
       {/* Menu Button */}
-      <button onClick={() => setIsOpen(true)} className="p-2 text-gray-700">
-        <FiMenu size={28} color="red" />
+      <button onClick={() => setIsOpen(true)} className="p-1 text-gray-700">
+        <FiMenu size={32} color="black" />
       </button>
 
       {/* Overlay */}
@@ -49,7 +49,7 @@ export default function SideMenu() {
             />
           </span>
           <button onClick={() => setIsOpen(false)}>
-            <MdCancel color="grey" size={24}/>
+            <MdCancel color="grey" size={24} />
           </button>
         </div>
 
