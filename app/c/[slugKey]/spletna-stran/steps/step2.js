@@ -11,6 +11,7 @@ import { toast } from "react-hot-toast";
 import companyService from "@/services/company-service";
 import Link from "next/link";
 import CompanyPreview from "../components/company-preview";
+import { useSession } from "next-auth/react";
 
 export default function Step2({
   data,
@@ -41,7 +42,8 @@ export default function Step2({
   const [subtitle, setSubtitle] = useState("");
   const [companyId, setCompanyId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
+const { data: session } = useSession();
+  const companyAndCity = `${session?.user?.me?.company && session?.user?.me?.city ? `${session?.user?.me?.company}, ${session?.user?.me?.city}` : ""}`;
   const addSliderBlock = () => {
     setOffers([
       ...offers,
@@ -146,7 +148,7 @@ export default function Step2({
   return (
     <>
       <div className="absolute top-[-24px] z-10 right-[30px] text-[14px] leading-[24px] text-[#6D778E]">
-        {data?.heading || "Blue Daisy Florist, London"}
+        {companyAndCity}
       </div>
       <div className="min-h-full flex flex-col justify-between gap-[16px]">
         <div className="space-y-[43px]">

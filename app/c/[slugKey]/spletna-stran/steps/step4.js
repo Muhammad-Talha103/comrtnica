@@ -11,6 +11,7 @@ import Switch from "../components/Switch";
 import { toast } from "react-hot-toast";
 import companyService from "@/services/company-service";
 import CompanyPreview from "../components/company-preview";
+import { useSession } from "next-auth/react";
 
 export default function Step4({
   data,
@@ -31,7 +32,8 @@ export default function Step4({
   const [showBackground, setShowBackground] = useState(
     data?.showBoxBackground || false
   );
-
+const { data: session } = useSession();
+  const companyAndCity = `${session?.user?.me?.company && session?.user?.me?.city ? `${session?.user?.me?.company}, ${session?.user?.me?.city}` : ""}`;
   const addSliderBlock = () => {
     setBoxes([...boxes, { index: boxes.length + 1 }]);
   };
@@ -147,7 +149,7 @@ export default function Step4({
   return (
     <>
       <div className="absolute top-[-24px] z-10 right-[30px] text-[14px] leading-[24px] text-[#6D778E]">
-        {data?.heading || "Blue Daisy Florist, London"}
+        {companyAndCity}
       </div>
       <div className="min-h-full flex flex-col justify-between gap-[16px]">
         <div className="space-y-[43px]">

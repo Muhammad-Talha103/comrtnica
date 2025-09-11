@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast";
 import companyService from "@/services/company-service";
 import FuneralCompanyPreview from "../components/funeral-company-preview";
 import { useAuth } from "@/hooks/useAuth";
+import { useSession } from "next-auth/react";
 
 export default function Step6({ data, onChange, handleStepChange }) {
   const [openBlock, setOpenBlock] = useState(1);
@@ -22,7 +23,8 @@ export default function Step6({ data, onChange, handleStepChange }) {
       isDefaultOpen: true,
     },
   ]);
-
+const { data: session } = useSession();
+  const companyAndCity = `${session?.user?.me?.company && session?.user?.me?.city ? `${session?.user?.me?.company}, ${session?.user?.me?.city}` : ""}`;
   const { user } = useAuth();
 
 
@@ -121,7 +123,7 @@ export default function Step6({ data, onChange, handleStepChange }) {
   return (
     <>
       <div className="absolute top-[-24px] z-10 right-[30px] text-[14px] leading-[24px] text-[#6D778E]">
-        {data?.heading || "Blue Daisy Florist, London"}
+        {companyAndCity}
       </div>
       <div className="min-h-full flex flex-col justify-between gap-[16px]">
         <div className="space-y-[44px]">

@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 import FuneralCompanyPreview from "../components/funeral-company-preview";
 import { useAuth } from "@/hooks/useAuth";
+import { useSession } from "next-auth/react";
 
 export default function Step3({ data, onChange, handleStepChange }) {
   const [cemetries, setCemetries] = useState([
@@ -23,7 +24,8 @@ export default function Step3({ data, onChange, handleStepChange }) {
   ]);
   const [companyId, setCompanyId] = useState(null);
   const { user } = useAuth();
-
+const { data: session } = useSession();
+  const companyAndCity = `${session?.user?.me?.company && session?.user?.me?.city ? `${session?.user?.me?.company}, ${session?.user?.me?.city}` : ""}`;
   useEffect(() => {
     if (data && data !== null) {
       setCompanyId(data.id);
@@ -150,7 +152,7 @@ export default function Step3({ data, onChange, handleStepChange }) {
   return (
     <>
       <div className="absolute top-[-24px] z-10 right-[30px] text-[14px] leading-[24px] text-[#6D778E]">
-        {data?.heading || "Blue Daisy Florist, London"}
+        {companyAndCity}
       </div>
       <div className="min-h-full flex flex-col justify-between gap-[16px]">
         <div className="space-y-[22px]">

@@ -8,6 +8,7 @@ import { toast } from "react-hot-toast";
 import FuneralCompanyPreview from "../components/funeral-company-preview";
 import RichTexEditor from "@/app/components/form/rich-editor";
 import { useAuth } from "@/hooks/useAuth";
+import { useSession } from "next-auth/react";
 
 const defaultFaqs = [
   {
@@ -38,7 +39,8 @@ export default function Step5({ data, onChange, handleStepChange }) {
   });
 
   const [companyId, setCompanyId] = useState(data?.id);
-
+const { data: session } = useSession();
+  const companyAndCity = `${session?.user?.me?.company && session?.user?.me?.city ? `${session?.user?.me?.company}, ${session?.user?.me?.city}` : ""}`;
   const { user } = useAuth();
 
   const handleFaqChange = (index, updatedFaq) => {
@@ -145,7 +147,7 @@ export default function Step5({ data, onChange, handleStepChange }) {
   return (
     <>
       <div className="absolute top-[-24px] z-10 right-[30px] text-[14px] leading-[24px] text-[#6D778E]">
-        {data?.heading || "Blue Daisy Florist, London"}
+        {companyAndCity}
       </div>
       <div className="min-h-full flex flex-col justify-between gap-[16px]">
         <div className="space-y-[20px]">

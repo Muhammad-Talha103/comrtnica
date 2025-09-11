@@ -9,6 +9,7 @@ import shopService from "@/services/shop-service";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import CompanyPreview from "../components/company-preview";
+import { useSession } from "next-auth/react";
 
 export default function Step6({
   data,
@@ -36,7 +37,8 @@ export default function Step6({
   const [highlightText, setHighlightText] = useState("");
   const [instagram, setInstagram] = useState("");
   const [facebook, setFacebook] = useState("");
-
+  const { data: session } = useSession();
+  const companyAndCity = `${session?.user?.me?.company && session?.user?.me?.city ? `${session?.user?.me?.company}, ${session?.user?.me?.city}` : ""}`;
   const addSliderBlock = () => {
     setShops([
       ...shops,
@@ -177,7 +179,7 @@ export default function Step6({
   return (
     <>
       <div className="absolute top-[-24px] z-10 right-[30px] text-[14px] leading-[24px] text-[#6D778E]">
-        {data?.heading || "Blue Daisy Florist, London"}
+        {companyAndCity}
       </div>
       <div className="min-h-full flex flex-col justify-between gap-[16px]">
         <div className="space-y-[44px]">
