@@ -204,7 +204,7 @@ export default function Obituaries() {
 
                       <td className="text-center">
                         <div className="flex items-center justify-center gap-3">
-                          {obituary?.hasKeeper  ? (
+                          {obituary?.hasKeeper === true ? (
                             <img
                               src="/tick_green.png"
                               alt=""
