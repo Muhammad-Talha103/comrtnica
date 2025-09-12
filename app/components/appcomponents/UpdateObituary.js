@@ -879,8 +879,6 @@ const UpdateObituary = ({ set_Id, setModal }) => {
                         <DatePicker
                           selected={deathDate}
                           onChange={(date) => {
-                            console.log('fdfdfd', date);
-
                             if (date) {
                               setDeathDate(new Date(date.getFullYear(), 0, 1));
                             }
