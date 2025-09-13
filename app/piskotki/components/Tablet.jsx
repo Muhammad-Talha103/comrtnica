@@ -24,7 +24,7 @@ export default function Tablet() {
                 <p className="font-medium text-[16px] leading-[27px] tracking-[0] mb-[5px]">Vrste piškotkov, ki jih uporabljamo</p>
                 <ul className="list-disc marker:text-gray-400 text-[16px] pl-5 font-light mb-6">
                     <li>Nujni piškotki so potrebni za omogočanje osnovnih funkcij tega spletnega  mesta, kot so zagotavljanje varnih prijav ali prilagajanje vaših  nastavitev soglasja. Ti piškotki ne shranjujejo nobenih osebno  identificirajočih podatkov.</li>
-                    <li>Funkcionalni – shranijo vaše nastavitve in preference (npr. izbira lokalnega kraja). ̰</li>
+                    <li>Funkcionalni – shranijo vaše nastavitve in preference (npr. izbira lokalnega kraja).</li>
                     <li>Analitični – zbirajo podatke o uporabi strani za izboljševanje naših vsebin in storitev.</li>
                     <li>Marketinški – omogočajo prikazovanje ustreznih vsebin in oglasov.</li>
                 </ul>
