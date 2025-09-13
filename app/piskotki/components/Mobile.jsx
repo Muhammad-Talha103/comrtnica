@@ -28,13 +28,13 @@ export default function Mobile() {
             </ul>
 
             <h1 className="font-medium text-[24px] leading-[21px] tracking-[0] mb-[25px]  mobile:text-[20px]">Politika piškotkov</h1>
-            <p className="font-light text-[14px] leading-[21px] tracking-[0] mb-6">Nazadnje posodobljeno: 12. september 2025</p>
+            <p className="font-light text-[14px] leading-[21px] tracking-[0] mb-6">Nazadnje posodobljeno: 12. septembra 2025</p>
             <p className="font-light text-[14px] leading-[21px] tracking-[0] mb-6">Na spletni strani osmrtnica.com uporabljamo piškotke in podobne tehnologije, da zagotovimo pravilno delovanje strani, izboljšamo uporabniško izkušnjo ter analiziramo obisk. Ta politika pojasnjuje, kaj so piškotki, katere vrste uporabljamo in kako lahko sami upravljate svoje nastavitve piškotkov.</p>
 
             <div>
                 <p className="font-medium text-[14px] leading-[21px] tracking-[0] mb-[5px]">Kaj so piškotki?</p>
                 <p className="font-light text-[14px] leading-[21px] tracking-[0] mb-6">
-                    Piškotki so majhne besedilne datoteke, ki se uporabljajo za shranjevanje majhnih delov informacij. Na vašo napravo so shranjeni, ko se spletno mesto  naloži v vaš brskalnik. Ti piškotki pomagajo zagotoviti pravilno  delovanje spletne strani, izboljšajo varnost, zagotavljajo boljšo uporabniško izkušnjo in analizirajo delovanje, da ugotovijo, kaj deluje  in kje so potrebne izboljšave. Omogočajo, da si stran zapomni določene informacije in vas prepozna ob naslednjem obisku.
+                    Piškotki so majhne besedilne datoteke, ki se uporabljajo za shranjevanje majhnih delov informacij. Na vašo napravo so shranjeni, ko se spletno mesto naloži v vaš brskalnik. Ti piškotki pomagajo zagotoviti pravilno delovanje spletne strani, izboljšajo varnost, zagotavljajo boljšo uporabniško izkušnjo in analizirajo delovanje, da ugotovijo, kaj deluje in kje so potrebne izboljšave. Omogočajo, da si stran zapomni določene informacije in vas prepozna ob naslednjem obisku.
                 </p>
             </div>
             <div>
@@ -42,7 +42,7 @@ export default function Mobile() {
                 <p className="font-light text-[14px] leading-[21px] tracking-[0] mb-6">
                     Tako kot večina spletnih storitev naše spletno mesto uporablja lastne  (first-party) in piškotke tretjih oseb (third-party) za različne namene. Lastni piškotki so nujno potrebni za pravilno delovanje spletnega mesta in ne zbirajo nobenih osebno identificirajočih podatkov.</p>
 
-                <p className="font-light text-[14px] leading-[21px] tracking-[0] mb-6">Moreebitni občasni piškotki tretjih oseb, ki se uporabljajo na našem spletnem mestu, nam predvsem  pomagajo razumeti, kako spletno mesto deluje, slediti vaši interakciji z njim, ohranjati naše storitve varne, prikazovati ustrezne oglase ter  izboljšati vašo splošno uporabniško izkušnjo in hkrati povečati hitrost  vaših prihodnjih interakcij z našim spletnim mestom.</p>
+                <p className="font-light text-[14px] leading-[21px] tracking-[0] mb-6">Morebitni občasni piškotki tretjih oseb, ki se uporabljajo na našem spletnem mestu, nam predvsem pomagajo razumeti, kako spletno mesto deluje, slediti vaši interakciji z njim, ohranjati naše storitve varne, prikazovati ustrezne oglase ter izboljšati vašo splošno uporabniško izkušnjo in hkrati povečati hitrost vaših prihodnjih interakcij z našim spletnim mestom.</p>
             </div>
             <div>
                 <p className="font-medium text-[14px] leading-[21px] tracking-[0] mb-[5px]">Vrste piškotkov, ki jih uporabljamo</p>
