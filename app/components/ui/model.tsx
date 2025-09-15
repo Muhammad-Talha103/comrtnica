@@ -106,7 +106,7 @@ export const modelData: Record<
           Že čez 2 minuti...{" "}
         </div>
         <div className="text-[#3C3E41] text-sm tab:text-base w-[287px] tab:w-full flex flex-col gap-1 tab:gap-2">
-          <p className="tab:w-[450px]">
+          <p className="">
             ...imaš lahko svojo cvetličarno oglaševano na seznamu lokalnih
             cvetličarn in lokalnih osmrtnicah. Brezplačno in brez obveznosti.
           </p>
@@ -228,9 +228,9 @@ export const modelData: Record<
               (zaradi katerih bodo cvetličarne privabile nove kliente, ki jih
               sicer ne bi bilo)
             </p>
-          </div>
-          <div className="  tab:text-base text-sm mt-7 tab:mt-0 ">
-            Strošek mesečne naročnine od 10€ naprej.{" "}
+            <div className="  tab:text-base text-sm mt-9 tab:mt-0 ">
+              Strošek mesečne naročnine od 10€ naprej.{" "}
+            </div>
           </div>
         </div>
       </div>
@@ -261,12 +261,12 @@ export const modelData: Record<
               in še danes boste imeli omogočeno dodajanje osmrtnic (in če to
               želite, tudi pošiljanje Skrbnika najbližjim).
             </p>
-            <p className="tab:w-[450px]">
+            <p className="">
               Do konca tega tedna bomo omogočili tudi izdelavo lastne strani,
               prihodnji teden pa bomo dodali še nek zelo zanimiv produkt.{" "}
             </p>
+            <p className=" ">Brezplačno in brez obveznosti. Za vedno. </p>
           </div>
-          <p className="mt-5 ">Brezplačno in brez obveznosti. Za vedno. </p>
         </div>
       </div>
     ),
