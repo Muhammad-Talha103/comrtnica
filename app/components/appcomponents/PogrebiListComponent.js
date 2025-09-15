@@ -44,7 +44,7 @@ const ObituaryListComponent = ({ city }) => {
   ];
 
   useEffect(() => {
-    if (!selectedRegion) {
+    if (!selectedRegion || selectedRegion === "- Pokaži vse regije -") {
       return setAllCities(defaultCities);
     }
     const filteredCities = Object.values(regionsAndCities[selectedRegion])
@@ -62,21 +62,30 @@ const ObituaryListComponent = ({ city }) => {
 
   // Update URL with query parameters
   const updateURL = (city, region, search) => {
-    const params = new URLSearchParams();
-
-    if (city && city !== "allCities") params.set('city', city);
-    if (region && region !== "allRegions") params.set('region', region);
-    if (search) params.set('search', search);
-
+    const params = new URLSearchParams(window.location.search);
+    if (city && city !== "allCities" && city !== "- Pokaži vse občine -") {
+      params.set("city", city);
+    } else {
+      params.delete("city");
+    }
+    if (region && region !== "allRegions" && region !== "- Pokaži vse regije -") {
+      params.set("region", region);
+    } else {
+      params.delete("region");
+    }
+    if (search) {
+      params.set("search", search);
+    } else {
+      params.delete("search");
+    }
     const queryString = params.toString();
     const newURL = queryString ? `?${queryString}` : window.location.pathname;
-
-    router.push(newURL, { shallow: true });
+    router.replace(newURL, { scroll: false });
   };
 
   // Handle region selection
   const handleRegionSelect = (item) => {
-    if (item.id === "allRegions") {
+    if (item.id === "allRegions" || item.place === "- Pokaži vse regije -") {
       setSelectedRegion(null);
       updateURL(selectedCity, null, searchTerm); // Keep selected city
     } else {
@@ -87,7 +96,9 @@ const ObituaryListComponent = ({ city }) => {
 
   // Handle city selection
   const handleCitySelect = (item) => {
-    if (item.id === "allCities") {
+    console.log("sssss", item);
+
+    if (item.id === "allCities" || item.place === "- Pokaži vse občine -") {
       setSelectedCity(null);
       updateURL(null, selectedRegion, searchTerm);
     } else {
