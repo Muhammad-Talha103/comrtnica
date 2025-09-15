@@ -106,7 +106,7 @@ export const modelData: Record<
           Že čez 2 minuti...{" "}
         </div>
         <div className="text-[#3C3E41] text-sm tab:text-base w-[287px] tab:w-full flex flex-col gap-1 tab:gap-2">
-          <p>
+          <p className="tab:w-[450px]">
             ...imaš lahko svojo cvetličarno oglaševano na seznamu lokalnih
             cvetličarn in lokalnih osmrtnicah. Brezplačno in brez obveznosti.
           </p>
@@ -173,18 +173,18 @@ export const modelData: Record<
           </p>
         </div>
 
-        <div className="text-[#3C3E41] h-full text-base flex flex-col  gap-3">
+        <div className="text-[#3C3E41] h-full justify-between text-base flex flex-col  gap-3">
           <div className="flex flex-col gap-2 tab:gap-3 tab:w-[462px]">
             <p>
-              Šele začeli smo in zaradi varnosti v tej fazi še ne omogočamo
-              spletnega plačevanja (predvideno v prvi polovici oktobra).
+              Trenutno še ne omogočamo spletnega plačevanja (predvideno sredi
+              oktobra)
             </p>
             <p>
-              Dotlej bomo prvim zainteresiranim cvetličarnam omogočili plačilo
-              naročnine na star in preverjen način - z izdajanjem računa.
+              Do takrat lahko prve cvetličarne poravnajo naročnino po izdanem
+              računu na transakcijski račun.
             </p>
           </div>
-          <div className="text-[#0A85C2]  text-base mt-8 ">
+          <div className="text-[#0A85C2]  text-base mt-8  ">
             PRILOŽNOST ZA PRVE{" "}
           </div>
         </div>
@@ -261,7 +261,7 @@ export const modelData: Record<
               in še danes boste imeli omogočeno dodajanje osmrtnic (in če to
               želite, tudi pošiljanje Skrbnika najbližjim).
             </p>
-            <p>
+            <p className="tab:w-[450px]">
               Do konca tega tedna bomo omogočili tudi izdelavo lastne strani,
               prihodnji teden pa bomo dodali še nek zelo zanimiv produkt.{" "}
             </p>
