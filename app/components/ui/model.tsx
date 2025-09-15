@@ -337,9 +337,9 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, index, children }) => {
                   width="55"
                   height="55"
                   filterUnits="userSpaceOnUse"
-                  color-interpolation-filters="sRGB"
+                  colorInterpolationFilters="sRGB"
                 >
-                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
                   <feColorMatrix
                     in="SourceAlpha"
                     type="matrix"
@@ -381,12 +381,12 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, index, children }) => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <g clip-path="url(#clip0_8894_2303)">
+              <g clipPath="url(#clip0_8894_2303)">
                 <path
                   d="M36.3 39.6016L29.7004 33.0019L33.0002 29.7021L39.5999 36.3017L46.1995 29.7021L49.4994 33.0019L42.8997 39.6016L49.4994 46.2012L46.1995 49.5011L39.5999 42.9014L33.0002 49.5011L29.7004 46.2012L36.3 39.6016ZM56.099 56.1007C46.9868 65.213 32.2129 65.2129 23.1007 56.1007C13.9885 46.9885 13.9885 32.2146 23.1007 23.1024C32.2129 13.9903 46.9868 13.9902 56.099 23.1024C65.2112 32.2146 65.2112 46.9886 56.099 56.1007ZM52.7992 52.8009C60.089 45.5111 60.089 33.6921 52.7992 26.4022C45.5094 19.1124 33.6904 19.1124 26.4006 26.4022C19.1108 33.692 19.1108 45.5111 26.4006 52.8009C33.6904 60.0907 45.5094 60.0907 52.7992 52.8009Z"
                   fill="#6D778E"
                   stroke="#C9D2E7"
-                  stroke-width="0.4"
+                  strokeWidth="0.4"
                 />
               </g>
               <defs>
