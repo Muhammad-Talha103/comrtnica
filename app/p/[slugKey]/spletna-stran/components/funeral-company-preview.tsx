@@ -53,7 +53,7 @@ console.log('company',company);
               key={`${company?.id}-banner`}
               data={company}
             />
-            <LastObituariesList key={`${company?.id}-last-obituaries`} />
+            <LastObituariesList key={`${company?.id}-last-obituaries`} city={"city"} />
             <FuneralInFewDays
               key={`${company?.id}-funeral-in-few-days`}
               data={company}

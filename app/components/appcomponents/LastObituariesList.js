@@ -6,9 +6,9 @@ import imgPrevious from "@/public/previous_img.png";
 import imgNext from "@/public/next_img.png";
 import { toast } from "react-hot-toast";
 import obituaryService from "@/services/obituary-service";
-import { useAuth} from "@/hooks/useAuth";
+import { useAuth } from "@/hooks/useAuth";
 
-const LastObituariesList = () => {
+const LastObituariesList = ({ city = "" }) => {
   const router = useRouter();
   const { user, isAuthenticated, isLoading } = useAuth();
 
@@ -20,13 +20,15 @@ const LastObituariesList = () => {
     if (!isLoading && !isAuthenticated) {
       toast.error("You must be logged in to access this page.");
       router.push("/registracija");
-    } 
+    }
   }, [isLoading]);
 
   useEffect(() => {
     const fetchObituary = async () => {
       try {
-        const response = await obituaryService.getObituary({ userId: user.id });
+        let payload = { userId: user.id };
+        if (city) payload = { city: user?.city };
+        const response = await obituaryService.getObituary(payload);
 
         if (response.error) {
           toast.error(
@@ -136,35 +138,49 @@ const LastObituariesList = () => {
             ))}
         </div>
         <div className="w-[272px] h-[48px] mt-[47.27px] gap-2 flex flex-row justify-center mobile:mt-[30px] mobile:mb-[66px] mb-[87.81px]">
+          {/* Previous Button */}
           <div
-            className="w-[48px] h-[48px] rounded-lg text-black flex justify-center items-center shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] hover:border-black hover:border-2"
-            onClick={() => goToPage(currentPage - 1)}
+            className="w-[48px] h-[48px] rounded-lg text-black flex justify-center items-center shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] hover:border-black hover:border-2 cursor-pointer"
+            onClick={() => goToPage(currentPage > 1 ? currentPage - 1 : 1)}
           >
             <Image
               src={imgPrevious}
               alt="imgPrevious"
-              className=" w-[5.66px] h-[8.49px]"
+              className="w-[5.66px] h-[8.49px]"
             />
           </div>
-          {Array.from({ length: totalPages }).map((_, index) => {
-            const pageNumber = index + 1;
-            return (
+
+          {/* Page Numbers (Max 4 shown) */}
+          {(() => {
+            let startPage = Math.max(1, currentPage - 1);
+            let endPage = startPage + 3;
+
+            if (endPage > totalPages) {
+              endPage = totalPages;
+              startPage = Math.max(1, endPage - 3);
+            }
+
+            const visiblePages = [];
+            for (let i = startPage; i <= endPage; i++) {
+              visiblePages.push(i);
+            }
+
+            return visiblePages.map((pageNumber) => (
               <div
                 key={pageNumber}
                 onClick={() => goToPage(pageNumber)}
-                className={`hover:border-black hover:border-2 w-[48px] h-[48px] rounded-lg text-black flex justify-center items-center cursor-pointer shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] ${
-                  currentPage === pageNumber ? "bg-gray-300 font-bold" : ""
-                }`}
+                className={`hover:border-black hover:border-2 w-[48px] h-[48px] rounded-lg text-black flex justify-center items-center cursor-pointer shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] ${currentPage === pageNumber ? "bg-gray-300 font-bold" : ""
+                  }`}
               >
                 {pageNumber}
               </div>
-            );
-          })}
+            ));
+          })()}
+
+          {/* Next Button */}
           <div
             className="w-[48px] h-[48px] rounded-lg text-black flex justify-center items-center shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] hover:border-black hover:border-2 cursor-pointer transition-colors duration-200"
-            onClick={() => {
-              goToPage(currentPage + 1);
-            }}
+            onClick={() => goToPage(currentPage < totalPages ? currentPage + 1 : totalPages)}
           >
             <Image
               src={imgNext}
@@ -173,6 +189,8 @@ const LastObituariesList = () => {
             />
           </div>
         </div>
+
+
       </div>
     </div>
   );

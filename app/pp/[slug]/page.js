@@ -56,7 +56,7 @@ export default function FuneralPage() {
                                     key={`${company?.id}-banner`}
                                     data={company}
                                 />
-                                <ObitList key={`${company?.id}-last-obituaries`} userId={company?.userId} />
+                                <ObitList key={`${company?.id}-last-obituaries`} city={company?.city} />
                                 <FuneralInFewDays
                                     key={`${company?.id}-funeral-in-few-days`}
                                     data={company}
