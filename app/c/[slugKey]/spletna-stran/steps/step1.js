@@ -29,7 +29,7 @@ export default function Step1({
   const [companyId, setCompanyId] = useState(null);
   const [glassFrameState, setGlassFrameState] = useState(false);
   const [user, setUser] = useState(null);
-  const [showNotifyCard, setShowNotifyCard] = useState(true);
+  // const [showNotifyCard, setShowNotifyCard] = useState(true);
   const { isLoading: isCreating, trigger: create } = useApi(companyService.createCompany);
   const { isLoading: isUpdating, trigger: update } = useApi(companyService.updateCompany);
 
@@ -114,7 +114,7 @@ export default function Step1({
   return (
     <>
       {(isCreating || isUpdating) && <Loader />}
-      <InfoModal
+      {/* <InfoModal
         icon={"/giftbox.svg"}
         heading={"V pripravi"}
         text={"Izdelava brezplačne lastne strani bo"}
@@ -123,7 +123,7 @@ export default function Step1({
         onClose={() => {
           setShowNotifyCard(false);
         }}
-      />
+      /> */}
       <div className="absolute top-[-24px] z-10 right-[30px] text-[14px] leading-[24px] text-[#6D778E]">
         {companyAndCity}
       </div>
