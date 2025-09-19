@@ -39,7 +39,7 @@ const FuneralsCompanyBanner = ({ data }) => {
   console.log("data in banner", data);
   return (
     <div className="relative bg-gradient-to-b to-[#E8F0F5] from-[#EBEDEF] flex-col w-full overflow-hidden mx-auto desktop:mt-[92.02px] mobile:mt-[72px] tablet:mt-[80px] flex justify-center items-center">
-      <Image
+      <img
         key={`${data?.id}-background`}
         src={data?.background}
         alt="pok_gabrsko"
