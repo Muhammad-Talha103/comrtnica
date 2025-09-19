@@ -41,7 +41,7 @@ const FuneralsCompanyBanner = ({ data }) => {
     <div className="relative bg-gradient-to-b to-[#E8F0F5] from-[#EBEDEF] flex-col w-full overflow-hidden mx-auto desktop:mt-[92.02px] mobile:mt-[72px] tablet:mt-[80px] flex justify-center items-center">
       <img
         key={`${data?.id}-background`}
-        src={data?.background}
+        src={data?.background || "/default-fu-banner.png"}
         alt="pok_gabrsko"
         width={1280}
         height={300}
