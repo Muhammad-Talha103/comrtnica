@@ -102,13 +102,13 @@ const LastObituariesList = ({ city = "", userId }) => {
         </div>
       </div>
       <div
-        className="flex flex-col desktop:flex-row 
-             desktop:mt-[70px] tablet:mt-[48px] mobile:mt-[29px]
+        className="flex flex-row
+             desktop:mt-[40px] tablet:mt-[30px] mobile:mt-[15px]
              desktop:w-[300px] tablet:w-[300px] mobile:w-[296]
                items-center justify-center "
       >
-        <div className="flex flex-col w-full items-center tablet:flex-row desktop:flex-row desktop:space-x-[16px] tablet:justify-between mobile:h-[112px] tablet:h-[48px] desktop:h-[48px]">
-          <div className=" desktop:flex h-[48px]">
+        <div className="flex w-full items-center tablet:flex-row desktop:flex-row desktop:space-x-[16px] tablet:justify-between mobile:h-[40px] tablet:h-[48px] desktop:h-[48px]">
+          <div className="flex h-[48px]">
             <input
               type="text"
               value={search}
@@ -134,9 +134,9 @@ const LastObituariesList = ({ city = "", userId }) => {
         </div>
         <div
           onClick={() => fetchObituary()}
-          className=" desktop:flex justify-center  w-12 items-center h-full desktop:aspect-square rounded-lg bg-[#414141]"
+          className="flex justify-center  w-12 items-center h-12 desktop:aspect-square rounded-lg bg-[#414141]"
         >
-          <MagnifyingGlassIcon className="w-5 h-5 text-white hidden desktop:block" />
+          <MagnifyingGlassIcon className="w-5 h-5 text-white desktop:block" />
         </div>
       </div>
       <div className="flex flex-col mt-[29.35px] items-center tablet:mt-12 desktop:mt-12">
