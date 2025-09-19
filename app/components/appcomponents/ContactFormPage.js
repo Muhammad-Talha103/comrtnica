@@ -45,8 +45,8 @@ const ContactFormPage = () => {
       await userService.saveContact({
         name: inputValueTodo,
         email: inputValueEmail,
-        subject: inputValueMessage,
-        message: inputValueMatter
+        subject: inputValueMatter,
+        message: inputValueMessage
       });
       resetForm();
       setLoading(false);
