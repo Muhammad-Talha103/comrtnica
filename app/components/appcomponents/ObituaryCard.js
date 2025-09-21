@@ -8,17 +8,9 @@ const formatObituaryDate = (dateString) => {
   if (!dateString) return ""; // If date doesn't exist
 
   const date = new Date(dateString);
-  const day = date.getDate();
-  const month = date.getMonth() + 1; // 0-indexed
-  const year = date.getFullYear();
-
-  // If date is 31st December → show only year
-  if (day === 31 && month === 12) {
-    return `${year}`;
-  }
 
   // Otherwise, show full date
-  return format(date, "dd.MM.yyyy");
+  return format(date, "yyyy");
 };
 
 const calculateAge = (birthDate, deathDate) => {
@@ -124,18 +116,11 @@ const ObituaryCard = ({
                   {data.name} {data.sirName}
                 </div>
                 <p
-                  className="hidden desktop:block font-variation-customOpt14 tablet:font-variation-customOpt16 
+                  className="block font-variation-customOpt14 tablet:font-variation-customOpt16 
                   desktop:font-variation-customOpt16 text-left desktop:mt-[16px] tablet:mt-[16px]  
                   desktop:text-[16px] tablet:text-[16px] mobile:text-[14px]  text-[#414141] leading-[24px]"
                 >
                   {formattedBirthDate} – {formattedDeathDate} ({age} let)
-                </p>
-                <p
-                  className="hidden mobile:block tablet:block font-variation-customOpt14 tablet:font-variation-customOpt16 
-                  desktop:font-variation-customOpt16 text-left desktop:mt-[16px] tablet:mt-[16px]  
-                  desktop:text-[16px] tablet:text-[16px] mobile:text-[14px]  text-[#414141] leading-[24px]"
-                >
-                  {formattedBirthDate} – {formattedDeathDate}
                 </p>
                 <div
                   className="flex h-[18px] tablet:h-6 

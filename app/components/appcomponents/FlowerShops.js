@@ -67,15 +67,15 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
 
   return showShop ? (
     <div
-      className="jddesktop:h-[700px] jdtablet:h-[800px] jdmobile:h-[800px] w-full flex flex-col  justify-center  items-center  bg-[#F8EDE3] relative"
+      className="w-full flex flex-col  justify-center  items-center  bg-[#F8EDE3] relative py-20 desktop:py-28"
       style={{
         boxShadow:
           "2.5px 2.5px 5px 0px #A6ABBD inset, -1.5px -1.5px 5px 0px #A6ABBDBF inset",
       }}
     >
-      <div className="mx-auto jdmobile:flex-col jdmobile:items-center jdmobile:w-[370px] jdmobile:mt-[110px] jdmobile:px-[30px] jdtablet:w-[650px] jdtablet:mt-[110px] jddesktop:w-[900px]">
+      <div className="mx-auto jdmobile:flex-col jdmobile:items-center jdmobile:w-[370px] jdmobile:px-[30px] jdtablet:w-[650px] jddesktop:w-[900px]">
         {" "}
-        <div className="flex justify-between jdmobile:gap-[12px] jddesktop:pt-[100px]">
+        <div className="flex justify-between jdmobile:gap-[12px]">
           <div className="leading-[46.88px] cursor-pointer text-[28px] desktop:text-[40px] font-variation-customOpt40 text-[#1E2125]  ">
             Cvetličarne
           </div>
@@ -84,14 +84,14 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
             alt="trbovlje"
             className="w-[50px] h-[50px]"
             onClick={() => setIsOpen(false)}
-          />
+          />  
         </div>
         <div className="text-[#0A85C2] text-[32px] jdmobile:text-[24px] leading-[24px] font-variation-customOpt16 mt-[18px] jdmobile:mt-[8px] jdtablet:mb-[40px] jddesktop:mb-[40px] jdmobile:w-full jdmobile:mb-[50px]">
           {" "}
           {data?.city}
         </div>
       </div>
-      <div className="jdmobile:h-[790px] jdtablet:h-[880px] jddesktop:h-[664px] w-full pt-[10px] pb-[10px] bg-[#F8EDE3]">
+      <div className="w-full bg-[#F8EDE3]">
         {data?.floristShops?.length > 0 && (
           <div className="mx-auto jdmobile:w-[370px] jdtablet:w-[700px] jddesktop:w-[1280px] w-[400px] grid grid-cols-2 jdtablet:grid-cols-3 jddesktop:grid-cols-6 jdmobile:justify-center place-items-center items-end">
             {/* Sponsor Card */}
@@ -150,7 +150,7 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
         )}
         {!data?.floristShops?.length && (
           <div className="w-full">
-            <div className="flex flex-col items-center justify-center w-full h-32 text-gray-500">
+            <div className="flex flex-col items-center justify-center w-full text-gray-500">
               <p>Še ni vnešenih&nbsp;cvetličarn.</p>
             </div>
           </div>
