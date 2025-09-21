@@ -101,6 +101,17 @@ const adminService = {
     }
   },
 
+   // Get contacts
+  getContacts: async () => {
+    try {
+      const response = await axios.get("/admin/contact-list");
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching contacts :", error);
+      throw error;
+    }
+  },
+
   // Update user permissions
   updateUserPermissions: async (userId: number, permissions: {
     createObituaryPermission: boolean;
