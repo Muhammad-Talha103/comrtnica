@@ -62,9 +62,9 @@ const MemoryPageContent = ({ params }) => {
         });
 
         if (visitRespone.error) {
-          toast.error(
-            visitRespone.error || "Something went wrong. Please try again!"
-          );
+          // toast.error(
+          //   visitRespone.error || "Something went wrong. Please try again!"
+          // );
           return;
         }
 
@@ -83,7 +83,7 @@ const MemoryPageContent = ({ params }) => {
       }
     } catch (err) {
       console.error("Error fetching obituary:", err);
-      toast.error(err.message || "Failed to fetch obituary.");
+      // toast.error(err.message || "Failed to fetch obituary.");
     }
   };
 

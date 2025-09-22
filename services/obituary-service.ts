@@ -122,7 +122,7 @@ const updateObituaryVisits = async (data: any) => {
     return response.data;
   } catch (error: unknown) {
     console.error("Error updating obituary visits:", error);
-    throw new Error("Network error or no response");
+    // throw new Error("Network error or no response");
   }
 };
 //add sorrow book
