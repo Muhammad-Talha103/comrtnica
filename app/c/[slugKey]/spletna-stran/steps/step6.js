@@ -13,16 +13,7 @@ import { useSession } from "next-auth/react";
 import { Loader } from "@/utils/Loader";
 import { useApi } from "@/hooks/useApi";
 import { RenderImage } from "@/utils/ImageViewerModal";
-
-export default function Step6({
-  data,
-  onChange,
-  handleStepChange,
-  setIsRender,
-}) {
-  const [openBlock, setOpenBlock] = useState(1);
-  const router = useRouter();
-  const [shops, setShops] = useState([
+const defaultShop = [
     {
       index: 1,
       title: "Podatki o trgovini",
@@ -33,7 +24,16 @@ export default function Step6({
       email: "",
       telephone: "",
     },
-  ]);
+  ]
+export default function Step6({
+  data,
+  onChange,
+  handleStepChange,
+  setIsRender,
+}) {
+  const [openBlock, setOpenBlock] = useState(1);
+  const router = useRouter();
+  const [shops, setShops] = useState(defaultShop);
   const [name, setName] = useState("");
   const [companyId, setCompanyId] = useState(null);
   const [logo, setLogo] = useState(null);
@@ -138,6 +138,7 @@ export default function Step6({
       //   ...data,
       //   shops: response.shops,
       // });
+      fetchShops();
       toast.success("Poslano v potrditev");
       // router.push(`/floristdetails/${companyId}`);
 
@@ -193,6 +194,9 @@ export default function Step6({
         }));
         setShops(updatedShops);
       }
+      else if(response && response?.length == 0){
+        setShops(defaultShop)
+      }
     } catch (error) {
       console.error('Failed to fetch shops data:', error);
     }
@@ -205,10 +209,11 @@ export default function Step6({
     }
   }, [companyId])
 
-  function handleSave(){
+  function handleSave() {
     handleBCSubmit();
     handleShopSubmit();
   }
+
   // --------------------
 
   return (
@@ -346,6 +351,7 @@ export default function Step6({
                 index={block.index}
                 shop={block}
                 onChange={handleShopChange}
+                refetch={fetchShops}
               />
             ))}
             {openBlock === 2 && (
@@ -472,11 +478,30 @@ function SliderBlock({
   shop,
   onChange,
   openBlock,
-  setOpenBlock,
+  setOpenBlock, refetch
 }) {
+  const { isLoading: isDeleting, trigger: deleteShop } = useApi(shopService.deleteShop);
+
   const handleChange = (e) => {
     onChange(index - 1, { ...shop, [e.target.name]: e.target.value });
   };
+  const handleDeleteShop = async () => {
+    try {
+    
+      if (!shop?.id) return;
+      const response = await deleteShop(shop?.id);
+
+      if (response.status === 200) {
+        toast.success("Shop deleted successfully.");
+        refetch();
+
+      }
+    } catch (error) {
+      toast.error("Error deleting florist shop.");
+    } finally {
+    }
+  };
+  
   return (
     <OpenableBlock
       isDefaultOpen={false}
@@ -484,6 +509,8 @@ function SliderBlock({
       index={index + 1}
       openBlock={openBlock === 2}
       handleOpenBlock={() => setOpenBlock(2)}
+      onDelete={shop?.id ? handleDeleteShop : null}
+      isDisabled={isDeleting}
     >
       <div className="space-y-[16px] ">
         <div className="space-y-[8px]">

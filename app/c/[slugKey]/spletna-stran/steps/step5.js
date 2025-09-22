@@ -13,22 +13,22 @@ import companyService from "@/services/company-service";
 import { useApi } from "@/hooks/useApi";
 import { Loader } from "@/utils/Loader";
 import { RenderImage } from "@/utils/ImageViewerModal";
-
+const defaultSlide = [
+  {
+    index: 1,
+    isDefaultOpen: true,
+    image: null,
+    title: "",
+    description: "",
+  },
+];
 export default function Step5({
   data,
   onChange,
   handleStepChange,
   setIsRender,
 }) {
-  const [slides, setSlides] = useState([
-    {
-      index: 1,
-      isDefaultOpen: true,
-      image: null,
-      title: "",
-      description: "",
-    },
-  ]);
+  const [slides, setSlides] = useState(defaultSlide);
   const [companyId, setCompanyId] = useState(null);
   const { data: session } = useSession();
   const { isLoading, trigger } = useApi(slideService.createSlide);
@@ -110,6 +110,7 @@ export default function Step5({
       if (nonEmptySlides.length > 0) {
         const response = await trigger(formData);
         const updatedCompany = { ...data, slides: response.slides };
+        fetchSlides();
         onChange(updatedCompany);
         toast.success("Florist Slides Updated Successfully");
       }
@@ -131,7 +132,6 @@ export default function Step5({
     //   setSlides(updatedSlides);
     // }
   }, [data]);
-  console.log('sssssssssss');
 
   // Refactor--------
   const fetchSlides = async () => {
@@ -144,7 +144,11 @@ export default function Step5({
         }));
         setSlides(updatedSlides);
       }
-      console.log('slidesresponse', response);
+      else if (response?.length == 0) {
+        setSlides(defaultSlide);
+
+      }
+
     } catch (error) {
       console.error('Failed to fetch slides data:', error);
     }
@@ -199,6 +203,7 @@ export default function Step5({
                 index={block.index}
                 slide={block}
                 onChange={handleSlideChange}
+                refetch={fetchSlides}
               />
             ))}
             <div className="flex items-center justify-end pt-[8px] pb-[16px]">
@@ -260,7 +265,9 @@ export default function Step5({
   );
 }
 
-function SliderBlock({ index, title, slide, onChange }) {
+function SliderBlock({ index, title, slide, onChange, refetch }) {
+  const { isLoading: isDeleting, trigger: deleteSlide } = useApi(slideService.deleteSlide);
+
   const [isDefaultOpen, setIsDefaultOpen] = useState(index === 1);
   const [savedImage, setSavedImage] = useState("");
   const handleChange = (e) => {
@@ -271,8 +278,31 @@ function SliderBlock({ index, title, slide, onChange }) {
       setSavedImage(slide?.image);
     }
   }, [slide])
+
+
+  const handleDeleteSlide = async () => {
+    try {
+      console.log("shop?.id", slide?.id);
+
+      if (!slide?.id) return;
+      const response = await deleteSlide(slide?.id);
+      console.log('responseresponse', response);
+
+      if (response.success) {
+        setSavedImage("")
+        toast.success("Shop deleted successfully.");
+        refetch();
+
+      }
+    } catch (error) {
+      toast.error("Error deleting florist slide.");
+    } finally {
+    }
+  };
+  console.log("ccccccc", slide);
+
   return (
-    <OpenableBlock isDefaultOpen={isDefaultOpen} title={title} index={index}>
+    <OpenableBlock isDefaultOpen={isDefaultOpen} title={title} index={index} onDelete={slide?.id ? handleDeleteSlide : null} isDisabled={isDeleting}>
       <div className="space-y-[16px]">
         <div className="space-y-[8px]">
           <div className="text-[16px] text-[#3C3E41] font-normal leading-[24px]">

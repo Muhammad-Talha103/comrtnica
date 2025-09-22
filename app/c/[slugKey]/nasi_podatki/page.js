@@ -131,7 +131,7 @@ export default function AccountSettings() {
     setLoading(true);
     try {
       const response = await shopService.deleteShop(id);
-      if (response.staus === 200) {
+      if (response.status === 200) {
         toast.success("Florist shop deleted successfully.");
       }
       getCompleteCompanyData();

@@ -125,7 +125,6 @@ const MemorialPageTopComp = ({
         toast.success("Candle Burnt Successfully");
         openCandleModal();
         set_Id("3");
-        fetchMemory();
 
         const updatedCandles = {
           ...data?.candles,
@@ -199,7 +198,7 @@ const MemorialPageTopComp = ({
           alt=""
           width={1280}
           height={1091}
-          className="absolute top-0 left-0 w-full h-[120%]"
+          className="absolute top-0 left-0 w-full h-[120%] pointer-events-none -z-10"
         />
         <div
           className="flex flex-col 

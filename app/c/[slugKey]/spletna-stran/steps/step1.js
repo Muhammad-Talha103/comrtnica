@@ -158,9 +158,9 @@ export default function Step1({
                 handleOpenBlock={() => setOpenedBlock(1)}
               >
                 <div className="space-y-[8px]">
-                  <span className="text-[16px] text-[#3C3E41] font-normal leading-[24px]">
+                  {/* <span className="text-[16px] text-[#3C3E41] font-normal leading-[24px]">
                     Ime cvetličarne oz podjetja in kraj
-                  </span>
+                  </span> */}
                   <input
                     type="text"
                     value={heading}
@@ -210,9 +210,9 @@ export default function Step1({
                   }}
                 />
                 <div className="space-y-[8px]">
-                  <span className="text-[16px] text-[#3C3E41] font-normal leading-[24px]">
+                  {/* <span className="text-[16px] text-[#3C3E41] font-normal leading-[24px]">
                     Ime cvetličarne oz podjetja in kraj
-                  </span>
+                  </span> */}
                   <ImageSelector
                     setFile={(file) => setSelectedImage(file)}
                     inputId="florist-company-picture"

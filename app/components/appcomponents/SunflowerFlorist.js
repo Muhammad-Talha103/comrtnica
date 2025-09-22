@@ -108,7 +108,7 @@ const SunflowerFlorist = ({ data }) => {
           <div className="tablet:hidden desktop:flex mobile:flex flex h-[180px] w-[370px] justify-center flex-row mobile:w-[200px] mobile:h-[120px] mobile:mt-[50px] mobile:ml-10 mobile:mr-auto tablet:mt-[33px] mt-[45px]">
             <img
               key={`${data?.id}-${currentIndex}-logo-${currentShop?.id}`}
-              src={data?.logo}
+              src={data?.logo || "/suniflo_logo.avif"}
               alt="sunflower_img"
               className="w-full h-full object-contain rounded-md"
             />
