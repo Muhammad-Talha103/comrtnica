@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast";
 import { useAuth } from "@/hooks/useAuth";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const CompaniesWithApprovalReq = () => {
   const { ghostLogin } = useAuth();
@@ -129,8 +130,20 @@ const CompaniesWithApprovalReq = () => {
                   >
                     <td className="px-4 py-4">{company?.sentTimestamp ? formatDate(company?.sentTimestamp) : "N/A"}</td>
                     <td className="px-2 py-4">{company?.type === "FLORIST" ? "F" : "C"}</td>
-                    <td className="px-4 py-4">{company?.User?.company}</td>
-                    <td className="px-4 py-4">{company?.city ?? "N/A"}</td>
+                    <td className="px-4 py-4 flex justify-center gap-3">
+                      <span>{company?.User?.company} </span>
+                      <Link href={`/${company?.type === "FLORIST" ? "cv" : "pp"}/${company?.User?.slugKey}`}
+                      target="_blank"
+                      >
+                      <Image
+                          src="/external-link.png"
+                          width={16}
+                          height={16}
+                          alt="Open page"
+                          className="inline-block"
+                        />
+                        </Link></td>
+                    <td className="px-4 py-4">{company?.city ?? company?.User?.city ?? "N/A"}</td>
                     <td className="px-4 py-4">{company?.createdTimestamp ? formatDate(company.createdTimestamp) : "N/A"}</td>
                     <td className="px-4 py-4">
                       <button

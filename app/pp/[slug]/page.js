@@ -44,13 +44,11 @@ export default function FuneralPage() {
 
                     <>
                         {company ? <Layout
-                            from={"18"}
+                            from={"5"}
                             data={company}
                             forFooter={"company"}
                             isMegaMenuVisible={undefined}
                             megaMenu={undefined}
-                            handleCloseModal={() => setOpenModal(false)}
-                            isModalLayout
                         >
                             <div className="flex flex-col mx-auto w-full bg-[#F5F7F9]">
                                 <FuneralsCompanyBanner
