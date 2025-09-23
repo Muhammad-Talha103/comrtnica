@@ -72,7 +72,7 @@ const headerLinkSets = {
   ],
   "/vodic": [
     { label: "Cvetličarne", path: "/cvetlicarne", active: false },
-    { label: " Preprosti vodič", path: "/preprosti-vodici", active: true },
+    { label: "Preprosti vodič", path: "/vodic", active: true },
     { label: "Pogrebna podjetja", path: "/pogrebna-p", active: false }
   ]
 };
