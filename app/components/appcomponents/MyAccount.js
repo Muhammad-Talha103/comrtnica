@@ -161,12 +161,12 @@ const MyAccount = () => {
     try {
       const response = await updateUserAndRefreshSession({ city: item });
       if (response.success === true) {
-        toast.success("City Updated Successfully");
+        toast.success("Občina je bila posodobljena");
       }
       setSelectedCity(item);
     } catch (error) {
       console.log(error);
-      toast.error("Error Updating City");
+      toast.error("Prišlo je do napake. Občina ni bila posodobljena.");
     }
   };
 

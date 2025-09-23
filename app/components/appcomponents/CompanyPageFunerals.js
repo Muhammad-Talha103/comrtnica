@@ -65,7 +65,7 @@ const Carousel = ({ search, city, userId }) => {
 
             if (response.error) {
                 // toast.error(
-                //     response.error || "Something went wrong. Please try again!"
+                //     response.error || "Prišlo je do napake."
                 // );
                 return;
             }

@@ -106,16 +106,16 @@ export default function AccountSettings() {
           toast.success(TOAST_MESSAGE.CITY_UPDATED_AND_SESSION_REFRESHED);
           setSelectedCity(item);
         } else {
-          // toast.error("Failed to update city");
+          // toast.error("Napaka pri vnosu občine");
         }
       } catch (error) {
-        // toast.error("Error updating city");
+        // toast.error("Napaka pri posodabljanju občine");
       } finally {
         setLoading(false);
       }
     } catch (error) {
       console.log(error);
-      // toast.error("Error Updating City");
+      // toast.error("Prišlo je do napake pri posodabljanju občine.");
     }
   };
 

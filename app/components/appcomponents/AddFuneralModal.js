@@ -171,7 +171,7 @@ const AddFuneralModal = ({ setModalVisible }) => {
       selectedFuneralHour === null ||
       selectedFuneralMinute === null
     ) {
-      toast.error("Please fill complete data");
+      toast.error("Izpolni vsa polja");
       return false;
     }
     return true;
@@ -255,7 +255,7 @@ const AddFuneralModal = ({ setModalVisible }) => {
       );
       const updated = await obituaryService.getObituary({ id: selectedObituary })
       setObituaryResponse(updated?.obituaries?.[0]);
-      toast.success("Obituary updated successfully!");
+      toast.success("Osmrtnica je bila posodobljena");
 
       // if (typeof window !== 'undefined') {
       //   window.location.reload();
@@ -263,18 +263,18 @@ const AddFuneralModal = ({ setModalVisible }) => {
 
       if (response?.error) {
         // toast.error(
-        //   response.error || "Something went wrong. Please try again!"
+        //   response.error || "Prišlo je do napake."
         // );
         return;
       }
     } catch (error) {
       if (error?.response?.status === 404) {
-        toast.error("You cannot update other company's obituary");
+        toast.error("Podatke na osmrtnici lahko posodobi samo podjetje, ki jih je vneslo");
       } else {
         console.error("Error creating obituary:", error);
         toast.error(
           error?.response?.data?.error ||
-          "Failed to create obituary. Please try again."
+          "Prišlo je do napake."
         );
       }
     } finally {

@@ -70,7 +70,7 @@ export default function AccountSettings() {
       const response = await userService.updateMyUser(payload);
       if (response) {
         await refreshUserSession();
-        toast.success("City Updated Successfully");
+        toast.success("Občina je bila posodobljena");
         setSelectedCity(item);
         const updated = columnName
           ? { [columnName]: null }
@@ -81,11 +81,11 @@ export default function AccountSettings() {
           ...updated,
         }));
       } else {
-        // toast.error("Error Updating City");
+        // toast.error("Prišlo je do napake pri posodabljanju občine.");
       }
     } catch (error) {
       console.log(error);
-      // toast.error("Error Updating City");
+      // toast.error("Prišlo je do napake pri posodabljanju občine.");
     }
   };
 

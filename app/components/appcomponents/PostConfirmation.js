@@ -99,7 +99,7 @@ const PostConfirmation = () => {
 
       if (response.error) {
         // toast.error(
-        //   response.error || "Something went wrong. Please try again!"
+        //   response.error || "Prišlo je do napake."
         // );
         return;
       }
@@ -124,11 +124,11 @@ const PostConfirmation = () => {
 
       if (response.error) {
         // toast.error(
-        //   response.error || "Something went wrong. Please try again!"
+        //   response.error || "Prišlo je do napake."
         // );
         return;
       }
-      toast.success("Post Approved");
+      toast.success("Potrjeno");
 
       const approvedPost = pendingPosts.find((post) => post.id === logId);
       if (approvedPost) {
@@ -173,15 +173,15 @@ const PostConfirmation = () => {
 
       if (response.error) {
         toast.error(
-          response.error || "Something went wrong. Please try again!"
+          response.error || "Prišlo je do napake. Poskusi znova."
         );
         return;
       }
-      toast.success("Keeper Assigned");
+      toast.success("Skrbnik dodeljen");
       console.log(response);
     } catch (err) {
       console.error("Error Assgining Keeper", err);
-      toast.error(err.message || "Error Assgining Keeper");
+      toast.error(err.message || "Prišlo je do napake.");
     }
   };
 

@@ -50,7 +50,7 @@ const MemoryPage = ({ params }) => {
 
       if (response.error) {
         // toast.error(
-        //   response.error || "Something went wrong. Please try again!"
+        //   response.error || "Prišlo je do napake."
         // );
         return;
       }
@@ -66,7 +66,7 @@ const MemoryPage = ({ params }) => {
 
         if (visitRespone.error) {
           // toast.error(
-          //   visitRespone.error || "Something went wrong. Please try again!"
+          //   visitRespone.error || "Prišlo je do napake."
           // );
           return;
         }
@@ -123,7 +123,7 @@ const MemoryPage = ({ params }) => {
       if (error?.response?.status === 404) {
         // toast.error(`No ${type} memory exists`);
       } else {
-        // toast.error("Something went wrong.");
+        // toast.error("Prišlo je do napake.");
       }
     }
   };
