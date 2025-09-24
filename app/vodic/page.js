@@ -137,11 +137,11 @@ function DriverPage() {
                       {/* Tablet */}
                       <span className="hidden tablet:block">
                         Najprej registrirajte svoje podjetje{" "}
-                        <Link href="/cvetlicarne?city=Ljubljana">(tukaj)</Link>.
+                        <Link href="/registracija">(tukaj)</Link>.
                         Na strani Moj račun lahko že takoj dodate svojo
                         cvetličarno in na seznamu lokalnih cvetličarn bo
                         objavljena takoj{" "}
-                        <Link href="/cvetlicarne?city=Ljubljana">(tukaj)</Link>
+                        <Link href="/registracija">(tukaj)</Link>
                       </span>
                       <span className="hidden tablet:block">
                         Če imate več cvetličarn, dodate vsako posebej. Prikazane
@@ -152,10 +152,10 @@ function DriverPage() {
                       {/* Mobile */}
                       <span className="hidden mobile:block">
                         Registriraj se{" "}
-                        <Link href="/cvetlicarne?city=Ljubljana">(tukaj)</Link>{" "}
+                        <Link href="/registracija">(tukaj)</Link>{" "}
                         in takoj lahko na strani Moj račun dodaš svojo
                         cvetličarno in na seznamu lokalnih bo objavljena takoj{" "}
-                        <Link href="/cvetlicarne?city=Ljubljana">(tukaj)</Link>.
+                        <Link href="/registracija">(tukaj)</Link>.
                       </span>
                       <span className="hidden mobile:block">
                         Če imate več cvetličarn, dodate vsako posebej. Prikazane

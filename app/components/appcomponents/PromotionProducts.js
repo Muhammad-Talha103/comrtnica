@@ -182,7 +182,7 @@ const QRCodeInfo = () => {
           src="/qr-code.png"
           alt="admin-benefit-1"
           className="w-[251px] h-auto shrink-0 self-center mx-auto hidden mobile:block"
-          width={150}
+          width={251}
           height={221}
         />
         <div>
