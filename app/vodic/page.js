@@ -41,7 +41,7 @@ function DriverPage() {
     <div className="bg-[#F9EBD4] tablet:bg-[#F9EBD4] mobile:bg-[#F9EBD4] min-h-[100vh]">
       <FAQHeader />
       <div className="flex w-full flex-col  bg-[#D4E6F9]">
-        <div className="bg[#E0E9F3CC] h-[72px] tablet:h-[80px] desktop:h-[92.02px] desktop:-mt-10 tablet:-mt-3 mobile:-mt-2.5" />
+        <div className="bg-[#E0E9F3CC] h-[72px] tablet:h-[80px] desktop:h-[92.02px] desktop:-mt-10 tablet:-mt-3 mobile:-mt-2.5" />
 
         <div className="mobile:flex items-center justify-between hidden h-[30px] bg-[#36556C] px-3">
           <Link href="/c-faq">KAKO ZAČETI</Link>
