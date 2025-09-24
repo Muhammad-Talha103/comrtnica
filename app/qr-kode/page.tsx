@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description:
       "Sodobni in trajni način ohranjanja spomina - QR kode za nagrobnike.",
     type: "website",
-    url: "/qr-kode-za-nagrobnike",
+    url: "/qr-kode",
   },
 };
 
