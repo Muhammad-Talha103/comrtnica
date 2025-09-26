@@ -893,6 +893,7 @@ const MemorialPageTopComp = ({
                     boxShadow:
                       "-5px -5px 10px 0px #FFFFFF, 5px 5px 10px 0px #C2C2C280",
                   }}
+                  onClick={()=>toast.success("Kmalu")}
                 >
                   <div className="text-[20px] text-[#1E2125] font-variation-customOpt20 font-normal  w-full">
                     QR koda do te strani

@@ -177,7 +177,7 @@ export const FrequentlyAskedQuestionView2 = ({ from, data }) => {
                     }`}
                   >
                     <div
-                      className={`flex font-variation-customOpt16 font-normal text-[18px] mobile:text-[16px] leading-6 text-[#1E2125] text-center mobile:text-left ${
+                      className={`flex font-variation-customOpt16 font-normal text-[18px] mobile:text-[16px] leading-6 text-[#1E2125] text-left mobile:text-left ${
                         visibleIndexes[index] ? "text-[#FFFFFF]" : ""
                       }`}
                     >
