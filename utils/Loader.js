@@ -1,10 +1,10 @@
 import React from 'react';
 
-export const Loader = ({ isVisible = true }) => {
+export const Loader = ({ isVisible = true, zindex="z-10" }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-10 flex items-center justify-center backdrop-blur-sm bg-white/20">
+    <div className={`fixed inset-0 ${zindex} flex items-center justify-center backdrop-blur-sm bg-white/20`}>
       <div className="flex flex-col items-center space-y-4">
         {/* Spinning loader */}
         <div className="flex justify-center items-center h-screen">

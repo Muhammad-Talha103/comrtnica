@@ -7,6 +7,7 @@ import regionsAndCities from "@/utils/regionAndCities";
 import companyService from "@/services/company-service";
 import obituaryService from "@/services/obituary-service";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 const FuneralList = () => {
   const router = useRouter();
@@ -223,9 +224,13 @@ const FuneralBlock = ({ item, index, obituaryCount }) => {
   return (
     <div
       className={`${index === 0
-          ? "flex mt-0 w-full"
-          : "flex mt-6 tablet:mt-6 desktop:mt-8 w-full"
+        ? "flex mt-0 w-full"
+        : "flex mt-6 tablet:mt-6 desktop:mt-8 w-full"
         }`}
+      onClick={() => {
+        ["Komunala Trbovlje", "Komunala Hrastnik", "Komunala Zagorje"].includes((item?.CompanyPage?.name).trim())
+          ? toast.success("Kmalu") : null
+      }}
     >
       {item?.CompanyPage?.name && item?.CompanyPage?.email ? (
         <button

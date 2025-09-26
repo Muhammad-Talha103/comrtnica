@@ -208,7 +208,7 @@ Postopek je enostaven: odprite aplikacijo kamere in jo usmerite na kodo QR. Posk
             </ul>
           </div>
           {/* Banner */}
-          <section className="banner_wrapper">
+          <section className="banner_wrapper desktop:mt-[-0.5rem]">
             <div className="autoContent">
               <div className="banner_inner">
                 <div className="banner_left">
@@ -814,7 +814,7 @@ Postopek je enostaven: odprite aplikacijo kamere in jo usmerite na kodo QR. Posk
 
           {/* footer */}
 
-          <section className="footer d-none">
+          {/* <section className="footer d-none">
             <div className="autoContent">
               <div className="footer_inner">
                 <div className="footer_top">
@@ -874,11 +874,11 @@ Postopek je enostaven: odprite aplikacijo kamere in jo usmerite na kodo QR. Posk
                 </div>
               </div>
             </div>
-          </section>
+          </section> */}
 
           {/*mobile footer  */}
 
-          <section className="footer mob_footer d-none">
+          {/* <section className="footer mob_footer d-none">
             <div className="autoContent">
               <div className="footer_inner">
                 <div className="footer_top">
@@ -939,7 +939,7 @@ Postopek je enostaven: odprite aplikacijo kamere in jo usmerite na kodo QR. Posk
                 </div>
               </div>
             </div>
-          </section>
+          </section> */}
 
           <CommonFooter currentPage="/qr-kode" />
         </main>
