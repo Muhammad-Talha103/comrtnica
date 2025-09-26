@@ -1,4 +1,6 @@
 import React from "react";
+import "../qr-kode/qr-kode.css";
+import "../qr-kode/qr-kode-responsive.css";
 import Layout from "../components/appcomponents/Layout";
 import ColdObituary from "../components/appcomponents/ColdObituary";
 import AnniversaryReminder from "../components/appcomponents/AnniversaryReminder";
