@@ -188,7 +188,7 @@ Postopek je enostaven: odprite aplikacijo kamere in jo usmerite na kodo QR. Posk
             </div>
           </header> */}
 
-          {/* <div className="mobile_navbar mobile_navbar_header">
+          <div className="mobile_navbar mobile_navbar_header">
             <ul>
               <li>
                 <a href="/qr-kode">
@@ -206,7 +206,7 @@ Postopek je enostaven: odprite aplikacijo kamere in jo usmerite na kodo QR. Posk
                 </a>
               </li>
             </ul>
-          </div> */}
+          </div>
           {/* Banner */}
           <section className="banner_wrapper">
             <div className="autoContent">

@@ -476,7 +476,7 @@ function PromotionProducts() {
                   className={`flex w-full justify-between items-center tablet:h-[58px] desktop:h-[78px] mobile:px-0`}
                 >
                   <div
-                    className={`flex font-variation-customOpt16 font-normal text-[18px] leading-6 text-[#1E2125] text-center 
+                    className={`flex font-variation-customOpt16 font-normal  text-[18px] leading-6 text-[#1E2125] text-center 
                     `}
                   >
                     <h3 className="text-[20px] desktop:text-[24px] font-[700] text-[#3C3E41] leading-[48px]">
@@ -495,7 +495,7 @@ function PromotionProducts() {
                   />
                 </button>
                 {visibleIndexes[index] && (
-                  <div className="py-12 mobile:py-0 w-full">
+                  <div className="py-12 mobile:py-0 w-full mobile:mb-[35px]">
                     {product?.answer}
                   </div>
                 )}
