@@ -229,7 +229,7 @@ const FuneralBlock = ({ item, index, obituaryCount }) => {
         }`}
       onClick={() => {
         ["Komunala Trbovlje", "Komunala Hrastnik", "Komunala Zagorje"].includes((item?.CompanyPage?.name).trim())
-git          ? toast.success("Kmalu") : null
+          ? toast.success("Kmalu") : null
       }}
     >
       {item?.CompanyPage?.name && item?.CompanyPage?.email ? (
