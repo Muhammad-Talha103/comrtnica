@@ -160,7 +160,7 @@ const Modals = ({
 
     try {
       const response = await obituaryService.createSorrowBook(
-        data.id,
+        data?.id,
         sorrowBookData
       );
 
@@ -169,7 +169,7 @@ const Modals = ({
       emptyField("name");
       emptyField("relation");
 
-      const updatedSorrowBooks = [...data.SorrowBooks, response];
+      const updatedSorrowBooks = [...data?.SorrowBooks, response];
       updateObituary({ ["SorrowBooks"]: updatedSorrowBooks });
       toast.success("Uspešno dodano");
       updateObituary();
@@ -218,14 +218,14 @@ const Modals = ({
 
     try {
       const response = await obituaryService.createDedication(
-        data.id,
+        data?.id,
         dedicationData
       );
 
       console.log(`Dedication Created successfully!`, response);
 
       if (isKeeper()) {
-        const updatedDedication = [...data.Dedications, response];
+        const updatedDedication = [...data?.Dedications, response];
         updateObituary({ ["Dedications"]: updatedDedication });
         toast.success("Posvetilo je bilo ustvarjeno");
       } else {
@@ -270,7 +270,7 @@ const Modals = ({
     formData.append("isKeeper", isKeeper());
     formData.append("userName", name);
     try {
-      const response = await obituaryService.addPhoto(data.id, formData);
+      const response = await obituaryService.addPhoto(data?.id, formData);
 
       console.log(`Photo Sent to Keeper for review!`, response);
 
@@ -278,7 +278,7 @@ const Modals = ({
       setUploadedImage(null);
 
       if (isKeeper()) {
-        const updatedPhoto = [...data.Photos, response];
+        const updatedPhoto = [...data?.Photos, response];
         updateObituary({ ["Photos"]: updatedPhoto });
         toast.success("Slika je bila dodana");
       } else if (!isKeeper()) {
@@ -329,7 +329,7 @@ const Modals = ({
 
     try {
       const response = await obituaryService.createCondolence(
-        data.id,
+        data?.id,
         condolenceData
       );
 
@@ -339,7 +339,7 @@ const Modals = ({
       emptyField("message");
       emptyField("relation");
       if (isKeeper() || !isCustomMessage) {
-        const updatedCondolences = [...data.Condolences, response];
+        const updatedCondolences = [...data?.Condolences, response];
         updateObituary({ ["Condolences"]: updatedCondolences });
         toast.success("Sožalje je bilo ustvarjeno");
       } else if (!isKeeper()) {
@@ -379,7 +379,7 @@ const Modals = ({
     };
 
     try {
-      const response = await obituaryService.addReport(data.id, reportData);
+      const response = await obituaryService.addReport(data?.id, reportData);
 
       console.log(`Report Submitted successfully!`, response);
 
@@ -459,7 +459,7 @@ const Modals = ({
       }
 
       // Parse existing events and update
-      const parsedEvents = data?.events ? data.events : [];
+      const parsedEvents = data?.events ? data?.events : [];
 
       const updatedEvents =
         parsedEvents.length > 0 ? [...parsedEvents, value] : [value];
@@ -483,7 +483,7 @@ const Modals = ({
     console.log(formData);
 
     try {
-      const response = await obituaryService.updateObituary(data.id, formData, allow);
+      const response = await obituaryService.updateObituary(data?.id, formData, allow);
       console.log(`${field} updated successfully!`, response);
       toast.success(`${field} Posodobljeno`);
 
@@ -516,7 +516,7 @@ const Modals = ({
   const isCompany = () => {
     // This is not needed for now
     return false;
-    // if (user && user.id === data.id) {
+    // if (user && user.id === data?.id) {
     //   return true;
     // }
     // return false;
@@ -778,7 +778,7 @@ const Modals = ({
       await userService.saveObitNotification({
         emails,
         message: notifyMessage,
-        obituaryId: data.id,
+        obituaryId: data?.id,
       });
       setIsShowModal(false);
       toast.success("Poslano");
@@ -2156,8 +2156,8 @@ const Modals = ({
       {select_id == "20" ? (
         <div className="flex flex-col w-full">
           <div className="rounded-md self-center mb-[10px]">
-            <Image
-              src={data?.image}
+            <img
+              src={data?.image ?? "/user5.jpeg"}
               alt=" photo"
               width={85}
               height={85}
@@ -2180,7 +2180,7 @@ const Modals = ({
           </div>
 
           <div className="flex w-full mt-8 flex-col px-[20px] mobile:px-0">
-            {data.SorrowBooks.map((item, index) => (
+            {data?.SorrowBooks?.map((item, index) => (
               <CommonStyle item={item} index={index} key={index} />
             ))}
           </div>

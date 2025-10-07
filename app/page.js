@@ -13,7 +13,9 @@ export const metadata = {
   title: "Osmrtnica – Naj spomin nanje ne zbledi",
   description:
     "Osmrtnica.com je portal za hitri pregled lokalnih osmrtnic in pogrebov. Prinaša številne sodobne rešitve, spominske strani in celoviti pregled lokalnih cvetličarn.",
-  canonical: "https://www.osmrtnica.com",
+  alternates: {
+    canonical: "https://www.osmrtnica.com",
+  },
   openGraph: {
     url: "https://www.osmrtnica.com",
     title: "Osmrtnica – Naj spomin nanje ne zbledi",

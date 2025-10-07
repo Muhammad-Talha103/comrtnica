@@ -660,9 +660,11 @@ const MemorialPageTopComp = ({
                                     </p>
                                     <p className="text-[#414141] text-[14px] font-normal leading-[16.41px]">
                                       {(() => {
-                                        const formattedText = `${
-                                          data?.Cemetry?.name || "Pokopalisce"
-                                        }, ${data?.funeralLocation || ""}`;
+                                        // const formattedText = `${
+                                        //   data?.Cemetry?.name || "Pokopalisce"
+                                        // }, ${data?.funeralLocation || ""}`;
+
+                                        const formattedText = `${data?.funeralLocation || ""}`;
 
                                         return formattedText.length > 50
                                           ? `${formattedText.slice(0, 50)}...`
