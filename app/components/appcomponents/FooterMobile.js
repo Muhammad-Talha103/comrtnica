@@ -9,6 +9,7 @@ function FooterMobile({ handleGoToTop, setIsMobilSideBarOpen }) {
   const pathname = usePathname();
   const router = useRouter();
   const [isIconChange, setIsIconChange] = useState(false);
+  const { user } = useAuth();
 
   // useEffect(() => {
   //   if (
@@ -20,7 +21,9 @@ function FooterMobile({ handleGoToTop, setIsMobilSideBarOpen }) {
   //   }
   // }, [pathname]);
 
-  const {logout} = useAuth();
+  const parsedUser = user;
+
+  const { logout } = useAuth();
   return (
     <div className=" hidden mobileUserAcc:flex tabletUserAcc:flex self-end bottom-0 rounded-t-[12px] fixed z-[999] w-full h-[85px] bg-[#FFFFFF] shadow-lg justify-center items-center">
       <div
@@ -40,13 +43,14 @@ function FooterMobile({ handleGoToTop, setIsMobilSideBarOpen }) {
         <div className="flex mobileUserAcc:w-full justify-between tabletUserAcc:gap-[60px]">
           <div
             onClick={() => {
-              setIsMobilSideBarOpen(true);
+              // setIsMobilSideBarOpen(true);
+              router.replace(`/u/${parsedUser?.slugKey}/menu`);
             }}
           >
             <IconView iconPath={"/icon_home.png"} name={"Domov"} />
           </div>
 
-          <Link href={"/pregled"}>
+          <Link href={`/u/${parsedUser?.slugKey}/pregled`}>
             <div>
               <IconView
                 iconPath={"/icon_inactive_heart.png"}
@@ -55,7 +59,7 @@ function FooterMobile({ handleGoToTop, setIsMobilSideBarOpen }) {
             </div>
           </Link>
 
-          <Link href={"/obletnice"}>
+          <Link href={`/u/${parsedUser?.slugKey}/obletnice`}>
             <div>
               <IconView iconPath={"/icon_search.png"} name={"Obletnice"} />
             </div>
@@ -66,7 +70,7 @@ function FooterMobile({ handleGoToTop, setIsMobilSideBarOpen }) {
               <IconView iconPath={"/gototop.png"} name={"Na vrh"} />
             </div>
           ) : (
-            <Link href={"/pregled2"}>
+            <Link href={`/u/${parsedUser?.slugKey}/pregled2`}>
               <div>
                 <IconView
                   iconPath={"/icon_active_heart.png"}
