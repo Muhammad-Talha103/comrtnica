@@ -664,7 +664,9 @@ const MemorialPageTopComp = ({
                                         //   data?.Cemetry?.name || "Pokopalisce"
                                         // }, ${data?.funeralLocation || ""}`;
 
-                                        const formattedText = `${data?.funeralLocation || ""}`;
+                                        const formattedText = `${
+                                          data?.Cemetry?.name || "Pokopalisce"
+                                        }`;
 
                                         return formattedText.length > 50
                                           ? `${formattedText.slice(0, 50)}...`
