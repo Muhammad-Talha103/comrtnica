@@ -642,7 +642,11 @@ const MemorialPageTopComp = ({
                                       {day}
                                     </div>
                                     <div className="text-[#FFFFFF] text-[12px] tablet:text-[14px] desktop:text-[12px] font-normal">
-                                      {month}
+                                      {month === "Oct"
+                                        ? "Okt"
+                                        : month === "May"
+                                        ? "Maj"
+                                        : month}
                                     </div>
                                   </div>
                                 </div>
@@ -658,8 +662,13 @@ const MemorialPageTopComp = ({
                                     </p>
                                     <p className="text-[#414141] text-[14px] font-normal leading-[16.41px]">
                                       {(() => {
-                                        const formattedText = `${data?.Cemetry?.name || "Pokopalisce"
-                                          }, ${data?.funeralLocation || ""}`;
+                                        // const formattedText = `${
+                                        //   data?.Cemetry?.name || "Pokopalisce"
+                                        // }, ${data?.funeralLocation || ""}`;
+
+                                        const formattedText = `${
+                                          data?.Cemetry?.name || "Pokopalisce"
+                                        }`;
 
                                         return formattedText.length > 50
                                           ? `${formattedText.slice(0, 50)}...`
@@ -682,7 +691,11 @@ const MemorialPageTopComp = ({
                                       {day}
                                     </div>
                                     <div className="text-[#FFFFFF] text-[12px] tablet:text-[14px] desktop:text-[12px] font-normal">
-                                      {month}
+                                      {month === "Oct"
+                                        ? "Okt"
+                                        : month === "May"
+                                        ? "Maj"
+                                        : month}
                                     </div>
                                   </div>
                                 </div>
