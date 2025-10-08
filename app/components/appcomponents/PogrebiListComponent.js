@@ -269,6 +269,7 @@ const ObituaryListComponent = ({ city }) => {
                           onClick={() => {
                             setSearchTerm(`${obit.name} ${obit.sirName}`);
                             setSuggestion([]);
+                            window.location.href = `/m/${obit.slugKey}`;
                           }}
                         >{`${obit.name} ${obit.sirName}`}</div>
                       ))}
