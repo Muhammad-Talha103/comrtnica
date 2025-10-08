@@ -1,3 +1,37 @@
+function normalizeText(input) {
+  // Normalize the string to decompose accented characters
+  const normalized = input.normalize("NFD");
+
+  // Replace characters with accents or diacritics with their ASCII equivalents
+  const asciiEquivalent = normalized.replace(/[\u0300-\u036f]/g, "");
+
+  // Replace remaining non-ASCII characters with their closest ASCII equivalent
+  const converted = asciiEquivalent.replace(/[^a-zA-Z0-9_]/g, (match) => {
+    // Define a map for special character replacements
+    const replacementMap = {
+      'Ž': 'Z',
+      'ž': 'z',
+      'Č': 'C',
+      'č': 'c',
+      'Ć': 'C',
+      'ć': 'c',
+      'Š': 'S',
+      'š': 's',
+      'Đ': 'D',
+      'đ': 'd',
+      'Ł': 'L',
+      'ł': 'l',
+      'Ñ': 'N',
+      'ñ': 'n',
+      // Add more mappings as needed
+    };
+    
+    return replacementMap[match] || match;
+  });
+
+  return converted;
+}
+
 const CarouselEntry = ({ item }) => {
   const funeralDate = new Date(item.deathDate); // ensure data.funeralDate exists
   const funeralDateFormatted = `${funeralDate
@@ -11,7 +45,8 @@ const CarouselEntry = ({ item }) => {
     <a
       key={item.id}
       className="flex flex-row items-center border-b border-[#D4D4D4] w-full h-[64px] last:border-b-0 cursor-pointer"
-      href={`/memorypage/${item.id}/${item.name}_${item.sirName}_${funeralDateFormatted}`}
+      // href={`/memorypage/${item.id}/${item.name}_${item.sirName}_${funeralDateFormatted}`}
+      href={`/m/${normalizeText(item.slugKey)}`} // Updated to use slugKey
     >
       <h1 className="text-[#0A85C2] font-normal text-sm mobile:text-lg tablet:text-lg desktop:text-xl w-[50px] mobile:w-[60px] tablet:w-[75px] desktop:w-[97px] text-center flex-shrink-0">
         {item.funeralTimestamp
