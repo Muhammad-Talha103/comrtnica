@@ -83,7 +83,7 @@ const adminService = {
   // PATCH Approve company's request
   approveCompanyRequest: async (id: string, status: "DRAFT" | "PUBLISHED") => {
     try {
-      const response = await axios.patch(`/admin/approve-request/${id}`, {status});
+      const response = await axios.patch(`/admin/approve-request/${id}`, { status });
       return response;
     } catch (error) {
       console.error("Error in aprroval:", error);
@@ -229,6 +229,28 @@ const adminService = {
       console.error("Error updating obituary notes:", error);
       throw error;
     }
+  },
+
+  createSponosor: async (formData: any) => {
+    const endpoint = "/admin/create-sponsor";
+    const response = await axios.post(endpoint, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    return response.data;
+  },
+
+  editSponosor: async (formData: any, id: any) => {
+    const endpoint = `/admin/edit-sponsor/${id}`;
+    const response = await axios.post(endpoint, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    return response.data;
+  },
+
+  getSponosors: async () => {
+    const endpoint = "/admin/sponsor-list";
+    const response = await axios.get(endpoint);
+    return response.data;
   }
 };
 

@@ -1,13 +1,44 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import sponser1 from "@/public/sponser1.png";
 import sponser2 from "@/public/sponser2.png";
 import sponser3 from "@/public/sponser3.png";
 import sponser5 from "@/public/sponser5.png";
 import sponser6 from "@/public/sponser6.png";
 import sponser7 from "@/public/sponser7.png";
+import { useSearchParams } from "next/navigation";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import userService from "@/services/user-service";
 const SponsorComponent = ({ text = "" }) => {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const region = searchParams.get("region");
+  const city = searchParams.get("city");
+  const [sponsors, setSponsosrs] = useState([]);
+
+  let sponsorPage = '';
+  if (pathname.includes('osmrtnice')) {
+    sponsorPage = 'osmrtnice';
+  } else if (pathname.includes('pogrebi')) {
+    sponsorPage = 'pogrebi';
+  } else if (pathname.includes('cvetlicarne')) {
+    sponsorPage = 'cvetlicarne';
+  } else if (pathname.includes('pogrebna-p')) {
+    sponsorPage = 'pogrebna podjetja';
+  }
+
+  const fetchList = async () => {
+    const URI = "?region=" + region + "&city=" + city + "&page=" + sponsorPage;
+    const res = await userService.getSponsors(URI);
+    setSponsosrs(res?.data ?? []);
+  }
+
+  useEffect(() => {
+    fetchList();
+  }, [region, city])
+
   return (
     <div className="bg-white">
       <div className="relative max-w-[1920px]  overflow-hidden mx-auto flex py-[115px] mobile:py-[100px] justify-center items-center">
@@ -22,30 +53,44 @@ const SponsorComponent = ({ text = "" }) => {
           >
             {text ? `${text}` : "S podporo naših najtesnejših partnerjev"}
           </div>
-          <div className="flex justify-center items-center">
-            <Image
-              src={sponser6}
-              alt="sponser2 of the image"
-              className="flex  w-[230px] mobile:w-[150px]  filter grayscale"
-            />
-            <Image
-              src={sponser7}
-              alt="sponser2 of the image"
-              className="flex w-[250px] mobile:w-[150px]   filter grayscale"
-            />
+          {sponsors && sponsors.length ? (
+            <div className="flex justify-center items-center mt-[30px]">
+              {sponsors?.map((item) => {
+                return (
+                  <img
+                    src={item?.logo ?? sponser6}
+                    alt="sponser2 of the image"
+                    className="flex  w-[230px] mobile:w-[150px]  filter grayscale"
+                  />
+                )
+              })}
+            </div>
+          ) : (
+            <div className="flex justify-center items-center">
+              <Image
+                src={sponser6}
+                alt="sponser2 of the image"
+                className="flex  w-[230px] mobile:w-[150px]  filter grayscale"
+              />
+              <Image
+                src={sponser7}
+                alt="sponser2 of the image"
+                className="flex w-[250px] mobile:w-[150px]   filter grayscale"
+              />
 
-            <Image
-              src={sponser6}
-              alt="sponser2 of the image"
-              className="flex  w-[230px]  filter grayscale tablet:hidden mobile:hidden"
-            />
+              <Image
+                src={sponser6}
+                alt="sponser2 of the image"
+                className="flex  w-[230px]  filter grayscale tablet:hidden mobile:hidden"
+              />
 
-            <Image
-              src={sponser7}
-              alt="sponser2 of the image"
-              className="flex  w-[250px]  filter grayscale tablet:hidden mobile:hidden"
-            />
-          </div>
+              <Image
+                src={sponser7}
+                alt="sponser2 of the image"
+                className="flex  w-[250px]  filter grayscale tablet:hidden mobile:hidden"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

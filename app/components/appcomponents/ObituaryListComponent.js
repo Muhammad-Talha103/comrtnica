@@ -108,6 +108,30 @@ const ObituaryListComponent = ({ city }) => {
     }
     setSelectedRegion(item.place);
     setSelectedCity(null);
+    updateURL('', item.place, '');
+  };
+
+  // Update URL with query parameters
+  const updateURL = (city, region, search) => {
+    const params = new URLSearchParams(window.location.search);
+    if (city && city !== "allCities" && city !== "- Pokaži vse občine -") {
+      params.set("city", city);
+    } else {
+      params.delete("city");
+    }
+    if (!city) {
+      setSelectedCity('');
+      params.delete("city");
+    }
+    if (region && region !== "allRegions" && region !== "- Pokaži vse regije -") {
+      params.set("region", region);
+    } else {
+      params.delete("region");
+    }
+
+    const queryString = params.toString();
+    const newURL = queryString ? `?${queryString}` : window.location.pathname;
+    router.replace(newURL, { scroll: false });
   };
 
   const handleCitySelect = (item) => {
@@ -117,7 +141,7 @@ const ObituaryListComponent = ({ city }) => {
     }
     setSelectedCity(item.place);
     setSelectedRegion(null);
-    updateUrlParams(item.place)
+    updateURL(item.place, null, '')
     // const region = Object.keys(regionsAndCities).find((region) =>
     //   regionsAndCities[region].includes(item.place)
     // );
