@@ -40,7 +40,7 @@ const CompaniesWithApprovalReq = () => {
 
   const deleteSponsor = async (id) => {
     setLoading(true);
-    await adminService.deleteSponosor(id);
+    await adminService.deleteSponsor(id);
     setLoading(false);
     fetchList();
   }
