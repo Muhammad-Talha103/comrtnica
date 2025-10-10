@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState, Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Dropdown from "@/app/components/appcomponents/Dropdown";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import ObituaryCard from "@/app/components/appcomponents/ObituaryCard";
@@ -16,6 +16,7 @@ import { set } from "date-fns";
 const ObituaryListComponent = ({ city }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
 
   // Initialize state from URL params
   const [selectedCity, setSelectedCity] = useState(
@@ -234,13 +235,15 @@ const ObituaryListComponent = ({ city }) => {
     }
   };
 
+  const hideDropdowns = pathname?.includes('/u/') ? true : false;
+
   return (
-    <div className="max-w-[1920px] w-full tablet:w-full mobile:w-full mx-auto flex flex-col items-center desktop:bg-[#F5F7F9] mobile:bg-white tablet:bg-white">
+    <div className={`max-w-[1920px] w-full tablet:w-full mobile:w-full mx-auto flex flex-col items-center ${pathname?.includes('/u/') ? '' : 'desktop:bg-[#F5F7F9]'} ${pathname?.includes('/u/') ? '' : 'mobile:bg-white tablet:bg-white'}`}>
       {/* Main Container */}
       <div className="flex flex-col items-center w-full tablet:w-full mobile:w-full">
         {/* DESKTOP VERSION */}
-        <div className="w-full hidden desktop:flex tablet:w-full mobile:w-full flex-col items-center">
-          <div className="w-[777px] tablet:w-[600px] h-[48px] flex flex-row gap-4 mt-[69.07px] mb-[23.93px]">
+        <div className={`w-full hidden desktop:flex tablet:w-full mobile:w-full flex-col ${pathname?.includes('/u/') ? '' : 'items-center'}`}>
+          <div className={`w-[777px] tablet:w-[600px] h-[48px] flex flex-row gap-4 ${pathname?.includes('/u/') ? '' : 'mt-[69.07px] mb-[23.93px]'}`}>
             {/* Search Input */}
             <div className="flex relative w-[227px] h-[48px] justify-center items-center">
               <input
@@ -278,25 +281,29 @@ const ObituaryListComponent = ({ city }) => {
               )}
             </div>
 
-            {/* Region Dropdown */}
-            <SelectDropdown
-              label={"Regija"}
-              isFromNotification={false}
-              isFromFlower={false}
-              data={regionOptions}
-              selectedValue={selectedRegion}
-              onSelect={handleRegionSelect}
-            />
+            {!hideDropdowns ? (
+              <>
+                {/* Region Dropdown */}
+                <SelectDropdown
+                  label={"Regija"}
+                  isFromNotification={false}
+                  isFromFlower={false}
+                  data={regionOptions}
+                  selectedValue={selectedRegion}
+                  onSelect={handleRegionSelect}
+                />
 
-            {/* City Dropdown */}
-            <SelectDropdown
-              data={cityOptions}
-              label={"Občina"}
-              isFromNotification={false}
-              isFromFlower={false}
-              selectedValue={selectedCity}
-              onSelect={handleCitySelect}
-            />
+                {/* City Dropdown */}
+                <SelectDropdown
+                  data={cityOptions}
+                  label={"Občina"}
+                  isFromNotification={false}
+                  isFromFlower={false}
+                  selectedValue={selectedCity}
+                  onSelect={handleCitySelect}
+                />
+              </>
+            ) : null}
 
             {/* Search Button */}
             <div
@@ -309,27 +316,31 @@ const ObituaryListComponent = ({ city }) => {
         </div>
 
         {/* TABLET VERSION */}
-        <div className="w-full tablet:w-full mobile:w-full tablet:flex hidden flex-col items-center">
-          <div className="w-[600px] h-[112px] columns-2 flex flex-wrap flex-row gap-4 mt-[63px] mb-[53px]">
-            {/* Region Dropdown */}
-            <SelectDropdown
-              label={"Regija"}
-              isFromNotification={false}
-              isFromFlower={false}
-              data={regionOptions}
-              selectedValue={selectedRegion}
-              onSelect={handleRegionSelect}
-            />
+        <div className={`w-full tablet:w-full mobile:w-full tablet:flex hidden flex-col ${pathname?.includes('/u/') ? '' : 'items-center'}`}>
+          <div className={`w-[600px] h-[112px] columns-2 flex flex-wrap flex-row gap-4 ${pathname?.includes('/u/') ? '' : 'mt-[63px] mb-[53px]'}`}>
+            {!hideDropdowns ? (
+              <>
+                {/* Region Dropdown */}
+                <SelectDropdown
+                  label={"Regija"}
+                  isFromNotification={false}
+                  isFromFlower={false}
+                  data={regionOptions}
+                  selectedValue={selectedRegion}
+                  onSelect={handleRegionSelect}
+                />
 
-            {/* City Dropdown */}
-            <SelectDropdown
-              data={cityOptions}
-              label={"Mesto"}
-              isFromNotification={false}
-              isFromFlower={false}
-              selectedValue={selectedCity}
-              onSelect={handleCitySelect}
-            />
+                {/* City Dropdown */}
+                <SelectDropdown
+                  data={cityOptions}
+                  label={"Mesto"}
+                  isFromNotification={false}
+                  isFromFlower={false}
+                  selectedValue={selectedCity}
+                  onSelect={handleCitySelect}
+                />
+              </>
+            ) : null}
 
             {/* Search Input */}
             <div className="flex relative w-[292px] h-[48px] justify-center items-center">
@@ -368,21 +379,35 @@ const ObituaryListComponent = ({ city }) => {
               )}
             </div>
 
-            {/* Search Button */}
-            <div
-              onClick={handleSearch}
-              className="w-[292px] h-[48px] text-[16px] text-[#F6F6F6] rounded-lg leading-6 bg-[#414141] font-[400] flex justify-center items-center cursor-pointer"
-            >
-              Prikaži
-            </div>
+            {pathname?.includes('/u/') ? (
+              <div
+                onClick={handleSearch}
+                className="flex justify-center items-center w-12 h-12 aspect-square rounded-lg bg-[#414141] cursor-pointer"
+              >
+                <MagnifyingGlassIcon className="w-5 h-5 text-white" />
+              </div>
+            ) : (
+              <>
+                {/* Search Button */}
+                <div
+                  onClick={handleSearch}
+                  className="w-[292px] h-[48px] text-[16px] text-[#F6F6F6] rounded-lg leading-6 bg-[#414141] font-[400] flex justify-center items-center cursor-pointer"
+                >
+                  Prikaži
+                </div>
+              </>
+            )}
+
+
+
           </div>
         </div>
 
         {/* MOBILE VERSION */}
-        <div className="w-full tablet:w-full mobile:w-full mobile:flex hidden flex-col items-center">
-          <div className="w-[296px] h-[240px] flex-wrap flex flex-row gap-4 mt-[40px] mb-[42px]">
+        <div className={`w-full tablet:w-full mobile:w-full mobile:flex hidden flex-col ${pathname?.includes('/u/') ? '' : 'items-center'}`}>
+          <div className={`w-[296px] ${pathname?.includes('/u/') ? '' : 'h-[240px] mt-[40px] mb-[42px]'} flex-wrap flex flex-row gap-4`}>
             {/* Search Input */}
-            <div className="flex relative w-[296px] h-[48px] justify-center items-center">
+            <div className={`flex relative ${pathname?.includes('/u/') ? '' : 'w-[296px]'} h-[48px] justify-center items-center`}>
               <input
                 type="text"
                 placeholder="Išči po imenu / priimku"
@@ -418,35 +443,51 @@ const ObituaryListComponent = ({ city }) => {
               )}
             </div>
 
-            {/* Region Dropdown */}
-            <SelectDropdown
-              label={"Regija"}
-              isFromNotification={false}
-              isFromFlower={false}
-              isFrom={"pogrebi"}
-              data={regionOptions}
-              selectedValue={selectedRegion}
-              onSelect={handleRegionSelect}
-            />
+            {!hideDropdowns ? (
+              <>
+                {/* Region Dropdown */}
+                <SelectDropdown
+                  label={"Regija"}
+                  isFromNotification={false}
+                  isFromFlower={false}
+                  isFrom={"pogrebi"}
+                  data={regionOptions}
+                  selectedValue={selectedRegion}
+                  onSelect={handleRegionSelect}
+                />
 
-            {/* City Dropdown */}
-            <SelectDropdown
-              data={cityOptions}
-              label={"Mesto"}
-              isFromNotification={false}
-              isFromFlower={false}
-              isFrom={"pogrebi"}
-              selectedValue={selectedCity}
-              onSelect={handleCitySelect}
-            />
+                {/* City Dropdown */}
+                <SelectDropdown
+                  data={cityOptions}
+                  label={"Mesto"}
+                  isFromNotification={false}
+                  isFromFlower={false}
+                  isFrom={"pogrebi"}
+                  selectedValue={selectedCity}
+                  onSelect={handleCitySelect}
+                />
+              </>
+            ) : null}
 
-            {/* Search Button */}
-            <div
-              onClick={handleSearch}
-              className="w-[296px] h-[48px] text-[16px] text-[#F6F6F6] rounded-lg leading-6 bg-[#414141] font-[400] flex justify-center items-center cursor-pointer"
-            >
-              Prikaži
-            </div>
+            {pathname?.includes('/u/') ? (
+              <div
+                onClick={handleSearch}
+                className="flex justify-center items-center w-12 h-12 aspect-square rounded-lg bg-[#414141] cursor-pointer"
+              >
+                <MagnifyingGlassIcon className="w-5 h-5 text-white" />
+              </div>
+            ) : (
+              <>
+                {/* Search Button */}
+                <div
+                  onClick={handleSearch}
+                  className="w-[296px] h-[48px] text-[16px] text-[#F6F6F6] rounded-lg leading-6 bg-[#414141] font-[400] flex justify-center items-center cursor-pointer"
+                >
+                  Prikaži
+                </div>
+              </>
+            )}
+
           </div>
         </div>
 
