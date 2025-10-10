@@ -135,10 +135,12 @@ export default function HomeContent(props) {
 
     if (item.id === "allRegions" || item.id === "- Pokaži vse regije -") {
       setSelectedRegion(null);
+      setSelectedCity(null);
       updateURL(selectedCity, null, name);
     } else {
       setSelectedRegion(item.place);
-      updateURL(selectedCity, item.place, name);
+      setSelectedCity(null);
+      updateURL('', item.place, name);
     }
 
   };
