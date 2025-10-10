@@ -39,6 +39,7 @@ export default function FormModal({ isShowModal, setIsShowModal, editId, refetch
     const [who, setWHO] = useState('');
     const [notes, setNotes] = useState('');
     const [selectedFile, setSelectedFile] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     console.log('>>>>>> editId', editId);
 
@@ -150,6 +151,7 @@ export default function FormModal({ isShowModal, setIsShowModal, editId, refetch
     }
 
     const handlePublish = async () => {
+        setIsLoading(true);
         const allCities = [];
         const allRegions = [];
         selectedCities?.length && selectedCities.map((item) => allCities.push(item.value));
@@ -188,7 +190,7 @@ export default function FormModal({ isShowModal, setIsShowModal, editId, refetch
         setStartDate(null);
         setEndDate(null);
         setSelectedFile(null);
-
+        setIsLoading(false);
         refetch();
     }
 
@@ -258,42 +260,42 @@ export default function FormModal({ isShowModal, setIsShowModal, editId, refetch
                                         placeholder="WHAT PAGE"
                                         value={pageData.find((option) => option.value === selectedPage)}
                                         styles={{
-                                                control: (base) => ({
-                                                    ...base,
-                                                    backgroundColor: "#F2F8FF66",
-                                                    border: "1px solid #d4d4d4",
-                                                    borderRadius: "6px",
-                                                    boxShadow:
-                                                        "inset 3px 3px 5px rgba(166, 171, 189, 1), inset -3px -3px 3px rgba(250, 251, 255, 0.46)",
-                                                    "&:hover": { borderColor: "#105ccf" },
-                                                    minHeight: "36px",
-                                                }),
-                                                dropdownIndicator: (base) => ({
-                                                    ...base,
-                                                    color: "#7d7d7d",
-                                                    "&:hover": { color: "#808080" },
-                                                }),
-                                                indicatorSeparator: () => ({
-                                                    display: "none",
-                                                }),
-                                                menu: (base) => ({
-                                                    ...base,
-                                                    borderRadius: "4px",
-                                                    marginTop: "2px",
-                                                    zIndex: 10,
-                                                }),
-                                                option: (base, { isFocused }) => ({
-                                                    ...base,
-                                                    backgroundColor: isFocused ? "#e8f5f4" : "#fff",
-                                                    color: "#333",
-                                                    cursor: "pointer",
-                                                }),
-                                                singleValue: (base) => ({
-                                                    ...base,
-                                                    color: "#105CCF",
-                                                    fontSize: "18px",
-                                                }),
-                                            }}
+                                            control: (base) => ({
+                                                ...base,
+                                                backgroundColor: "#F2F8FF66",
+                                                border: "1px solid #d4d4d4",
+                                                borderRadius: "6px",
+                                                boxShadow:
+                                                    "inset 3px 3px 5px rgba(166, 171, 189, 1), inset -3px -3px 3px rgba(250, 251, 255, 0.46)",
+                                                "&:hover": { borderColor: "#105ccf" },
+                                                minHeight: "36px",
+                                            }),
+                                            dropdownIndicator: (base) => ({
+                                                ...base,
+                                                color: "#7d7d7d",
+                                                "&:hover": { color: "#808080" },
+                                            }),
+                                            indicatorSeparator: () => ({
+                                                display: "none",
+                                            }),
+                                            menu: (base) => ({
+                                                ...base,
+                                                borderRadius: "4px",
+                                                marginTop: "2px",
+                                                zIndex: 10,
+                                            }),
+                                            option: (base, { isFocused }) => ({
+                                                ...base,
+                                                backgroundColor: isFocused ? "#e8f5f4" : "#fff",
+                                                color: "#333",
+                                                cursor: "pointer",
+                                            }),
+                                            singleValue: (base) => ({
+                                                ...base,
+                                                color: "#105CCF",
+                                                fontSize: "18px",
+                                            }),
+                                        }}
                                     />
                                 </div>
 
@@ -613,14 +615,24 @@ export default function FormModal({ isShowModal, setIsShowModal, editId, refetch
                                     </div>
                                 </div>
 
-                                <button
-                                    style={{ boxShadow: '5px 5px 10px #A6ABBD, -5px -5px 10px #FAFBFF', opacity: isButtonDisabled() ? '0.4' : '1' }}
-                                    className="my-8 bg-gradient-to-b from-[#0D94E8] to-[#0A85C2] w-[180px] h-[50px] rounded-[10px] text-white flex items-center justify-center gap-x-[5px] mx-auto"
-                                    disabled={isButtonDisabled()}
-                                    onClick={handlePublish}
-                                >
-                                    Publish
-                                </button>
+                                {isLoading ? (
+                                    <button
+                                        style={{ boxShadow: '5px 5px 10px #A6ABBD, -5px -5px 10px #FAFBFF', opacity: '0.4' }}
+                                        className="my-8 bg-gradient-to-b from-[#0D94E8] to-[#0A85C2] w-[180px] h-[50px] rounded-[10px] text-white flex items-center justify-center gap-x-[5px] mx-auto"
+                                        disabled={true}
+                                    >
+                                        Publishing...
+                                    </button>
+                                ) : (
+                                    <button
+                                        style={{ boxShadow: '5px 5px 10px #A6ABBD, -5px -5px 10px #FAFBFF', opacity: isButtonDisabled() ? '0.4' : '1' }}
+                                        className="my-8 bg-gradient-to-b from-[#0D94E8] to-[#0A85C2] w-[180px] h-[50px] rounded-[10px] text-white flex items-center justify-center gap-x-[5px] mx-auto"
+                                        disabled={isButtonDisabled()}
+                                        onClick={handlePublish}
+                                    >
+                                        Publish
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>

@@ -40,9 +40,7 @@ const SponsorComponent = ({ text = "", region, city }) => {
       <div className="relative max-w-[1920px]  overflow-hidden mx-auto flex py-[115px] mobile:py-[100px] justify-center items-center">
         <div
           className="flex flex-col items-center justify-between
-                    w-[1084px] h-[139.45px] 
-                    tablet:w-[603px] tablet:h-[123.75px]
-                    mobile:w-[360px] mobile:h-[90.52px]"
+                    w-[1084px] tablet:w-[603px] mobile:w-[360px]"
         >
           <div
             className={`flex h-[28px] text-[#1E2125] mt-[-3px] font-variation-customOpt24 text-[16px] md:text-[24px]`}
@@ -57,7 +55,7 @@ const SponsorComponent = ({ text = "", region, city }) => {
                     key={item.id}
                     src={item?.logo ?? sponser6}
                     alt="sponser2 of the image"
-                    className="flex  w-[230px] mobile:w-[150px]  filter grayscale"
+                    className="flex w-[230px] mobile:w-[150px]  filter grayscale mx-4"
                   />
                 )
               })}

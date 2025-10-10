@@ -38,6 +38,13 @@ const CompaniesWithApprovalReq = () => {
     fetchList();
   }, [])
 
+  const deleteSponsor = async (id) => {
+    setLoading(true);
+    await adminService.deleteSponosor(id);
+    setLoading(false);
+    fetchList();
+  }
+
   return (
     <div className="w-full min-h-screen bg-[#ECF0F3] pt-[80px] flex">
       <SideMenuAdmin setWhichScreen={setWhichScreen} headerCheck={2} whichtab={whichTab} />
@@ -101,20 +108,27 @@ const CompaniesWithApprovalReq = () => {
                     <td className="px-4 py-4">{company?.endDate ? formatDate(company?.endDate) : "N/A"}</td>
                     <td className="px-4 py-4">{company?.price}</td>
                     <td className="px-2 py-4  font-semibold cursor-pointer">
-                      <button
-                        onClick={() => {
-                          setIsShowModal1(true);
-                          setEditId(company);
-                        }}
-                      >
-                        <Image
-                          src="/eye.png"
-                          width={18}
-                          height={18}
-                          alt="Open page"
-                          className="inline-block"
-                        />
-                      </button>
+                      <div className="flex items-center justify-center">
+                        <button
+                          onClick={() => {
+                            setIsShowModal1(true);
+                            setEditId(company);
+                          }}
+                        >
+                          <Image
+                            src="/eye.png"
+                            width={18}
+                            height={18}
+                            alt="Open page"
+                            className="inline-block"
+                          />
+                        </button>
+                        <button onClick={() => deleteSponsor(company?.id)} className="ml-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="#000000" d="M8 9h1v9H8V9zm7 0h1v9h-1V9zM5 4h14v2H5V4zm3-1h8v1H8V3zM7 7h10v13H7V7zm2 0v12h6V7H9z" />
+                          </svg>
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))
