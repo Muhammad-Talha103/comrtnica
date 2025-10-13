@@ -126,12 +126,11 @@ const FbPosting = ({ params }) => {
         <meta property="og:type" content="website" />
       </Head>
       <Layout from={"3"} forFooter={"memorypage"}>
-        <Link className="w-full" href={`/m/${slugKey}`}>
-          <MemoryHeroSection
-            handleFacebookShare={handleFacebookShare}
-            obituary={obituary}
-          />
-        </Link>
+        <MemoryHeroSection
+          handleFacebookShare={handleFacebookShare}
+          obituary={obituary}
+          href={`/m/${slugKey}`}
+        />
       </Layout>
     </div>
   );
