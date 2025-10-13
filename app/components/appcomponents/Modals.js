@@ -2312,7 +2312,7 @@ const Modals = ({
       ) : null}
 
       {select_id == "22" ? (
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full pl-2">
           <div className="text-[#1E2125] mobile:text-xl text-[24px] font-medium ">
             Kopiraj - prilepi
           </div>
