@@ -206,7 +206,9 @@ const Modals = ({
     }
 
     if (!memoryHasKeeper()) {
-      toast.error("Ta žalna stran še nima svojega Skrbnika. Skrbnik bi ta vnos moral potrditi.");
+      toast.error(
+        "Ta žalna stran še nima svojega Skrbnika. Skrbnik bi ta vnos moral potrditi."
+      );
       return;
     }
     const dedicationData = {
@@ -254,7 +256,9 @@ const Modals = ({
     }
 
     if (!memoryHasKeeper()) {
-      toast.error("Ta žalna stran še nima svojega Skrbnika. Skrbnik bi ta vnos slike moral potrditi.");
+      toast.error(
+        "Ta žalna stran še nima svojega Skrbnika. Skrbnik bi ta vnos slike moral potrditi."
+      );
       return;
     }
     if (!uploadedPicture) {
@@ -282,15 +286,16 @@ const Modals = ({
         updateObituary({ ["Photos"]: updatedPhoto });
         toast.success("Slika je bila dodana");
       } else if (!isKeeper()) {
-        toast.success("Slika je bila poslano Skrbniku v potrditevCondolence Created Successfully");
+        toast.success(
+          "Slika je bila poslano Skrbniku v potrditevCondolence Created Successfully"
+        );
       }
       closeModal();
     } catch (error) {
       console.error(`Failed to add  photo`, error);
       // toast.error("Error Adding Photo");
-    }
-    finally {
-      setName('');
+    } finally {
+      setName("");
     }
   };
 
@@ -483,7 +488,11 @@ const Modals = ({
     console.log(formData);
 
     try {
-      const response = await obituaryService.updateObituary(data?.id, formData, allow);
+      const response = await obituaryService.updateObituary(
+        data?.id,
+        formData,
+        allow
+      );
       console.log(`${field} updated successfully!`, response);
       toast.success(`${field} Posodobljeno`);
 
@@ -723,14 +732,15 @@ const Modals = ({
 
   //code for cnadle countdown
   const [timeLeft, setTimeLeft] = useState(0);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     // To handle first click
-    const dateToCheck = data?.candles?.lastBurnedCandleTime ? data?.candles?.lastBurnedCandleTime : new Date();
+    const dateToCheck = data?.candles?.lastBurnedCandleTime
+      ? data?.candles?.lastBurnedCandleTime
+      : new Date();
 
-    const targetDate =
-      new Date(dateToCheck).getTime() +
-      24 * 60 * 60 * 1000;
+    const targetDate = new Date(dateToCheck).getTime() + 24 * 60 * 60 * 1000;
 
     const updateCountdown = () => {
       const now = Date.now();
@@ -803,8 +813,9 @@ const Modals = ({
                   setIsSelectedReligion("");
                 }
               }}
-              className={`p-[10px] ${isSelectedRelegion === "1" ? "shadow-custom-dark-to-white" : ""
-                }`}
+              className={`p-[10px] ${
+                isSelectedRelegion === "1" ? "shadow-custom-dark-to-white" : ""
+              }`}
             >
               <Image
                 src={"/icon_cross.png"}
@@ -822,8 +833,9 @@ const Modals = ({
                   setIsSelectedReligion("");
                 }
               }}
-              className={`p-[10px] ${isSelectedRelegion === "2" ? "shadow-custom-dark-to-white" : ""
-                }`}
+              className={`p-[10px] ${
+                isSelectedRelegion === "2" ? "shadow-custom-dark-to-white" : ""
+              }`}
             >
               <Image
                 src={"/img_plus2.png"}
@@ -841,8 +853,9 @@ const Modals = ({
                   setIsSelectedReligion("");
                 }
               }}
-              className={`py-[20px] px-[10px] ${isSelectedRelegion === "3" ? "shadow-custom-dark-to-white" : ""
-                }`}
+              className={`py-[20px] px-[10px] ${
+                isSelectedRelegion === "3" ? "shadow-custom-dark-to-white" : ""
+              }`}
             >
               <Image
                 src={"/img_moon_star.png"}
@@ -860,8 +873,9 @@ const Modals = ({
                   setIsSelectedReligion("");
                 }
               }}
-              className={`p-[10px] ${isSelectedRelegion === "4" ? "shadow-custom-dark-to-white" : ""
-                }`}
+              className={`p-[10px] ${
+                isSelectedRelegion === "4" ? "shadow-custom-dark-to-white" : ""
+              }`}
             >
               <Image
                 src={"/img_plus3.png"}
@@ -879,8 +893,9 @@ const Modals = ({
                   setIsSelectedReligion("");
                 }
               }}
-              className={`p-[10px] ${isSelectedRelegion === "5" ? "shadow-custom-dark-to-white" : ""
-                }`}
+              className={`p-[10px] ${
+                isSelectedRelegion === "5" ? "shadow-custom-dark-to-white" : ""
+              }`}
             >
               <Image
                 src={"/img_star.png"}
@@ -900,7 +915,9 @@ const Modals = ({
           <div className="mobile:w-[100%] w-[254px] mt-6">
             <ButtonBlueBorder
               placeholder={"Objavi"}
-              onClick={() => updateMemory("symbol", isSelectedRelegion, "allow")}
+              onClick={() =>
+                updateMemory("symbol", isSelectedRelegion, "allow")
+              }
             />
           </div>
         </div>
@@ -1837,8 +1854,9 @@ const Modals = ({
               Osmrtnica in več informacij na strani:
             </div>
             <div className="flex mobile:hidden text-base font-normal text-[#0A85C2] mt-1 underline ">
-              {`${typeof window !== "undefined" ? window.location.origin : ""
-                }/m/${data?.slugKey}`}
+              {`${
+                typeof window !== "undefined" ? window.location.origin : ""
+              }/m/${data?.slugKey}`}
             </div>
           </div>
           <div className="mobile:w-[100%] w-[254px] mt-8">
@@ -2292,6 +2310,45 @@ const Modals = ({
           </div>
         </div>
       ) : null}
+
+      {select_id == "22" ? (
+        <div className="flex flex-col w-full">
+          <div className="text-[#1E2125] mobile:text-xl text-[24px] font-medium ">
+            Kopiraj - prilepi
+          </div>
+
+          <div className="flex w-full mt-5 tablet:items-center desktop:items-center ">
+            <div className="text-[#3C3E41] mobile:text-sm">
+              Kopiraj povezavo do te žalne strani
+            </div>
+          </div>
+          <div className="mobile:w-[100%] w-[254px] mt-8">
+            <ButtonBlueBorder
+              placeholder={copied ? "Kopirano ✅" : "Kopiraj"}
+              onClick={() => {
+                submitNotification();
+                if (typeof window !== "undefined") {
+                  const url = `${window.location.origin}/m/${data?.slugKey}`;
+                  navigator.clipboard
+                    .writeText(url)
+                    .then(() => {
+                      setCopied(true);
+                      setTimeout(() => setCopied(false), 2000);
+                    })
+                    .catch((err) => {
+                      console.error("Failed to copy", err);
+                    });
+                }
+              }}
+            />
+          </div>
+          <div className="flex w-full mt-5 tablet:items-center desktop:items-center ">
+            <div className="text-[#3C3E41] mobile:text-sm">
+              in jo prilepi v email, ki ga boš poslal/a sorodnikom in znancem.
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };
@@ -2340,8 +2397,9 @@ function CommonStyle({ item, index, key }) {
   return (
     <div
       key={key}
-      className={` ${index % 2 !== 0 ? "bg-[#E8F0F6]" : "bg-white popup-custom-shadow"
-        }  h-14 flex-row flex items-center border-b-[1px] border-[#D4D4D4] mobile:flex-row-reverse mobile:justify-between mobile:pr-[4px] relative `}
+      className={` ${
+        index % 2 !== 0 ? "bg-[#E8F0F6]" : "bg-white popup-custom-shadow"
+      }  h-14 flex-row flex items-center border-b-[1px] border-[#D4D4D4] mobile:flex-row-reverse mobile:justify-between mobile:pr-[4px] relative `}
     >
       <div
         className={`py-[10px] border-2 text-[#6D778E]
