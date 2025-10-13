@@ -73,10 +73,7 @@ const ObituaryCardFb = ({
   return (
     <Link
       href={buildHref()}
-      className="w-full 
-      mobile:h-[126px] tablet:h-[170px] desktop:h-[170px]  border-2
-       border-white shadow-custom-light-dark-box
-          bg-[#E3EAEF]/60 backdrop-blur-[50%] rounded-lg flex justify-start items-center "
+      className="w-full h-[170px] rounded-lg flex justify-start items-center "
     >
       <div className="flex w-full pl-2.5">
         <div className="w-full flex">
@@ -89,8 +86,7 @@ const ObituaryCardFb = ({
               alt="Slika"
               width={1000}
               height={1000}
-              className="mobile:h-[98.53px] tablet:h-[130px]
-               desktop:h-[130px] mobile:w-[72px] tablet:w-[95px] desktop:w-[95px] bg-center  rounded-lg"
+              className="h-[130px] w-[95px] bg-center  rounded-lg"
             />
           </div>
 
@@ -110,16 +106,13 @@ const ObituaryCardFb = ({
                 >
                   Za vedno v naših srcih
                 </div>
-                <div
-                  className="font-variation-customOpt24 text-left desktop:text-[24px]
-                   tablet:text-[24px] mobile:text-[16px]  text-[#1E2125] leading-[28.13px]"
-                >
+                <div className="font-variation-customOpt24 text-left text-[24px] text-[#1E2125] leading-[28.13px]">
                   {data.name} {data.sirName}
                 </div>
                 <p
                   className="block font-variation-customOpt14 tablet:font-variation-customOpt16 
-                  desktop:font-variation-customOpt16 text-left desktop:mt-[16px] tablet:mt-[16px]  
-                  desktop:text-[16px] tablet:text-[16px] mobile:text-[14px]  text-[#414141] leading-[24px]"
+                  desktop:font-variation-customOpt16 text-left mt-[16px]  
+                  text-[16px] text-[#414141] leading-[24px]"
                 >
                   {data?.birthDate?.includes("1025") ? (
                     <>{formattedDeathDate}</>
