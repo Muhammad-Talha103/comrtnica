@@ -444,7 +444,7 @@ const MemorialPageTopComp = ({
                   pt-4 w-[100%] mobile:px-[21px] mobile:pb-[19px]
                   tablet:px-[22px] tablet:pb-[15px]
                   ${screenWidth < 740
-                      ? "w-[330px] mobile:!w-[90%]"
+                      ? "w-[330px] mobile:!w-[100%] mobile:!max-w-[470px]"
                       : screenWidth >= 740 && screenWidth <= 1024
                         ? "w-[550px]"
                         : ""
@@ -558,7 +558,7 @@ const MemorialPageTopComp = ({
                       mobile:px-[21px]  mobile:pb-[25px] 
                       tablet:pb-[23px]  tablet:px-[22px]                          
                       desktop:w-[517px] ${screenWidth < 740
-                          ? "w-[330px] mobile:!w-[90%]"
+                          ? "w-[330px] mobile:!w-[100%] mobile:!max-w-[470px]"
                           : screenWidth >= 740 && screenWidth <= 1024
                             ? "w-[550px]"
                             : ""
@@ -754,7 +754,7 @@ const MemorialPageTopComp = ({
                   className={`
                   flex-col pt-4 pl-[22px] pr-[18px] w-[100%]                       
                   desktop:w-[517px] ${screenWidth < 740
-                      ? "w-[330px] mobile:!w-[90%]"
+                      ? "w-[330px] mobile:!w-[100%] mobile:!max-w-[470px]"
                       : screenWidth >= 740 && screenWidth <= 1024
                         ? "w-[550px]"
                         : ""
@@ -855,7 +855,7 @@ const MemorialPageTopComp = ({
                             pl-[21px] pr-[28px]
                             w-[100%] tablet:px-4 
                             desktop:w-[517px] ${screenWidth < 740
-                      ? "w-[330px] mobile:!w-[90%]"
+                      ? "w-[330px] mobile:!w-[100%] mobile:!max-w-[470px]"
                       : screenWidth >= 740 && screenWidth <= 1024
                         ? "w-[550px]"
                         : ""
