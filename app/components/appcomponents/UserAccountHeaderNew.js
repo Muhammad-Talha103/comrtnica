@@ -84,7 +84,7 @@ function UserAccountHeaderNew({
                       className="p-1 rounded-lg hover:bg-gray-100 transition-colors duration-200"
                       title="Nazaj"
                     >
-                      {window.innerWidth >= 1200 ? (
+                      {typeof window != 'undefined' && window.innerWidth >= 1200 ? (
                         <Image
                           src={backIcon}
                           alt="Back"
