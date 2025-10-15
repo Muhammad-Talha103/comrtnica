@@ -266,10 +266,12 @@ export default function HomeContent(props) {
           });
         }
       }
-      const sortedObituaries = tempObituaries.sort(
-        (a, b) =>
-          new Date(b.deathDate).getTime() - new Date(a.deathDate).getTime()
-      );
+      // const sortedObituaries = tempObituaries.sort(
+      //   (a, b) =>
+      //     new Date(b.deathDate).getTime() - new Date(a.deathDate).getTime()
+      // );
+
+      let sortedObituaries = tempObituaries;
 
       setObituaries(sortedObituaries);
     } catch (err) {

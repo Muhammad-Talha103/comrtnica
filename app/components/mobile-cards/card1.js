@@ -56,7 +56,7 @@ const Card1 = ({ data, cardRefs, index, cemetery }) => {
     >
       <div className="ml-[35px] mt-[63.35px]">
         <div className="w-[138px] bg-[#3b3b3b] rounded-t-full overflow-hidden border-[6px] border-[#3b3b3b] shadow-2xl flex items-start justify-center pt-1">
-          <img src={data?.image} className="w-auto max-h-[188px]" />
+          <img src={data?.image ?? '/user5.jpeg'} className="w-auto max-h-[188px]" />
         </div>
 
         <br />
@@ -96,11 +96,12 @@ const Card1 = ({ data, cardRefs, index, cemetery }) => {
             )}
           </p>
           <p className="text-[#fff] pb-10">
-            {data?.funeralTimestamp ? (
+             <>&nbsp;</>
+            {/* {data?.funeralTimestamp ? (
               <>{data?.Cemetry?.funeralCemetery ?? cemetery}</>
             ) : (
               <>&nbsp;</>
-            )}
+            )} */}
           </p>
         </div>
       </div>

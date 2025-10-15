@@ -27,7 +27,7 @@ const Card5 = ({ data = {}, cardRefs, index, cemetery }) => {
           <div className="img-container mx-auto rounded-full  shadow-md p-2 h-[200px] w-[140.7567596435547px] flex justify-center">
             <img
               className="object-cover rounded-full"
-              src={data?.image}
+              src={data?.image ?? '/user5.jpeg'}
               alt="Mario"
             />
           </div>
