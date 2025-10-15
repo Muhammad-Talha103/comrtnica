@@ -10,8 +10,6 @@ import { toast } from "react-hot-toast";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getTemplateCardImages } from "@/utils/commonUtils";
 import { useAuth } from "@/hooks/useAuth";
-import Head from "next/head";
-import Link from "next/link";
 
 const FbPosting = ({ params }) => {
   const { slugKey } = params;

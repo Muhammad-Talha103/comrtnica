@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import iconArrowRight from "@/public/icon_arrowright.png";
 import Link from "next/link";
 import { format } from "date-fns";
 
