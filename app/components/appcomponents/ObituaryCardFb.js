@@ -127,7 +127,9 @@ const ObituaryCardFb = ({
                 >
                   <p className="font-variation-customOpt14 tablet:font-variation-customOpt16 desktop:font-variation-customOpt16 text-left desktop:text-[34px] tablet:text-[16px] mobile:text-[14px]  text-[#414141]">
                     {data.location}
-                    {key}
+<p className="font-variation-customOpt14 tablet:font-variation-customOpt16 desktop:font-variation-customOpt16 text-left desktop:text-[16px] tablet:text-[16px] mobile:text-[14px]  text-[#414141] leading-[24px]">
+  {data.location}
+</p>
                   </p>
                 </div>
               </div>
