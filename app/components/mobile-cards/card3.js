@@ -51,7 +51,7 @@ const Card3 = ({ data = {}, cardRefs, index, cemetery }) => {
                 <>{formatToDottedDate(data?.deathDate)}</>
               ) : (
                 <>{formatToDottedDate(data?.birthDate)} -{" "}
-              {formatToDottedDate(data?.deathDate)}</>
+                  {formatToDottedDate(data?.deathDate)}</>
               )}
             </p>
           </div>
@@ -64,7 +64,8 @@ const Card3 = ({ data = {}, cardRefs, index, cemetery }) => {
               : '\u00A0\u00A0'}
           </h1>
           <p className="text-center mx-auto mt-[16px] text-[18px] h-[20px]">
-            {data?.funeralTimestamp ? (
+            <>&nbsp;</>
+            {/* {data?.funeralTimestamp ? (
               <>
                 {data?.Cemetry?.funeralCemetery ?? cemetery}
               </>
@@ -72,9 +73,7 @@ const Card3 = ({ data = {}, cardRefs, index, cemetery }) => {
               <>
                 &nbsp;
               </>
-            )}
-
-            {/* {data?.Cemetry?.funeralCemetery} v {data?.funeralLocation} */}
+            )} */}
           </p>
         </div>
       </div>
