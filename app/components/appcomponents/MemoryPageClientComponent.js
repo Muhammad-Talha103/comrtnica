@@ -35,7 +35,7 @@ const MemoryPageContent = ({ params, obituaryDataFromServer }) => {
   const [showShops, setShowShops] = useState(false);
   const [showImageView, setShowImageView] = useState(false);
   const [imageId, setImageId] = useState("0");
-
+  const [isRender, setIsRender] = useState(false);
   const [obituary, setObituary] = useState({});
   const memoryRef = useRef(null); // 👈 Reference to capture the component
   const city = searchParams.get("city");
@@ -43,7 +43,7 @@ const MemoryPageContent = ({ params, obituaryDataFromServer }) => {
 
   useEffect(() => {
     fetchMemory();
-  }, [user, isLoading]);
+  }, [user, isLoading, isRender]);
 
   const fetchMemory = async () => {
     try {
@@ -107,17 +107,21 @@ const MemoryPageContent = ({ params, obituaryDataFromServer }) => {
         console.warn("Obituary not loaded yet");
         return;
       }
+      try {
+        // 1️⃣ Capture component as image
+        const canvas = await html2canvas(memoryRef.current, {
+          useCORS: true,
+          backgroundColor: "transparent",
+          scale: 2,
+        });
 
-      // 1️⃣ Capture component as image
-      const canvas = await html2canvas(memoryRef.current, {
-        useCORS: true,
-        backgroundColor: "transparent",
-        scale: 2,
-      });
-
-      const dataUrl = canvas.toDataURL("image/png");
-      const file = dataURLtoFile(dataUrl, `${slugKey}.png`);
-      await obituaryService.uploadMemoryImage(file, slugKey);
+        const dataUrl = canvas.toDataURL("image/png");
+        const file = dataURLtoFile(dataUrl, `${slugKey}.png`);
+        await obituaryService.uploadMemoryImage(file, slugKey);
+        setIsRender(true);
+      } catch (err) {
+        console.error("Error in capturing/uploading image:", err);
+      }
     })();
   }, []);
 
@@ -158,7 +162,6 @@ const MemoryPageContent = ({ params, obituaryDataFromServer }) => {
   const handleFacebookShare = async () => {
     try {
       const pageUrl = `${APP_BASE_URL}/m/${slugKey}`;
-
       const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
         pageUrl
       )}`;
