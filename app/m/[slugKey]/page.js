@@ -4,9 +4,7 @@ import APP_BASE_URL from "@/config/appConfig";
 
 export async function generateMetadata({ params }) {
   const { slugKey } = params;
-
-  const response = await obituaryService.getMemory({ slugKey });
-  const image = response?.obituary?.fbImage;
+  const image = `${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/og?slugKey=${slugKey}`;
 
   return {
     title: "Vpis v žalno knjigo",

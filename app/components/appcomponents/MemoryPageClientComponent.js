@@ -18,7 +18,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { getTemplateCardImages } from "@/utils/commonUtils";
 import { useAuth } from "@/hooks/useAuth";
 import MemoryHeroSection from "@/app/components/MemoryHeroSection";
-import html2canvas from "html2canvas-pro";
 import APP_BASE_URL from "@/config/appConfig";
 
 const MemoryPageContent = ({ params, obituaryDataFromServer }) => {
@@ -35,7 +34,6 @@ const MemoryPageContent = ({ params, obituaryDataFromServer }) => {
   const [showShops, setShowShops] = useState(false);
   const [showImageView, setShowImageView] = useState(false);
   const [imageId, setImageId] = useState("0");
-  const [isRender, setIsRender] = useState(false);
   const [obituary, setObituary] = useState({});
   const memoryRef = useRef(null); // 👈 Reference to capture the component
   const city = searchParams.get("city");
@@ -43,7 +41,7 @@ const MemoryPageContent = ({ params, obituaryDataFromServer }) => {
 
   useEffect(() => {
     fetchMemory();
-  }, [user, isLoading, isRender]);
+  }, [user, isLoading]);
 
   const fetchMemory = async () => {
     try {
@@ -102,27 +100,6 @@ const MemoryPageContent = ({ params, obituaryDataFromServer }) => {
     if (storedUser) {
       setCurrentUser(JSON.parse(storedUser));
     }
-    (async () => {
-      if (!memoryRef.current) {
-        console.warn("Obituary not loaded yet");
-        return;
-      }
-      try {
-        // 1️⃣ Capture component as image
-        const canvas = await html2canvas(memoryRef.current, {
-          useCORS: true,
-          backgroundColor: "transparent",
-          scale: 2,
-        });
-
-        const dataUrl = canvas.toDataURL("image/png");
-        const file = dataURLtoFile(dataUrl, `${slugKey}.png`);
-        await obituaryService.uploadMemoryImage(file, slugKey);
-        setIsRender(true);
-      } catch (err) {
-        console.error("Error in capturing/uploading image:", err);
-      }
-    })();
   }, []);
 
   const handleMemoryChange = async (type) => {
@@ -178,23 +155,6 @@ const MemoryPageContent = ({ params, obituaryDataFromServer }) => {
       console.error("Error sharing:", err);
     }
   };
-
-  function dataURLtoFile(dataUrl, filename) {
-    if (!dataUrl || !dataUrl.startsWith("data:")) {
-      throw new Error("Invalid data URL");
-    }
-    const arr = dataUrl.split(",");
-    const match = arr[0].match(/:(.*?);/);
-    if (!match) {
-      throw new Error("Could not parse MIME type from data URL");
-    }
-    const mime = match[1];
-    const bstr = atob(arr[1]);
-    let n = bstr.length;
-    const u8arr = new Uint8Array(n);
-    while (n--) u8arr[n] = bstr.charCodeAt(n);
-    return new File([u8arr], filename, { type: mime });
-  }
 
   return (
     <>
