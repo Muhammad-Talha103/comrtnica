@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Suspense } from "react";
+import Head from "next/head";
 import { useSearchParams } from "next/navigation";
 import Layout from "../components/appcomponents/Layout";
 import MemorialPageView from "../components/appcomponents/MemorialPageView";
@@ -31,7 +32,14 @@ const ObituaryListContent = () => {
 
 const ObituaryList = () => {
   return (
-    <Layout
+    <>
+      <Head>
+        <title>Osmrtnice | Osrmtnica</title>
+        <link rel="canonical" href="https://www.osmrtnica.com/osmrtnice" />
+        <meta name="description" content="Pregled najnovejših osmrtnic in obvestil o pogrebih v Sloveniji." />
+      </Head>
+
+      <Layout
       megaMenu={""}
       isMegaMenuVisible={false}
       from={"18"}
@@ -44,6 +52,7 @@ const ObituaryList = () => {
         </Suspense>
       </div>
     </Layout>
+    </>
   );
 };
 
