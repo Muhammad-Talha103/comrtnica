@@ -3,41 +3,38 @@ import { ImageResponse } from "next/og";
 import APP_BASE_URL from "@/config/appConfig";
 import API_BASE_URL from "@/config/apiConfig";
 import sharp from "sharp";
+import fs from "fs";
+import path from "path";
 
 export const runtime = "nodejs";
 
-async function loadGoogleFont(font: string, text: string) {
-  const url = `https://fonts.googleapis.com/css2?family=${font}:opsz,wght@8..144,100..1000&display=swap&text=${encodeURIComponent(
-    text
-  )}`;
-  const css = await (await fetch(url)).text();
-  const resource = css.match(
-    /src: url\((.+)\) format\('(opentype|truetype)'\)/
-  );
-
-  if (resource) {
-    const response = await fetch(resource[1]);
-    if (response.status == 200) {
-      return await response.arrayBuffer();
-    }
-  }
-
-  throw new Error("failed to load font data");
+function loadFont(fontFileName: string) {
+  const fontPath = path.join(process.cwd(), "public/fonts", fontFileName);
+  return fs.readFileSync(fontPath);
 }
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const slugKey = searchParams.get("slugKey");
-  const fontData = await fetch(
-    new URL("/fonts/GreatVibes-Regular.ttf", req.url)
-  ).then((res) => res.arrayBuffer());
+  const greatVibesFont = loadFont("GreatVibes-Regular.ttf");
+  const robotoMediumFont = loadFont("roboto-flex-regular.ttf");
+  const robotoRegularFont = loadFont("roboto-flex-regular.ttf");
 
   const obituary = await fetch(
     `${API_BASE_URL}/obituary/memory?slugKey=${slugKey}`
-  ).then(async (res) => {
-    const data = await res.json();
-    return data.obituary;
-  });
+  )
+    .then(async (res) => {
+      const data = await res.json();
+      return data.obituary;
+    })
+    .catch((error) => {
+      console.error("Failed to fetch obituary data:", error);
+      return null;
+    });
+
+  if (!obituary) {
+    return new Response("Not found", { status: 404 });
+  }
 
   const imageUrl = obituary?.image || `${APP_BASE_URL}/user5.jpeg`;
 
@@ -56,7 +53,7 @@ export async function GET(req: Request) {
   }
 
   const name = `${obituary?.name} ${obituary?.sirName}`;
-  const location = `Trebelno`;
+  const location = `${obituary?.location}`;
 
   return new ImageResponse(
     (
@@ -101,6 +98,7 @@ export async function GET(req: Request) {
               overflow: "hidden",
               display: "flex", // ✅ required if img inside
               border: "4px solid white",
+              boxShadow: "2px 4px 6px rgba(0, 0, 0, 0.3)",
             }}
           >
             <img
@@ -109,8 +107,8 @@ export async function GET(req: Request) {
               width={175}
               height={216}
               style={{
-                objectFit: "cover",
                 borderRadius: "12px",
+                backgroundPosition: "center",
               }}
             />
           </div>
@@ -121,7 +119,7 @@ export async function GET(req: Request) {
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
-              height: "98%",
+              height: "100%",
             }}
           >
             <div
@@ -174,21 +172,21 @@ export async function GET(req: Request) {
       fonts: [
         {
           name: "GreatVibes",
-          data: fontData,
-          style: "normal",
+          data: greatVibesFont,
           weight: 400,
+          style: "normal",
         },
         {
           name: "Roboto Flex",
-          data: await loadGoogleFont("Roboto Flex", name),
-          style: "normal",
+          data: robotoMediumFont,
           weight: 500,
+          style: "normal",
         },
         {
           name: "Roboto Flex",
-          data: await loadGoogleFont("Roboto Flex", location),
-          style: "normal",
+          data: robotoRegularFont,
           weight: 400,
+          style: "normal",
         },
       ],
     }

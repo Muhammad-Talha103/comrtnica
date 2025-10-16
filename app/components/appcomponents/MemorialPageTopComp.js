@@ -901,7 +901,7 @@ const MemorialPageTopComp = ({
                         height={15}
                         className=""
                       />
-                      <div className="text-[16px] text-[#d9a800] ml-[10px] font-variation-customOpt16 font-normal">
+                      <div className="text-[16px] cursor-pointer text-[#d9a800] ml-[10px] font-variation-customOpt16 font-normal">
                         Obvesti jih
                       </div>
                     </div>
@@ -915,7 +915,7 @@ const MemorialPageTopComp = ({
                       />
                       <div
                         onClick={handleFacebookShare}
-                        className="text-[16px] ml-[10px] text-[#00B4D8] font-variation-customOpt16 font-normal"
+                        className="text-[16px] ml-[10px] cursor-pointer text-[#00B4D8] font-variation-customOpt16 font-normal"
                       >
                         Deli na Facebooku
                       </div>
