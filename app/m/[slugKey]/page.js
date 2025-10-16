@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
   const image = `${APP_BASE_URL}/api/og?slugKey=${slugKey}`;
 
   return {
-    title: "Vpis v žalno knjigo",
+    title: "Vpis v žalno knjigo ",
     description: "Vpis v žalno knjigo in informacije o pogrebu so tukaj.",
     openGraph: {
       title: "Vpis v žalno knjigo",
