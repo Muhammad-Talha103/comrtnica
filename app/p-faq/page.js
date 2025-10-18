@@ -46,7 +46,7 @@ export default function Faq1() {
       <>
         {/* Allow crawlability but no indexing. */}
         <Head>
-          <title>P-FAQ | Osrmtnica</title>
+          <title>P-FAQ | Osmrtnica</title>
           <meta name="robots" content="noindex, follow" />
         </Head>
         
