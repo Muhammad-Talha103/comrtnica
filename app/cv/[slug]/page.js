@@ -51,7 +51,7 @@ export default function FloristPage() {
             company?.description ||
             `Pregled storitev cvetličarne ${
               company?.name || ""
-            }. Cvetličarske storitve za pogrebe in spominske strani.`
+            }. Cvetličarske storitve.`
           }
         />
       </Head>
