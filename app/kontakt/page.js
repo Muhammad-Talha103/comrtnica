@@ -11,7 +11,7 @@ const ContactForm = () => {
     <>
       {/* Allow crawlability but no indexing. */}
       <Head>
-        <title>Kontakt | Osrmtnica</title>
+        <title>Kontakt | Osmrtnica</title>
         <meta name="robots" content="noindex, follow" />
       </Head>
 
