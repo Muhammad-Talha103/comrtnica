@@ -17,7 +17,7 @@ const Funeralpromo = () => {
     <>
       {/* Allow crawlability but no indexing. */}
       <Head>
-        <title>Rešitve za pogrebna podjetja | Osrmtnica</title>
+        <title>Rešitve za pogrebna podjetja | Osmrtnica</title>
         <meta name="robots" content="noindex, follow" />
       </Head>
 

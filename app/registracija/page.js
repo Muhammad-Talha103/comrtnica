@@ -10,7 +10,7 @@ const RegistrationPage = () => {
     <>
       {/* Allow crawlability but no indexing. */}
       <Head>
-        <title>Registracija | Osrmtnica</title>
+        <title>Registracija | Osmrtnica</title>
         <meta name="robots" content="noindex, follow" />
       </Head>
 

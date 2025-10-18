@@ -43,7 +43,7 @@ export default function Faq2() {
       <>
         {/* Allow crawlability but no indexing. */}
         <Head>
-          <title>C-FAQ | Osrmtnica</title>
+          <title>Cvetlicarne - pogosta vprašanja</title>
           <meta name="robots" content="noindex, follow" />
         </Head>
         

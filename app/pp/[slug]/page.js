@@ -38,7 +38,7 @@ export default function FuneralPage() {
     return (
         <>
             <Head>
-                <title>{company?.name ? `${company.name} - Pogrebno podjetje` : 'Pogrebno podjetje'} | Osrmtnica</title>
+                <title>{company?.name ? `${company.name} - Pogrebno podjetje` : 'Pogrebno podjetje'} | Osmrtnica</title>
                 <link rel="canonical" href={`https://www.osmrtnica.com/pp/${slug}`} />
                 <meta name="description" content={company?.description || `Pregled storitev pogrebnega podjetja ${company?.name || ''}. Pogrebne storitve in organizacija pogrebov.`} />
             </Head>

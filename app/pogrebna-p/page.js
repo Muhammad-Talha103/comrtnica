@@ -3,8 +3,8 @@ import FuneralsComp from '../../comps/Pograbi';
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Pogrebna podjetja | Osrmtnica",
-  description: "Seznam pogrebnih podjetij v Sloveniji. Poiščite zaupanja vredno pogrebno podjetje v vaši bližini.",
+  title: "Pogrebna podjetja | Osmrtnica",
+  description: "Pogrebna podjetja v Sloveniji.",
   alternates: {
     canonical: "https://www.osmrtnica.com/pogrebna-p",
   },

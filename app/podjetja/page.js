@@ -13,9 +13,9 @@ const CompanyRegistrationPage = () => {
   return (
     <>
       <Head>
-        <title>Podjetja | Osrmtnica</title>
+        <title>Podjetja | Osmrtnica</title>
         <link rel="canonical" href="https://www.osmrtnica.com/podjetja" />
-        <meta name="description" content="Registracija in upravljanje podjetij na platformi Osmrtnica. Pridružite se mreži partnerskih pogrebnih podjetij in cvetličarn." />
+        <meta name="description" content="Registracija podjetij na platformi Osmrtnica. Pridružite se mreži partnerskih pogrebnih podjetij in cvetličarn." />
       </Head>
 
       <Layout megaMenu={""} isMegaMenuVisible={false} from={"18"} currentPage="" forFooter={'memorypage'}>

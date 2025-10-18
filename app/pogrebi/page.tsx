@@ -40,9 +40,9 @@ const ObituaryList = () => {
   return (
     <>
       <Head>
-        <title>Pogrebi | Osrmtnica</title>
+        <title>Pogrebi | Osmrtnica</title>
         <link rel="canonical" href="https://www.osmrtnica.com/pogrebi" />
-        <meta name="description" content="Pregled pogrebov in pogrebalnih storitev v Sloveniji. Informacije o pogrebnih obradih in tradicionalnih običajih." />
+        <meta name="description" content="Pregled pogrebov po Sloveniji." />
       </Head>
 
       <Layout

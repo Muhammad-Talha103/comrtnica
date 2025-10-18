@@ -26,7 +26,7 @@ export default function PiskotkiPage() {
     <>
       {/* Allow crawlability but no indexing. */}
       <Head>
-        <title>Piskotki | Osrmtnica</title>
+        <title>Piskotki | Osmrtnica</title>
         <meta name="robots" content="noindex, follow" />
       </Head>
       

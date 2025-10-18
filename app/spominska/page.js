@@ -54,9 +54,9 @@ Na žalni strani so možnosti za sodelovanje omejene, medtem ko je možnosti na 
   return (
     <>
       <Head>
-        <title>Spominska stran | Osrmtnica</title>
+        <title>Spominska stran | Osmrtnica</title>
         <link rel="canonical" href="https://www.osmrtnica.com/spominska" />
-        <meta name="description" content="Ustvarite spominsko stran za vaše najdražje. Delite spomine, fotografije in zgodbe s skrbnikom spominske strani." />
+        <meta name="description" content="Ustvarite spominsko stran za vaše najdražje. Delite spomine, fotografije in zgodbe." />
       </Head>
 
       <Layout from={"18"} forFooter={"memorypage"} currentPage="spominska">

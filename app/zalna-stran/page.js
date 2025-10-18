@@ -55,7 +55,7 @@ const MemoryPromo = () => {
   return (
     <>
       <Head>
-        <title>Žalna stran | Osrmtnica</title>
+        <title>Žalna stran | Osmrtnica</title>
         <link rel="canonical" href="https://www.osmrtnica.com/zalna-stran" />
         <meta name="description" content="Ustvarite žalno stran za spomin na pokojnega. Prostor za sožalje, spomine in prižiganje virtualnih sveč." />
       </Head>

@@ -19,7 +19,7 @@ const Floristspromo = () => {
     <>
       {/* Allow crawlability but no indexing. */}
       <Head>
-        <title>Rešitve za cvetličarne | Osrmtnica</title>
+        <title>Rešitve za cvetličarne | Osmrtnica</title>
         <meta name="robots" content="noindex, follow" />
       </Head>
       
