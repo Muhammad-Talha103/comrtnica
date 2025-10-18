@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Cvetličarne | Osrmtnica",
-  description: "Pregled cvetličarn in cvetličnih storitev po Sloveniji. Poiščite najbližjo cvetličarno za pogrebne storitve.",
+  description: "Pregled cvetličarn in cvetličnih storitev po Sloveniji. Poiščite lokalno cvetličarno.",
   alternates: {
     canonical: "https://www.osmrtnica.com/cvetlicarne",
   },
