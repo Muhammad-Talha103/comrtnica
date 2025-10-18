@@ -1,6 +1,7 @@
 "use client";
 import { Suspense, useEffect } from "react";
 import { useState } from "react";
+import Head from "next/head";
 import Layout from "../../components/appcomponents/Layout";
 import ObituaryPublished from "../../components/appcomponents/ObituaryPublished";
 import FlowerShops from "../../components/appcomponents/FlowerShops";
@@ -137,6 +138,12 @@ const MemoryPageContent = ({ params }) => {
 
   return (
     <>
+      <Head>
+        <title>{obituary?.firstName && obituary?.lastName ? `${obituary.firstName} ${obituary.lastName} - Spominska stran` : 'Spominska stran'} | Osmrtnica</title>
+        <link rel="canonical" href={`https://www.osmrtnica.com/m/${slugKey}`} />
+        <meta name="description" content={obituary?.firstName && obituary?.lastName ? `Spominska stran za ${obituary.firstName} ${obituary.lastName}. Delite spomine, prižgite svečko in izrazite sožalje.` : 'Spominska stran za pokojnega. Delite spomine, prižgite svečko in izrazite sožalje.'} />
+      </Head>
+      
       <Layout
         from={"3"}
         onChangeMemory={handleMemoryChange}
