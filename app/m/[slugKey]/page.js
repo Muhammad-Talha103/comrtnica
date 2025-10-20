@@ -4,7 +4,7 @@ import API_BASE_URL, { APP_BASE_URL } from "@/config/apiConfig";
 
 export async function generateMetadata({ params }) {
   const { slugKey } = params;
-  const image = `${API_BASE_URL}/api/og?slugKey=${slugKey}&t=${Date.now()}`;
+  const image = `${APP_BASE_URL}/api/og?slugKey=${slugKey}&t=${Date.now()}`;
 
   const response = await obituaryService.getMemory({ slugKey });
   const obituary = response?.obituary || {};
