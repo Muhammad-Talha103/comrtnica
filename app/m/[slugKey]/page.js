@@ -1,6 +1,6 @@
 import obituaryService from "@/services/obituary-service";
 import MemoryPageClientComponent from "../../components/appcomponents/MemoryPageClientComponent";
-import API_BASE_URL from "@/config/apiConfig";
+import API_BASE_URL, { APP_BASE_URL } from "@/config/apiConfig";
 
 export async function generateMetadata({ params }) {
   const { slugKey } = params;
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }) {
       description: fullName
         ? `Spominska stran za ${fullName}. Delite spomine, prižgite svečko in izrazite sožalje.`
         : "Spominska stran za pokojnega. Delite spomine, prižgite svečko in izrazite sožalje.",
-      url: `${API_BASE_URL}/m/${slugKey}`,
+      url: `${APP_BASE_URL}/m/${slugKey}`,
       siteName: "Osmrtnica",
       images: [
         {

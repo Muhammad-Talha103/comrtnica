@@ -8,3 +8,5 @@ const API_BASE_URL = APP_ENVIRONMENT === 'staging' ? 'https://staging.osmrtnica.
   APP_ENVIRONMENT === 'production' ? 'https://www.osmrtnica.com/be/api' : 'http://localhost:4000/api';
 
 export default API_BASE_URL;
+
+export const APP_BASE_URL = process.env.NEXT_PUBLIC_LIVE_URL || 'https://www.osmrtnica.com';

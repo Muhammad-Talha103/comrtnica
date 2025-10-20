@@ -17,7 +17,7 @@ import { FlowerShops2 } from "../../components/appcomponents/FlowerShops";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getTemplateCardImages } from "@/utils/commonUtils";
 import { useAuth } from "@/hooks/useAuth";
-import API_BASE_URL from "@/config/apiConfig";
+import { APP_BASE_URL } from "@/config/apiConfig";
 
 const MemoryPageContent = ({ params, obituaryDataFromServer }) => {
   const { slugKey } = params;
@@ -133,10 +133,10 @@ const MemoryPageContent = ({ params, obituaryDataFromServer }) => {
     }
   };
 
-  // ⚡ Convert and Upload image
+  // Convert and Upload image
   const handleFacebookShare = async () => {
     try {
-      const pageUrl = `${API_BASE_URL}/m/${slugKey}`;
+      const pageUrl = `${APP_BASE_URL}/m/${slugKey}`;
       const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
         pageUrl
       )}`;
