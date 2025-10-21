@@ -1,0 +1,415 @@
+"use client";
+import React, { useState } from "react";
+import CompanyAccountLayout from "../components/appcomponents/CompanyAccountLayout";
+import Layout from "../components/appcomponents/Layout";
+import Tabs from "../components/appcomponents/Tabs";
+import PricingCard from "../components/appcomponents/PricingCard";
+
+const Subscription = () => {
+  const tabs = [
+    { id: "spominske", label: "Spominske" },
+    { id: "cvetlicarne", label: "Cvetličarne" },
+    { id: "oglasevalci", label: "Oglaševalci" },
+    { id: "pogrebna-podjetja", label: "Pogrebna podjetja" },
+  ];
+  const formtabs = [
+    { id: "mesecno", label: "MESEČNO" },
+    { id: "letno", label: "LETNO*" },
+  ];
+
+  const formtabsoglasevalci = [
+    { id: "mesecno", label: "MESEČNO" },
+    { id: "letno", label: "LETNO*" },
+  ];
+
+  const [active, setActive] = useState("spominske");
+  const [activeFormTabCvetlicarne, setActiveFormTabCvetlicarne] =
+    useState("mesecno");
+  const [activeFormTabOglasevalci, setActiveFormTabOglasevalci] =
+    useState("mesecno");
+
+  const FormTabsContentCvetlicarne = () => {
+    switch (activeFormTabCvetlicarne) {
+      case "mesecno":
+        return (
+          <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
+            <PricingCard label="MESEČNO" title="Manjša mesta" price="10 €" />
+            <PricingCard
+              label="MESEČNO"
+              price="20 €"
+              title="Večja mesta"
+              number={1}
+            />
+            <PricingCard label="MESEČNO" price="30 €" title="Ljubljana" />
+            <div className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">
+              <p className="text-[14px]">1</p>{" "}
+              <p className="mt-1">
+                Občine nad 25.000 preb: Maribor, Celje, Kranj, Koper, Novo
+                mesto, Domžale, Velenje, Nova Gorica
+              </p>
+            </div>
+          </div>
+        );
+      case "letno":
+        return (
+          <>
+            <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
+              <PricingCard
+                number={2}
+                label="Izdelava lastne strani"
+                title="Brezplačno"
+              />
+              <PricingCard
+                number={2}
+                label="možnost vpisovanja lokalnih osmrtnic"
+                title="Brezplačno"
+              />
+              <PricingCard
+                number={2}
+                label="darila za vaše stranke; skrbnik, qr kode"
+                title="Brezplačno"
+              />
+              <PricingCard
+                number={3}
+                label="vpis na strani naši partnerji"
+                title="Za vedno"
+              />
+              <div>
+                <div className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">
+                  <p className="text-[14px]">2</p>{" "}
+                  <p className="mt-1">
+                    Poleg naštetega so občasno mogoče še druge promocije.
+                    Kontaktirajte nas in preverite trenutne.
+                  </p>
+                </div>
+                <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] mobile:text-[14px] text-[16px]">
+                  <p className="text-[14px]">3</p>{" "}
+                  <p className="mt-1">
+                    Vsako podjetje, ki oglašuje vsaj eno leto bo za vedno
+                    prikazano na posebni strani Naši partnerji (še v izdelavi).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </>
+        );
+      default:
+        return null;
+    }
+  };
+
+  const FormTabsContentOglasevalci = () => {
+    switch (activeFormTabOglasevalci) {
+      case "mesecno":
+        return (
+          <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
+            <PricingCard label="MESEČNO" title="Manjša mesta" price="10 €" />
+            <PricingCard
+              label="MESEČNO"
+              price="20 €"
+              title="Manjša mesta"
+              number={1}
+            />
+            <PricingCard label="MESEČNO" price="30 €" title="Ljubljana" />
+            <PricingCard label="MESEČNO" title="Regijsko" number={2} />
+            <div>
+              <div className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">
+                <p className="text-[14px]">1</p>{" "}
+                <p className="mt-1">
+                  Občine nad 25.000 preb: Maribor, Celje, Kranj, Koper, Novo
+                  mesto, Domžale, Velenje, Nova Gorica
+                </p>
+              </div>
+              <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] mobile:text-[14px] text-[16px]">
+                <p className="text-[14px]">2</p>{" "}
+                <p className="mt-1">
+                  Kontaktirajte nas. Enako za oglaševanje izven predvidenih mest
+                  ter na strani pogrebna podjetja.
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      case "letno":
+        return (
+          <>
+            <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
+              <PricingCard label="Vsaka naslednja občina" title="25% popust" />
+              <PricingCard
+                number={3}
+                label="druga in tretja stran v isti občini"
+                title="50% popust"
+              />
+              <PricingCard
+                number={4}
+                label="prvi oglaševalec v občini"
+                title="Naslednje leto brezplačno"
+              />
+              <PricingCard
+                number={5}
+                label="vpis na strani naši partnerji"
+                title="Za vedno"
+              />
+              <div>
+                <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] mobile:text-[14px] text-[16px]">
+                  <p className="text-[14px]">3</p>{" "}
+                  <p className="mt-1">
+                    Primer: Oglaševanje na strani pogrebi polna cena, na straneh
+                    osmrtnice in cvetličarne se obračuna 50% popust.
+                  </p>
+                </div>
+                <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] mobile:text-[14px] text-[16px]">
+                  <p className="text-[14px]">4</p>{" "}
+                  <p className="mt-1">
+                    Velja v primeru letnega naročila. Drugi v občini prejme 50%
+                    popust v naslednjem letu za isto oglaševanje.
+                  </p>
+                </div>
+                <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] mobile:text-[14px] text-[16px]">
+                  <p className="text-[14px]">5</p>{" "}
+                  <p className="mt-1">
+                    Vsako podjetje, ki oglašuje vsaj eno leto bo za vedno
+                    prikazano na posebni strani Naši partnerji (še v izdelavi).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </>
+        );
+      default:
+        return null;
+    }
+  };
+
+  const TabContent = () => {
+    switch (active) {
+      case "spominske":
+        return (
+          <div className="p-4 flex flex-col items-center justify-center desktop:justify-start desktop:items-start space-y-4">
+            <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
+              <div className="w-full flex items-center gap-4">
+                <span className="flex items-center text-[14px] shadow-xl uppercase font-medium mobile:text-[#414B5A] justify-center gap-2 bg-gradient-to-b mobile:from-[#E7EBF0]/[30%] mobile:border mobile:border-[#414B5A] mobile:to-[#000000]/[0%] from-[#0D94E8] from-[20%] to-[#0A85C2] rounded-[10px] w-[89px] h-[33px]">
+                  odpri
+                  <img
+                    className="mobile:hidden block"
+                    src="/arrow-down.png"
+                    alt="icon"
+                  />
+                  <img
+                    className="mobile:block hidden"
+                    src="/arrow-down-black.png"
+                    alt="icon"
+                  />
+                </span>
+                <h2 className="mobile:text-[24px] text-[32px] text-[#000000]">
+                  Spominske stran
+                </h2>
+              </div>
+              <p className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">
+                <p className="text-[14px]"></p>{" "}
+                <p className="mt-1">
+                  Bližnji svojci lahko postanejo Skrbniki spominske strani
+                  pokojne/ga. S tem prevzamejo skrb nad objavljenimi vsebinami
+                  in omogočijo dodajanje dodatnih vsebin tudi vsem ostalim.
+                  Stran postane s skrbnikom toplejša, barvita, pristna, polna
+                  zgodb in spominov; stran, na katero se bližnji kasneje pogosto
+                  vračajo.
+                </p>
+              </p>
+              <PricingCard
+                label="SPOMINSKA STRAN"
+                sublabel="(v cvetličarni)"
+                text="brezplačno"
+                title="1 mesec brezplačno"
+                number={1}
+              />
+              <PricingCard
+                label="SPOMINSKA STRAN"
+                sublabel="(preko naše strani)"
+                price="10 €"
+                title="1 mesec"
+              />
+              <PricingCard
+                label="spominska STRAN"
+                price="20 €"
+                title="1 leto"
+              />
+              <PricingCard
+                label="spominska knjiga"
+                price="30 €"
+                title="6 let"
+              />
+              <div className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">
+                <p className="text-[14px]">1</p>{" "}
+                <p className="mt-1">
+                  Mesečnega Skrbnika lahko prejmete brezplačno v cvetličarni, ki
+                  jo najdete na seznamu lokalnih cvetličarn. Če trenutno še ni
+                  vpisane nobene lokalne cvetličarne, nas kontaktirajte in bomo
+                  to uredili mi brezplačno.
+                </p>
+              </div>
+            </div>
+            <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
+              <PricingCard
+                label="zadnji pozdrav, spomini, zahvale"
+                title="Brezplačno"
+                subtitle="(objavo potrdi skrbnik)"
+              />
+              <PricingCard
+                label="digitalne kartice"
+                title="Brezplačno"
+                subtitle="(samo v cvetličarni)"
+              />
+              <PricingCard label="QR kode za nagrobnike" title="Brezplačno" />
+              <PricingCard
+                label="novosti in občasne druge promocije"
+                title="Na Facebooku - sledite nam"
+                icon="/fb-icon.png"
+              />
+            </div>
+          </div>
+        );
+
+      case "cvetlicarne":
+        return (
+          <div className="p-4 flex flex-col items-center justify-center desktop:justify-start desktop:items-start space-y-4">
+            <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
+              <div className="w-full flex items-center gap-4">
+                <span className="flex items-center text-[14px] shadow-xl uppercase font-medium mobile:text-[#414B5A] justify-center gap-2 bg-gradient-to-b mobile:from-[#E7EBF0]/[30%] mobile:border mobile:border-[#414B5A] mobile:to-[#000000]/[0%] from-[#0D94E8] from-[20%] to-[#0A85C2] rounded-[10px] w-[89px] h-[33px]">
+                  odpri
+                  <img
+                    className="mobile:hidden block"
+                    src="/arrow-down.png"
+                    alt="icon"
+                  />
+                  <img
+                    className="mobile:block hidden"
+                    src="/arrow-down-black.png"
+                    alt="icon"
+                  />
+                </span>
+                <h2 className="mobile:text-[24px] text-[32px] text-[#000000]">
+                  Cvetličarne
+                </h2>
+              </div>
+              <p className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">
+                <p className="text-[14px]"></p>{" "}
+                <p className="mt-1">
+                  V ceni je zajeta uvrstitev na seznam lokalnih cvetličarn,
+                  prikazovanje lokalnih cvetličarn na lokalnih žalnih straneh /
+                  osmrtnicah in vrsta privilegijev, ki so podrobneje
+                  predstavljeni na straneh za cvetličarne. Več informacij vas
+                  čaka v uporabnikem računu.
+                </p>
+              </p>
+              <div className="w-full mt-4">
+                <Tabs
+                  tabs={formtabs}
+                  setActive={setActiveFormTabCvetlicarne}
+                  active={activeFormTabCvetlicarne}
+                  tabContent={<FormTabsContentCvetlicarne />}
+                  text="* 2 meseca brezplačno + promocije spodaj"
+                  innerTab={true}
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case "oglasevalci":
+        return (
+          <div className="p-4 flex flex-col items-center justify-center desktop:justify-start desktop:items-start space-y-4">
+            <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
+              <div className="w-full flex items-center gap-4">
+                <span className="flex items-center text-[14px] shadow-xl uppercase font-medium mobile:text-[#414B5A] justify-center gap-2 bg-gradient-to-b mobile:from-[#E7EBF0]/[30%] mobile:border mobile:border-[#414B5A] mobile:to-[#000000]/[0%] from-[#0D94E8] from-[20%] to-[#0A85C2] rounded-[10px] w-[89px] h-[33px]">
+                  odpri
+                  <img
+                    className="mobile:hidden block"
+                    src="/arrow-down.png"
+                    alt="icon"
+                  />
+                  <img
+                    className="mobile:block hidden"
+                    src="/arrow-down-black.png"
+                    alt="icon"
+                  />
+                </span>
+                <h2 className="mobile:text-[24px] text-[32px] text-[#000000]">
+                  Oglaševalci
+                </h2>
+              </div>
+              <p className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">
+                <p className="text-[14px]"></p>{" "}
+                <p className="mt-1">
+                  Oglaševanje je mogoče v za to namenjenih sektorjih na spodnjem
+                  delu strani osmrtnice, pogrebi, cvetličarne - prikazan logotip
+                  se pojavlja v izbrani občini. V kolikor vas zanima oglaševanje
+                  izven predvidenega prostora nas pokličite nas in morda bomo
+                  našli še druge opcije.
+                </p>
+              </p>
+              <div className="w-full mt-4">
+                <Tabs
+                  tabs={formtabsoglasevalci}
+                  setActive={setActiveFormTabOglasevalci}
+                  active={activeFormTabOglasevalci}
+                  tabContent={<FormTabsContentOglasevalci />}
+                  text="* 2 meseca brezplačno + promocije spodaj"
+                  innerTab={true}
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case "pogrebna-podjetja":
+        return (
+          <div className="p-4 flex flex-col items-center justify-center desktop:justify-start desktop:items-start space-y-4">
+            <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
+              <div className="w-full flex items-center gap-4">
+                <h2 className="mobile:text-[24px] text-[32px] text-[#000000]">
+                  Pogrebna podjetja
+                </h2>
+              </div>
+              <p className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">
+                <p className="text-[14px]"></p>{" "}
+                <p className="mt-1">
+                  Vse je brezplačno. Registrirajte se in vse potrebne
+                  informacije vas čakajo v vašem uporabniškem računu.
+                </p>
+              </p>
+            </div>
+            <div className="mobile:w-[99%] w-[744px] flex justify-end">
+              <div className="mobile:h-[60px] h-[60px] mobile:mt-[30px] mt-[100px] shadow-xl mobile:w-[100%] w-[250px] bg-gradient-to-b from-[#0A85C2] to-[#123597] flex justify-center items-center rounded-full p-[2px]">
+                <button className="mobile:h-[56px] h-[56px] shadow-xl mobile:w-[100%] w-[250px] bg-gradient-to-b from-[#FAFBFF] from-[70%] to-[#A6ABBD] text-[20px] text-[#414B5A] cursor-pointer font-variation-customOpt20 font-semibold leading-[24px] flex justify-center items-center rounded-full">
+                  Kontaktirajte nas
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
+  return (
+    <>
+      <Layout from={"23"} forFooter={"subscriptionpage"}>
+        <div
+          style={{ fontFamily: "Roboto Flex" }}
+          className="w-full mx-auto bg-[#ECF0F3] sm:px-6 lg:px-8 mobile:py-3 py-8"
+        >
+          <Tabs
+            tabs={tabs}
+            tabContent={<TabContent />}
+            active={active}
+            setActive={setActive}
+          />
+        </div>
+      </Layout>
+    </>
+  );
+};
+
+export default Subscription;

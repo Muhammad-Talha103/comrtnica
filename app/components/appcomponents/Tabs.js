@@ -1,0 +1,52 @@
+import React from "react";
+
+export default function Tabs({
+  tabs,
+  tabContent,
+  setActive,
+  active,
+  text,
+  innerTab,
+}) {
+  return (
+    <div className="w-full">
+      {/* Tabs Container */}
+      <div
+        className={`flex overflow-auto mb-8  items-center mx-auto  ${
+          !innerTab
+            ? "mobile:bg-[#36556C] mobile:h-[30px] gap-6 justify-center"
+            : "flex mobile:flex-wrap gap-x-6 gap-y-2"
+        }  bg-transparent px-4`}
+      >
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActive(tab.id)}
+            className={`mobile:text-[14px] text-[20px] text-nowrap font-medium transition-all duration-200  
+              ${
+                active === tab.id
+                  ? `text-[#0A85C2] ${
+                      innerTab
+                        ? "bg-[#ffffff] px-2 py-2"
+                        : "mobile:px-0 px-2 mobile:py-0 py-2"
+                    } mobile:border-0 border-b-2 border-[#0077CC]`
+                  : `${
+                      !innerTab && "mobile:text-[#ffffff]"
+                    } mobile:border-0 mobile:py-0 py-2 border-b-2 border-[#D4D4D4] text-[#6D778E]`
+              }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+        {text && (
+          <p className="text-[#034F75] flex gap-1 ml-2 w-full desktop:w-[744px] mobile:text-[14px] text-[14px] mobile:mb-3">
+            {text}
+          </p>
+        )}
+      </div>
+
+      {/* Active Tab Content (optional demo) */}
+      {tabContent}
+    </div>
+  );
+}
