@@ -814,11 +814,11 @@ const MemorialPageTopComp = ({
                           Skupno svečk: {data?.totalCandles}
                         </p>
                       </div>
-                      {/* <div className="flex h-[29px] tablet:h-[40]  desktop:h-[40px]">
+                      <div className="flex h-[29px] tablet:h-[40]  desktop:h-[40px]">
                         <p className="text-[#1E2125] text-[16px] font-variation-customOpt16 font-normal ">
                           Skupno obiskov: {data?.totalVisits}
                         </p>
-                      </div> */}
+                      </div>
                     </div>
                   </div>
                 </div>
