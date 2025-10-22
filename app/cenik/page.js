@@ -32,64 +32,31 @@ const Subscription = () => {
     switch (activeFormTabCvetlicarne) {
       case "mesecno":
         return (
-          <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
-            <PricingCard label="MESEČNO" title="Manjša mesta" price="10 €" />
-            <PricingCard
-              label="MESEČNO"
-              price="20 €"
-              title="Večja mesta"
-              number={1}
-            />
-            <PricingCard label="MESEČNO" price="30 €" title="Ljubljana" />
-            <div className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">
-              <p className="text-[14px]">1</p>{" "}
-              <p className="mt-1">
-                Občine nad 25.000 preb: Maribor, Celje, Kranj, Koper, Novo
-                mesto, Domžale, Velenje, Nova Gorica
-              </p>
+          <>
+            <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
+              <PricingCard label="MESEČNO" title="Manjša mesta" price="10 €" />
+              <PricingCard
+                label="MESEČNO"
+                price="20 €"
+                title="Večja mesta"
+                number={1}
+              />
+              <PricingCard label="MESEČNO" price="30 €" title="Ljubljana" />
             </div>
-          </div>
+          </>
         );
       case "letno":
         return (
           <>
             <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
+              <PricingCard label="LETNO" title="Manjša mesta" price="100 €" />
               <PricingCard
-                number={2}
-                label="Izdelava lastne strani"
-                title="Brezplačno"
+                label="LETNO"
+                price="200 €"
+                title="Večja mesta"
+                number={1}
               />
-              <PricingCard
-                number={2}
-                label="možnost vpisovanja lokalnih osmrtnic"
-                title="Brezplačno"
-              />
-              <PricingCard
-                number={2}
-                label="darila za vaše stranke; skrbnik, qr kode"
-                title="Brezplačno"
-              />
-              <PricingCard
-                number={3}
-                label="vpis na strani naši partnerji"
-                title="Za vedno"
-              />
-              <div>
-                <div className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">
-                  <p className="text-[14px]">2</p>{" "}
-                  <p className="mt-1">
-                    Poleg naštetega so občasno mogoče še druge promocije.
-                    Kontaktirajte nas in preverite trenutne.
-                  </p>
-                </div>
-                <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] mobile:text-[14px] text-[16px]">
-                  <p className="text-[14px]">3</p>{" "}
-                  <p className="mt-1">
-                    Vsako podjetje, ki oglašuje vsaj eno leto bo za vedno
-                    prikazano na posebni strani Naši partnerji (še v izdelavi).
-                  </p>
-                </div>
-              </div>
+              <PricingCard label="LETNO" price="300 €" title="Ljubljana" />
             </div>
           </>
         );
@@ -112,69 +79,21 @@ const Subscription = () => {
             />
             <PricingCard label="MESEČNO" price="30 €" title="Ljubljana" />
             <PricingCard label="MESEČNO" title="Regijsko" number={2} />
-            <div>
-              <div className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">
-                <p className="text-[14px]">1</p>{" "}
-                <p className="mt-1">
-                  Občine nad 25.000 preb: Maribor, Celje, Kranj, Koper, Novo
-                  mesto, Domžale, Velenje, Nova Gorica
-                </p>
-              </div>
-              <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] mobile:text-[14px] text-[16px]">
-                <p className="text-[14px]">2</p>{" "}
-                <p className="mt-1">
-                  Kontaktirajte nas. Enako za oglaševanje izven predvidenih mest
-                  ter na strani pogrebna podjetja.
-                </p>
-              </div>
-            </div>
           </div>
         );
       case "letno":
         return (
-          <>
-            <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
-              <PricingCard label="Vsaka naslednja občina" title="25% popust" />
-              <PricingCard
-                number={3}
-                label="druga in tretja stran v isti občini"
-                title="50% popust"
-              />
-              <PricingCard
-                number={4}
-                label="prvi oglaševalec v občini"
-                title="Naslednje leto brezplačno"
-              />
-              <PricingCard
-                number={5}
-                label="vpis na strani naši partnerji"
-                title="Za vedno"
-              />
-              <div>
-                <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] mobile:text-[14px] text-[16px]">
-                  <p className="text-[14px]">3</p>{" "}
-                  <p className="mt-1">
-                    Primer: Oglaševanje na strani pogrebi polna cena, na straneh
-                    osmrtnice in cvetličarne se obračuna 50% popust.
-                  </p>
-                </div>
-                <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] mobile:text-[14px] text-[16px]">
-                  <p className="text-[14px]">4</p>{" "}
-                  <p className="mt-1">
-                    Velja v primeru letnega naročila. Drugi v občini prejme 50%
-                    popust v naslednjem letu za isto oglaševanje.
-                  </p>
-                </div>
-                <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] mobile:text-[14px] text-[16px]">
-                  <p className="text-[14px]">5</p>{" "}
-                  <p className="mt-1">
-                    Vsako podjetje, ki oglašuje vsaj eno leto bo za vedno
-                    prikazano na posebni strani Naši partnerji (še v izdelavi).
-                  </p>
-                </div>
-              </div>
-            </div>
-          </>
+          <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
+            <PricingCard label="LETNO" title="Manjša mesta" price="100 €" />
+            <PricingCard
+              label="LETNO"
+              price="200 €"
+              title="Manjša mesta"
+              number={1}
+            />
+            <PricingCard label="LETNO" price="300 €" title="Ljubljana" />
+            <PricingCard label="LETNO" title="Regijsko" number={2} />
+          </div>
         );
       default:
         return null;
@@ -185,7 +104,7 @@ const Subscription = () => {
     switch (active) {
       case "spominske":
         return (
-          <div className="p-4 flex flex-col items-center justify-center desktop:justify-start desktop:items-start space-y-4">
+          <div className="p-4 flex flex-col items-center justify-center desktop:justify-start desktop:items-start gap-y-16">
             <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
               <div className="w-full flex items-center gap-4">
                 <span className="flex items-center text-[14px] shadow-xl uppercase font-medium mobile:text-[#414B5A] justify-center gap-2 bg-gradient-to-b mobile:from-[#E7EBF0]/[30%] mobile:border mobile:border-[#414B5A] mobile:to-[#000000]/[0%] from-[#0D94E8] from-[20%] to-[#0A85C2] rounded-[10px] w-[89px] h-[33px]">
@@ -307,7 +226,58 @@ const Subscription = () => {
                   tabs={formtabs}
                   setActive={setActiveFormTabCvetlicarne}
                   active={activeFormTabCvetlicarne}
-                  tabContent={<FormTabsContentCvetlicarne />}
+                  tabContent={
+                    <>
+                      <FormTabsContentCvetlicarne />
+                      <div className="mobile:w-[99%] mt-4 w-[550px] flex flex-col gap-4">
+                        <div className="text-[#414141] flex gap-1 mb-7 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">
+                          <p className="text-[14px]">1</p>{" "}
+                          <p className="mt-1">
+                            Občine nad 25.000 preb: Maribor, Celje, Kranj,
+                            Koper, Novo mesto, Domžale, Velenje, Nova Gorica
+                          </p>
+                        </div>
+                        <PricingCard
+                          number={2}
+                          label="Izdelava lastne strani"
+                          title="Brezplačno"
+                        />
+                        <PricingCard
+                          number={2}
+                          label="možnost vpisovanja lokalnih osmrtnic"
+                          title="Brezplačno"
+                        />
+                        <PricingCard
+                          number={2}
+                          label="darila za vaše stranke; skrbnik, qr kode"
+                          title="Brezplačno"
+                        />
+                        <PricingCard
+                          number={3}
+                          label="vpis na strani naši partnerji"
+                          title="Za vedno"
+                        />
+                        <div>
+                          <div className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">
+                            <p className="text-[14px]">2</p>{" "}
+                            <p className="mt-1">
+                              Poleg naštetega so občasno mogoče še druge
+                              promocije. Kontaktirajte nas in preverite
+                              trenutne.
+                            </p>
+                          </div>
+                          <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] mobile:text-[14px] text-[16px]">
+                            <p className="text-[14px]">3</p>{" "}
+                            <p className="mt-1">
+                              Vsako podjetje, ki oglašuje vsaj eno leto bo za
+                              vedno prikazano na posebni strani Naši partnerji
+                              (še v izdelavi).
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  }
                   text="* 2 meseca brezplačno + promocije spodaj"
                   innerTab={true}
                 />
@@ -353,7 +323,74 @@ const Subscription = () => {
                   tabs={formtabsoglasevalci}
                   setActive={setActiveFormTabOglasevalci}
                   active={activeFormTabOglasevalci}
-                  tabContent={<FormTabsContentOglasevalci />}
+                  tabContent={
+                    <>
+                      <FormTabsContentOglasevalci />
+                      <div className="mobile:w-[99%] mt-4 w-[550px] flex flex-col gap-4">
+                        <div className="mb-7">
+                          <div className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">
+                            <p className="text-[14px]">1</p>{" "}
+                            <p className="mt-1">
+                              Občine nad 25.000 preb: Maribor, Celje, Kranj,
+                              Koper, Novo mesto, Domžale, Velenje, Nova Gorica
+                            </p>
+                          </div>
+                          <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] mobile:text-[14px] text-[16px]">
+                            <p className="text-[14px]">2</p>{" "}
+                            <p className="mt-1">
+                              Kontaktirajte nas. Enako za oglaševanje izven
+                              predvidenih mest ter na strani pogrebna podjetja.
+                            </p>
+                          </div>
+                        </div>
+                        <PricingCard
+                          label="Vsaka naslednja občina"
+                          title="25% popust"
+                        />
+                        <PricingCard
+                          number={3}
+                          label="druga in tretja stran v isti občini"
+                          title="50% popust"
+                        />
+                        <PricingCard
+                          number={4}
+                          label="prvi oglaševalec v občini"
+                          title="Naslednje leto brezplačno"
+                        />
+                        <PricingCard
+                          number={5}
+                          label="vpis na strani naši partnerji"
+                          title="Za vedno"
+                        />
+                        <div>
+                          <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] mobile:text-[14px] text-[16px]">
+                            <p className="text-[14px]">3</p>{" "}
+                            <p className="mt-1">
+                              Primer: Oglaševanje na strani pogrebi polna cena,
+                              na straneh osmrtnice in cvetličarne se obračuna
+                              50% popust.
+                            </p>
+                          </div>
+                          <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] mobile:text-[14px] text-[16px]">
+                            <p className="text-[14px]">4</p>{" "}
+                            <p className="mt-1">
+                              Velja v primeru letnega naročila. Drugi v občini
+                              prejme 50% popust v naslednjem letu za isto
+                              oglaševanje.
+                            </p>
+                          </div>
+                          <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] mobile:text-[14px] text-[16px]">
+                            <p className="text-[14px]">5</p>{" "}
+                            <p className="mt-1">
+                              Vsako podjetje, ki oglašuje vsaj eno leto bo za
+                              vedno prikazano na posebni strani Naši partnerji
+                              (še v izdelavi).
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  }
                   text="* 2 meseca brezplačno + promocije spodaj"
                   innerTab={true}
                 />
@@ -379,9 +416,9 @@ const Subscription = () => {
                 </p>
               </p>
             </div>
-            <div className="mobile:w-[99%] w-[744px] flex justify-end">
-              <div className="mobile:h-[60px] h-[60px] mobile:mt-[30px] mt-[100px] shadow-xl mobile:w-[100%] w-[250px] bg-gradient-to-b from-[#0A85C2] to-[#123597] flex justify-center items-center rounded-full p-[2px]">
-                <button className="mobile:h-[56px] h-[56px] shadow-xl mobile:w-[100%] w-[250px] bg-gradient-to-b from-[#FAFBFF] from-[70%] to-[#A6ABBD] text-[20px] text-[#414B5A] cursor-pointer font-variation-customOpt20 font-semibold leading-[24px] flex justify-center items-center rounded-full">
+            <div className="mobile:w-[99%] w-[744px] flex mobile:justify-center justify-end">
+              <div className="mobile:h-[60px] h-[60px] mobile:mt-[30px] mt-[100px] shadow-xl w-[250px] bg-gradient-to-b from-[#0A85C2] to-[#123597] flex justify-center items-center rounded-full p-[2px]">
+                <button className="mobile:h-[56px] h-[56px] shadow-xl w-[250px] bg-gradient-to-b from-[#FAFBFF] from-[70%] to-[#A6ABBD] text-[20px] text-[#414B5A] cursor-pointer font-variation-customOpt20 font-semibold leading-[24px] flex justify-center items-center rounded-full">
                   Kontaktirajte nas
                 </button>
               </div>
@@ -395,17 +432,19 @@ const Subscription = () => {
   };
   return (
     <>
-      <Layout from={"23"} forFooter={"subscriptionpage"}>
+      <Layout from={"23"} forFooter={"cenikpage"}>
         <div
           style={{ fontFamily: "Roboto Flex" }}
-          className="w-full mx-auto bg-[#ECF0F3] sm:px-6 lg:px-8 mobile:py-3 py-8"
+          className="w-full bg-[#ECF0F3] sm:px-6 lg:px-8 mobile:py-3 py-8"
         >
-          <Tabs
-            tabs={tabs}
-            tabContent={<TabContent />}
-            active={active}
-            setActive={setActive}
-          />
+          <div className="w-full desktop:w-[1200px]  mx-auto">
+            <Tabs
+              tabs={tabs}
+              tabContent={<TabContent />}
+              active={active}
+              setActive={setActive}
+            />
+          </div>
         </div>
       </Layout>
     </>

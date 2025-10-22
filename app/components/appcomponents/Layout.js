@@ -20,6 +20,7 @@ import {
 import MemoryHeader from "./MemoryHeader";
 import { useAuth } from "@/hooks/useAuth";
 import SideMenu from "../ui/sideMenu";
+import CommonFooter from "./CommonFooter";
 const Layout = ({
   children,
   from,
@@ -152,7 +153,9 @@ const Layout = ({
       {/* Footer */}
       {forFooter == "company" ? (
         <CompanyFooter data={data} />
-      ) : forFooter == "memorypage" ? null : (
+      ) : forFooter == "memorypage" ? null : forFooter === "cenikpage" ? (
+        <CommonFooter currentPage="/cenik" />
+      ) : (
         <Footer />
       )}
 
