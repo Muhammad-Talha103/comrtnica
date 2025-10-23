@@ -89,8 +89,7 @@ const ObituaryCard = ({
   return (
     <Link
       href={buildHref()}
-      target={`${iframed ? '_blank' : '_self'}`}
-      className="mobile:w-[100%] mobile:max-w-[500px] tablet:w-[466px] desktop:w-[466px] 
+      className="mobile:w-[100%] mobile:max-w-[400px] tablet:w-[466px] desktop:w-[466px] 
       mobile:h-[126px] tablet:h-[170px] desktop:h-[170px]  border-2
        border-white shadow-custom-light-dark-box
         bg-gradient-to-br from-[#E3EAEF] to-[#F3F6F8] rounded-lg flex justify-center items-center "
