@@ -198,7 +198,7 @@ export default function FramedContentComp() {
                 <div
                     className="flex flex-col desktop:flex-row 
         desktop:mt-[70px] tablet:mt-[48px] mobile:mt-[29px]
-        desktop:w-[777px] tablet:w-[600px] mobile:w-[296]
+        desktop:w-[777px] tablet:w-[600px] mobile:w-[296px]
           items-center justify-center space-x-[16px]"
                 >
                     <div className="flex flex-col w-full items-center tablet:flex-row desktop:flex-row desktop:space-x-[16px] tablet:justify-between mobile:h-[112px] tablet:h-[48px] desktop:h-[48px]">
@@ -290,7 +290,7 @@ export default function FramedContentComp() {
                         />
                     ))}
                 </div>
-                <div className="mx-auto mobile:w-full grid grid-cols-1 tablet:hidden desktop:hidden gap-[22px] tablet:gap-6 mt-[43px] tablet:mt-[64px]">
+                <div className="mx-auto mobile:w-full grid grid-cols-1 tablet:hidden desktop:hidden gap-[22px] tablet:gap-6 mt-[43px] tablet:mt-[64px] mobile:place-items-center">
                     {obituaries.slice(0, 8).map((obituary, index) => (
                         <ObituaryCard
                             data={obituary}
