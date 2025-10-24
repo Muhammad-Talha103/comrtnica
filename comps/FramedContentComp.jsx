@@ -8,7 +8,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import obituaryService from "@/services/obituary-service";
 import regionsAndCities from "@/utils/regionAndCities";
 import { SelectDropdown } from "@/app/components/appcomponents/SelectDropdown";
-import Image from "next/image";
 
 export default function FramedContentComp() {
     const router = useRouter();
