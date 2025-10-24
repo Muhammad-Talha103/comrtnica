@@ -8,6 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import obituaryService from "@/services/obituary-service";
 import regionsAndCities from "@/utils/regionAndCities";
 import { SelectDropdown } from "@/app/components/appcomponents/SelectDropdown";
+import Image from "next/image";
 
 export default function FramedContentComp() {
     const router = useRouter();
@@ -36,6 +37,10 @@ export default function FramedContentComp() {
             id: region,
         })),
     ];
+    regionOptions.map((item) => {
+        console.log('>>>>>>>', item?.id)
+    })
+    console.log('>>>>>>>> regionOptions', regionOptions);
 
     const allCitiesOption = { place: "- Pokaži vse občine -", id: "allCities" };
     const cityOptions =
@@ -300,13 +305,13 @@ export default function FramedContentComp() {
                 </div>
 
                 <div
-                    className="flex w- justify-center 
+                    className="flex flex-col items-center justify-center 
         mobile:pt-[22.09px] mobile:pb-[49px]
         tablet:pt-[43px] tablet:pb-[46px]
         desktop:pt-[45px] desktop:pb-[62px]  "
                 >
                     <Link
-                        href={"/osmrtnice?city=Ljubljana"}
+                        href={`/osmrtnice?region=${selectedRegion}`}
                         target="_blank"
                         className="flex items-center rounded-lg justify-center shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]
           mobile:h-[43px] mobile:w-[103px]
@@ -317,6 +322,13 @@ export default function FramedContentComp() {
                             Naprej
                         </div>
                     </Link>
+
+                    <div>
+                        <Link href={`/osmrtnice?region=${selectedRegion}`} target="_blank" className="text-center mt-4 text-[14px] text-[#1E2125] flex items-center justify-center">
+                            odpre stran
+                            <img src={'/omr.png'} className="ml-2 w-[105px]" />
+                        </Link>
+                    </div>
                 </div>
             </div>
         </FrameLayout>
