@@ -12,9 +12,10 @@ import { SelectDropdown } from "@/app/components/appcomponents/SelectDropdown";
 export default function FramedContentComp() {
     const router = useRouter();
     const searchParams = useSearchParams();
+    const regionParam1 = searchParams.get("region");
     const [obituaries, setObituaries] = useState([]);
     const [selectedCity, setSelectedCity] = useState(null);
-    const [selectedRegion, setSelectedRegion] = useState(null);
+    const [selectedRegion, setSelectedRegion] = useState(regionParam1 ?? null);
     const [name, setName] = useState(null);
 
     useEffect(() => {
@@ -24,9 +25,9 @@ export default function FramedContentComp() {
         if (cityParam) {
             setSelectedCity(cityParam);
         }
-        if (regionParam) {
-            setSelectedRegion(regionParam);
-        }
+        // if (regionParam) {
+        //     setSelectedRegion(regionParam);
+        // }
     }, [searchParams]);
 
     const regionOptions = [

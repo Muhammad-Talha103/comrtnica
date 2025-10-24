@@ -74,7 +74,6 @@ const ObituaryCard = ({
     }
 
     const queryString = params.toString();
-
     if (iframed) {
       return queryString
         ? `/m/${data.slugKey}?${queryString}`
@@ -89,6 +88,7 @@ const ObituaryCard = ({
   return (
     <Link
       href={buildHref()}
+      target={`${iframed ? '_blank' : '_self'}`}
       className="mobile:w-[100%] mobile:max-w-[400px] tablet:w-[466px] desktop:w-[466px] 
       mobile:h-[126px] tablet:h-[170px] desktop:h-[170px]  border-2
        border-white shadow-custom-light-dark-box

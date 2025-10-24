@@ -13,6 +13,8 @@ import regionsAndCities from "@/utils/regionAndCities";
 import { SelectDropdown } from "./SelectDropdown";
 
 const ObituaryListComponent = ({ city }) => {
+  const searchParams = useSearchParams();
+  const regionParam1 = searchParams.get("region");
   const languages = [
     "Ljubljana",
     "Maribor",
@@ -32,7 +34,7 @@ const ObituaryListComponent = ({ city }) => {
   };
   const allCitiesOption = { place: "- Pokaži vse občine -", id: "allCities" };
   const [selectedCity, setSelectedCity] = useState(city ? city : null);
-  const [selectedRegion, setSelectedRegion] = useState(null);
+  const [selectedRegion, setSelectedRegion] = useState(regionParam1 ?? null);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10); // default to mobile
   const [selectedName, setSelectedName] = useState("");
@@ -65,12 +67,11 @@ const ObituaryListComponent = ({ city }) => {
           }))
           .sort((a, b) => a.place.localeCompare(b.place, "sl")),
       ];
-
-  const searchParams = useSearchParams();
   const router = useRouter();
 
   useEffect(() => {
     const cityParam = searchParams.get("city");
+    const regionParam = searchParams.get("region");
 
     if (cityParam) {
       setSelectedCity(cityParam);
