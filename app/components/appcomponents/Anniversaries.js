@@ -307,24 +307,24 @@ const Anniversaries = () => {
                       <div
                         className={`text-[16px]  font-medium leading-[18px] mt-[5px]
                        ${(() => {
-                         const nextAnniversary = getNextAnniversary(
-                           item.birthDate,
-                           item.deathDate
-                         );
-                         const anniversaryDate =
-                           nextAnniversary.type === "birth"
-                             ? item.birthDate
-                             : item.deathDate;
+                            const nextAnniversary = getNextAnniversary(
+                              item.birthDate,
+                              item.deathDate
+                            );
+                            const anniversaryDate =
+                              nextAnniversary.type === "birth"
+                                ? item.birthDate
+                                : item.deathDate;
 
-                         const anniversaryWithNewYear = new Date(
-                           anniversaryDate
-                         );
-                         anniversaryWithNewYear.setFullYear(
-                           nextAnniversary.year
-                         );
+                            const anniversaryWithNewYear = new Date(
+                              anniversaryDate
+                            );
+                            anniversaryWithNewYear.setFullYear(
+                              nextAnniversary.year
+                            );
 
-                         return getColorBasedOnDate(anniversaryWithNewYear);
-                       })()}
+                            return getColorBasedOnDate(anniversaryWithNewYear);
+                          })()}
                         `}
                       >
                         {(() => {
@@ -388,14 +388,13 @@ const Anniversaries = () => {
 
               <div className="hidden desktopUserAcc:flex items-start justify-between">
                 <Link
-                  href={item.name === "Angela" ? "/memorypage" : ""}
+                  href={item.name === "Angela" ? "/memorypage" : `/m/${item.slugKey}`}
                   className={`flex 
-                    ${
-                      item.Keepers?.length > 0
-                        ? item.isKeeper
-                          ? "bg-[#e9f1e8] border-2 border-purple-500"
-                          : "bg-[#e9f1e8] border-2 border-blue-500"
-                        : "bg-[#ffffff] border-2 border-blue-500"
+                    ${item.Keepers?.length > 0
+                      ? item.isKeeper
+                        ? "bg-[#e9f1e8] border-2 border-purple-500"
+                        : "bg-[#e9f1e8] border-2 border-blue-500"
+                      : "bg-[#ffffff] border-2 border-blue-500"
                     }
                      flex-col justify-center items-center w-[230px] h-[73px] mobileUserAcc:w-full mobileUserAcc:flex-row mobileUserAcc:justify-around mobileUserAcc:items-center py-[13px] border-[2px]  rounded-[8px]  `}
                 >
@@ -492,6 +491,7 @@ const Anniversaries = () => {
                             item.birthDate,
                             item.deathDate
                           );
+                          console.log('>>>>>>>>>> nextAnniversary', item, nextAnniversary)
                           const anniversaryDate =
                             nextAnniversary.type === "birth"
                               ? item.birthDate
@@ -508,6 +508,10 @@ const Anniversaries = () => {
                             .toISOString()
                             .split("T")[0]
                             .split("-");
+
+                          if (day == 31 && month == 12) {
+                            return `-`;
+                          }
 
                           return `${day}.${month}.${year}`;
                         })()}
@@ -605,13 +609,11 @@ function CommonView({ isLeft, isCandle = false, val, date }) {
 
   return (
     <div
-      className={`flex flex-row  desktopUserAcc:flex-col w-full ${
-        isLeft && "desktopUserAcc:items-end"
-      } ${
-        date !== "" || (date === "" && val === "")
+      className={`flex flex-row  desktopUserAcc:flex-col w-full ${isLeft && "desktopUserAcc:items-end"
+        } ${date !== "" || (date === "" && val === "")
           ? "desktopUserAcc:items-start"
           : ""
-      } `}
+        } `}
     >
       {date !== "" && val && (
         <>
@@ -657,9 +659,8 @@ function CommonView({ isLeft, isCandle = false, val, date }) {
 function TextStyle({ text, size }) {
   return (
     <div
-      className={`${size}    ${
-        text == "14.09.2024" ? "text-[#EB1D1D]" : "text-[#6D778E]"
-      }  font-normal leading-[16.41px] mobileUserAcc:text-[12px] pt-1`}
+      className={`${size}    ${text == "14.09.2024" ? "text-[#EB1D1D]" : "text-[#6D778E]"
+        }  font-normal leading-[16.41px] mobileUserAcc:text-[12px] pt-1`}
     >
       {text}
     </div>

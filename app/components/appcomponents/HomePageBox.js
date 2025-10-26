@@ -136,8 +136,8 @@ const HomePageBox = () => {
   // === Mobile Layout ===
   if (breakpoint === "mobile") {
     return (
-      <div className="bg-[#ffffd] text-[#f1f5f7] h-auto">
-        <div className="py-[54px] flex flex-col">
+      <div className="bg-[#ffffdd] text-[#f1f5f7] h-auto">
+        <div className="py-[54px] flex flex-col mobile:px-3">
           <div className="text-container flex justify-center flex-col w-[350px] mx-auto">
             <span className="text-[#3090D5] text-[20px]">Priročno</span>
             <h2 className="text-[#414141] text-[28px] mt-[8px] leading-[100%]">

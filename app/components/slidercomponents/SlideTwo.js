@@ -164,14 +164,14 @@ const SlideTwo = () => {
   // === Mobile Layout ===
   if (breakpoint === "mobile") {
     return (
-      <div className="bg-[#F5F0E8] h-auto text-[#22281C] py-[69px] flex justify-center text-center">
-        <div className="image-container w-[352px]">
-          <h2 className="text-center text-[28px]">
+      <div className="bg-[#F5F0E8] h-auto text-[#22281C] py-[69px] flex justify-center text-center mobile:w-full mobile:px-3 mobile:py-[30px]">
+        <div className="image-container mobile:w-full w-[352px] mobile:max-w-[500px]">
+          <h2 className="text-center mobile:text-left text-[28px]">
             Spominska stran{" "}
             <br />
             <span className="text-[#de222e] font-medium">s skrbnikom</span>
           </h2>
-          <p className="text-[#414141] text-[16px] mt-[16px] leading-6">
+          <p className="text-[#414141] text-[16px] mt-[16px] leading-6 mobile:text-left">
             Nadgradnja osnovne žalne strani, kjer pokojnemu bližnji prevzame skrb nad objavljenimi vsebinami vseh ostalih in s tem omogoči izdelavo prave spominske strani, na katero se bodo bližnji radi vračali in jo dopolnjevali tudi kasneje. 
             Upravljanje je enostavno; vsak je lahko Skrbnik. 
 
@@ -191,11 +191,11 @@ const SlideTwo = () => {
             </Link>
           </div>
 
-          <div className="inner-div mt-[54px] w-[313px]">
-            <h3 className="text-[#22281C] text-[24px] font-medium mt-[16px]">
+          <div className="inner-div mt-[54px] w-[313px] mobile:w-full">
+            <h3 className="text-[#22281C] text-[24px] font-medium mt-[16px] mobile:text-left">
               Spomini niso večni
             </h3>
-            <p className="mt-[16px]">
+            <p className="mt-[16px] mobile:text-left">
               Prehitro nam uidejo, čarobni trenutki se pozabijo, slike zbledijo.{" "}
               <br /> Povežimo spomine na naše najdražje v celoto v digitalni
               obliki in jih ohranimo za vedno.{" "}
