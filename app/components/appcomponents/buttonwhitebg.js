@@ -47,19 +47,21 @@ const ButtonWhiteBG = ({
         </div>
 
         <div className="flex-1 flex justify-end">
-          <Image
-            src={
-              isOpen === 1
-                ? "/ico_arrow_red_down.png"
-                : isOpen === 2
-                ? "/ico_back_arrow.png"
-                : "/ico_right_arrow_user.png"
-            }
-            alt=""
-            width={24}
-            height={24}
-            className={`mr-[15px]`}
-          />
+          {placeholderText !== "NAZAJ NA SPLETNO STRAN" && (
+            <Image
+              src={
+                isOpen === 1
+                  ? "/ico_arrow_red_down.png"
+                  : isOpen === 2
+                  ? "/ico_back_arrow.png"
+                  : "/ico_right_arrow_user.png"
+              }
+              alt=""
+              width={24}
+              height={24}
+              className={`mr-[15px]`}
+            />
+          )}
         </div>
       </div>
     </div>
@@ -107,7 +109,9 @@ const ButtonWhiteBGCap = ({
           } text-[16px]
             font-variation-customOpt16 font-normal leading-[24px] flex justify-center items-center`}
         >
-          <span className="text-[#0A85C2] font-bold">{placeholderText.slice(0, 1)}</span>
+          <span className="text-[#0A85C2] font-bold">
+            {placeholderText.slice(0, 1)}
+          </span>
           {placeholderText.slice(1)}
         </div>
 

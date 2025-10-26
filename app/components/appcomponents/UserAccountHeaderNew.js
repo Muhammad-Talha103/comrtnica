@@ -34,7 +34,12 @@ function UserAccountHeaderNew({
   const [isButtonHide, setIsButtonHide] = useState(false);
   const parsedUser = user;
 
-  const slugName = parsedUser?.role === 'Florist' ? 'c' : parsedUser?.role === 'User' ? 'u' : 'p';
+  const slugName =
+    parsedUser?.role === "Florist"
+      ? "c"
+      : parsedUser?.role === "User"
+      ? "u"
+      : "p";
 
   return (
     <React.Fragment>
@@ -65,48 +70,47 @@ function UserAccountHeaderNew({
                 />
               </div>
 
-              {
-                (isGhost && adminId) ? <>
+              {isGhost && adminId ? (
+                <>
                   <div>Ghost Login</div>
                   <button>Back to admin</button>
-                </> :
-                  <div className="flex items-center gap-[35px]">
-                    <div className="flex hidden tabletUserAcc:hidden mobileUserAcc:hidden items-center gap-2">
-                      <img
-                        src="/bell_icon.png"
-                        alt="back"
-                        className="w-[20px] h-[20px] mb-[15px]"
-                      />
-                      <span className="text-[34px] font-bold text-[#EB1D1D] mt-[15px]">
-                        2
-                      </span>
-                    </div>
-                    {typeof window != 'undefined' && window.innerWidth >= 1200 ? (
-                      <button
-                        onClick={() => router.back()}
-                        className="p-1 rounded-lg hover:bg-gray-100 transition-colors duration-200"
-                        title="Nazaj"
-                      >
-                        <Image
-                          src={backIcon}
-                          alt="Back"
-                          className="h-8 w-8 mobile:h-7 mobile:w-7"
-                        />
-                      </button>
-                    ) : (
-                      <span
-                        className="p-1 rounded-lg hover:bg-gray-100 transition-colors duration-200"
-                        title="Nazaj"
-                      >
-                        <Link href={`/${slugName}/${parsedUser?.slugKey}/menu`}>
-                          <FiMenu size={32} color="black" />
-                        </Link>
-                      </span>
-                    )}
+                </>
+              ) : (
+                <div className="flex items-center gap-[35px]">
+                  <div className="flex hidden tabletUserAcc:hidden mobileUserAcc:hidden items-center gap-2">
+                    <img
+                      src="/bell_icon.png"
+                      alt="back"
+                      className="w-[20px] h-[20px] mb-[15px]"
+                    />
+                    <span className="text-[34px] font-bold text-[#EB1D1D] mt-[15px]">
+                      2
+                    </span>
                   </div>
-              }
-
-
+                  {typeof window != "undefined" && window.innerWidth >= 1200 ? (
+                    <button
+                      onClick={() => router.back()}
+                      className="p-1 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                      title="Nazaj"
+                    >
+                      <Image
+                        src={backIcon}
+                        alt="Back"
+                        className="h-8 w-8 mobile:h-7 mobile:w-7"
+                      />
+                    </button>
+                  ) : (
+                    <span
+                      className="p-1 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                      title="Nazaj"
+                    >
+                      <Link href={`/${slugName}/${parsedUser?.slugKey}/menu`}>
+                        <FiMenu size={32} color="black" />
+                      </Link>
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -126,11 +130,13 @@ function UserAccountHeaderNew({
                   className="w-full !h-[100%] object-cover tabletUserAcc:hidden"
                 />
               </div>
-              <div className="absolute h-full overflow-auto  z-20 mobileUserAcc:bg-[#F1F5F8] flex flex-row justify-center gap-x-[30px] left-[0px] right-[0px]  "
+              <div
+                className="absolute h-full overflow-auto  z-20 mobileUserAcc:bg-[#F1F5F8] flex flex-row justify-center gap-x-[30px] left-[0px] right-[0px]  "
                 style={{
                   backgroundImage: 'url("/reg_user_tablica.avif")',
-                  backgroundSize: 'cover'
-                }}>
+                  backgroundSize: "cover",
+                }}
+              >
                 <div className="flex flex-col tabletUserAcc:mt-[100px] h-full">
                   <div
                     className="text-[#0A85C2] text-[26px] leading-[38px] font-[500px] mobileUserAcc:mt-[56px]"
@@ -198,10 +204,12 @@ function UserAccountHeaderNew({
                   ) : (
                     <div className="hidden mobileUserAcc:block ">
                       <div className="mt-[10px]">
-                        <Link href={`/u/${parsedUser?.slugKey}/pregled`}><ButtonWhiteBG
-                          placeholderImg={"/ico_pregled_black.png"}
-                          placeholderText={"PREGLED"}
-                        /></Link>
+                        <Link href={`/u/${parsedUser?.slugKey}/pregled2`}>
+                          <ButtonWhiteBG
+                            placeholderImg={"/ico_pregled_black.png"}
+                            placeholderText={"PREGLED"}
+                          />
+                        </Link>
                       </div>
 
                       <Link href={`/u/${parsedUser?.slugKey}/potrditev-objave`}>
@@ -216,17 +224,17 @@ function UserAccountHeaderNew({
 
                       {memories && memories.length > 0
                         ? memories.map((item, index) => (
-                          <Link
-                            href={`/m/${item?.slugKey}`}
-                            className="my-5"
-                            key={index}
-                          >
-                            <ButtonLightGreen
-                              isMobile={true}
-                              placeholderText={`${item.name} ${item.sirName}`}
-                            />
-                          </Link>
-                        ))
+                            <Link
+                              href={`/m/${item?.slugKey}`}
+                              className="my-5"
+                              key={index}
+                            >
+                              <ButtonLightGreen
+                                isMobile={true}
+                                placeholderText={`${item.name} ${item.sirName}`}
+                              />
+                            </Link>
+                          ))
                         : null}
                     </div>
                   )}
@@ -250,7 +258,11 @@ function UserAccountHeaderNew({
                       <div
                         className="w-full ml-[20px] h-full my-[2px] text-[16px] text-[#FFFFFF]
                         font-variation-customOpt16 font-normal leading-[24px] flex items-center "
-                        onClick={() => toast.error("Skrbnika za spominsko stran vam brezplačno podarijo v cvetličarni (ki je prikazana med lokalnimi na naši strani).")}
+                        onClick={() =>
+                          toast.error(
+                            "Skrbnika za spominsko stran vam brezplačno podarijo v cvetličarni (ki je prikazana med lokalnimi na naši strani)."
+                          )
+                        }
                       >
                         POSTANI SKRBNIK
                       </div>
@@ -280,7 +292,10 @@ function UserAccountHeaderNew({
                       />
                     </Link>
                   </div>
-                  <div className="mt-[70px] mobileUserAcc:mt-[15px] w-[184px] border-2 border-[#1860A335] rounded-[10px] mb-[90px]" onClick={logout}>
+                  <div
+                    className="mt-[70px] mobileUserAcc:mt-[15px] w-[184px] border-2 border-[#1860A335] rounded-[10px] mb-[90px]"
+                    onClick={logout}
+                  >
                     <div className=" rounded-lg w-[180px] h-[55px] flex justify-center items-center bg-gradient-to-b from-[#FFFFFF40] via-[rgba(12,104,244,0.15)] to-[#FFFFFF40]">
                       <div className="text-[16px] leading-[24px] font-variation-customOpt16 text-[#6D778E] ">
                         ODJAVA IZ RAČUNA
@@ -329,13 +344,15 @@ function UserAccountHeaderNew({
                   ) : (
                     <React.Fragment>
                       <div className="mt-[10px]">
-                        <ButtonWhiteBG
-                          placeholderImg={"/ico_pregled_black.png"}
-                          placeholderText={"PREGLED"}
-                        />
+                        <Link href={`/u/${parsedUser?.slugKey}/pregled2`}>
+                          <ButtonWhiteBG
+                            placeholderImg={"/ico_pregled_black.png"}
+                            placeholderText={"PREGLED"}
+                          />
+                        </Link>
                       </div>
 
-                      <Link href={"/potrditev-objave"}>
+                      <Link href={`/u/${parsedUser?.slugKey}/potrditev-objave`}>
                         <div className="mt-[10px]">
                           <ButtonWhiteBG
                             placeholderImg={""}
@@ -347,16 +364,16 @@ function UserAccountHeaderNew({
 
                       {memories && memories.length > 0
                         ? memories.map((item, index) => (
-                          <Link
-                            href={`/m/${item?.slugKey}`}
-                            className="mt-[10px]"
-                            key={index}
-                          >
-                            <ButtonLightGreen
-                              placeholderText={`${item.name} ${item.sirName}`}
-                            />
-                          </Link>
-                        ))
+                            <Link
+                              href={`/m/${item?.slugKey}`}
+                              className="mt-[10px]"
+                              key={index}
+                            >
+                              <ButtonLightGreen
+                                placeholderText={`${item.name} ${item.sirName}`}
+                              />
+                            </Link>
+                          ))
                         : null}
                     </React.Fragment>
                   )}
@@ -367,18 +384,20 @@ function UserAccountHeaderNew({
         )}
       </div>
 
-      {
-        company ? (
-          <div className={`${noFooterOnMobile ? "mobileUserAcc:hidden" : ""} ${pathname?.startsWith("/c/") ? "tabletUserAcc:hidden" : ""}`}>
-            <CompanyFooterMobile setIsMobilSideBarOpen={setIsMobilSideBarOpen} />
-          </div>
-        ) : (
-          <>
-            {/* <FooterMobile setIsMobilSideBarOpen={setIsMobilSideBarOpen} /> */}
-          </>
-        )
-      }
-    </React.Fragment >
+      {company ? (
+        <div
+          className={`${noFooterOnMobile ? "mobileUserAcc:hidden" : ""} ${
+            pathname?.startsWith("/c/") ? "tabletUserAcc:hidden" : ""
+          }`}
+        >
+          <CompanyFooterMobile setIsMobilSideBarOpen={setIsMobilSideBarOpen} />
+        </div>
+      ) : (
+        <>
+          {/* <FooterMobile setIsMobilSideBarOpen={setIsMobilSideBarOpen} /> */}
+        </>
+      )}
+    </React.Fragment>
   );
 }
 

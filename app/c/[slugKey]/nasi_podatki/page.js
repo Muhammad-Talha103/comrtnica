@@ -187,7 +187,7 @@ export default function AccountSettings() {
             )}
           </div>
           <div className="space-y-[18px]">
-            <div className="flex items-center gap-[12px]">
+            <div className="flex items-center mobile:hidden gap-[12px]">
               <span className="uppercase">geslo:</span>
               <span className="text-[#3C3E41]">**************</span>
             </div>
@@ -278,7 +278,7 @@ export default function AccountSettings() {
                 <span className="uppercase">Primarno:</span>
                 <span className="text-[#3C3E41]">{data?.city}</span>
               </div>
-              <div className="flex items-center mobile:hidden gap-[38px]">
+              <div className="flex items-center hidden gap-[38px]">
                 <div>
                   <DropdownWithSearch
                     onSelectCity={handleCitySelect}
@@ -350,7 +350,7 @@ export default function AccountSettings() {
               </h4>
               <button
                 onClick={() => setIsPopUP3(true)}
-                className="text-[#EB1D1D] outline-none"
+                className="text-[#EB1D1D] mobile:hidden outline-none"
                 title="Help"
               >
                 <svg
@@ -407,7 +407,7 @@ export default function AccountSettings() {
               </button>
             </div>
 
-            <div className="flex items-center gap-[12px]">
+            <div className="flex mobile:hidden items-center gap-[12px]">
               <button
                 onClick={() => setIsPopUP5(true)}
                 className="text-[#EB1D1D] outline-none"
@@ -601,7 +601,7 @@ export default function AccountSettings() {
               })()}
             </span> */}
           </div>
-          <div className="flex items-center gap-10 tabletUserAcc:col-span-2 mobileUserAcc:col-span-2">
+          <div className="flex items-center mobile:hidden gap-10 tabletUserAcc:col-span-2 mobileUserAcc:col-span-2">
             <div className="flex items-center gap-[12px]">
               <span className="uppercase">naročnina:</span>
               <span className="text-[#3C3E41]">Gratis</span>

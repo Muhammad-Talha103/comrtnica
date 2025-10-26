@@ -108,7 +108,13 @@ function SidebarDekstop({
           </div>
         ) : (
           <div>
-            <div onClick={() => toast.error("Skrbnika za spominsko stran vam brezplačno podarijo v cvetličarni (ki je prikazana med lokalnimi na naši strani).")}>
+            <div
+              onClick={() =>
+                toast.error(
+                  "Skrbnika za spominsko stran vam brezplačno podarijo v cvetličarni (ki je prikazana med lokalnimi na naši strani)."
+                )
+              }
+            >
               <CommonViewUserAccSidebar
                 imgPath={"/icon_plus_round.png"}
                 title={"Postani Skrbnik"}

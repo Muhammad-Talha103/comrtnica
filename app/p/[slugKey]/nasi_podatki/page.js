@@ -147,7 +147,7 @@ export default function AccountSettings() {
             </button>
           </div>
           <div className="space-y-[18px]">
-            <div className="flex items-center gap-[12px]">
+            <div className="flex items-center mobile:hidden gap-[12px]">
               <span className="uppercase">geslo:</span>
               <span className="text-[#3C3E41]">**************</span>
             </div>
@@ -180,7 +180,7 @@ export default function AccountSettings() {
                 <span className="uppercase">Primarno:</span>
                 <span className="text-[#3C3E41]">{data?.city}</span>
               </div>
-              <div className="flex items-center mobile:hidden gap-[38px]">
+              <div className="flex items-center hidden gap-[38px]">
                 <div>
                   <DropdownWithSearch
                     onSelectCity={handleCitySelect}
@@ -258,7 +258,7 @@ export default function AccountSettings() {
               </h4>
               <button
                 onClick={() => setIsPopUP7(true)}
-                className="text-[#EB1D1D] outline-none"
+                className="text-[#EB1D1D] mobile:hidden outline-none"
                 title="Help"
               >
                 <svg
