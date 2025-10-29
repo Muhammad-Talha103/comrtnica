@@ -1,11 +1,18 @@
 "use client";
+import PaymentModal from '../components/PaymentModal';
 import React, { useState } from "react";
 import CompanyAccountLayout from "../components/appcomponents/CompanyAccountLayout";
 import Layout from "../components/appcomponents/Layout";
 import Tabs from "../components/appcomponents/Tabs";
 import PricingCard from "../components/appcomponents/PricingCard";
+import CustomPackageCard from "../components/appcomponents/CustomPackageCard";
+import { Button } from '@nextui-org/react';
+import axios from '@/services/axios'
+import toast from 'react-hot-toast';
+import { useAuth } from '@/hooks/useAuth';
 
 const Subscription = () => {
+  const { user } = useAuth();
   const tabs = [
     { id: "spominske", label: "Spominske" },
     { id: "cvetlicarne", label: "Cvetličarne" },
@@ -27,6 +34,55 @@ const Subscription = () => {
     useState("mesecno");
   const [activeFormTabOglasevalci, setActiveFormTabOglasevalci] =
     useState("mesecno");
+  const [paymentModal, setPaymentModal] = useState({ isOpen: false, packageType: null, customCode: null });
+
+  const handlePayment = (packageType, customCode = null) => {
+    setPaymentModal({ 
+      isOpen: true, 
+      packageType,
+      customCode 
+    });
+  };
+
+  const handleCustomCodeSubmit = (code, type) => {
+    // Map the code to the appropriate package type
+    const codeToPackageMap = {
+      'CUSTOM-001': 'custom_one',
+      'CUSTOM-002': 'custom_two'
+    };
+    
+    const packageType = codeToPackageMap[code];
+    if (!packageType) {
+      toast.error('Neveljavna koda. Prosimo preverite kodo in poskusite znova.');
+      return;
+    }
+    
+    handlePayment(packageType, code);
+  };
+
+
+  const handleManagePayments = async () => {
+    if (!user) {
+      toast.error('Potrebna je prijava');
+      return;
+    }
+
+    try {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/payment/portal`, {
+        headers: { 'access-token': localStorage.getItem('access-token') }
+      });
+
+      if (response.data.success) {
+        window.open(response.data.data.portalUrl, '_blank');
+      }
+    } catch (error) {
+      if (error.response?.status === 404) {
+        toast.error('Ni najdenih plačil za upravljanje');
+      } else {
+        toast.error(error.response?.data?.message || 'Napaka pri dostopu do portala');
+      }
+    }
+  };
 
   const FormTabsContentCvetlicarne = () => {
     switch (activeFormTabCvetlicarne) {
@@ -34,14 +90,32 @@ const Subscription = () => {
         return (
           <>
             <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
-              <PricingCard label="MESEČNO" title="Manjša mesta" price="10 €" />
+              <PricingCard 
+                label="MESEČNO" 
+                title="Manjša mesta" 
+                price="10 €" 
+                onPayment={() => handlePayment('florist_monthly_small_city')}
+                paymentEnabled={true}
+              />
               <PricingCard
                 label="MESEČNO"
                 price="20 €"
                 title="Večja mesta"
                 number={1}
+                onPayment={() => handlePayment('florist_monthly_large_city')}
+                paymentEnabled={true}
               />
-              <PricingCard label="MESEČNO" price="30 €" title="Ljubljana" />
+              <PricingCard 
+                label="MESEČNO" 
+                price="30 €" 
+                title="Ljubljana"
+                onPayment={() => handlePayment('florist_monthly_capital_city')}
+                paymentEnabled={true}
+              />
+              {/* <CustomPackageCard 
+                type="florist"
+                onCodeSubmit={(code) => handleCustomCodeSubmit(code, 'florist')}
+              /> */}
             </div>
           </>
         );
@@ -49,14 +123,32 @@ const Subscription = () => {
         return (
           <>
             <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
-              <PricingCard label="LETNO" title="Manjša mesta" price="100 €" />
+              <PricingCard 
+                label="LETNO" 
+                title="Manjša mesta" 
+                price="100 €"
+                onPayment={() => handlePayment('florist_yearly_small_city')}
+                paymentEnabled={true}
+              />
               <PricingCard
                 label="LETNO"
                 price="200 €"
                 title="Večja mesta"
                 number={1}
+                onPayment={() => handlePayment('florist_yearly_large_city')}
+                paymentEnabled={true}
               />
-              <PricingCard label="LETNO" price="300 €" title="Ljubljana" />
+              <PricingCard 
+                label="LETNO" 
+                price="300 €" 
+                title="Ljubljana"
+                onPayment={() => handlePayment('florist_yearly_capital_city')}
+                paymentEnabled={true}
+              />
+              {/* <CustomPackageCard 
+                type="florist"
+                onCodeSubmit={(code) => handleCustomCodeSubmit(code, 'florist')}
+              /> */}
             </div>
           </>
         );
@@ -70,29 +162,65 @@ const Subscription = () => {
       case "mesecno":
         return (
           <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
-            <PricingCard label="MESEČNO" title="Manjša mesta" price="10 €" />
+            <PricingCard 
+              label="MESEČNO" 
+              title="Manjša mesta" 
+              price="10 €"
+              onPayment={() => handlePayment('advertiser_monthly_small_city')}
+              paymentEnabled={true}
+            />
             <PricingCard
               label="MESEČNO"
               price="20 €"
-              title="Manjša mesta"
+              title="Večja mesta"
               number={1}
+              onPayment={() => handlePayment('advertiser_monthly_large_city')}
+              paymentEnabled={true}
             />
-            <PricingCard label="MESEČNO" price="30 €" title="Ljubljana" />
+            <PricingCard 
+              label="MESEČNO" 
+              price="30 €" 
+              title="Ljubljana"
+              onPayment={() => handlePayment('advertiser_monthly_capital_city')}
+              paymentEnabled={true}
+            />
             <PricingCard label="MESEČNO" title="Regijsko" number={2} />
+            {/* <CustomPackageCard 
+              type="advertiser"
+              onCodeSubmit={(code) => handleCustomCodeSubmit(code, 'advertiser')}
+            /> */}
           </div>
         );
       case "letno":
         return (
           <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
-            <PricingCard label="LETNO" title="Manjša mesta" price="100 €" />
+            <PricingCard 
+              label="LETNO" 
+              title="Manjša mesta" 
+              price="100 €"
+              onPayment={() => handlePayment('advertiser_yearly_small_city')}
+              paymentEnabled={true}
+            />
             <PricingCard
               label="LETNO"
               price="200 €"
-              title="Manjša mesta"
+              title="Večja mesta"
               number={1}
+              onPayment={() => handlePayment('advertiser_yearly_large_city')}
+              paymentEnabled={true}
             />
-            <PricingCard label="LETNO" price="300 €" title="Ljubljana" />
+            <PricingCard 
+              label="LETNO" 
+              price="300 €" 
+              title="Ljubljana"
+              onPayment={() => handlePayment('advertiser_yearly_capital_city')}
+              paymentEnabled={true}
+            />
             <PricingCard label="LETNO" title="Regijsko" number={2} />
+            {/* <CustomPackageCard 
+              type="advertiser"
+              onCodeSubmit={(code) => handleCustomCodeSubmit(code, 'advertiser')}
+            /> */}
           </div>
         );
       default:
@@ -142,16 +270,22 @@ const Subscription = () => {
                 price="10 €"
                 mobilesublabel="(na naši strani)"
                 title="1 mesec"
+                onPayment={() => handlePayment('memory_page_one_month')}
+                paymentEnabled={true}
               />
               <PricingCard
                 label="spominska STRAN"
                 price="20 €"
                 title="1 leto"
+                onPayment={() => handlePayment('memory_page_one_year')}
+                paymentEnabled={true}
               />
               <PricingCard
                 label="spominska knjiga"
                 price="30 €"
                 title="6 let"
+                onPayment={() => handlePayment('memory_page_six_years')}
+                paymentEnabled={true}
               />
               <div className="text-[#414141] flex gap-1 w-full desktop:w-[754px] text-[14px] desktop:text-[16px]">
                 <p className="text-[14px]">1</p>{" "}
@@ -440,12 +574,37 @@ const Subscription = () => {
           style={{ fontFamily: "Roboto Flex" }}
           className="w-full bg-[#ECF0F3] lg:px-8 mobile:py-3 py-8"
         >
-          <div className="w-full desktop:w-[1200px]  mx-auto">
+          <div className="w-full desktop:w-[1200px] mx-auto">
+            {/* Manage Payments Button for logged in users */}
+            {user && (active === 'spominske' || active === 'cvetlicarne') && (
+              <div className="flex justify-center mb-6">
+                <Button
+                  variant="bordered"
+                  onClick={handleManagePayments}
+                  className='bg-slate-50 rounded-xl right-0 text-slate-600'
+                >
+                  Upravljaj plačila
+                </Button>
+              </div>
+            )}
+            
             <Tabs
               tabs={tabs}
               tabContent={<TabContent />}
               active={active}
               setActive={setActive}
+            />
+            
+            {/* Payment Modal */}
+            <PaymentModal
+              isOpen={paymentModal.isOpen}
+              onClose={() => setPaymentModal({ isOpen: false, packageType: null, customCode: null })}
+              packageType={paymentModal.packageType}
+              customCode={paymentModal.customCode}
+              onPaymentCreated={(data) => {
+                setPaymentModal({ isOpen: false, packageType: null, customCode: null });
+                toast.success('Preusmerjamo na plačilo...');
+              }}
             />
           </div>
         </div>
