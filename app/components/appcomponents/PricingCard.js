@@ -1,10 +1,29 @@
 "use client";
 
 export default function PricingCard(props) {
+  const isClickable = props.paymentEnabled && props.onPayment;
+  
+  const handleClick = () => {
+    if (isClickable) {
+      props.onPayment();
+    }
+  };
+
   return (
     <div
       style={{ fontFamily: "Roboto Flex" }}
-      className="relative w-full mobile:h-[75px] h-[90px] rounded-[8px] p-[2px] border-gradient-rounded shadow-md hover:shadow-lg transition-shadow duration-300"
+      className={`relative w-full ${isClickable ? 'mobile:h-[85px] h-[105px]' : 'mobile:h-[75px] h-[90px]'} rounded-[8px] p-[2px] border-gradient-rounded shadow-md hover:shadow-lg transition-shadow duration-300 ${
+        isClickable ? 'cursor-pointer hover:scale-[1.02] transition-transform' : ''
+      }`}
+      onClick={handleClick}
+      role={isClickable ? 'button' : undefined}
+      tabIndex={isClickable ? 0 : undefined}
+      onKeyDown={isClickable ? (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleClick();
+        }
+      } : undefined}
     >
       <div className="flex items-center justify-between rounded-[8px] mobile:py-1.5 p-3">
         <div>
@@ -54,6 +73,11 @@ export default function PricingCard(props) {
             className="mobile:w-[36px] absolute right-3 top-5 mobile:h-[36px]"
             alt="icon"
           />
+        )}
+        {isClickable && (
+          <div className="absolute bottom-2 right-3 text-[12px] text-[#530CC6] font-medium">
+            Klikni za plačilo →
+          </div>
         )}
       </div>
     </div>
