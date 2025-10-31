@@ -4,6 +4,7 @@ import CompanyAccountLayout from "../components/appcomponents/CompanyAccountLayo
 import Layout from "../components/appcomponents/Layout";
 import Tabs from "../components/appcomponents/Tabs";
 import PricingCard from "../components/appcomponents/PricingCard";
+import Link from "next/link";
 
 const Subscription = () => {
   const tabs = [
@@ -192,6 +193,27 @@ const Subscription = () => {
                 title="Na Facebooku - sledite nam"
                 icon="/fb-icon.png"
               />
+              <div className="w-full flex justify-end mt-[60px]">
+                <div
+                  className="flex w-[250px] h-[60px] rounded-full bg-transparent"
+                  style={{
+                    boxShadow: "5px 5px 10px 0px #A6ABBD",
+                    border: "0.5px solid #6D778E66",
+                  }}
+                >
+                  <Link
+                    href={"/kontakt"}
+                    className={`w-[250px] h-[60px] shrink-0 rounded-full text-[#3C3E41] justify-center items-center self-center shadow-custom-light-dark flex font-semibold text-[20px]`}
+                    style={{
+                      background:
+                        "background: linear-gradient(0deg, rgba(231, 235, 240, 0.3), rgba(231, 235, 240, 0.3)), linear-gradient(180deg, rgba(0, 0, 0, 0) 60.83%, rgba(24, 96, 163, 0.1) 100%)",
+                      boxShadow: "inset -5px -5px 10px 0px #A6ABBD",
+                    }}
+                  >
+                    Kontaktirajte nas
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         );
@@ -315,6 +337,15 @@ const Subscription = () => {
                               </p>
                             </div>
                           </div>
+                          <div className="mt-[40px] text-[#414141] flex flex-col gap-1 w-full desktop:w-[794px] text-[14px] desktop:text-[16px]">
+                            <p>
+                              Naročite se, vaš uporabniški račun je pripravljen{" "}
+                            </p>
+                            <p className="">
+                              ali pa nas kontaktirajte v primeru vprašanj ali
+                              izdelave ponudbe po meri za več občin.{" "}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </>
@@ -322,6 +353,30 @@ const Subscription = () => {
                   text="* 2 meseca brezplačno + promocije spodaj"
                   innerTab={true}
                 />
+              </div>
+              <div
+                className="w-full flex justify-end mt-[60px] desktop:w-[794px]"
+                style={{ marginTop: "60px" }}
+              >
+                <div
+                  className="flex w-[250px] h-[60px] rounded-full bg-transparent"
+                  style={{
+                    boxShadow: "5px 5px 10px 0px #A6ABBD",
+                    border: "0.5px solid #6D778E66",
+                  }}
+                >
+                  <Link
+                    href={"/kontakt"}
+                    className={`w-[250px] h-[60px] shrink-0 rounded-full text-[#3C3E41] justify-center items-center self-center shadow-custom-light-dark flex font-semibold text-[20px]`}
+                    style={{
+                      background:
+                        "background: linear-gradient(0deg, rgba(231, 235, 240, 0.3), rgba(231, 235, 240, 0.3)), linear-gradient(180deg, rgba(0, 0, 0, 0) 60.83%, rgba(24, 96, 163, 0.1) 100%)",
+                      boxShadow: "inset -5px -5px 10px 0px #A6ABBD",
+                    }}
+                  >
+                    Kontaktirajte nas
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -355,7 +410,7 @@ const Subscription = () => {
                     <>
                       <FormTabsContentOglasevalci />
                       <div className="mobile:w-[99%] mt-4 w-[550px] flex flex-col gap-4">
-                        <div className=" space-y-1">
+                        <div className=" space-y-1 mb-[68px]">
                           <div className="text-[#414141] flex gap-1 w-full desktop:w-[744px] text-[14px] desktop:text-[16px]">
                             <p className="text-[14px]">1</p>{" "}
                             <p className="mt-1">
@@ -476,6 +531,30 @@ const Subscription = () => {
                   innerTab={true}
                 />
               </div>
+              <div
+                className="w-full flex justify-end mt-[60px] desktop:w-[794px] w-full"
+                style={{ marginTop: "60px" }}
+              >
+                <div
+                  className="flex w-[250px] h-[60px] rounded-full bg-transparent"
+                  style={{
+                    boxShadow: "5px 5px 10px 0px #A6ABBD",
+                    border: "0.5px solid #6D778E66",
+                  }}
+                >
+                  <Link
+                    href={"/kontakt"}
+                    className={`w-[250px] h-[60px] shrink-0 rounded-full text-[#3C3E41] justify-center items-center self-center shadow-custom-light-dark flex font-semibold text-[20px]`}
+                    style={{
+                      background:
+                        "background: linear-gradient(0deg, rgba(231, 235, 240, 0.3), rgba(231, 235, 240, 0.3)), linear-gradient(180deg, rgba(0, 0, 0, 0) 60.83%, rgba(24, 96, 163, 0.1) 100%)",
+                      boxShadow: "inset -5px -5px 10px 0px #A6ABBD",
+                    }}
+                  >
+                    Kontaktirajte nas
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         );
@@ -483,19 +562,43 @@ const Subscription = () => {
       case "pogrebna-podjetja":
         return (
           <div className="p-4 mb-[300px] mobile:max-w-[500px] mobile:mx-auto flex flex-col items-center justify-center desktop:justify-start desktop:items-start space-y-4">
-            <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
+            <div className="mobile:w-[99%] w-[550px] desktop:w-[744px] flex flex-col gap-4">
               <div className="w-full flex items-center gap-4">
                 <h2 className="mobile:text-[24px] text-[32px] text-[#000000]">
                   Pogrebna podjetja
                 </h2>
               </div>
-              <p className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">
+              <p className="text-[#414141] flex gap-1 w-full mobile:text-[14px] text-[16px]">
                 <p className="text-[14px]"></p>{" "}
                 <p className="mt-1">
                   Vse je brezplačno. Registrirajte se in vse potrebne
                   informacije vas čakajo v vašem uporabniškem računu.
                 </p>
               </p>
+              <div
+                className="w-full flex justify-end mt-[60px]"
+                style={{ marginTop: "60px" }}
+              >
+                <div
+                  className="flex w-[250px] h-[60px] rounded-full bg-transparent"
+                  style={{
+                    boxShadow: "5px 5px 10px 0px #A6ABBD",
+                    border: "0.5px solid #6D778E66",
+                  }}
+                >
+                  <Link
+                    href={"/kontakt"}
+                    className={`w-[250px] h-[60px] shrink-0 rounded-full text-[#3C3E41] justify-center items-center self-center shadow-custom-light-dark flex font-semibold text-[20px]`}
+                    style={{
+                      background:
+                        "background: linear-gradient(0deg, rgba(231, 235, 240, 0.3), rgba(231, 235, 240, 0.3)), linear-gradient(180deg, rgba(0, 0, 0, 0) 60.83%, rgba(24, 96, 163, 0.1) 100%)",
+                      boxShadow: "inset -5px -5px 10px 0px #A6ABBD",
+                    }}
+                  >
+                    Kontaktirajte nas
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         );
@@ -518,6 +621,7 @@ const Subscription = () => {
               active={active}
               setActive={setActive}
             />
+            {/* <div className="w-[100px] h-[30px] bg-red-500"></div> */}
           </div>
         </div>
       </Layout>

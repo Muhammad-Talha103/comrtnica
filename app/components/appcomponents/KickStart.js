@@ -17,18 +17,19 @@ export default function KickStart({cUrl = "" , showButton = "false"}) {
                 <div className="text-[20px] hidden mobile:block mobile:text-[20px] text-[#3C3E41] font-bold font-variation-customOpt24 text-center leading-[48px]">
                 Pogosta vprašanja in napotki
                 </div> */}
-                <div className="text-[22px] mobile:hidden mobile:text-[20px] text-[#3090D5] underline font-bold mt-[5px] font-variation-customOpt24 text-center leading-[48px]">
+                <Link href="/podjetja" className="text-[22px] mobile:hidden mobile:text-[20px] text-[#3090D5] underline mt-[5px] font-variation-customOpt24 text-center leading-[48px]">
                 Registracija
-                </div>
-                <div className="text-[20px] hidden mobile:block mobile:text-[20px] text-[#3090D5] underline font-bold font-variation-customOpt24 text-center leading-[48px]">
+                </Link>
+                <Link href="/podjetja" className="text-[20px] hidden mobile:block mobile:text-[20px] text-[#3090D5] underline font-variation-customOpt24 text-center leading-[48px]">
                 Registracija
-                </div>
+                </Link>
               </div>
 
               <Link
-                href={cUrl ? `${cUrl}`: "/c-faq"}
+                href={"/vodic"}
                 className={`w-[250px] h-[53px] shrink-0 rounded-full text-white justify-center items-center self-center shadow-custom-light-dark bg-gradient-to-b from-[#0D94E8] to-[#1860A3] ${showButton ? "flex" : " hidden desktop:flex"}` }
                 style={{
+                  fontSize:"18px",
                   boxShadow: '0px 4px 5px 0px #00000038, 0px 2px 3px 0px #00000073',
                 }}
               >

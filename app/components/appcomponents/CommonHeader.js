@@ -54,7 +54,8 @@ const headerLinkSets = {
     // { label: " PRILOŽNOST", path: "/c-priloznost", active: true },
     {
       label: "Pogrebna podjetja",
-      path: "/resitve-za-pogrebna-podjetja",
+      // path: "/resitve-za-pogrebna-podjetja",
+      path: "",
       active: false,
     },
   ],
@@ -204,7 +205,7 @@ function CommonHeader({ currentPage }) {
                         >
                           <Link
                             href={link.path}
-                            className={`font-normal hover:text-blue-500 transition duration-200 tablet:text-[18px] desktop:text-[20px] ${
+                            className={`font-normal hover:text-blue-500 transition duration-200 tablet:text-[18px] desktop:text-[20px] cursor-default ${
                               link.active ? "!text-[#0A85C2]" : "text-[#1E2125]"
                             }`}
                           >
@@ -213,7 +214,7 @@ function CommonHeader({ currentPage }) {
                             )}
                             <div className="relative">
                               <p className="absolute text-[10px] text-[#EB1D1D] right-0 top-[-10px]">KMALU</p>
-                              <p className="relative">{link.label}</p>
+                              <p className="relative text-[#1E21254D]">{link.label}</p>
                             </div>
                           </Link>
                         </li>

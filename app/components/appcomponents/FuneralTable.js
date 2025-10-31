@@ -229,11 +229,11 @@ const FuneralTable = () => {
                             <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"><img src="/table_check.png" className="object-contain"/></td>
                         </tr>
 
-                        <tr className="border-b  h-[45px]">
+                        {/* <tr className="border-b  h-[45px]">
                             <td className="p-2 border border-gray-300 mobile:pl-4 pl-[34px] underline decoration-dotted text-[15px] text-[#2B5D80] decoration-[#ACAAAA] underline-offset-4 decoration-[2px]">Virtualna svečka - letna, 5-letna</td>
                             <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"><img src="/table_star.png" className="object-contain"/></td>
                             <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"><img src="/table_check.png" className="object-contain"/></td>
-                        </tr>
+                        </tr> */}
 
                         <tr className="border-b  h-[45px]">
                             <td className="p-2 border border-gray-300 mobile:pl-4 pl-[34px] underline decoration-dotted text-[15px] text-[#2B5D80] decoration-[#ACAAAA] underline-offset-4 decoration-[2px]">Povabi dodatnega skrbnika</td>
@@ -344,12 +344,12 @@ const FuneralTable = () => {
 
                         <tr className="border-b  h-[45px]">
                             <td className="p-2 border border-gray-300 mobile:pl-4 pl-[34px] underline decoration-dotted text-[15px] text-[#2B5D80] decoration-[#ACAAAA] underline-offset-4 decoration-[2px]">Brezplačni mesečni skrbnik</td>
-                            <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"><img src="/table_check.png" className="object-contain"/></td>
+                            <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"><img src="/table_check_green.png" className="object-contain"/></td>
                         </tr>
 
                         <tr className="border-b  h-[45px]">
                             <td className="p-2 border border-gray-300 mobile:pl-4 pl-[34px] underline decoration-dotted text-[15px] text-[#2B5D80] decoration-[#ACAAAA] underline-offset-4 decoration-[2px]">Digitalne kartice</td>
-                            <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"><img src="/table_check.png" className="object-contain"/></td>
+                            <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"><img src="/table_check_green.png" className="object-contain"/></td>
                         </tr>
 
                     </tbody>
@@ -646,13 +646,13 @@ const FuneralTable = () => {
                         <td className="  border-gray-300 "><img src="/table_check_sm.png" className="object-contain"/></td>
                     </tr>
 
-                     <tr className="border-b  h-[40px]">
+                     {/* <tr className="border-b  h-[40px]">
                         <td className="p-2 pr-0  border-gray-300 w-full mobile:pl-4 text-[14px] whitespace-nowrap tracking-normal text-[#2B5D80] inline-flex items-center relative">
                             Virtualna svečka - letna, 5-letna
                             <img src="/table_star_sm.png" className="object-contain absolute right-12 top-[14px]"/>    
                         </td>
                         <td className="  border-gray-300 pl-1"><img src="/table_check_sm.png" className="object-contain"/></td>
-                    </tr>
+                    </tr> */}
 
                     <tr className="border-b  h-[40px]">
                         <td className="p-2 pr-0  border-gray-300 mobile:pl-4 text-[14px] whitespace-nowrap tracking-normal text-[#2B5D80]">Povabi dodatnega skrbnika</td>
@@ -721,12 +721,12 @@ const FuneralTable = () => {
 
                  <tr className="border-b  h-[40px]">
                     <td className="p-2 pr-0  border-gray-300 mobile:pl-4 text-[14px]  text-[#2B5D80]">Brezplačni mesečni skrbnik</td>
-                    <td className="  border-gray-300 "><img src="/table_check_sm.png" className="object-contain"/></td>
+                    <td className="  border-gray-300 "><img src="/table_check_sm_green.png" className="object-contain"/></td>
                 </tr>
 
                  <tr className="border-b  h-[40px]">
                     <td className="p-2 pr-0  border-gray-300 mobile:pl-4 text-[14px]  text-[#2B5D80]">Digitalne kartice</td>
-                    <td className="  border-gray-300 "><img src="/table_check_sm.png" className="object-contain"/></td>
+                    <td className="  border-gray-300 "><img src="/table_check_sm_green.png" className="object-contain"/></td>
                 </tr>
 {/* here */}
                  {/* <tr className="border-b  h-[40px]">

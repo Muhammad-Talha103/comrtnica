@@ -55,7 +55,8 @@ const AdministratorCompo = () => {
                   textShadow: "0px 3px 4px #00000050",
                   color: "#2D3D48",
                   fontWeight: 400,
-                  fontSize: "32px",
+                  // fontSize: "32px",
+                  fontSize:"48px",
                   fontVariationSettings: "'opsz' 32",
                   fontVariationSettings: "'wdth' 100",
                 }}
@@ -64,9 +65,9 @@ const AdministratorCompo = () => {
               >
                 20 €
               </div>
-              <button className="w-[97px] h-[48px] mt-2 mobile:mt-[33px] tablet:mt-6 text-[16px] font-variation-customOpt16 rounded-lg text-[#1E2125] justify-center items-center shadow-custom-light-dark bg-gradient-to-r from-[#E3E8EC] to-[#FFFFFF] mx-auto">
+              <Link href="/vodic" className="w-[97px] h-[48px] mt-2 mobile:mt-[33px] tablet:mt-6 text-[16px] font-variation-customOpt16 rounded-lg text-[#1E2125] flex justify-center items-center shadow-custom-light-dark bg-gradient-to-r from-[#E3E8EC] to-[#FFFFFF] mx-auto">
                 Naprej
-              </button>
+              </Link>
               <Link href={"/primerjava"} className="text-[14px] text-[#3090D5] font-variation-customOpt14 text-center mt-[34px]">
                 PREVERI KAJ JE VKLJUČENO V SKRBNIKA
               </Link>
@@ -85,7 +86,7 @@ const AdministratorCompo = () => {
                   textShadow: "0px 3px 4px #00000050",
                   color: "#2D3D48",
                   fontWeight: 400,
-                  fontSize: "32px",
+                  fontSize: "48px",
                   fontVariationSettings: "'opsz' 32",
                   fontVariationSettings: "'wdth' 100",
                 }}
@@ -94,9 +95,9 @@ const AdministratorCompo = () => {
               >
                 30 €
               </div>
-              <button className="w-[97px] h-[48px] mt-2 mobile:mt-[33px] tablet:mt-6 text-[16px] font-variation-customOpt16 rounded-lg text-[#1E2125] justify-center items-center shadow-custom-light-dark bg-gradient-to-r from-[#E3E8EC] to-[#FFFFFF] mx-auto">
+              <Link href="/vodic" className="w-[97px] h-[48px] mt-2 mobile:mt-[33px] tablet:mt-6 text-[16px] font-variation-customOpt16 rounded-lg text-[#1E2125] flex justify-center items-center shadow-custom-light-dark bg-gradient-to-r from-[#E3E8EC] to-[#FFFFFF] mx-auto">
                 Naprej
-              </button>
+              </Link>
               <Link href={"/primerjava"} className="text-[14px] text-[#3090D5] font-variation-customOpt14 text-center mt-[34px]">
                 PREVERI KAJ JE VKLJUČENO V SKRBNIKA
               </Link>

@@ -91,7 +91,7 @@ const DirectoryEntry = () => {
     items,
     extraItem,
     borderColor,
-    showContactButton=false,
+    showContactButton = false,
     showFreeRegistration = false,
   }) => (
     <div className="flex bg-white flex-col w-full tablet:w-[310px] desktop:w-[333px]">
@@ -100,7 +100,7 @@ const DirectoryEntry = () => {
           borderColor === "red" ? "h-[8px] bg-[#EB1D1D]" : "h-1 bg-[#0A85C2]"
         }`}
       />
-      <div className="flex flex-col w-full py-[10px] items-center min-h-[506px] tablet:min-h-[506px] mobile:min-h-[auto]">
+      <div className="flex flex-col w-full py-[10px] items-center min-h-[297px] tablet:min-h-[297px] mobile:min-h-[auto]">
         <div className="flex flex-col w-[299px]">
           <div className="flex self-center h-[33px] items-center">
             <div className="text-[14px] text-[#3090D5] font-normal">
@@ -167,7 +167,10 @@ const DirectoryEntry = () => {
                     )} */}
           {showContactButton && (
             <div className="flex flex-col items-center mt-10">
-              <Link href="/kontakt" className="text-[14px] text-[#3090D5] font-normal underline cursor-pointer">
+              <Link
+                href="/kontakt"
+                className="text-[14px] text-[#3090D5] font-normal underline cursor-pointer"
+              >
                 Kontaktirajte nas
               </Link>
             </div>
@@ -248,7 +251,8 @@ const DirectoryEntry = () => {
         <div className="flex flex-col desktop:flex-row mt-[40px] desktop:w-[1090px] tablet:w-[650px] w-[333px] desktop:justify-between">
           {/* Left Section */}
           <div className="flex flex-col tablet:w-[650px] desktop:w-[717px]">
-            <div className="flex w-full mobile:flex-col tablet:flex-row desktop:flex-row gap-4 tablet:gap-[30px] desktop:gap-[37px]">
+            {/* <div className="flex w-full mobile:flex-col tablet:flex-row desktop:flex-row gap-4 tablet:gap-[30px] desktop:gap-[37px]"> */}
+            <div className="flex w-full mobile:flex-col tablet:hidden desktop:flex-row gap-4 tablet:gap-[30px] desktop:gap-[37px]">
               <div className="mobile:hidden block">
                 <PricingCard
                   type="basic"
@@ -285,21 +289,51 @@ const DirectoryEntry = () => {
           </div>
 
           {/* Right Section */}
-          <div className="flex flex-col tablet:w-[650px] w-[333px] desktop:mt-0 tablet:mt-6 mobile:mt-[28px]">
+          <div className="flex flex-col tablet:w-[650px] w-[333px] desktop:mt-0 tablet:mt-6 mobile:mt-[28px] tablet:hidden">
             <PricingCard
               type="standard"
               title="ŠE DODATNE"
               price="UGODNOSTI"
               items={containerArray3}
-            //   footerText={"Kontaktirajte nas"}
-                showContactButton
-
+              //   footerText={"Kontaktirajte nas"}
+              showContactButton
             />
-
             {/* How to proceed - Mobile & Tablet */}
             {/* <div className="desktop:hidden tablet:flex mobile:flex">
               <HowToProceed isMobile={true} />
-            </div> */}
+              </div> */}
+          </div>
+          
+          {/* Tablet View */}
+          <div className="flex justify-between tablet:w-[650px] desktop:w-[717px] mobile:hidden desktop:hidden">
+            <div className="flex flex-col justify-between w-full gap-4 tablet:gap-[30px] desktop:gap-[37px]">
+              <PricingCard
+                type="basic"
+                title="SAMO VPIS"
+                price="BREZPLAČNO"
+                items={containerArray1}
+                showFreeRegistration={true}
+              />
+              <PricingCard
+                type="standard"
+                title="ŠE DODATNE"
+                price="UGODNOSTI"
+                items={containerArray3}
+                //   footerText={"Kontaktirajte nas"}
+                showContactButton
+              />
+            </div>
+            <div className="w-full">
+            <PricingCard
+              type="premium"
+              title="NAROČNINA"
+              price="od 10€ / m naprej"
+              priceNote="+ DDV"
+              items={containerArray2}
+              extraItem={extraObj}
+              borderColor={"red"}
+            />
+            </div>
           </div>
         </div>
 

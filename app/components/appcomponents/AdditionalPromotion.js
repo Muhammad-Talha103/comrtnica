@@ -19,7 +19,7 @@ const AdditionalPromotion = ({ mbZero = false }) => {
             </div>
 
             {/*text for desktop*/}
-            <div className="text-[24px] text-[#3C3E41] w-full text-center self-center font-variation-customOpt24 font-bold mt-[12px] mobile:mt-[15px] flex">
+            <div className="text-[24px] text-[#3C3E41] w-full text-center self-center font-variation-customOpt24 font-bold mt-[12px] mobile:mt-[15px] flex justify-center">
               Brezplačna darila za vaše stranke
             </div>
 
@@ -38,8 +38,7 @@ const AdditionalPromotion = ({ mbZero = false }) => {
                   border: "0.5px solid #6D778E66",
                 }}
               >
-                <Link
-                  href={"/c-faq"}
+                <div
                   className={`w-[250px] h-[53px] shrink-0 rounded-full text-[#3C3E41] justify-center items-center self-center shadow-custom-light-dark flex font-semibold text-[20px]`}
                   style={{
                     background:
@@ -48,7 +47,7 @@ const AdditionalPromotion = ({ mbZero = false }) => {
                   }}
                 >
                   Spominska (Skrbnik)
-                </Link>
+                </div>
               </div>
             </div>
             <div className="flex flex-col justify-center items-center gap-1">
@@ -60,8 +59,7 @@ const AdditionalPromotion = ({ mbZero = false }) => {
                   border: "0.5px solid #6D778E66",
                 }}
               >
-                <Link
-                  href={"/c-faq"}
+                <div
                   className={`w-[250px] h-[53px] shrink-0 rounded-full text-[#3C3E41] justify-center items-center self-center shadow-custom-light-dark flex font-semibold text-[20px]`}
                   style={{
                     background:
@@ -70,7 +68,7 @@ const AdditionalPromotion = ({ mbZero = false }) => {
                   }}
                 >
                   Digitalne kartice
-                </Link>
+                </div>
               </div>
             </div>
             <div className="flex flex-col justify-center items-center gap-1">
@@ -82,8 +80,7 @@ const AdditionalPromotion = ({ mbZero = false }) => {
                   border: "0.5px solid #6D778E66",
                 }}
               >
-                <Link
-                  href={"/c-faq"}
+                <div
                   className={`w-[250px] h-[53px] shrink-0 rounded-full text-[#3C3E41] justify-center items-center self-center shadow-custom-light-dark flex font-semibold text-[20px]`}
                   style={{
                     background:
@@ -92,12 +89,12 @@ const AdditionalPromotion = ({ mbZero = false }) => {
                   }}
                 >
                   Objava osmrtnic
-                </Link>
+                </div>
               </div>
             </div>
           </div>
           <Link
-            href={"/podjetja"}
+            href={"/vodic"}
             className="self-center flex"
           >
             <div className="w-[150px] h-[48px] rounded-lg text-[#1E2125] justify-center items-center flex mt-16 shadow-custom-light-dark bg-[#BCD7F4] text-[16px] font-variation-customOpt16">
