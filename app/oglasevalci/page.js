@@ -225,32 +225,45 @@ export default function Oglasevalci() {
           <div className="flex flex-col items-center pt-[200px] w-full px-4 max-w-[720px] mx-auto">
             <Image src="/faq_page_icon.png" alt="FAQ" width={79} height={79} />
             <h1 className="text-[40px] font-light mt-4 text-center mobile:text-[26px]">
-              Priložnost
+              Priložnost za prve oglaševalce
             </h1>
-            <h2 className="text-[22px] mobile:hidden block mt-2 font-bold text-center">
-              Dodatne ugodnosti
+
+            <h2 className="text-[22px] font-[600] block  mt-2 font-bold text-center">
+              Številne ugodnosti
             </h2>
 
-            <h2 className="text-[22px] mobile:block hidden mobile:font-[20px] mt-2 font-bold text-center">
-              za prve oglaševalce
-            </h2>
+            <p className="font-light text-[16px] mt-[50px]">
+              <p>Šele začenjamo, zato ponujamo nekatere posebne ugodnosti, ki jih kasneje ne bo več.</p>
+              <p className="mt-[12px]">Standardni popusti za oglaševalce, ki so del redne ponudbe: </p>
+
+              <ul className="list-disc list-inside text-[16px] mt-4 space-y-0 px-3">
+                <li >25% popust za drugo in vsako naslednjo <span className="ml-5">občino</span></li>
+                <li>
+                  <span className="">50% popust za oglaševanje na drugi in </span>
+                  <span className="ml-5">tretji strani v isti občini (izmed treh:</span>
+                  <br />
+                  <span className="ml-5"> osmrtnice, pogrebi, cvetličarne). </span>
+                  <span className="block ml-5">Pomeni oglaševanje na treh straneh za ceno dveh.</span>
+                </li>
+              </ul>
+            </p>
 
             <section className="mt-10 text-[16px] space-y-6 leading-[1.6] mobile:w-[354px] w-[720px]">
               <div className="w-full bg-[#083545] relative h-12 flex items-center text-[#D4D4D4] text-[18px] pl-2">
-                <h3 className="font-medium mb-1">
-                  Dodatne ugodnosti za prve naročnike
+                <h3 className="font-medium mb-1 leading-[20px]">
+                  Dodatne ugodnosti za prve pridružene oglaševalce?
                 </h3>
               </div>
 
               <div>
                 <p className="font-light text-[16px]">
                   Naše prve oglaševalske partnerje, ki sklenejo letno pogodbo{" "}
-                  <span className="font-bold underline">do 12. novembra,</span>{" "}
+                  <span className="font-bold underline text-[#EB1D1D]">do 12. novembra,</span>{" "}
                   čaka še nekaj dodatnih ugodnosti:
                 </p>
 
                 <ul
-                  className="list-disc list-inside text-[16px] mt-4 space-y-0 pl-5"
+                  className="list-disc list-inside text-[16px] mt-4 space-y-[12px] pl-5"
                   style={{ listStylePosition: "outside" }}
                 >
                   <li>
@@ -260,26 +273,23 @@ export default function Oglasevalci() {
                       brezplačno še četrto - regionalno (!)
                     </span>{" "}
                     oglaševanje na strani pogrebnih podjetij. <br />
-                    <div className="text-[#6D778E] mt-1">
-                      (primer: letno oglaševanje{" "}
-                      <span className="underline">na vseh štirih straneh</span>{" "}
-                      za manjše občine tako znaša 100+50+50+0=200€; V Ljubljani
-                      bi znašalo oglaševanje{" "}
-                      <span className="underline">na vseh štirih</span> najbolj
-                      obiskanih straneh preračunano 50€ na mesec za vse štiri)
-                    </div>
+                    <span className="">
+                      Pomeni, plačaš dve, dobiš štiri strani za oglaševanje.
+                    </span>
                   </li>
 
                   <li>
                     <span className="text-[#0A85C2] font-bold">
-                      5x5 promocija - Pet občin
+                      Tretja in peta občina sta brezplačni.
                     </span>{" "}
-                    za 5€ na občino mesečno.
-                    <br />
-                    <span className="text-[#6D778E] mt-1">
-                      (oglaševanje v petih manjših občinah na eni izmed strani:
-                      osmrtnice, pogrebi, cvetličarne).
+                    <span>
+                      Za oglaševanje v dveh občinah, je ena dodatna
                     </span>
+                    <br />
+                    <span className="">
+                      občina brezplačno, za oglaševanje v treh občinah prejmete dve občini brezplačno.
+                    </span>
+
                   </li>
 
                   <li>
@@ -288,12 +298,12 @@ export default function Oglasevalci() {
                   </li>
 
                   <li>
-                    Za tiste, ki oglašujejo v treh ali več občinah - posebna
-                    promocija oglaševalca na našem FB (
-                    <span className="text-[#0A85C2] font-bold">
-                      partner tedna
-                    </span>{" "}
-                    s predstavitvijo).
+                    <span className="text-[#0A85C2] font-bold">Skupna FB promocija - partner tedna</span>
+                    <span> (predstavitev na našem FB) za večje oglaševalce </span>
+
+                    <p className="text-[#6D778E]">
+                      (in od januarja naprej tudi manjšim, ki bodo promovirali koristi portala osmrtnica.com)
+                    </p>
                   </li>
                 </ul>
 
@@ -305,62 +315,60 @@ export default function Oglasevalci() {
                 </p>
 
                 <ul
-                  className="list-disc list-inside text-[16px] mt-4 space-y-0 pl-5"
+                  className="list-disc list-inside text-[16px] mt-4 space-y-[12px] pl-5"
                   style={{ listStylePosition: "outside" }}
                 >
                   <li>
                     <span className="text-[#0A85C2] font-bold">
-                      12x12 - prvih 12 oglaševalcev
+                      Garantirana nespremenjena cena
                     </span>{" "}
-                    prejme vsak po 12 Skrbnikov za spominske strani prednikov,
-                    ki jih lahko podari svojim klientom naprej{" "}
-                    <span className="text-[#6D778E] mt-1">
-                      (doslej so bile spominske vezane na aktualne osmrtnice,
-                      odslej bodo omogočale tudi zapisovanje in hranjenje
-                      spominov najdražjih, ki so odšli pred leti, desetletji).
-                      To novost bomo omogočili 12.12. in strani bo mogoče
-                      aktivirati do 1.2., sicer zapadejo). Podarjeni skrbniki
-                      bodo mesečni, če pa na našem FB komentirate, jim bomo ob
-                      aktivaciji dodali še dva dodatna meseca - kar je dovolj
-                      časa, da družine spomine skupaj uredijo. Ta promocija je
-                      spet lahko dobrodošla dodatna priložnost, da svojim
-                      klientom pomagate obuditi dragocene spomine preden
-                      zbledijo - ponuja priložnost za povezovanje generacij in
-                      mnogi vam bodo še leta hvaležni.
-                    </span>
-                  </li>
-
-                  <li>
-                    Garantirano nespremenjeno ceno oglaševanja vse do leta 2030
+                    <span className="">
+                      oglaševanja
+                    </span>{" "}
+                    <span className="text-[#0A85C2] font-bold">
+                      vse do leta 2030
+                    </span>{" "}
                     <br />
-                    <span className="text-[#6D778E] mt-1">
-                      (kot velja po uradnem ceniku letos jeseni. Četudi bi v
-                      naslednjih letih spremenili ceno oglaševanja, bo vaša cena
-                      ostala nespremenjena)
+                    <span className="text-[#6D778E]">
+                      (kot velja po uradnem ceniku letos jeseni. Četudi bi v naslednjih letih spremenili ceno oglaševanja, bo vaša cena ostala nespremenjena do leta 2030. Velja za uradno ceno oglaševanja, ne za popuste, ki so vsako leto različni).
+                    </span>
+                    <span>Drugi ima garantirano enako ceno do 2028.</span>
+                  </li>
+
+                  <li>
+                    <span>
+                      Vaš logotip bo imel
+                    </span>
+                    <span className="text-[#0A85C2] font-bold">direktno povezavo do vaše spletne strani </span>
+                    <span className="">
+                      ali Facebook profila. Promocija velja izključno za naše Facebook sledilce.
                     </span>
                   </li>
 
-                  <li>
-                    Oglaševan logotip ima direktno povezavo do vaših strani
-                  </li>
-
-                  <li>
-                    Pri podaljšanju v naslednjem letu prejme naročnik brezplačno
-                    letno oglaševanje še na dodatni izmed treh lokalnih strani.
-                    Drugi oglaševalec v občini pa enako polletno oglaševanje
-                  </li>
                 </ul>
 
-                <p className="mt-6 mb-6">Splača se biti med prvimi.</p>
+                <p className="mt-10 mb-3">Splača se biti med prvimi.</p>
                 <p className="text-[#6D778E] font-light mt-1 text-[14px] mb-10">
                   Op. vse promocije veljajo samo v primeru letne naročnine.
-                  Popusti se ne seštevajo, obvelja višji popust. Osnovni paketi
-                  so vnešeni v cenik, kjer je možno tudi naročilo, v primeru
-                  obsežnejšega oglaševanja pa nas kontaktirajte, da pripravimo
-                  posebno ponudbo.
                 </p>
               </div>
             </section>
+
+            <div className=" pb-[60px]  text-[#3C3E41] ">
+              <p className="mt-6 mb-4 text-[16px] text-[#0A85C2] font-bold">Kontaktirajte nas za izdelavo ponudbe. </p>
+              <p className="text-[16px]">
+                Pošljite nam svoje podatke z navedbo občine oz občin, za katere se zanimate in strani, kjer naj bi oglaševali ter čas (mesečno oz letno) in poslali vam bomo ponudbo s povezavo za plačilo po spletu oz predračun za plačilo na TRR.
+              </p>
+              <p className="text-[#6D778E] text-[14px] mt-4">Op. strani, kjer je mogoče oglaševanje so naslednje: </p>
+
+              <ul className="flex flex-row gap-2 mt-4 text-[#0A85C2]">
+                <li className="underline underline-offset-2"><Link href={'/'}>Osmrtnice</Link></li>
+                <li><span>*</span> <Link href={'/pogrebi'} className="underline underline-offset-2">Pogrebi</Link> </li>
+                <li><span>*</span> <Link href={'/cenik'} className="underline underline-offset-2">Cvetličarne</Link> </li>
+                <li><span>*</span> <Link href={'/pogrebna-p'} className="underline underline-offset-2">Pogrebna podjetja</Link> </li>
+              </ul>
+            </div>
+
 
             <Link
               href={"/podjetja"}
@@ -378,7 +386,7 @@ export default function Oglasevalci() {
           </div>
 
           {/* set for mobile */}
-          <div className="w-full hidden mobile:flex px-7 mb-10 mt-3 justify-between items-center">
+          {/* <div className="w-full hidden mobile:flex px-7 mb-10 mt-3 justify-between items-center">
             <Link
               className="text-[17px] text-[#0A85C2] underline"
               href={"/kontakt"}
@@ -392,7 +400,7 @@ export default function Oglasevalci() {
                 width={140}
                 height={35}
               />
-            </Link>
+            </Link> */}
             {/* <Link
               href={"/cenik"}
               className="w-[140px] h-[35px] flex items-center justify-center rounded-[2px] text-[14px] text-[#FFFFFF]"
@@ -404,7 +412,7 @@ export default function Oglasevalci() {
             >
               Cenik / Naročilo
             </Link> */}
-          </div>
+          {/* </div> */}
           <FooterForFaq3 />
         </div>
       </>
