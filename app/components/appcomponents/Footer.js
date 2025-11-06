@@ -853,7 +853,7 @@ export function FooterForFaq4() {
         </div>
         <div className="inline-flex gap-[30px] mobile:gap-[16px]">
           <Link href="/kontakt" className="text-[#A7C6E3] underline w-[65px] text-[14px]">Pišite nam</Link>
-          <Link href="https://www.facebook.com/osmrtnicacom/" className="" target="_blank">
+          <Link href="https://www.facebook.com/osmrtnicacom/" className="" target="_blank" rel="noopener noreferrer">
             {/* <Link href="https://www.facebook.com/people/Osmrtnicacom/61581688912510/" className="" target="_blank"> */}
             <Image src={"/promo_footer_facebook_white.png"} width={18} height={18} alt="Facebook Icon" />
           </Link>
