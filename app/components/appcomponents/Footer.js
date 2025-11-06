@@ -158,7 +158,7 @@ export default function Footer() {
             className="
       mobile:w-[360px]  tablet:w-[680px] desktop:w-[1200px]    
        desktop:pl-[62px] desktop:pr-[40.19px]
-       mobile:h-[560px] tablet:h-[500px] desktop:h-[480px]
+       mobile:h-[610px] tablet:h-[560px] desktop:h-[540px]
        "
           >
             <footer
@@ -216,7 +216,7 @@ export default function Footer() {
                       </h>
                     </div>
                   </div>
-                  <div className="ml-[-15px] desktop:mt-[30px] mobile:mt-[15px]">
+                  <div className="ml-[-15px] desktop:mt-[30px] mobile:mt-[15px] mobile:hidden">
                     <a href="mailto:info@osmrtnica.com">
                       <Image
                         src={'/emailco.svg'}
@@ -431,22 +431,34 @@ export default function Footer() {
               </div>
             </footer>
             <div className="flex tablet:hidden desktop:hidden justify-center mt-[23px]">
-              <div className="flex flex-col  w-[311px] self-center ">
-                <div className="flex justify-center items-center h-[38px]   ">
-                  <a
-                    href="https://www.facebook.com/osmrtnicacom/"
-                    className="flex items-center text-gray-600  hover:text-blue-500 transition duration-200 "
-                    target="_blank"
-                  >
-                    <Image
-                      src={mobFb}
-                      alt="Facebook Icon"
-                      className=" h-12 w-12  mt-2"
-                    />
-                    <h className="font-variation-customOpt14 ml-[5px] text-[14px]">
-                      Facebook
-                    </h>
-                  </a>
+              <div className="flex flex-col  w-[611px] self-center ">
+                <div className="flex items-center">
+                  <div className="hidden mobile:flex mr-3">
+                    <a href="mailto:info@osmrtnica.com">
+                      <Image
+                        src={'/emailco.svg'}
+                        alt="Facebook Icon"
+                        width={175}
+                        height={42}
+                      />
+                    </a>
+                  </div>
+                  <div className="flex justify-center items-center h-[38px]   ">
+                    <a
+                      href="https://www.facebook.com/osmrtnicacom/"
+                      className="flex items-center text-gray-600  hover:text-blue-500 transition duration-200 "
+                      target="_blank"
+                    >
+                      <Image
+                        src={mobFb}
+                        alt="Facebook Icon"
+                        className=" h-12 w-12  mt-2"
+                      />
+                      <h className="font-variation-customOpt14 ml-[5px] text-[14px]">
+                        Facebook
+                      </h>
+                    </a>
+                  </div>
                 </div>
                 <div className="hidden flex-col mt-[23px] px-[6.5px] ">
                   <div className="flex justify-between items-center ">
