@@ -6,9 +6,9 @@ export default function PricingCard(props) {
   const isClickable = props.paymentEnabled && props.onPayment;
   
   const handleClick = () => {
-    if (isClickable) {
-      props.onPayment();
-    }
+    // if (isClickable) {
+    //   props.onPayment();
+    // }
   };
 
   return (
