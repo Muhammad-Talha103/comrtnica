@@ -5,7 +5,7 @@ const RegisterComp = () => {
   return (
     <div className="relative max-w-[1920px] bg-[#eef2f5] py-[65px] desktop:py-[105px] tablet:py-[75px] w-full overflow-hidden flex mx-auto justify-center items-center">
       {/*Main contianer*/}
-      <div className="flex w-[1088px] h-[312px]  tablet:w-[619px] tablet:h-[521px] mobile:h-[747px] mobile:w-[297px] flex-col">
+      <div className="flex w-[1086px] h-[312px]  tablet:w-[619px] tablet:h-[521px] mobile:h-[747px] mobile:w-[297px] flex-col">
         {/*Main contianer*/}
         <div className="flex w-[1014.25px] tablet:w-[619px] mobile:w-[295px] mx-auto mobile:flex-col tablet:flex-col">
           {/*Main contianer for tablet*/}

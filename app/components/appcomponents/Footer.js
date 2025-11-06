@@ -125,7 +125,7 @@ export default function Footer() {
               Pišite nam
             </Link>
             <Link
-              href="https://www.facebook.com/osmrtnicaportal"
+              href="https://www.facebook.com/osmrtnicacom/"
               target="_blank"
               className=""
             >
@@ -217,7 +217,7 @@ export default function Footer() {
                     </div>
                   </div>
                   <a
-                    href="https://www.facebook.com/osmrtnicaportal"
+                    href="https://www.facebook.com/osmrtnicacom/"
                     className="hidden tablet:flex desktop:flex items-center text-gray-600 mobile:mt-[75px] tablet:mt-[73px] desktop:mt-[50px] hover:text-blue-500 transition duration-200 "
                     target="_blank"
                   >
@@ -304,20 +304,52 @@ export default function Footer() {
                     <ul className="mt-[24px] ">
                       <li className="flex mobile:h-[16px] tablet:h-[24px] desktop:h-[24px] items-center mt-4">
                         <a
+                          href="/resitve-za-cvetlicarne"
+                          className="text-[#414141] font-normal  hover:text-blue-500 transition duration-200 mobile:text-[14px] tablet:text-[16px] desktop:text-[16px]"
+                        >
+                          Za cvetličarne
+                        </a>
+                      </li>
+                      <li className="flex mobile:h-[16px] tablet:h-[24px] desktop:h-[24px] items-center mt-4">
+                        <a
+                          href="/cenik"
+                          className="text-[#414141] font-normal  hover:text-blue-500 transition duration-200 mobile:text-[14px] tablet:text-[16px] desktop:text-[16px]"
+                        >
+                          Oglaševalci
+                        </a>
+                      </li>
+                      <li className="flex mobile:h-[16px] tablet:h-[24px] desktop:h-[24px] items-center mt-4">
+                        <a
+                          href="/cenik"
+                          className="text-[#414141] font-normal  hover:text-blue-500 transition duration-200 mobile:text-[14px] tablet:text-[16px] desktop:text-[16px]"
+                        >
+                          Cenik
+                        </a>
+                      </li>
+                      <li className="flex mobile:h-[16px] tablet:h-[24px] desktop:h-[24px] items-center mt-4">
+                        <a
+                          href="/qr-kode"
+                          className="text-[#414141] font-normal  hover:text-blue-500 transition duration-200 mobile:text-[14px] tablet:text-[16px] desktop:text-[16px]"
+                        >
+                          QR kode
+                        </a>
+                      </li>
+                      <li className="flex mobile:h-[16px] tablet:h-[24px] desktop:h-[24px] items-center mt-4">
+                        <a
                           href="/kontakt"
                           className="text-[#414141] font-normal  hover:text-blue-500 transition duration-200 mobile:text-[14px] tablet:text-[16px] desktop:text-[16px]"
                         >
                           Kontakt
                         </a>
                       </li>
-                      <li className="tablet:flex desktop:flex mobile:h-[16px] tablet:h-[24px] desktop:h-[24px] items-center mt-4">
+                      {/* <li className="tablet:flex desktop:flex mobile:h-[16px] tablet:h-[24px] desktop:h-[24px] items-center mt-4">
                         <a
                           href="/kontakt"
                           className="text-[#414141] font-normal   hover:text-blue-500 transition duration-200 mobile:text-[14px] tablet:text-[16px] desktop:text-[16px]"
                         >
                           Partnerji
                         </a>
-                      </li>
+                      </li> */}
                       <li className="tablet:flex desktop:hidden mobile:flex mobile:h-[16px] tablet:h-[24px] desktop:h-[24px] items-center mt-4">
                         <a
                           href="/splosni-pogoji"
@@ -392,7 +424,7 @@ export default function Footer() {
               <div className="flex flex-col  w-[311px] self-center ">
                 <div className="flex justify-center items-center h-[38px]   ">
                   <a
-                    href="https://www.facebook.com/osmrtnicaportal"
+                    href="https://www.facebook.com/osmrtnicacom/"
                     className="flex items-center text-gray-600  hover:text-blue-500 transition duration-200 "
                     target="_blank"
                   >
@@ -579,7 +611,7 @@ export function FooterForFaq() {
             Pišite nam
           </Link>
           <Link
-            href="https://www.facebook.com/osmrtnicaportal"
+            href="https://www.facebook.com/osmrtnicacom/"
             className=""
             target="_blank"
           >
@@ -636,12 +668,12 @@ export function FooterForFaq2() {
             Cvetličarne
           </Link>
           <div className="w-[5px] h-[5px] bg-[#DAEBF1] rounded-full underline"></div>
-          <Link href="/vodic" className="text-[#DAEBF1]  underline">
-            Vodič
+          <Link href="/cenik" className="text-[#DAEBF1]  underline">
+            Cenik
           </Link>
           <div className="w-[5px] h-[5px] bg-[#DAEBF1] rounded-full underline"></div>
-          <Link href="/oglasevalci" className="text-[#DAEBF1]  underline">
-            Oglaševalci
+          <Link href="/c-priloznost" className="text-[#DAEBF1]  underline">
+            Promocija
           </Link>
         </div>
       </div>
@@ -668,7 +700,7 @@ export function FooterForFaq2() {
             Pišite nam
           </Link>
           <Link
-            href="https://www.facebook.com/osmrtnicaportal"
+            href="https://www.facebook.com/osmrtnicacom/"
             className=""
             target="_blank"
           >
@@ -748,7 +780,7 @@ export function FooterForFaq3() {
             Pišite nam
           </Link>
           <Link
-            href="https://www.facebook.com/osmrtnicaportal"
+            href="https://www.facebook.com/osmrtnicacom/"
             className=""
             target="_blank"
           >
@@ -787,7 +819,7 @@ export function FooterForFaq4() {
           <Link href="/resitve-za-cvetlicarne" className="text-[#DAEBF1] mobile:hidden underline">Stran za cvetličarne</Link>
           <Link href="/resitve-za-cvetlicarne" className="text-[#DAEBF1] mobile:block hidden underline">Cvetličarne</Link>
           <div className="w-[5px] h-[5px] bg-[#DAEBF1] rounded-full underline"></div>
-          <Link href="/p-faq" className="text-[#DAEBF1]  underline">Pogrebna podjetja</Link>
+          <Link href="/oglasevalci" className="text-[#DAEBF1]  underline">Oglaševalci</Link>
         </div>
       </div>
       <div className="flex justify-between items-center tablet:w-[695px] mobile:w-[320px] desktop:w-[1190px] mx-auto bg-[#D4D4D4] h-[1px] mt-[18px] mobile:hidden"></div>
@@ -866,7 +898,7 @@ export function TermsAndCond() {
             Pišite nam
           </Link>
           <Link
-            href="https://www.facebook.com/osmrtnicaportal"
+            href="https://www.facebook.com/osmrtnicacom/"
             target="_blank"
             className=""
           >

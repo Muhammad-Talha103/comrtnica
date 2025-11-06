@@ -248,7 +248,7 @@ const DirectoryEntry = () => {
           </div>
         </div>
 
-        <div className="flex flex-col desktop:flex-row mt-[40px] desktop:w-[1090px] tablet:w-[650px] w-[333px] desktop:justify-between">
+        <div className="flex flex-col desktop:flex-row mt-[40px] desktop:w-[1088px] tablet:w-[650px] w-[333px] desktop:justify-between">
           {/* Left Section */}
           <div className="flex flex-col tablet:w-[650px] desktop:w-[717px]">
             {/* <div className="flex w-full mobile:flex-col tablet:flex-row desktop:flex-row gap-4 tablet:gap-[30px] desktop:gap-[37px]"> */}
@@ -271,7 +271,8 @@ const DirectoryEntry = () => {
                   showFreeRegistration={true}
                 />
               </div>
-              <PricingCard
+              <div className="">
+                <PricingCard
                 type="premium"
                 title="NAROČNINA"
                 price="od 10€ / m naprej"
@@ -280,6 +281,8 @@ const DirectoryEntry = () => {
                 extraItem={extraObj}
                 borderColor={"red"}
               />
+              </div>
+              
             </div>
 
             {/* How to proceed - Desktop only */}

@@ -94,7 +94,7 @@ export function FAQHeader() {
               VODIČ
             </Link>
             <Link
-              href={"/c-info"}
+              href={"/cenik"}
               className="flex text-[18px] leading-[24px] font-[400] text-[#1E2125]"
             >
               CENIK

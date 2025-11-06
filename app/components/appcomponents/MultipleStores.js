@@ -6,7 +6,7 @@ const MultipleStores = () => {
     <div className="w-full bg-[#E0E9F3]">
       <div className="relative max-w-[1920px]  h-[560px] tablet:h-[680px] mobile:h-[707px] w-full overflow-hidden flex mx-auto justify-center items-center">
         {/*Main Container for desktop*/}
-        <div className="w-[1164px] h-[295px] hidden desktop:flex justify-between">
+        <div className="w-[1088px] h-[295px] hidden desktop:flex justify-between">
           {/*header container*/}
           <div className="flex w-[496px] flex-col">
             <h1 className="text-[40px] text-[#3C3E41] font-variation-customOpt40 mt-[39px]">

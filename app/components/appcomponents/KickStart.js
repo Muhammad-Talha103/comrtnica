@@ -10,8 +10,8 @@ export default function KickStart({ cUrl = "", showButton = "false" }) {
         width={94}
         height={94}
       />
-      <div className="flex gap-[25px] flex-col justify-between">
-        <div className="flex flex-col w-full mt-[10px]">
+      <div className="flex gap-[25px] flex-col justify-between items-center">
+        <div className="flex flex-col w-full desktop:w-[169px] mt-[10px]">
           <div className="text-[40px] mobile:text-[28px] text-[#3C3E41] font-light text-center leading-[48px]">
             {/* Kaj zdaj, kako naj začnem? */}
             Sodelujmo

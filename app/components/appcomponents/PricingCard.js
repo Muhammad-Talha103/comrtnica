@@ -6,9 +6,9 @@ export default function PricingCard(props) {
   const isClickable = props.paymentEnabled && props.onPayment;
   
   const handleClick = () => {
-    if (isClickable) {
-      props.onPayment();
-    }
+    // if (isClickable) {
+    //   props.onPayment();
+    // }
   };
 
   return (
@@ -74,7 +74,7 @@ export default function PricingCard(props) {
 
         {props.icon &&
           (props.icon == "/fb-icon.png" ? (
-            <Link href="https://www.facebook.com/osmrtnicaportal">
+            <Link href="https://www.facebook.com/osmrtnicacom/">
               <img
                 src={props.icon}
                 className="mobile:w-[36px] absolute right-3 top-5 mobile:h-[36px]"

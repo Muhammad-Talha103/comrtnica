@@ -252,6 +252,26 @@ const Subscription = () => {
                   Spominska stran
                 </h2>
               </div>
+
+              <div className="w-full space-y-[12px] ">
+                <div className="w-[719px] text-[18px] leading-[24px]">
+                  <h4 className="text-[#3C3E41]">POZOR:</h4>
+                  <p className="text-[#414141]">Če želite postati Skrbnik spominske strani, nas kontaktirajte in bomo to uredili <span className="text-[#530CC6]">BREZPLAČNO</span> </p>
+                  <p className="w-[586px] mt-1 text-[14px] leading-[24px] text-[#6D778E]">(dokler še niso vnešene lokalne cvetličarne v seznam; kasneje vam bodo to uredile cvetličarne).</p>
+                </div>
+
+
+                <div className="w-[771px] text-[14px] leading-[24px] text-[#6D778E] space-y-[12px]">
+                  <p >Op. Za postati Skrbnik je nujno potrebno priložiti Smrtovnico, ki vam jo izda pogrebno podjetje (izdajo jo takoj).
+                    Smrtovnica je nujno potrebna, da se preprečijo zlorabe, objavljanje lažnih smrti, spam in nasploh, ker skrbnik
+                    je lahko samo en izmed najbližnjih pokojni/emu). </p>
+                  <p>Op. Podarili bomo mesečnega skrbnika; kasneje ga lahko podaljšate ali pa gre v avtomatsko prekinitev (vse
+                    dodane vsebine ostanejo na spominski strani, ni pa mogoče dodajati več novih).
+                  </p>
+                </div>
+              </div>
+              <div className="border-[#0A85C2] border-t-[2px] w-[200px] my-6" ></div>
+
               <p className="text-[#414141] flex gap-1 w-full desktop:w-[780px] mobile:text-[14px] text-[16px]">
                 <p className="text-[14px]"></p>{" "}
                 <p className="mt-1 mobile:hidden block">
@@ -339,15 +359,16 @@ const Subscription = () => {
                 title="Na Facebooku - sledite nam"
                 icon="/fb-icon.png"
               />
-              <div className="w-full flex justify-end mt-[60px]">
-                <Link href={"/kontakt"}>
+              <div className="w-full flex justify-start mt-[60px]">
+                <p className="w-[456px] text-[16px] leading-[24px]">Imate vprašanja, predloge, komentarje? <span className="text-[#0A85C2] underline underline-offset-2"> Pišite nam. </span></p>
+                {/* <Link href={"/kontakt"}>
                   <Image
                     src={"/Kontaktirajte_nas_btn.png"}
                     alt="Arrow Right"
                     width={250}
                     height={60}
                   />
-                </Link>
+                </Link> */}
                 {/* <div
                   className="flex w-[250px] h-[60px] rounded-full bg-transparent"
                   style={{
@@ -416,37 +437,37 @@ const Subscription = () => {
                         <div className="w-full flex flex-col gap-4">
                           <div className="relative">
                             <PricingCard
-                              number={2}
+                              // number={2}
                               label="Izdelava lastne strani"
                               title="Brezplačno"
                             />
-                            <div className="absolute top-1 right-3 text-[#414141] text-[20px]">
+                            {/* <div className="absolute top-1 right-3 text-[#414141] text-[20px]">
                               *
-                            </div>
+                            </div> */}
                           </div>
                           <div className="relative">
                             <PricingCard
-                              number={2}
+                              // number={2}
                               label="možnost vpisovanja lokalnih osmrtnic"
                               mobilelabel="MOŽNOST VPISOVANJA OSMRTNIC"
                               title="Brezplačno"
                             />
-                            <div className="absolute top-1 right-3 text-[#414141] text-[20px]">
+                            {/* <div className="absolute top-1 right-3 text-[#414141] text-[20px]">
                               *
-                            </div>
+                            </div> */}
                           </div>
                           <div className="relative">
                             <PricingCard
-                              number={2}
+                              // number={2}
                               label="darila za vaše stranke; skrbnik, digitalne kartice, qr kode"
                               mobilelabel="ZA STRANKE: SKRBNIK, KARTICE, QR KODE"
                               title="Brezplačno"
                             />
-                            <div className="absolute top-1 right-3 text-[#414141] text-[20px]">
+                            {/* <div className="absolute top-1 right-3 text-[#414141] text-[20px]">
                               *
-                            </div>
+                            </div> */}
                           </div>
-                          <div className="relative">
+                          {/* <div className="relative">
                             <PricingCard
                               number={3}
                               label="vpis na strani naši partnerji"
@@ -455,10 +476,20 @@ const Subscription = () => {
                             <div className="absolute top-1 right-3 text-[#414141] text-[20px]">
                               *
                             </div>
-                          </div>
+                          </div> */}
                         </div>
                         <div>
-                          <div className="text-[#414141] flex gap-1 w-full mt-4 desktop:w-[744px] text-[14px] desktop:text-[16px]">
+                          <div className="text-[#414141] w-full mt-6 desktop:w-[744px] text-[14px] desktop:text-[16px]">
+                            <p className=" mt-4 ">
+                              Poleg naštetega so občasno mogoče še druge promocije. Preverite trenutne.
+                            </p>
+                            <p className="w-[739px] text-[16px] leading-[24px] mt-14 ">
+                              Imate več cvetličarn, dostavljate v več občin, razmišljate o širši kampanji? Kontaktirajte nas, da poiščemo možnosti oz. da vam pripravimo ponudbo po meri.
+                            </p>
+                            <p className="w-[456px] text-[16px] leading-[24px] mt-3">Imate vprašanja, predloge, komentarje? <span className="text-[#0A85C2] underline underline-offset-2"> Pišite nam. </span></p>
+                          </div>
+
+                          {/* <div className="text-[#414141] flex gap-1 w-full mt-4 desktop:w-[744px] text-[14px] desktop:text-[16px]">
                             <p className="text-[14px]">2</p>{" "}
                             <p className="mobile:hidden block mt-1">
                               Poleg naštetega so občasno mogoče še druge
@@ -469,8 +500,8 @@ const Subscription = () => {
                               Občasno v teku še druge promocije. Kontaktirajte
                               nas in preverite trenutne.{" "}
                             </p>
-                          </div>
-                          <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] text-[14px] desktop:text-[16px]">
+                          </div> */}
+                          {/* <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] text-[14px] desktop:text-[16px]">
                             <p className="text-[14px]">3</p>{" "}
                             <p className="mobile:hidden block mt-1">
                               Vsako podjetje, ki oglašuje vsaj eno leto bo za
@@ -501,7 +532,7 @@ const Subscription = () => {
                               ali pa nas kontaktirajte v primeru vprašanj ali
                               izdelave ponudbe po meri za več občin.{" "}
                             </p>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </>
@@ -510,7 +541,7 @@ const Subscription = () => {
                   innerTab={true}
                 />
               </div>
-              <div
+              {/* <div
                 className="w-full flex justify-end mt-[60px] desktop:w-[794px]"
                 style={{ marginTop: "60px" }}
               >
@@ -522,7 +553,7 @@ const Subscription = () => {
                     height={60}
                   />
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         );
@@ -586,33 +617,33 @@ const Subscription = () => {
                               preklica.
                             </p>
                           </div>
-                          <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] text-[14px] desktop:text-[16px]">
+                          {/* <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] text-[14px] desktop:text-[16px]">
                             <p className="mt-1">
                               Spodaj nevedene ugodnosti veljajo za letno
                               oglaševanje
                             </p>
-                          </div>
+                          </div> */}
                         </div>
                         <div className="relative">
                           <PricingCard
                             label="Vsaka naslednja občina"
                             title="25% popust"
                           />
-                          <div className="absolute top-1 right-3 text-[#414141] text-[20px]">
+                          <div className="absolute top-1 right-3 text-[#EB1D1D] text-[20px]">
                             *
                           </div>
                         </div>
                         <div className="relative">
                           <PricingCard
-                            number={3}
+                            // number={3}
                             label="druga in tretja stran v isti občini"
                             title="50% popust"
                           />
-                          <div className="absolute top-1 right-3 text-[#414141] text-[20px]">
+                          <div className="absolute top-1 right-3 text-[#414141] text-[#EB1D1D] text-[20px]">
                             *
                           </div>
                         </div>
-                        <div className="relative">
+                        {/* <div className="relative">
                           <PricingCard
                             number={4}
                             label="prvi oglaševalec v občini"
@@ -631,8 +662,19 @@ const Subscription = () => {
                           <div className="absolute top-1 right-3 text-[#414141] text-[20px]">
                             *
                           </div>
+                        </div> */}
+
+                        <div className="w-full text-[16px] text-[#414141] leading-[24px]">
+                          <p >
+                            <span className=" text-[#414141] text-[20px] text-[#EB1D1D] " >*</span> V primeru letne naročnine
+                          </p>
+                          <p className="w-[716px] mt-[6rem]" >
+                            Poleg naštetih so občasne še druge promocije. Kontaktirajte nas, da vam pripravimo ponudbo po meri.
+                          </p>
+                          <p className="w-[456px] text-[16px] leading-[24px]">Imate vprašanja, predloge, komentarje? <span className="text-[#0A85C2] underline underline-offset-2"> Pišite nam. </span></p>
                         </div>
-                        <div className="space-y-1">
+
+                        {/* <div className="space-y-1">
                           <div className="text-[#414141] flex gap-1 w-full desktop:w-[794px] text-[14px] desktop:text-[16px]">
                             <p className="text-[14px]">3</p>{" "}
                             <p className="mobile:hidden block mt-1">
@@ -668,7 +710,7 @@ const Subscription = () => {
                               vedno prikazano na posebni strani Naši partnerji.
                             </p>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                     </>
                   }
@@ -676,18 +718,18 @@ const Subscription = () => {
                   innerTab={true}
                 />
               </div>
-              <div
+              {/* <div
                 className="w-full flex justify-end mt-[60px] desktop:w-[794px]"
                 style={{ marginTop: "60px" }}
-              >
-                <Link href="/kontakt">
+              > */}
+                {/* <Link href="/kontakt">
                   <Image
                     src={"/Kontaktirajte_nas_btn.png"}
                     alt="Kontaktirajte nas"
                     width={250}
                     height={60}
                   />
-                </Link>
+                </Link> */}
                 {/* <div
                   className="flex w-[250px] h-[60px] rounded-full bg-transparent"
                   style={{
@@ -707,7 +749,7 @@ const Subscription = () => {
                     Kontaktirajte nas
                   </Link>
                 </div> */}
-              </div>
+              {/* </div> */}
             </div>
           </div>
         );
@@ -728,7 +770,8 @@ const Subscription = () => {
                   informacije vas čakajo v vašem uporabniškem računu.
                 </p>
               </p>
-              <div
+              <p className="text-[16px] text-[#0A85C2] leading-[24px] underline underlin-offset-2 mt-7" >Kontaktirajte nas</p>
+              {/* <div
                 className="w-full flex justify-end mt-[60px] desktop:w-[744px]"
                 style={{ marginTop: "60px" }}
               >
@@ -739,7 +782,7 @@ const Subscription = () => {
                     width={250}
                     height={60}
                   />
-                </Link>
+                </Link> */}
                 {/* <div
                   className="flex w-[250px] h-[60px] rounded-full bg-transparent"
                   style={{
@@ -759,7 +802,7 @@ const Subscription = () => {
                     Kontaktirajte nas
                   </Link>
                 </div> */}
-              </div>
+              {/* </div> */}
             </div>
           </div>
         );
