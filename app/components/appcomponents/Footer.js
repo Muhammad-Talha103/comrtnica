@@ -158,7 +158,7 @@ export default function Footer() {
             className="
       mobile:w-[360px]  tablet:w-[680px] desktop:w-[1200px]    
        desktop:pl-[62px] desktop:pr-[40.19px]
-       mobile:h-[610px] tablet:h-[560px] desktop:h-[540px]
+       mobile:h-[540px] tablet:h-[480px] desktop:h-[540px]
        "
           >
             <footer
@@ -216,19 +216,17 @@ export default function Footer() {
                       </h>
                     </div>
                   </div>
-                  <div className="ml-[-15px] desktop:mt-[30px] mobile:mt-[15px] mobile:hidden">
-                    <a href="mailto:info@osmrtnica.com">
-                      <Image
-                        src={'/emailco.svg'}
-                        alt="Facebook Icon"
-                        width={215}
-                        height={72}
-                      />
-                    </a>
+                  <div className="ml-[-15px] desktop:mt-[30px] mobile:mt-[15px] mobile:hidden tablet:hidden">
+                    <Image
+                      src={'/emailco.svg'}
+                      alt="Facebook Icon"
+                      width={233}
+                      height={72}
+                    />
                   </div>
                   <a
                     href="https://www.facebook.com/osmrtnicacom/"
-                    className="hidden tablet:flex desktop:flex items-center text-gray-600 mobile:mt-[15px] tablet:mt-[10px] desktop:mt-[10px] hover:text-blue-500 transition duration-200 "
+                    className="hidden tablet:flex desktop:flex items-center text-gray-600 mobile:mt-[15px] tablet:mt-[10px] desktop:mt-[10px] hover:text-blue-500 transition duration-200 tablet:mt-[75px] tablet:ml-[35px]"
                     target="_blank"
                   >
                     <div className="rounded-lg shadow-custom-light-dark bg-gradient-to-br from-gray-300 to-white p-[6px] transition duration-300 hover:scale-105 active:scale-95">
@@ -360,7 +358,7 @@ export default function Footer() {
                           Partnerji
                         </a>
                       </li> */}
-                      <li className="tablet:flex desktop:hidden mobile:flex mobile:h-[16px] tablet:h-[24px] desktop:h-[24px] items-center mt-4">
+                      <li className="tablet:hidden desktop:hidden mobile:hidden mobile:h-[16px] tablet:h-[24px] desktop:h-[24px] items-center mt-4">
                         <a
                           href="/splosni-pogoji"
                           className="text-[#414141] font-normal   hover:text-blue-500 transition duration-200 mobile:text-[14px] tablet:text-[16px] desktop:text-[16px]"
@@ -368,7 +366,7 @@ export default function Footer() {
                           Splošni pogoji
                         </a>
                       </li>
-                      <li className="tablet:flex desktop:hidden mobile:flex mobile:h-[16px] tablet:h-[24px] desktop:h-[24px] items-center mt-4">
+                      <li className="tablet:hidden desktop:hidden mobile:hidden mobile:h-[16px] tablet:h-[24px] desktop:h-[24px] items-center mt-4">
                         <a
                           href="/politika-zasebnosti"
                           className="text-[#414141] font-normal   hover:text-blue-500 transition duration-200 mobile:text-[14px] tablet:text-[16px] desktop:text-[16px]"
@@ -376,7 +374,7 @@ export default function Footer() {
                           Politika zasebnosti
                         </a>
                       </li>
-                      <li className="tablet:flex desktop:hidden mobile:flex mobile:h-[16px] tablet:h-[24px] desktop:h-[24px] items-center mt-4">
+                      <li className="tablet:hidden desktop:hidden mobile:hidden mobile:h-[16px] tablet:h-[24px] desktop:h-[24px] items-center mt-4">
                         <a
                           href="/piskotki"
                           className="text-[#414141] font-normal   hover:text-blue-500 transition duration-200 mobile:text-[14px] tablet:text-[16px] desktop:text-[16px]"
@@ -430,20 +428,19 @@ export default function Footer() {
                 </div>
               </div>
             </footer>
-            <div className="flex tablet:hidden desktop:hidden justify-center mt-[23px]">
-              <div className="flex flex-col  w-[611px] self-center ">
-                <div className="flex items-center">
-                  <div className="hidden mobile:flex mr-3">
-                    <a href="mailto:info@osmrtnica.com">
-                      <Image
-                        src={'/emailco.svg'}
-                        alt="Facebook Icon"
-                        width={175}
-                        height={42}
-                      />
-                    </a>
-                  </div>
-                  <div className="flex justify-center items-center h-[38px]   ">
+            <div className="flex tablet:hidden desktop:hidden justify-center mt-[23px] mobile:mt-[35px]">
+              <div className="flex flex-col  w-[611px] mobile:w-full items-center ">
+                <div className="flex items-center mobile:w-full mobile:justify-between mobile:px-[26px]">
+                  {/* <div className="hidden mobile:flex mr-3 mobile:w-[50%]">
+                    <Image
+                      src={'/emailco-mobile.svg'}
+                      alt="Facebook Icon"
+                      width={122}
+                      height={32}
+                      className="w-[auto] h-[auto]"
+                    />
+                  </div> */}
+                  <div className="flex justify-center items-center h-[38px] mobile:w-[100%]">
                     <a
                       href="https://www.facebook.com/osmrtnicacom/"
                       className="flex items-center text-gray-600  hover:text-blue-500 transition duration-200 "
@@ -460,12 +457,12 @@ export default function Footer() {
                     </a>
                   </div>
                 </div>
-                <div className="hidden flex-col mt-[23px] px-[6.5px] ">
-                  <div className="flex justify-between items-center ">
+                <div className="desktop:hidden tablet:hidden flex-col mt-[13px] px-[6.5px] mobile:w-full mobile:px-[26px]">
+                  <div className="flex justify-between items-center mobile:w-full">
                     <div className="flex items-center h-6 ">
                       <a
                         href="/splosni-pogoji"
-                        className=" text-[#414141] font-normal   hover:text-blue-500 transition duration-200 text-[13px]"
+                        className=" text-[#3C3E41] font-normal   hover:text-blue-500 transition duration-200 text-[12px]"
                       >
                         Splošni pogoji
                       </a>
@@ -473,25 +470,15 @@ export default function Footer() {
                     <div className="flex items-center h-6 ">
                       <a
                         href="/politika-zasebnosti"
-                        className="text-[#414141] font-normal  hover:text-blue-500 transition duration-200 text-[13px]"
+                        className="text-[#3C3E41] font-normal  hover:text-blue-500 transition duration-200 text-[12px]"
                       >
                         Politika zasebnosti
                       </a>
                     </div>
-                  </div>
-                  <div className="flex justify-between items-center mt-2">
-                    {/* <div className="flex items-center h-6 ">
-                      <a
-                        href="#"
-                        className="text-[#414141] font-normal  hover:text-blue-500 transition duration-200 text-[13px]"
-                      >
-                        Politika varovanja osebnih podatkov
-                      </a>
-                    </div> */}
                     <div className="flex items-center h-6 ">
                       <a
                         href="/piskotki"
-                        className="text-[#414141] font-normal  hover:text-blue-500 transition duration-200 text-[13px]"
+                        className="text-[#3C3E41] font-normal  hover:text-blue-500 transition duration-200 text-[12px]"
                       >
                         Piškotki
                       </a>
@@ -499,7 +486,7 @@ export default function Footer() {
                   </div>
                 </div>
 
-                <div className="flex justify-center mt-4 h-6 items-center font-variation-customOpt12 text-[12px] text-[#414141]">
+                <div className="flex justify-center mt-4 h-6 items-center font-variation-customOpt12 text-[12px] text-[#414141] mobile:mt-2">
                   © osmrtnica.com, 2025. Vse pravice pridržane.
                 </div>
               </div>
@@ -527,14 +514,6 @@ export default function Footer() {
                         Politika zasebnosti
                       </a>
                     </div>
-                    {/* <div className="flex items-center h-6 ">
-                    <a
-                      href="#"
-                      className="text-[#414141] font-normal  hover:text-blue-500 transition duration-200 text-[13px]"
-                    >
-                      Politika varovanja osebnih podatkov
-                    </a>
-                  </div> */}
                     <div className="flex items-center h-6 ">
                       <a
                         href="/piskotki"
@@ -557,7 +536,35 @@ export default function Footer() {
                 <BottomSlider data={[{}, {}, {}]} />
               </div>
             </div>
-            <div className="hidden tablet:flex desktop:hidden w-[680px] pr-[1px] mt-[50px]">
+
+            <div className="w-[594px] flex  space-x-[18px] flex-row justify-start hidden tablet:flex tablet:px-[0px] tablet:mx-auto tablet:mt-[40px]">
+              <div className="flex items-center h-6 ">
+                <a
+                  href="/splosni-pogoji"
+                  className=" text-[#414141] font-normal   hover:text-blue-500 transition duration-200 text-[13px]"
+                >
+                  Splošni pogoji
+                </a>
+              </div>
+              <div className="flex items-center h-6 ">
+                <a
+                  href="/politika-zasebnosti"
+                  className="text-[#414141] font-normal  hover:text-blue-500 transition duration-200 text-[13px]"
+                >
+                  Politika zasebnosti
+                </a>
+              </div>
+              <div className="flex items-center h-6 ">
+                <a
+                  href="/piskotki"
+                  className="text-[#414141] font-normal  hover:text-blue-500 transition duration-200 text-[13px]"
+                >
+                  Piškotki
+                </a>
+              </div>
+            </div>
+
+            <div className="hidden tablet:flex desktop:hidden w-[680px] pr-[1px] mt-[50px] tablet:mt-[10px]">
               <div className="absolute z-50 mobile:ml-[40px] tablet:ml-[42px] w-[280px] h-4 desktop:w-[427px] desktop:h-6 desktop:mt-[48px] mt-[84px] flex  items-center ">
                 <div className="flex desktop:flex font-variation-customOpt12 text-[12px] text-[#414141] ">
                   © osmrtnica.com, 2025. Vse pravice pridržane.

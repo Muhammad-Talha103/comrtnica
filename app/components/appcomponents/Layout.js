@@ -136,7 +136,7 @@ const Layout = ({
       {from == "23" ? (
         <>
           <CommonHeader currentPage={currentPage} />
-          <div className="flex relative mobile:h-[196px] tablet:h-[220px] desktop:h-[300px] mt-[73px] tablet:mt-[81px] desktop:mt-[91px] w-full mx-auto">
+          <div className="flex relative mobile:h-[196px] tablet:h-[220px] desktop:h-[300px] mt-[73px] tablet:mt-[80px] mobile:mt-[67px] desktop:mt-[91px] w-full mx-auto mobile:z-50 mobile:relative">
             <img
               className="object-cover h-full w-full"
               src="/payment-hero.jpg"
