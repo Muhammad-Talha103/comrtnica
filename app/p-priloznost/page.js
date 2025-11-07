@@ -15,7 +15,7 @@ export default function Faq1() {
       <>
         {/* Allow crawlability but no indexing. */}
         <Head>
-          <title>P-Priložnost | Osrmtnica</title>
+          <title>P-Priložnost | Osmrtnica</title>
           <meta name="robots" content="noindex, follow" />
         </Head>
 
@@ -126,7 +126,7 @@ export default function Faq1() {
     return (
       <>
         <Head>
-          <title>P-Priložnost | Osrmtnica</title>
+          <title>P-Priložnost | Osmrtnica</title>
           <meta name="robots" content="noindex, follow" />
         </Head>
 
