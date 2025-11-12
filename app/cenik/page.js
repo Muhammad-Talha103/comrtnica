@@ -579,7 +579,7 @@ const Subscription = () => {
               </div>
                   <div className="mt-6">
                     <Link href="/podjetja">
-                    <button className="bg-[#2B5F99] hover:bg-[#234a7a] text-white px-8 py-3 rounded-full text-[16px] font-medium transition-colors">
+                    <button className="w-[250px] h-[53px] shrink-0 rounded-full text-white justify-center items-center self-center shadow-custom-light-dark bg-gradient-to-b from-[#0D94E8] to-[#1860A3] flex" style={{fontSize: '18px', boxShadow: 'rgba(0, 0, 0, 0.22) 0px 4px 5px 0px, rgba(0, 0, 0, 0.45) 0px 2px 3px 0px'}}>
                       Registracija za cvetličarne
                     </button>
                     </Link>
