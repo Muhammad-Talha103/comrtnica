@@ -14,6 +14,7 @@ const SponsorComponent = ({ text = "", region, city }) => {
   const pathname = usePathname();
   const [sponsors, setSponsosrs] = useState([]);
 
+
   let sponsorPage = '';
   if (pathname.includes('osmrtnice')) {
     sponsorPage = 'osmrtnice';
@@ -58,7 +59,8 @@ const SponsorComponent = ({ text = "", region, city }) => {
                       className="max-w-[100%]"
                     />
                   </div>
-                )
+                );
+
               })}
             </div>
           ) : (
