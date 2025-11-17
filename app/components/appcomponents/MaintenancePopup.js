@@ -4,7 +4,7 @@ import Image from "next/image";
 import imgClose from "@/public/ico_close1.png";
 import imgBell from "@/public/ico_notification_bell1.png";
 
-const MaintenancePopup = ({ message, onClose }) => {
+const MaintenancePopup = ({ message }) => {
   return (
     <div
       className="fixed top-[40px] left-0 right-0 z-[60] flex justify-end px-4"

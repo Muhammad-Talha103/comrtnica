@@ -319,7 +319,6 @@ export default function HomeContent(props) {
       {showMaintenancePopup && (
         <MaintenancePopup
           message={maintenanceMessage}
-          onClose={() => setShowMaintenancePopup(false)}
         />
       )}
       <div className="absolute z-40 w-full mx-auto mt-[132px] tablet:mt-[122px] mobile:mt-[112px] overflow-auto">
