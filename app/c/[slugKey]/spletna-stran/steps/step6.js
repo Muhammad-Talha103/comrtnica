@@ -140,12 +140,19 @@ export default function Step6({
       //   shops: response.shops,
       // });
       fetchShops();
-      toast.success(TOAST_MESSAGE.SENT_FOR_APPROVAL);
+      if (send === 'send') {
+        toast.success(TOAST_MESSAGE.SENT_FOR_APPROVAL);
+      } else {
+        toast.success(TOAST_MESSAGE.DATA_SAVED);
+      }
       // router.push(`/floristdetails/${companyId}`);
 
       console.log(response);
+      return true;
     } catch (error) {
       console.log(error);
+      toast.error(error?.response?.data?.error || TOAST_MESSAGE.SOMETHING_WENT_WRONG);
+      return false;
     }
   };
 
@@ -210,7 +217,7 @@ export default function Step6({
     }
   }, [companyId])
 
-  function handleSave() {
+  async function handleSave() {
     handleBCSubmit();
     handleShopSubmit();
   }
@@ -587,6 +594,7 @@ function SliderBlock({
             name="hours"
             value={shop.hours}
             onChange={handleChange}
+            maxLength={23}
           />
         </div>
         <div className="space-y-[8px] ms-2">
@@ -600,6 +608,7 @@ function SliderBlock({
             name="secondaryHours"
             value={shop.secondaryHours}
             onChange={handleChange}
+            maxLength={23}
           />
         </div>
         <div className="space-y-[8px] ms-2">
@@ -613,6 +622,7 @@ function SliderBlock({
             name="tertiaryHours"
             value={shop.tertiaryHours}
             onChange={handleChange}
+            maxLength={23}
           />
         </div>
         <div className="space-y-[8px] ms-2">
@@ -626,6 +636,7 @@ function SliderBlock({
             name="quaternaryHours"
             value={shop.quaternaryHours}
             onChange={handleChange}
+            maxLength={25}
           />
         </div>
       </div>
