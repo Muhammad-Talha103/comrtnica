@@ -594,6 +594,7 @@ function SliderBlock({
             name="hours"
             value={shop.hours}
             onChange={handleChange}
+            maxLength={24}
           />
         </div>
         <div className="space-y-[8px] ms-2">
@@ -607,6 +608,7 @@ function SliderBlock({
             name="secondaryHours"
             value={shop.secondaryHours}
             onChange={handleChange}
+            maxLength={24}
           />
         </div>
         <div className="space-y-[8px] ms-2">
@@ -620,6 +622,7 @@ function SliderBlock({
             name="tertiaryHours"
             value={shop.tertiaryHours}
             onChange={handleChange}
+            maxLength={24}
           />
         </div>
         <div className="space-y-[8px] ms-2">
@@ -633,6 +636,7 @@ function SliderBlock({
             name="quaternaryHours"
             value={shop.quaternaryHours}
             onChange={handleChange}
+            maxLength={25}
           />
         </div>
       </div>
