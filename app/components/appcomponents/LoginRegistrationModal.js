@@ -35,18 +35,6 @@ const LoginRegistrationModal = ({
     }
   }, [isOpen, initialTab]);
 
-  useEffect(() => {
-    if (isAuthenticated && user && isOpen && onLoginSuccess) {
-      // User just logged in, execute pending action after a short delay to ensure session is updated
-      setTimeout(() => {
-        if (onLoginSuccess) {
-          onLoginSuccess();
-        }
-        onClose();
-      }, 500);
-    }
-  }, [isAuthenticated, user, isOpen]);
-
   const handleLogin = async () => {
     if (!loginEmail || !loginPassword) {
       toast.error("Potrebna sta e-naslov in geslo");

@@ -168,11 +168,12 @@ const Modals = ({
             pendingAction.name
           );
           break;
-        case "photo":
+        case "photo": {
           // Make sure the file is still available (it should be in state)
           const photoFile = pendingAction.uploadedPicture || uploadedPicture;
           await addPhotoInternal(photoFile, pendingAction.name);
           break;
+        }
       }
       setPendingAction(null);
       setPendingActionType(null);
