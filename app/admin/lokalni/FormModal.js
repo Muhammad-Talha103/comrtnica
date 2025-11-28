@@ -110,10 +110,6 @@ export default function FormModal({
   const [selectedCities, setSelectedCities] = useState([
     { value: "", inputValue: "" },
   ]);
-  useEffect(() => {
-    console.log("CITIES: ", selectedCities);
-    console.log("REGIONS: ", selectedRegions);
-  }, [selectedCities, selectedRegions]);
   const handleFileChange = (e) => {
     const file = e.target.files?.[0];
     if (file) setSelectedFile(file);
@@ -259,8 +255,25 @@ export default function FormModal({
     await partnerService.createPartner(formData);
     toast.success("Partner created");
 
-    //   resetStates();
-    //   refetch();
+    setIsLoading(false);
+    resetStates();
+    refetch();
+  };
+
+  const resetStates = () => {
+    setSelectedCategory("");
+    setCompanyName("");
+    setNotes("");
+    setWebsiteLink("");
+    setMainImageDescription("");
+    setSecondaryImageDescription("");
+    setIsLocalNews(false);
+    setMainImageLink("");
+    setSecondaryImageLink("");
+    setSelectedFile(null);
+    setSelectedFile2(null);
+    setSelectedRegions([{ value: "", inputValue: "" }]);
+    setSelectedCities([{ value: "", inputValue: "" }]);
   };
 
   useEffect(() => {

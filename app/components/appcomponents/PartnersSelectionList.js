@@ -53,15 +53,16 @@ const DefaultItemsList = ({ defaultItems, selected, onSelect }) => {
   return (
     <div className="flex flex-row gap-[14px]">
       {defaultItems.map((item, index) => {
-        const isActive = selected === item.link;
+        const isActive = selected === item.name;
         return (
           <button
             key={index}
-            onClick={() => onSelect(item.link)}
+            onClick={() => onSelect(item.name)}
             className={`rounded-[3px] py-1 px-3 uppercase text-base leading-6 h-12 flex items-center border-2
-              ${isActive
-                ? "bg-[#1860A3] border-[#1860A3] text-white"
-                : "bg-[#F9EBD466] border-[#1860A3] text-[#1860A3]"
+              ${
+                isActive
+                  ? "bg-[#1860A3] border-[#1860A3] text-white"
+                  : "bg-[#F9EBD466] border-[#1860A3] text-[#1860A3]"
               }`}
           >
             {item.name}
@@ -85,14 +86,19 @@ const ItemsList = ({ items, defaultItems, selected, onSelect, title }) => {
         value={selected}
         onChange={(e) => onSelect(e.target.value)}
         className={`rounded-[3px] py-1 pl-3 pr-8 uppercase text-base leading-6 h-12 w-60 flex items-center border-2
-          ${isActive
-            ? "bg-[#1860A3] border-[#1860A3] text-white"
-            : "bg-white border-[#1860A3] text-[#1860A3]"
+          ${
+            isActive
+              ? "bg-[#1860A3] border-[#1860A3] text-white"
+              : "bg-white border-[#1860A3] text-[#1860A3]"
           }`}
       >
         <option value="">Izberite..</option>
-        {items.map((item, index) => (
-          <option key={index} value={item.link} className=" overflow-hidden text-ellipsis whitespace-nowrap">
+        {items?.map((item, index) => (
+          <option
+            key={index}
+            value={item.name}
+            className=" overflow-hidden text-ellipsis whitespace-nowrap"
+          >
             {item.name}
           </option>
         ))}

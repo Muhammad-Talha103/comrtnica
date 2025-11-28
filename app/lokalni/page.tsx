@@ -13,12 +13,12 @@ import categoryService from "@/services/category-service";
 
 const LokalniContent = () => {
   const [categories, setCategories] = useState([]);
+  const [activeSection, setActiveSection] = useState("region");
 
   useEffect(() => {
     const fetchCategories = async () => {
       const response = await categoryService.getAllCategories();
       setCategories(response);
-      console.log("categories", categories);
     };
     fetchCategories();
   }, []);
@@ -31,8 +31,15 @@ const LokalniContent = () => {
       />
       <div className="flex flex-col mx-auto justify-center items-center w-full">
         <NewsPartnersComponent />
-        <PartnersServicesSection />
-        <RegionalPartnersSection />
+        <PartnersServicesSection
+          categories={categories}
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
+        />
+        <RegionalPartnersSection
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
+        />
         <PartnersContactSection />
       </div>
 

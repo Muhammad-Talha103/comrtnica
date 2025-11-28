@@ -28,6 +28,15 @@ const partnerService = {
     }
   },
 
+  getPartnersByCategory: async (category: string) => {
+    try {
+      const response = await axios.get(`/partner/category-partner/${category}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching partners by category", error);
+    }
+  },
+
   deletePartner: async (partnerId: number) => {
     try {
       const response = await axios.delete(`/partner/${partnerId}`);

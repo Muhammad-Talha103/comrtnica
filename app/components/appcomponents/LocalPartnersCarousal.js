@@ -9,7 +9,7 @@ export default function LocalPartnersCarousal({ categories }) {
   return <LocalCarousal categories={categories} />;
 }
 
-const VISIBLE_COUNT = 4;
+const VISIBLE_COUNT = 5;
 
 const LocalCarousal = ({ categories }) => {
   const [index, setIndex] = useState(0);
