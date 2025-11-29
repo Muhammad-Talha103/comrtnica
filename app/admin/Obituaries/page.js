@@ -204,7 +204,8 @@ const Obituaries = () => {
     invoiceImg: obituary.deathReportExists ? "/ico_eye.png" : "",
     invoice: formatDate(obituary.funeralTimestamp),
     funeral: formatTime(obituary.funeralTimestamp),
-    cemetery: obituary.Cemetry?.name || obituary.Cemeteries?.name || "Unknown Cemetery",
+    cemeteryNew: obituary.Cemeteries?.name || "",
+    cemeteryOld: obituary.Cemetry?.name || "",
     Obituary: obituary.User?.company || obituary.User?.name || "Unknown",
     postedby: obituary.User?.city || "Unknown",
     date: formatDate(obituary.createdTimestamp),
@@ -455,7 +456,19 @@ const Obituaries = () => {
 
                 <th className="w-[200px] py-2 text-left border-r">
                   <div className="flex flex-row items-center text-[13px] leading-[16px] font-variation-customOpt12 font-semibold text-[#3C3E41]">
-                    <div className="">CEMETERY</div>
+                    <div className="">CEMETERY (NEW)</div>
+                    <Image
+                      src={"/ico_down_arrow_memory.png"}
+                      alt=""
+                      width={24}
+                      height={24}
+                    />
+                  </div>
+                </th>
+
+                <th className="w-[200px] py-2 text-left border-r">
+                  <div className="flex flex-row items-center text-[13px] leading-[16px] font-variation-customOpt12 font-semibold text-[#3C3E41]">
+                    <div className="">CEMETERY (OLD)</div>
                     <Image
                       src={"/ico_down_arrow_memory.png"}
                       alt=""
@@ -574,9 +587,22 @@ const Obituaries = () => {
                     <span>{data.funeral}</span>
                   </td>
                   <td className="w-[200px] text-left text-[10px]  text-[#3C3E41]  ">
-                    {data.cemetery}
-                    <br />
-                    <span className="text-[12px]">{data.city}</span>
+                    {data?.cemeteryNew || "-"}
+                    {data?.cemeteryNew && (
+                      <>
+                        <br />
+                        <span className="text-[12px]">{data?.city}</span>
+                      </>
+                    )}
+                  </td>
+                  <td className="w-[200px] text-left text-[10px]  text-[#3C3E41]  ">
+                    {data?.cemeteryOld || "-"}
+                    {data?.cemeteryOld && (
+                      <>
+                        <br />
+                        <span className="text-[12px]">{data.city}</span>
+                      </>
+                    )}
                   </td>
                   <td className="w-[255px] text-left text-[10px]  text-[#3C3E41]  ">
                     {data.Obituary}
