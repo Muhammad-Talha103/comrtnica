@@ -72,6 +72,7 @@ const CompaniesWithApprovalReq = () => {
                 <th className="text-center px-4 text-left">City</th>
                 <th className="text-center px-4 text-left">Advertiser</th>
                 <th className="text-center px-4 text-left">C / P / A</th>
+                <th className="text-center px-4 text-left">Website Link</th>
                 <th className="text-center px-4 text-left">Start</th>
                 <th className="text-center px-2 text-left">End</th>
                 <th className="text-center px-2 text-left">Price</th>
@@ -81,13 +82,13 @@ const CompaniesWithApprovalReq = () => {
             <tbody>
               {loading === true ? (
                 <tr>
-                  <td colSpan="10" className="text-center py-8">
+                  <td colSpan="11" className="text-center py-8">
                     <p className="text-[#6D778E]">Loading...</p>
                   </td>
                 </tr>
               ) : sponsors.length === 0 ? (
                 <tr>
-                  <td colSpan="10" className="text-center py-8">
+                  <td colSpan="11" className="text-center py-8">
                     <p className="text-[#6D778E]">No sponsors found</p>
                   </td>
                 </tr>
@@ -104,6 +105,7 @@ const CompaniesWithApprovalReq = () => {
                     </td>
                     <td className="px-4 py-4">{company?.who}</td>
                     <td className="px-4 py-4">{company?.cpa}</td>
+                    <td className="px-4 py-4">{company?.websiteLink}</td>
                     <td className="px-4 py-4">{company?.startDate ? formatDate(company?.startDate) : "N/A"}</td>
                     <td className="px-4 py-4">{company?.endDate ? formatDate(company?.endDate) : "N/A"}</td>
                     <td className="px-4 py-4">{company?.price}</td>
