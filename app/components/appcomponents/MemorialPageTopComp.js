@@ -23,19 +23,34 @@ const MemorialPageTopComp = ({
   const [maxCondolances, setMaxCondolances] = useState(6);
   const [limitedCondolances, setLimitedCondolances] = useState([]);
   const [currentCount, setCurrentCount] = useState(0);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [screenWidth, setScreenWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1024);
   const [showQr, setShowQr] = useState(false);
   const [showMemoryIconTooltip, setShowMemoryIconTooltip] = useState(false);
   const [memoryIconTooltipSide, setMemoryIconTooltipSide] = useState("right");
   const memoryIconButtonRef = useRef(null);
 
   useEffect(() => {
-    const handleResize = () => setScreenWidth(window.innerWidth);
+    // Set initial screen width on mount (client-side only)
+    if (typeof window !== "undefined") {
+      setScreenWidth(window.innerWidth);
+    }
 
-    window.addEventListener("resize", handleResize);
+    const handleResize = () => {
+      if (typeof window !== "undefined") {
+        setScreenWidth(window.innerWidth);
+      }
+    };
+
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", handleResize);
+    }
 
     // Cleanup on unmount
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
   }, []);
 
   const defaultMessage = {

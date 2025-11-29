@@ -51,9 +51,29 @@ const SponsorComponent = ({ text = "", region, city }) => {
           {sponsors && sponsors.length ? (
             <div className="flex justify-center items-center mt-[30px]">
               {sponsors?.map((item) => {
+                // Normalize logo URL - ensure it's a string
+                const logoUrl = item?.logo && typeof item.logo === 'string' 
+                  ? item.logo 
+                  : sponser6.src || sponser6;
+
+                // Normalize website link - trim, add https:// if missing
+                const normalizeLink = (link) => {
+                  if (!link || typeof link !== 'string') return null;
+                  const trimmed = link.trim();
+                  if (!trimmed) return null;
+                  // Check if it already has a protocol
+                  if (/^https?:\/\//i.test(trimmed)) {
+                    return trimmed;
+                  }
+                  // Add https:// prefix if missing
+                  return `https://${trimmed}`;
+                };
+
+                const websiteLink = normalizeLink(item?.websiteLink);
+
                 const logoContent = (
                   <img
-                    src={item?.logo ?? sponser6}
+                    src={logoUrl}
                     alt="sponser2 of the image"
                     className="max-w-[100%]"
                   />
@@ -61,9 +81,9 @@ const SponsorComponent = ({ text = "", region, city }) => {
 
                 return (
                   <div key={item?.id} className="flex w-[180px] h-[80px] mobile:w-[150px]  filter grayscale mx-[10px] items-center justify-center">
-                    {item?.websiteLink ? (
+                    {websiteLink ? (
                       <a
-                        href={item?.websiteLink}
+                        href={websiteLink}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="cursor-pointer"
