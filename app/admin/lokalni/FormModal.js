@@ -197,33 +197,17 @@ export default function FormModal({
   };
 
   const isButtonDisabled = () => {
-    let flag = false;
+    const hasLocation =
+      selectedRegions.some((r) => r.value) ||
+      selectedCities.some((c) => c.value);
 
-    // if (!category) {
-    //     flag = true
-    // }
-
-    if (!selectedCities.length && !selectedRegions.length) {
-      flag = true;
-    }
-
-    if (!companyName) {
-      flag = true;
-    }
-
-    if (!websiteLink) {
-      flag = true;
-    }
-
-    if (!mainImageDescription && !secondaryImageDescription) {
-      flag = true;
-    }
-
-    if (!notes) {
-      flag = true;
-    }
-
-    return flag;
+    return (
+      !hasLocation ||
+      !companyName ||
+      !websiteLink ||
+      (!mainImageDescription && !secondaryImageDescription) ||
+      !notes
+    );
   };
 
   const handlePublish = async () => {

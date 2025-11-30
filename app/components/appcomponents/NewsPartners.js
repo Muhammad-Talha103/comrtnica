@@ -19,8 +19,13 @@ const NewsPartnersComponent = () => {
   }, []);
 
   const fetchNewsPartners = async () => {
-    const response = await partnerService.getLocalNewsPartners();
-    setPartners(response);
+    try {
+      const response = await partnerService.getLocalNewsPartners();
+      setPartners(Array.isArray(response) ? response : []);
+    } catch (error) {
+      console.error("Failed to fetch news partners:", error);
+      setPartners([]);
+    }
   };
   return (
     <div className="w-full max-w-5xl mx-auto text-left my-28 px-4 md:px-2">
