@@ -12,6 +12,30 @@ import PartnersServicesSection from "../components/appcomponents/PartnersService
 import categoryService from "@/services/category-service";
 
 const LokalniContent = () => {
+  const [width, setWidth] = useState<number>(window.innerWidth);
+  const [screen, setScreen] = useState<string | null>(null);
+
+  useEffect(() => {
+    setWidth(window.innerWidth);
+
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (width < 744) {
+      setScreen("mobile");
+    } else if (width <= 1279) {
+      setScreen("tablet");
+    } else {
+      setScreen("desktop");
+    }
+  }, [width]);
+
   const [categories, setCategories] = useState<any[]>([]);
   const [activeSection, setActiveSection] = useState("region");
 

@@ -565,7 +565,8 @@ export default function FormModal({
                   <div key={index} className="mb-2 flex items-center gap-2">
                     <Select
                       options={
-                        selectedRegions[index].value
+                        selectedRegions[index]?.value &&
+                        regionsAndCities[selectedRegions[index]?.value]
                           ? regionsAndCities[selectedRegions[index].value].map(
                               (city) => ({
                                 value: city,
