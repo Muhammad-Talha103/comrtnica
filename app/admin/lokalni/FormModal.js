@@ -311,6 +311,7 @@ export default function FormModal({
       toast.success("Partner updated");
       resetStates();
       refetch();
+      setIsShowModal(false);
     } catch (error) {
       console.error("Failed to update partner:", error);
       toast.error("Failed to update partner");
@@ -331,6 +332,8 @@ export default function FormModal({
     setSecondaryImageLink("");
     setSelectedFile(null);
     setSelectedFile2(null);
+    if (inputFileRef.current) inputFileRef.current.value = "";
+    if (inputFileRef2.current) inputFileRef2.current.value = "";
     setSelectedRegions([{ value: "", inputValue: "" }]);
     setSelectedCities([{ value: "", inputValue: "" }]);
   };

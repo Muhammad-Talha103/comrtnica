@@ -3,6 +3,7 @@
 import React from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import screenSizes from "@/app/lokalni/constant";
+import { robotoFlex } from "@/utils/customFonts";
 
 const PartnersSelectionList = ({ title, defaultItems, items, screen }) => {
   const router = useRouter();
@@ -28,7 +29,12 @@ const PartnersSelectionList = ({ title, defaultItems, items, screen }) => {
   };
 
   return (
-    <div className="flex flex-row gap-[14px] justify-between items-center">
+    <div
+      className="flex flex-row gap-[14px] justify-between items-center"
+      style={{
+        fontFamily: robotoFlex.style.fontFamily,
+      }}
+    >
       <div className="flex flex-row gap-[14px] items-center w-full">
         {screen === screenSizes.MOBILE ? null : (
           <DefaultItemsList
@@ -88,7 +94,7 @@ const ItemsList = ({ items, defaultItems, selected, onSelect, title }) => {
         id={title}
         value={selected}
         onChange={(e) => onSelect(e.target.value)}
-        className={`rounded-[3px] py-1 pl-3 pr-8 uppercase text-base leading-6 h-12 w-60 flex items-center border-2
+        className={`rounded-[3px] py-1 pl-3 pr-8 capitalize text-base leading-6 h-12 w-60 flex items-center border-2
           ${
             isActive
               ? "bg-[#1860A3] border-[#1860A3] text-white"
