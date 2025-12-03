@@ -9,10 +9,21 @@ const PartnerAdItem = ({ partner }) => {
   const [isHoveredImage, setIsHoveredImage] = useState(false);
   const [isHoveredContent, setIsHoveredContent] = useState(false);
 
-  // Fix website URL (always ensure http/https exists)
-  const website = partner?.website?.startsWith("http")
-    ? partner.website
-    : `https://${partner.website}` || "#";
+  // --- Safe Website URL Fix ---
+  const rawWebsite = partner?.website?.trim();
+
+  const website =
+    rawWebsite && rawWebsite.length > 3 && /^https?:\/\//i.test(rawWebsite)
+      ? rawWebsite
+      : rawWebsite && rawWebsite.length > 3
+      ? `https://${rawWebsite.replace(/^(http|https):?\/?/i, "")}`
+      : "#"; // fallback
+
+  // Explanation:
+  // - If website is empty → "#"
+  // - If website is "http" or "http:" → "#"
+  // - If website starts with http/https properly → keep it
+  // - Otherwise prepend https://
 
   return (
     <div className="relative flex flex-col w-80 h-[423px]">

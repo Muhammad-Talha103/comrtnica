@@ -14,9 +14,11 @@ const PartnersContactSection = () => {
           Kontaktirajte nas! V teku so številne promocije!
         </p>
       </div>
-      <button className="bg-gradient-to-b from-[#0D94E8] to-[#1860A3] shadow-md shadow-lg border border-[#0A85C2] w-[250px] h-[52px] rounded-[50px] text-white text-lg">
-        Pišite nam
-      </button>
+      <a href="mailto:info@osmrtnica.com">
+        <button className="bg-gradient-to-b from-[#0D94E8] to-[#1860A3] shadow-md shadow-lg border border-[#0A85C2] w-[250px] h-[52px] rounded-[50px] text-white text-lg">
+          Pišite nam
+        </button>
+      </a>
     </div>
   );
 };
