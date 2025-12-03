@@ -564,20 +564,31 @@ export default function FormModal({
                 {selectedCities.map((city, index) => (
                   <div key={index} className="mb-2 flex items-center gap-2">
                     <Select
-                      options={
-                        selectedRegions[index]?.value &&
-                        regionsAndCities[selectedRegions[index]?.value]
-                          ? regionsAndCities[selectedRegions[index].value].map(
-                              (city) => ({
-                                value: city,
-                                label: city,
-                              })
-                            )
-                          : ALL_CITIES.map((city) => ({
+                      options={(selectedRegions[index]?.value &&
+                      regionsAndCities[selectedRegions[index]?.value]
+                        ? regionsAndCities[selectedRegions[index].value].map(
+                            (city) => ({
                               value: city,
                               label: city,
-                            }))
-                      }
+                            })
+                          )
+                        : ALL_CITIES.map((city) => ({
+                            value: city,
+                            label: city,
+                          }))
+                      ).sort((a, b) => {
+                        const input = city.inputValue?.toLowerCase() || "";
+                        const labelA = a.label.toLowerCase();
+                        const labelB = b.label.toLowerCase();
+
+                        const startsWithA = labelA.startsWith(input);
+                        const startsWithB = labelB.startsWith(input);
+
+                        if (startsWithA && !startsWithB) return -1;
+                        if (!startsWithA && startsWithB) return 1;
+
+                        return a.label.localeCompare(b.label, "sl");
+                      })}
                       placeholder="CITY"
                       value={
                         city.value
