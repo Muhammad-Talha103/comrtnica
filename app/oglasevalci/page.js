@@ -210,7 +210,7 @@ export default function Oglasevalci() {
                             href={"/lokalni"}
                             className="underline underline-offset-2"
                           >
-                            okalnih partnerjev
+                            lokalnih partnerjev
                           </Link>{" "}
                           )
                         </span>
@@ -435,7 +435,7 @@ export default function Oglasevalci() {
                             href={"/lokalni"}
                             className="underline underline-offset-2"
                           >
-                            okalnih partnerjev
+                            lokalnih partnerjev
                           </Link>{" "}
                           )
                         </span>
