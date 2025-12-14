@@ -6,12 +6,12 @@ const HomeBackHeader = () => {
     <div className="mobile:pb-[90px] relative max-w-[1280px] overflow-hidden mx-auto desktop:mt-[137.02px] mobile:mt-[115px] tablet:mt-[124px] flex justify-center">
       <img
         src="/samotna_klop.avif"
-        alt="samotna_klop"
+        alt="Pokrajina s klopjo in drevesom - Osmrtnica.com"
         className="mobile:hidden h-[605.27px] mobile:h-[257px] w-[1280px] object-cover"
       />
       <img
         src="/klop_naslovna.avif"
-        alt="Slika"
+        alt="Pokrajina s klopjo - Osmrtnica.com"
         className="mobile:flex hidden h-[257px] w-[1280px] object-cover"
       />
       <div className="h-[170px] smmobile:w-[160px] smmobile:h-[332px] w-[288.58px] left-[25.41px] smmobile:left-[14px] top-2 rounded-lg border border-[#D4D4D4] absolute mobile:flex hidden overflow-hidden shadow-custom-light-dark-banner bg-gradient-to-br from-[#FFFFFF] to-[#FFFFFF10] backdrop-blur-sm">
@@ -121,8 +121,8 @@ const HeaderHeadingText = ({ head, index, id, endPoint }) => {
             {index}
           </p>
         </div>
-        <div className=" flex items-center h-[33px]">
-          <p
+        <h2 className=" flex items-center h-[33px]">
+          <span
             className="flex"
             style={{
               marginTop: "5px",
@@ -134,8 +134,8 @@ const HeaderHeadingText = ({ head, index, id, endPoint }) => {
             }}
           >
             {head}
-          </p>
-        </div>
+          </span>
+        </h2>
       </Link>
     </div>
   );
@@ -161,8 +161,8 @@ const HeaderHeadingTextTablet = ({ head, index, id, endPoint }) => {
             {index}
           </p>
         </div>
-        <div className=" flex items-center h-[23px]">
-          <p
+        <h2 className=" flex items-center h-[23px]">
+          <span
             className="flex"
             style={{
               marginTop: "5px",
@@ -174,8 +174,8 @@ const HeaderHeadingTextTablet = ({ head, index, id, endPoint }) => {
             }}
           >
             {head}
-          </p>
-        </div>
+          </span>
+        </h2>
       </Link>
     </div>
   );
@@ -200,8 +200,8 @@ const HeaderHeadingTextMobile = ({ head, index, id, endPoint }) => {
             {index}
           </p>
         </div>
-        <div className=" flex items-center h-[19px]">
-          <p
+        <h2 className=" flex items-center h-[19px]">
+          <span
             className="flex"
             style={{
               color: "#414141",
@@ -212,8 +212,8 @@ const HeaderHeadingTextMobile = ({ head, index, id, endPoint }) => {
             }}
           >
             {head}
-          </p>
-        </div>
+          </span>
+        </h2>
       </Link>
     </div>
   );

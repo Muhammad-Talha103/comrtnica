@@ -1,111 +1,38 @@
-"use client";
-
-import React, { Suspense, useState, useEffect } from "react";
-import Head from "next/head";
+import React, { Suspense } from "react";
+import type { Metadata } from "next";
 import Layout from "../components/appcomponents/Layout";
-import LocalPartnersBanner from "../components/appcomponents/LocalPartnersBanner";
-import CommonFooter from "../components/appcomponents/CommonFooter";
-import NewsPartnersComponent from "../components/appcomponents/NewsPartners";
-import PartnersContactSection from "../components/appcomponents/PartnersContactSection";
-import RegionalPartnersSection from "../components/appcomponents/RegionalPartnersSection";
-import PartnersServicesSection from "../components/appcomponents/PartnersServicesSection";
-import categoryService from "@/services/category-service";
-import screenSizes from "./constant";
+import LokalniContent from "./LokalniContent";
 
-const LokalniContent = () => {
-  const [width, setWidth] = useState<number>(0);
-  const [screen, setScreen] = useState<string | null>(null);
+export const dynamic = "force-dynamic";
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setWidth(window.innerWidth);
+export async function generateMetadata({ searchParams }: { searchParams?: Promise<{ city?: string | string[]; region?: string | string[] }> }): Promise<Metadata> {
+  const resolvedSearchParams = await searchParams;
+  const city = typeof resolvedSearchParams?.city === 'string' ? resolvedSearchParams.city : Array.isArray(resolvedSearchParams?.city) ? resolvedSearchParams.city[0] : "";
+  const cityText = city ? ` v ${city}` : "";
+  
+  return {
+    title: city ? `Lokalni izvajalci in partnerji v ${city} | Osmrtnica.com` : "Lokalni izvajalci in partnerji | Osmrtnica.com",
+    description: "Lokalni izvajalci in partnerji s slikami storitev ter neposrednimi povezavami do spletnih strani. Kamnoseštvo, svečarstvo, graverstvo, QR kode za nagrobnike, prevozi pokojnih, sedmine, govorniki.",
+    alternates: {
+      canonical: city ? `https://www.osmrtnica.com/lokalni?city=${encodeURIComponent(city)}` : "https://www.osmrtnica.com/lokalni",
+    },
+  };
+}
 
-      const handleResize = () => {
-        setWidth(window.innerWidth);
-      };
-
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }
-  }, []);
-
-  useEffect(() => {
-    // 360 -> 744 -> 1280
-    if (width < 744) {
-      setScreen(screenSizes.MOBILE);
-    } else if (width >= 744 && width <= 1279) {
-      setScreen(screenSizes.TABLET);
-    } else {
-      setScreen(screenSizes.DESKTOP);
-    }
-  }, [width]);
-
-  const [categories, setCategories] = useState<any[]>([]);
-  const [activeSection, setActiveSection] = useState("region");
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      const response = await categoryService.getAllCategories();
-      setCategories(Array.isArray(response) ? response : []);
-    };
-    fetchCategories();
-  }, []);
-
+export default async function ObituaryList({ searchParams }: { searchParams?: Promise<{ city?: string | string[]; region?: string | string[] }> }) {
   return (
-    <>
-      <LocalPartnersBanner
-        screen={screen}
-        label={"LOKALNI PARTNERJI"}
-        categories={categories}
-      />
-      <div className="flex flex-col mx-auto justify-center items-center w-full">
-        <NewsPartnersComponent screen={screen} />
-        <PartnersServicesSection
-          screen={screen}
-          categories={categories}
-          activeSection={activeSection}
-          setActiveSection={setActiveSection}
-        />
-        <RegionalPartnersSection
-          screen={screen}
-          activeSection={activeSection}
-          setActiveSection={setActiveSection}
-        />
-        <PartnersContactSection />
+    <Layout
+      megaMenu={""}
+      isMegaMenuVisible={false}
+      from={"18"}
+      currentPage="lokalni"
+      forFooter={"memorypage"}
+    >
+      <div className="flex flex-col mx-auto bg-[#F9EBD466] w-full">
+        <Suspense fallback={<div>Loading...</div>}>
+          <LokalniContent />
+        </Suspense>
       </div>
-
-      <CommonFooter currentPage="/lokalni" />
-    </>
+    </Layout>
   );
-};
-
-const ObituaryList = () => {
-  return (
-    <>
-      <Head>
-        <title>Pogrebna podjetja | Lokalni</title>
-        <link rel="canonical" href="https://www.osmrtnica.com/lokalni" />
-        <meta
-          name="description"
-          content="Pregled lokalnih pogrebna podjetja."
-        />
-      </Head>
-
-      <Layout
-        megaMenu={""}
-        isMegaMenuVisible={false}
-        from={"18"}
-        currentPage="lokalni"
-        forFooter={"memorypage"}
-      >
-        <div className="flex flex-col mx-auto bg-[#F9EBD466] w-full">
-          <Suspense fallback={<div>Loading...</div>}>
-            <LokalniContent />
-          </Suspense>
-        </div>
-      </Layout>
-    </>
-  );
-};
-
-export default ObituaryList;
+}

@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 import "../qr-kode/qr-kode.css";
 import "../qr-kode/qr-kode-responsive.css";
 import Layout from "../components/appcomponents/Layout";
@@ -14,6 +13,14 @@ import FrequentlyAskedQuestionView, {
 import imgUp from "@/public/ico_up.png";
 import Image from "next/image";
 import CommonFooter from "../components/appcomponents/CommonFooter";
+
+export const metadata = {
+  title: "Žalna stran – Ustvarite spomin na najdražje | Osmrtnica.com",
+  description: "Žalna stran, kjer lahko uporabniki prižgejo svečko, izrazijo sožalje, delijo spomine in slike. Skrbnik lahko nadgradi stran v polno spominsko stran svojega najdražjega. Brezplačno in enostavno.",
+  alternates: {
+    canonical: "https://www.osmrtnica.com/zalna-stran",
+  },
+};
 
 const MemoryPromo = () => {
   const faqData = {
@@ -54,12 +61,6 @@ const MemoryPromo = () => {
   };
   return (
     <>
-      <Head>
-        <title>Žalna stran | Osmrtnica</title>
-        <link rel="canonical" href="https://www.osmrtnica.com/zalna-stran" />
-        <meta name="description" content="Ustvarite žalno stran za spomin na pokojnega. Prostor za sožalje, spomine in prižiganje virtualnih sveč." />
-      </Head>
-
       <Layout from={"18"} forFooter={"memorypage"} currentPage="zalna-stran">
       <div className="flex flex-1 flex-col mx-auto bg-gradient-to-br from-[#ECF0F3] to-[#F2F6F9]">
         <div className="h-[72px] tablet:h-[80px] desktop:h-[92.02px] " />

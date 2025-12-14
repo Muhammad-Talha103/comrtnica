@@ -26,6 +26,7 @@ const SimpleComp = () => {
                 <div className="max-w-[200.42px] w-full h-[244px] bg-[#0A85C2] flex-col items-center hidden tablet:flex rounded-lg">
                   <img
                     src="/image_registration.png"
+                    alt="Ikona registracije"
                     className="w-[64px] h-[64px] mt-4"
                   ></img>
                   <div className="text-[20px] h-[46px] text-[#FFFFFF] font-variation-customOpt20wght400 font-semibold mt-[12px]">
@@ -43,6 +44,7 @@ const SimpleComp = () => {
                 <div className="max-w-[220px] w-full h-[241px] flex-col items-center ml-[40px] mobile:mt-12 hidden tablet:flex">
                   <img
                     src="/image_desktop_pencil.png"
+                    alt="Ikona za objavo osmrtnice"
                     className="w-[70px] h-[70px] mt-2"
                   ></img>
                   <div className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-[13px]">
@@ -58,6 +60,7 @@ const SimpleComp = () => {
                 <div className="max-w-[220px] w-full h-[248px] flex-col items-center ml-[30px] mobile:mt-12 hidden tablet:flex">
                   <img
                     src="/image__mobile_device.png"
+                    alt="Ikona mobilne naprave"
                     className="w-[64px] h-[64px] mt-4"
                   ></img>
                   <div className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-[11px]">
@@ -74,6 +77,7 @@ const SimpleComp = () => {
             <div className="w-[319.42px] h-full mobile:w-[296px] mobile:h-[244px] bg-[#0A85C2] flex-col items-center flex tablet:hidden rounded-lg">
               <img
                 src="/image_registration.png"
+                alt="Ikona registracije"
                 className="w-[64px] h-[64px] mt-4"
               ></img>
               <div className="text-[20px] h-[46px] text-[#FFFFFF] font-variation-customOpt20wght400 font-semibold mt-[12px]">
@@ -91,6 +95,7 @@ const SimpleComp = () => {
             <div className="w-[319.42px] h-[217px] mobile:w-[296px] mobile:h-[217px] flex-col items-center desktop:ml-[40px] mobile:mt-8 flex tablet:hidden">
               <img
                 src="/image_desktop_pencil.png"
+                alt="Ikona za objavo osmrtnice"
                 className="w-[70px] h-[70px] mt-2"
               ></img>
               <div className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-4 mobile:mt-3">
@@ -106,6 +111,7 @@ const SimpleComp = () => {
             <div className="w-[319.42px] h-[217px] mobile:w-[296px] mobile:h-[217px] flex-col items-center desktop:ml-[40px] mobile:mt-8 flex tablet:hidden">
               <img
                 src="/image__mobile_device.png"
+                alt="Ikona mobilne naprave"
                 className="w-[64px] h-[64px] mt-4"
               ></img>
               <div className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-[14px] mobile:mt-3">

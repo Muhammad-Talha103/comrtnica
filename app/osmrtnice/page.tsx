@@ -1,43 +1,29 @@
-"use client";
-
 import React, { Suspense } from "react";
-import Head from "next/head";
-import { useSearchParams } from "next/navigation";
+import type { Metadata } from "next";
 import Layout from "../components/appcomponents/Layout";
-import MemorialPageView from "../components/appcomponents/MemorialPageView";
-import ObituaryListBanner from "../components/appcomponents/ObituaryListBanner";
-import NextFunerals from "../components/appcomponents/NextFunerals";
-import ObituaryListComponent from "../components/appcomponents/ObituaryListComponent";
-import SponsorComponent from "../components/appcomponents/SponsorComponent";
-import CommonFooter from "../components/appcomponents/CommonFooter";
+import ObituaryListContent from "./ObituaryListContent";
 
-const ObituaryListContent = () => {
-  const searchParams = useSearchParams();
-  const region = searchParams.get("region");
-  const city = searchParams.get("city");
+export const dynamic = "force-dynamic";
 
+export async function generateMetadata({ searchParams }: { searchParams?: Promise<{ city?: string | string[]; region?: string | string[] }> }): Promise<Metadata> {
+  const resolvedSearchParams = await searchParams;
+  const city = typeof resolvedSearchParams?.city === 'string' ? resolvedSearchParams.city : Array.isArray(resolvedSearchParams?.city) ? resolvedSearchParams.city[0] : "";
+  const cityText = city ? ` v ${city}` : "";
+  
+  return {
+    title: city ? `Osmrtnice v ${city} – Žalne strani in spominske | Osmrtnica.com` : "Osmrtnice – Žalne strani in spominske | Osmrtnica.com",
+    description: city 
+      ? `Osmrtnice v ${city}. Celovit pregled osmrtnic z datumi pogrebov, pokopališči ter možnostjo iskanja po imenu, kraju ali regiji.`
+      : "Osmrtnice. Celovit pregled osmrtnic z datumi pogrebov, pokopališči ter možnostjo iskanja po imenu, kraju ali regiji.",
+    alternates: {
+      canonical: city ? `https://www.osmrtnica.com/osmrtnice?city=${encodeURIComponent(city)}` : "https://www.osmrtnica.com/osmrtnice",
+    },
+  };
+}
+
+export default async function ObituaryList({ searchParams }: { searchParams?: Promise<{ city?: string | string[]; region?: string | string[] }> }) {
   return (
-    <>
-      <ObituaryListBanner image={"/cvetje.avif"} label={"Osmrtnice"} />
-      <ObituaryListComponent city={city} />
-      <NextFunerals />
-      <MemorialPageView />
-      <SponsorComponent text="To stran so omogočili " region={region} city={city} />
-      <CommonFooter currentPage="/osmrtnice" />
-    </>
-  );
-};
-
-const ObituaryList = () => {
-  return (
-    <>
-      <Head>
-        <title>Osmrtnice | Osmrtnica</title>
-        <link rel="canonical" href="https://www.osmrtnica.com/osmrtnice" />
-        <meta name="description" content="Pregled lokalnih osmrtnic in pogrebov." />
-      </Head>
-
-      <Layout
+    <Layout
       megaMenu={""}
       isMegaMenuVisible={false}
       from={"18"}
@@ -50,8 +36,5 @@ const ObituaryList = () => {
         </Suspense>
       </div>
     </Layout>
-    </>
   );
-};
-
-export default ObituaryList;
+}

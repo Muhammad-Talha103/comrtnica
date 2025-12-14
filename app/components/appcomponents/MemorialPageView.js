@@ -30,7 +30,6 @@ const MemorialPageView = () => {
       setObituaries(sortedObituaries);
     } catch (err) {
       console.error("Error fetching obituary:", err);
-      toast.error(err.message || "Failed to fetch obituary.");
     }
   };
 

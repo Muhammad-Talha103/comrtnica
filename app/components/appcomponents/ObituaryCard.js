@@ -102,7 +102,7 @@ const ObituaryCard = ({
           >
             <Image
               src={imageUrl}
-              alt="Slika"
+              alt={`Fotografija ${data.name} ${data.sirName} - Osmrtnica.com`}
               width={1000}
               height={1000}
               className="mobile:h-[98.53px] tablet:h-[130px]
@@ -158,7 +158,7 @@ const ObituaryCard = ({
               </a>
               <Image
                 src={iconArrowRight}
-                alt="Slika"
+                alt=""
                 width={1000}
                 height={1000}
                 className="mobile:h-[15.24px] mobile:w-[15.24px] tablet:h-[24px] tablet:w-[24px] desktop:h-[24px] desktop:w-[24px]"
@@ -176,7 +176,7 @@ const ObituaryCard = ({
           >
             <Image
               src={religionImages[data?.symbol]}
-              alt="Slika"
+              alt="Verski simbol"
               width={1000}
               height={1000}
               className={`w-[51px] ${data.symbol === "3" ? "h-[50px]" : "h-[55px]"
@@ -193,7 +193,7 @@ const ObituaryCard = ({
           >
             <Image
               src={religionImages[data.symbol]}
-              alt="Slika"
+              alt="Verski simbol"
               width={500}
               height={500}
               className={` w-[37.66px] tablet:h-[65px] tablet:w-[51px] ${data.symbol === "3" ? "h-[40px]" : "h-[48px]"

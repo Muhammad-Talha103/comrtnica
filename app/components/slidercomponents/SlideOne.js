@@ -14,7 +14,7 @@ const SlideOne = () => {
               <img
                 className="h-[761.1px]"
                 src="/mobile-cards/iPad Landscape.png"
-                alt="iPad Landscape"
+                alt="Prikaz žalne strani na tabličnem računalniku - Osmrtnica.com"
               />
             </div>
             <div className="text-container w-1/2 pl-[35px] pt-[179px]">
@@ -50,7 +50,7 @@ const SlideOne = () => {
               <img
                 className="h-[761.1px]"
                 src="/mobile-cards/iPad Landscape.png"
-                alt="iPad Landscape"
+                alt="Prikaz žalne strani na tabličnem računalniku - Osmrtnica.com"
               />
             </div>
             <div className="text-container w-1/2 pl-[35px] pt-[179px]">

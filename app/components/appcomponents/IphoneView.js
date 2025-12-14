@@ -34,7 +34,7 @@ const IphoneView = () => {
     <div className="text-container mt-[98px] z-50">
     <img
       src="/mobile-new.png"
-      alt="iPad Landscape"
+      alt="Mobilni telefon z digitalnimi obvestili o pogrebu"
           width={250} 
       height={500} 
     />
@@ -77,7 +77,7 @@ const IphoneView = () => {
     <div className="text-container mt-[98px] z-50">
                         <img
     src="/mobile-new.png"
-    alt="iPad Landscape"
+    alt="Mobilni telefon z digitalnimi obvestili o pogrebu"
         width={250} 
     height={500} 
     />
@@ -103,7 +103,7 @@ Op. Na naši strani mi teh kartic in mesečnega Skrbnika ne ponujamo. </p>
             <div className="text-container mt-[36px] flex justify-center">
                         <img
                           src="/mobile-new.png"
-                          alt="iPad Landscape"
+                          alt="Mobilni telefon z digitalnimi obvestili o pogrebu"
                               width={250} 
                           height={500} 
                           />
@@ -128,7 +128,7 @@ Op. Na naši strani mi teh kartic in mesečnega Skrbnika ne ponujamo. </p>
             <div className="text-container mt-[36px] flex justify-center">
                         <img
     src="/mobile-new.png"
-    alt="iPad Landscape"
+    alt="Mobilni telefon z digitalnimi obvestili o pogrebu"
         width={250} 
     height={500} 
     />

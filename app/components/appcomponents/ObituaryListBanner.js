@@ -5,7 +5,7 @@ const ObituaryListBanner = ({ image, label }) => {
     <div className="relative w-full overflow-hidden mx-auto desktop:mt-[92.02px] mobile:mt-[68px] tablet:mt-[80px] flex justify-center items-center">
       <img
         src={image}
-        alt="Slika"
+        alt={`Ozadje za sekcijo ${label} - Osmrtnica.com`}
         className="h-[300px] mobile:h-[192px] tablet:h-[220px] w-full object-cover"
       />
       <h1

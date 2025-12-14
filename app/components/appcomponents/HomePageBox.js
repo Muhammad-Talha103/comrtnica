@@ -15,7 +15,7 @@ const HomePageBox = () => {
       <div className="bg-[#F0F4F7] min-w-[1281px] h-auto">
         <div className="flex justify-center">
           <div className="image-container my-[125px] mr-[69px]">
-            <img src="/mobile-cards/mobile-export.png" alt="iPad Landscape" />
+            <img src="/mobile-cards/mobile-export.png" alt="Mobilni telefon z aplikacijo Osmrtnica.com za lokalne informacije" />
           </div>
           <div className="text-container my-[125px] w-[495px]">
             <span className="text-[#3090D5] text-[24px]">Priročno</span>
@@ -58,7 +58,7 @@ const HomePageBox = () => {
       <div className="bg-[#F0F4F7] w-[1280px] h-auto">
         <div className="flex justify-center">
           <div className="image-container my-[125px] mr-[69px]">
-            <img src="/mobile-cards/mobile-export.png" alt="iPad Landscape" />
+            <img src="/mobile-cards/mobile-export.png" alt="Mobilni telefon z aplikacijo Osmrtnica.com za lokalne informacije" />
           </div>
           <div className="text-container my-[125px] w-[495px]">
             <span className="text-[#3090D5] text-[24px]">Priročno</span>
@@ -114,7 +114,7 @@ const HomePageBox = () => {
             </p>
           </div>
           <div className="image-container mt-[38px]">
-            <img src="/mobile-cards/mobile-export.png" alt="iPad Landscape" />
+            <img src="/mobile-cards/mobile-export.png" alt="Mobilni telefon z aplikacijo Osmrtnica.com za lokalne informacije" />
           </div>
 
           <p className="text-[#414141] flex items-center gap-2 mt-[20px]">
@@ -152,7 +152,7 @@ const HomePageBox = () => {
             <img
               className="w-[350px] h-[350px]"
               src="/mobile-cards/mobile-export.png"
-              alt="iPad Landscape"
+              alt="Mobilni telefon z aplikacijo Osmrtnica.com za lokalne informacije"
             />
           </div>
 

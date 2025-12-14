@@ -52,7 +52,7 @@ const SlideTwo = () => {
             <img
               className="mx-[111px] object-cover h-full"
               src="/mobile-cards/slider-mobile.png"
-              alt="iPad Landscape"
+              alt="Prikaz spominske strani na mobilni napravi - Osmrtnica.com"
             />
           </div>
         </div>
@@ -103,7 +103,7 @@ const SlideTwo = () => {
             <img
               className="mx-[111px]"
               src="/mobile-cards/slider-mobile.png"
-              alt="iPad Landscape"
+              alt="Prikaz spominske strani na mobilni napravi - Osmrtnica.com"
             />
           </div>
         </div>

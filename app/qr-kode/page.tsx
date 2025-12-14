@@ -31,13 +31,13 @@ import Layout from "../components/appcomponents/Layout";
 
 
 export const metadata: Metadata = {
-  title: "QR kode za nagrobnike | Spominska stran",
+  title: "QR kode za nagrobnike – Digitalni spomin | Osmrtnica.com",
   description:
-    "Sodobni in trajni način ohranjanja spomina - QR kode za nagrobnike. Dodajte fotografije, življenjepis, video posnetke in posebne trenutke.",
+    "QR kode za nagrobnike omogočajo dostop do spominske strani pokojne/ga kar na pokopališču. Enostavna uporaba, izdelate si jih lahko sami.",
   openGraph: {
-    title: "QR kode za nagrobnike | Spominska stran",
+    title: "QR kode za nagrobnike – Digitalni spomin | Osmrtnica.com",
     description:
-      "Sodobni in trajni način ohranjanja spomina - QR kode za nagrobnike.",
+      "QR kode za nagrobnike omogočajo dostop do spominske strani pokojne/ga kar na pokopališču. Enostavna uporaba, izdelate si jih lahko sami.",
     type: "website",
     url: "/qr-kode",
   },

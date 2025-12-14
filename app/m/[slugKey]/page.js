@@ -16,21 +16,22 @@ export async function generateMetadata({ params }) {
       ? `${obituary.name}`
       : null;
 
+  const lastName = obituary?.sirname || "";
+  const fullName = obituary?.name && lastName ? `${obituary.name} ${lastName}` : obituary?.name || "";
+  const titleText = fullName ? `${fullName} – žalna stran` : "Žalna stran";
+  const descriptionText = fullName 
+    ? `${fullName} – žalna stran, kjer uporabnik lahko prižge svečko, izrazi sožalje, deli spomine in slike ter prevzame digitalne kartice in QR kode.`
+    : "Žalna stran, kjer uporabnik lahko prižge svečko, izrazi sožalje, deli spomine in slike ter prevzame digitalne kartice in QR kode.";
+
   return {
-    title: nameForTitle
-      ? `${nameForTitle} - Spominska stran`
-      : "Spominska stran | Osmrtnica",
-    description: nameForTitle
-      ? `Spominska stran za ${nameForTitle}. Delite spomine, prižgite svečko in izrazite sožalje.`
-      : "Spominska stran za pokojnega. Delite spomine, prižgite svečko in izrazite sožalje.",
+    title: titleText,
+    description: descriptionText,
     alternates: {
       canonical: `https://www.osmrtnica.com/m/${slugKey}`,
     },
     openGraph: {
-      title: nameForTitle ? `${nameForTitle} - Spominska stran` : "Spominska stran",
-      description: nameForTitle
-        ? `Spominska stran za ${nameForTitle}. Delite spomine, prižgite svečko in izrazite sožalje.`
-        : "Spominska stran za pokojnega. Delite spomine, prižgite svečko in izrazite sožalje.",
+      title: fullName ? `${fullName} – žalna stran` : "Žalna stran",
+      description: descriptionText,
       url: `${APP_BASE_URL}/m/${slugKey}`,
       siteName: "Osmrtnica",
       images: [

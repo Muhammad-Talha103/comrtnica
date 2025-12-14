@@ -25,7 +25,7 @@ const WayToPost = () => {
                             kot so naši najdražji, ki jih imamo v spominu. Ni treba, da je tako. 
                             </p>
 
-                            <img src="spominska_laptop.avif" alt="memory_mac" className="hidden mx-auto mt-[42px] mobile:flex w-[341px] h-[213px]" />
+                            <img src="spominska_laptop.avif" alt="Prikaz spominske strani na računalniku - Osmrtnica.com" className="hidden mx-auto mt-[42px] mobile:flex w-[341px] h-[213px]" />
 
                             <p className="mt-[28px] text-[#3C3E41] tablet:text-center mobile:text-center mobile:mt-[42px] px-[2px] text-[18px] leading-[27px] font-variation-customOpt18">
                             Sodoben, celovit, predvsem pa toplejši 
@@ -33,7 +33,7 @@ const WayToPost = () => {
                             </p>
                         </div>
 
-                        <img src="spominska_laptop.avif" alt="memory_mac" className=" mobile:hidden desktop:ml-[1/2] h-[459.49px] w-[636.81px] 
+                        <img src="spominska_laptop.avif" alt="Prikaz spominske strani na računalniku - Osmrtnica.com" className=" mobile:hidden desktop:ml-[1/2] h-[459.49px] w-[636.81px] 
                         desktop:mt-[103.84px] desktop:object-contain tablet:mx-auto tablet:mt-[64px] tablet:w-[659px] tablet:h-[411px]" />
                     </div>         
                 </div>
