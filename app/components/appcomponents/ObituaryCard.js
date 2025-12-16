@@ -116,12 +116,12 @@ const ObituaryCard = ({
              desktop:pt-[4px] tablet:pr-[2px] desktop:pr-[2px] "
             >
               <div className="flex flex-1 flex-col">
-                <h3
+                <span
                   className="font-variation-customOpt24 text-left desktop:text-[24px]
-                   tablet:text-[24px] mobile:text-[16px]  text-[#1E2125] leading-[28.13px]"
+                   tablet:text-[24px] mobile:text-[16px]  text-[#1E2125] leading-[28.13px] font-semibold"
                 >
                   {data.name} {data.sirName}
-                </h3>
+                </span>
                 <p
                   className="block font-variation-customOpt14 tablet:font-variation-customOpt16 
                   desktop:font-variation-customOpt16 text-left desktop:mt-[16px] tablet:mt-[16px]  
@@ -158,7 +158,7 @@ const ObituaryCard = ({
               </a>
               <Image
                 src={iconArrowRight}
-                alt=""
+                alt="Odpri osmrtnico"
                 width={1000}
                 height={1000}
                 className="mobile:h-[15.24px] mobile:w-[15.24px] tablet:h-[24px] tablet:w-[24px] desktop:h-[24px] desktop:w-[24px]"

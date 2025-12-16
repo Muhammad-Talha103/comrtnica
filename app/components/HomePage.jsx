@@ -310,11 +310,11 @@ export default function HomeContent(props) {
         desktop:mt-[60.73px] tablet:mt-[67.73px] mobile:mt-[22px]
         desktop:h-[47px] tablet:h-[47px] mobile:h-[33px]"
           >
-            <h1 className="mobile:font-variation-customOpt28 tablet:font-variation-customOpt40 desktop:font-variation-customOpt40 desktop:text-[40px] tablet:text-[40px] mobile:text-[28px]  text-[#1E2125] leading-[46.88px] ">
+            <h2 className="mobile:font-variation-customOpt28 tablet:font-variation-customOpt40 desktop:font-variation-customOpt40 desktop:text-[40px] tablet:text-[40px] mobile:text-[28px]  text-[#1E2125] leading-[46.88px] ">
               <Link href={"/moj-racun"}>
                 Zadnje osmrtnice
               </Link>
-            </h1>
+            </h2>
           </div>
           <div
             className="flex flex-col desktop:flex-row 

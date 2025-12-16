@@ -41,13 +41,13 @@ const Indispensable = () => {
         >
           <img
             src="/indispensable_bg_img.jpg"
-            alt="Slika"
+            alt="Ozadje za sekcijo pomoč pri delu"
             className="relative hidden desktop:block h-[860px] tablet:h-[1139px] mobile:h-[1267px] w-full object-cover"
           />
 
           <img
             src="/levo_spodaj_mob.jpg"
-            alt="Slika"
+            alt="Ozadje za sekcijo pomoč pri delu"
             className="relative h-[860px] hidden mobile:block tablet:block tablet:h-[1139px] mobile:h-[1267px] w-full object-cover"
           />
 

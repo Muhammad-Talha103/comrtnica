@@ -33,7 +33,7 @@ export default function MemoryHeader({ onChange }) {
               <Image
                 src={"/memory_header_bottom.png"}
                 className="mobile:w-[28px] mobile:h-[28px] cursor-pointer"
-                alt=""
+                alt="Premakni navzdol"
                 width={31}
                 height={31}
                 onClick={() => onChange("previous")}
@@ -44,7 +44,7 @@ export default function MemoryHeader({ onChange }) {
               <Image
                 src={"/memory_header_top.png"}
                 className="mobile:w-[28px] mobile:h-[28px] cursor-pointer"
-                alt=""
+                alt="Premakni navzgor"
                 width={31}
                 height={31}
                 onClick={() => onChange("next")}
@@ -56,7 +56,7 @@ export default function MemoryHeader({ onChange }) {
             >
               <Image
                 src={"/memory_header_left.png"}
-                alt=""
+                alt="Premakni levo"
                 width={31}
                 height={31}
               />

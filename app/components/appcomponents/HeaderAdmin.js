@@ -25,7 +25,7 @@ function HeaderAdmin({
             <a href="/" className="flex flex-row items-center">
               <Image
                 src={"/img_logo_admin.png"}
-                alt=""
+                alt="Logo administracije Osmrtnica.com"
                 width={248}
                 height={50}
                 className="shadow-custom-dark-bottom-admin mr-[37px]"
@@ -602,7 +602,7 @@ function HeaderAdmin({
           // go back to the previous page
           window.history.back();
         }}>
-          <Image src={"/back_icon.png"} alt="" width={44} height={48} />
+          <Image src={"/back_icon.png"} alt="Nazaj" width={44} height={48} />
         </div>
       </div>
     </header>

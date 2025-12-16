@@ -11,7 +11,7 @@ export default function AdminBenefits() {
         <h2 className="text-center text-[40px] font-[400] text-[#3C3E41] leading-[32px] mobile:text-[28px] mobile:leading-[40px]">Prednosti Skrbnika</h2>
         <div className="space-y-[125px] mobile:hidden tablet:space-y-[60px] mobile:space-y-[60px] mt-[100px] tablet:mt-[55px] mobile:mt-[55px]">
           <div className="flex gap-[100px] items-center">
-            <Image src="/admin_benifits_1.png" alt="admin-benefit-1" className="w-[281px] shrink-0 tablet:hidden mobile:hidden" width={281} height={221} />
+            <Image src="/admin_benifits_1.png" alt="Prednosti Skrbnika - Omogoči številne dodatne možnosti" className="w-[281px] shrink-0 tablet:hidden mobile:hidden" width={281} height={221} />
             <div className="space-y-[10px]">
               <h3 className="text-[24px] font-[700] text-[#3C3E41] leading-[48px]">1. Omogoči številne dodatne možnosti VSEM bližnjim</h3>
               <p className="text-[18px] font-[400] text-[#3C3E41] leading-[27px]">
@@ -30,13 +30,13 @@ export default function AdminBenefits() {
               </p>
             </div>
             <div className="desktop:min-w-[250px] shrink-0 mobile:hidden tablet:flex tablet:gap-[44px]">
-              <Image src="/admin_benifits_2.png" alt="admin-benefit-1" className="w-[181px] tablet:w-[130px]" width={181} height={237} />
-              <Image src="/admin_benifits_3.png" alt="admin-benefit-1" className="w-[85px] hidden tablet:block shrink-0 mx-auto" width={85} height={170} />
+              <Image src="/admin_benifits_2.png" alt="Prednosti Skrbnika - Zbližuje ljudi, povezuje generacije" className="w-[181px] tablet:w-[130px]" width={181} height={237} />
+              <Image src="/admin_benifits_3.png" alt="Prednosti Skrbnika - Večni zapisi" className="w-[85px] hidden tablet:block shrink-0 mx-auto" width={85} height={170} />
             </div>
           </div>
           <div className="flex gap-[100px] mobile:px-[25px] tablet:px-[25px] items-center">
             <div className="min-w-[270px] shrink-0 mobile:hidden tablet:hidden">
-              <Image src="/admin_benifits_3.png" alt="admin-benefit-1" className="w-[123px] shrink-0 mx-auto" width={123} height={244} />
+              <Image src="/admin_benifits_3.png" alt="Prednosti Skrbnika - Večni zapisi" className="w-[123px] shrink-0 mx-auto" width={123} height={244} />
             </div>
 
             <div className="space-y-[10px]">
@@ -56,7 +56,7 @@ export default function AdminBenefits() {
               </p>
             </div>
             <div className="min-w-[270px] shrink-0 mobile:hidden tablet:hidden">
-              <Image src="/admin_benifits_4.jpg" alt="admin-benefit-1" className="w-[270px] mx-auto" width={270} height={168} />
+              <Image src="/admin_benifits_4.jpg" alt="Prednosti Skrbnika - Cvetličarne podarijo status skrbnika" className="w-[270px] mx-auto" width={270} height={168} />
             </div>
           </div>
           <h2 className="text-[#3C3E41] text-[24px] font-bold leading-[27px] text-center">Brez rizika. Brez obveznosti. Brezplačno za cel mesec.</h2>
@@ -102,7 +102,7 @@ export default function AdminBenefits() {
             </p>
           </div>}
           <div className="flex gap-[45px] justify-between items-center">
-            <Image src="/keeper_left_arrow.png" alt="admin-benefit-1" className="w-[23px] shrink-0 mx-auto" width={23} height={40} onClick={() => (activeIndex > 0) && setActiveIndex(activeIndex - 1)} />
+            <Image src="/keeper_left_arrow.png" alt="Puščica levo - prejšnja prednost" className="w-[23px] shrink-0 mx-auto" width={23} height={40} onClick={() => (activeIndex > 0) && setActiveIndex(activeIndex - 1)} />
             <div className="flex gap-[8px] items-center">
               <div className={`w-[16px] h-[16px] rounded-full cursor-pointer ${activeIndex === 0 ? 'bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]' : 'bg-gradient-to-br from-[#C3C6C8] to-[#E3E5E5]'}`} onClick={() => setActiveIndex(0)}
                 style={{
@@ -121,7 +121,7 @@ export default function AdminBenefits() {
                   boxShadow: activeIndex === 3 ? '5px 5px 10px 0px #C2C2C280, -5px -5px 10px 0px #FFFFFF' : 'none'
                 }}></div>
             </div>
-            <Image src="/keeper_right_arrow.png" alt="admin-benefit-1" className="w-[23px] shrink-0 mx-auto" width={23} height={40} onClick={() => (activeIndex < 3) && setActiveIndex(activeIndex + 1)} />
+            <Image src="/keeper_right_arrow.png" alt="Puščica desno - naslednja prednost" className="w-[23px] shrink-0 mx-auto" width={23} height={40} onClick={() => (activeIndex < 3) && setActiveIndex(activeIndex + 1)} />
           </div>
         </div>
       </div>

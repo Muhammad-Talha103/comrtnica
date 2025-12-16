@@ -104,39 +104,34 @@ const HeaderHeadingText = ({ head, index, id, endPoint }) => {
   return (
     <div className="flex flex-row items-end w-[220px] ">
       <div className="w-[1.5px] h-[60px] bg-[#FFFFFF80] mr-[15px]" />
-      <Link href={endPoint} className="">
-        <div className="h-[75px]">
-          <p
-            className="flex"
-            style={{
-              marginTop: "2px",
-              fontWeight: "200",
-              textShadow: "1px 1px 2px #fff",
-              color: "#7C7C7C",
-              fontSize: "64px",
-              lineHeight: "75px",
-              fontVariationSettings: "'opsz' 64",
-            }}
-          >
-            {index}
-          </p>
-        </div>
-        <h2 className=" flex items-center h-[33px]">
-          <span
-            className="flex"
-            style={{
-              marginTop: "5px",
-              color: "#DEDEDE",
-              fontWeight: "500",
-              fontSize: "28px",
-              lineHeight: "32.81px",
-              fontVariationSettings: "'opsz' 28",
-            }}
-          >
-            {head}
-          </span>
-        </h2>
-      </Link>
+      <div className="h-[75px]">
+        <p
+          className="flex"
+          style={{
+            marginTop: "2px",
+            fontWeight: "200",
+            textShadow: "1px 1px 2px #fff",
+            color: "#7C7C7C",
+            fontSize: "64px",
+            lineHeight: "75px",
+            fontVariationSettings: "'opsz' 64",
+          }}
+        >
+          {index}
+        </p>
+      </div>
+      <h2 className=" flex items-center h-[33px]">
+        <Link href={endPoint} className="flex" style={{
+          marginTop: "5px",
+          color: "#DEDEDE",
+          fontWeight: "500",
+          fontSize: "28px",
+          lineHeight: "32.81px",
+          fontVariationSettings: "'opsz' 28",
+        }}>
+          {head}
+        </Link>
+      </h2>
     </div>
   );
 };
@@ -144,39 +139,34 @@ const HeaderHeadingTextTablet = ({ head, index, id, endPoint }) => {
   return (
     <div className="flex flex-row items-end  ">
       <div className="w-[1.5px] h-[53px] bg-[#FFFFFF80] mr-[7.31px]" />
-      <Link href={endPoint}>
-        <div className="h-[47px]">
-          <p
-            className="flex"
-            style={{
-              marginTop: "2px",
-              fontWeight: "200",
-              textShadow: "1px 1px 2px #fff",
-              color: "#7C7C7C",
-              fontSize: "40px",
-              lineHeight: "47px",
-              fontVariationSettings: "'opsz' 40",
-            }}
-          >
-            {index}
-          </p>
-        </div>
-        <h2 className=" flex items-center h-[23px]">
-          <span
-            className="flex"
-            style={{
-              marginTop: "5px",
-              color: "#DEDEDE",
-              fontWeight: "500",
-              fontSize: "20px",
-              lineHeight: "23px",
-              fontVariationSettings: "'opsz' 20",
-            }}
-          >
-            {head}
-          </span>
-        </h2>
-      </Link>
+      <div className="h-[47px]">
+        <p
+          className="flex"
+          style={{
+            marginTop: "2px",
+            fontWeight: "200",
+            textShadow: "1px 1px 2px #fff",
+            color: "#7C7C7C",
+            fontSize: "40px",
+            lineHeight: "47px",
+            fontVariationSettings: "'opsz' 40",
+          }}
+        >
+          {index}
+        </p>
+      </div>
+      <h2 className=" flex items-center h-[23px]">
+        <Link href={endPoint} className="flex" style={{
+          marginTop: "5px",
+          color: "#DEDEDE",
+          fontWeight: "500",
+          fontSize: "20px",
+          lineHeight: "23px",
+          fontVariationSettings: "'opsz' 20",
+        }}>
+          {head}
+        </Link>
+      </h2>
     </div>
   );
 };
@@ -184,7 +174,7 @@ const HeaderHeadingTextMobile = ({ head, index, id, endPoint }) => {
   return (
     <div className="flex flex-row w-[110px] items-end ">
       <div className="w-[1px] h-[57px] bg-[#C0C0C080]  " />
-      <Link href={endPoint} className="ml-[6px]">
+      <div className="ml-[6px]">
         <div className="h-[38px]">
           <p
             className="flex"
@@ -201,20 +191,17 @@ const HeaderHeadingTextMobile = ({ head, index, id, endPoint }) => {
           </p>
         </div>
         <h2 className=" flex items-center h-[19px]">
-          <span
-            className="flex"
-            style={{
-              color: "#414141",
-              fontWeight: "500",
-              fontSize: "16px",
-              lineHeight: "19px",
-              fontVariationSettings: "'opsz' 16",
-            }}
-          >
+          <Link href={endPoint} className="flex" style={{
+            color: "#414141",
+            fontWeight: "500",
+            fontSize: "16px",
+            lineHeight: "19px",
+            fontVariationSettings: "'opsz' 16",
+          }}>
             {head}
-          </span>
+          </Link>
         </h2>
-      </Link>
+      </div>
     </div>
   );
 };

@@ -299,9 +299,9 @@ const FloristlistCom = ({ item, index }) => {
           <div className="flex flex-1 flex-col w-full">
             <div className="flex justify-between h-[18px] tablet:h-7 desktop:h-7 w-full tablet:pr-[8px] desktop:pr-[10px]   ">
               <div className="flex items-center h-full">
-                <h3 className="font-variation-customOpt24 text-left desktop:text-[24px] tablet:text-[24px] mobile:text-[15px]  text-[#1E2125] leading-[28.13px]">
+                <span className="font-variation-customOpt24 text-left desktop:text-[24px] tablet:text-[24px] mobile:text-[15px]  text-[#1E2125] leading-[28.13px] font-semibold block">
                   {item?.shopName || item?.CompanyPage?.name || "Cvetličarna"}
-                </h3>
+                </span>
               </div>
             </div>
             <div className="flex items-center h-[18px] tablet:h-6 desktop:h-6 mt-[10px] tablet:mt-4 desktop:mt-4">
@@ -331,7 +331,7 @@ const FloristlistCom = ({ item, index }) => {
                 <div className="text-[#1E2125] text-[14px] ">Odpri</div>
                 <Image
                   src={"/icon_arrowright.png"}
-                  alt="Slika"
+                  alt="Puščica desno"
                   width={24}
                   height={24}
                   className=""
@@ -342,7 +342,7 @@ const FloristlistCom = ({ item, index }) => {
               <div className="text-[#1E2125] text-[12px] ">Odpri</div>
               <Image
                 src={"/icon_arrowright.png"}
-                alt="Slika"
+                alt="Puščica desno"
                 width={16}
                 height={20}
                 className=""

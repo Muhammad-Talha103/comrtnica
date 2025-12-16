@@ -100,7 +100,7 @@ const Dropdown = ({
         {!hideIcon && (
           <Image
             src={iconDropDown}
-            alt=""
+            alt="Razširi meni"
             className={`w-8 h-8 ${isDisabled ? "opacity-50" : ""}`}
           />
         )}

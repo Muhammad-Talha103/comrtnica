@@ -135,7 +135,7 @@ const SanctifiedComp = ({ set_Id, setModal, dedications }) => {
             <Image
               key={index}
               src="/sveca_gori.avif"
-              alt="Slika"
+              alt="Goreča svečka - simbol spomina"
               width={1000}
               height={1000}
               className="w-[110px] h-[120px] bg-center  rounded-lg"
@@ -146,7 +146,7 @@ const SanctifiedComp = ({ set_Id, setModal, dedications }) => {
             <Image
               // src={"/burning_candle.png"}
               src={"/sveca_gori.avif"}
-              alt="Slika"
+              alt="Goreča svečka - simbol spomina"
               width={1000}
               height={1000}
               className="w-[88px] h-[88px] bg-center  rounded-lg"
@@ -158,7 +158,7 @@ const SanctifiedComp = ({ set_Id, setModal, dedications }) => {
                 <Image
                   // src={"/burning_candle.png"}
                   src={"/sveca_gori.avif"}
-                  alt="Slika"
+                  alt="Goreča svečka - simbol spomina"
                   width={1000}
                   height={1000}
                   className="w-[88px] h-[88px] bg-center  rounded-lg"
@@ -253,14 +253,14 @@ const SanctifiedComp = ({ set_Id, setModal, dedications }) => {
         >
           <Image
             src={"/round_add.png"}
-            alt="Slika"
+            alt="Ikona dodajanja posvetila"
             width={100}
             height={100}
             className="hidden desktop:flex w-[12px]  mb-[2px] h-[12px] mr-[10px]  "
           />
           <Image
             src={"/pan.png"}
-            alt="Slika"
+            alt="Ikona dodajanja posvetila"
             width={100}
             height={100}
             className="flex desktop:hidden w-[12px] mb-[2px] h-[12px] mr-[10px]  "
@@ -291,7 +291,7 @@ const SanctifiedComp = ({ set_Id, setModal, dedications }) => {
           >
             <Image
               src={"/prev_img_icon.png"}
-              alt="Slika"
+              alt="Puščica levo - prejšnja slika"
               width={1000}
               height={1000}
               className="flex w-[24px] h-[40px] "
@@ -306,7 +306,7 @@ const SanctifiedComp = ({ set_Id, setModal, dedications }) => {
           >
             <Image
               src={"/next_img_icon.png"}
-              alt="Slika"
+              alt="Puščica desno - naslednja slika"
               width={1000}
               height={1000}
               className="flex w-[24px] h-[40px] "
@@ -321,7 +321,7 @@ const SanctifiedComp = ({ set_Id, setModal, dedications }) => {
             {/* <img src="/img_back_mob.png" alt="back" className="h-[13.79px] w-[8.43px]" /> */}
             <Image
               src={"/img_back_mob.png"}
-              alt="Slika"
+              alt="Puščica levo - prejšnja slika"
               width={1000}
               height={1000}
               className="h-[13.79px] w-[8.43px] "
@@ -334,7 +334,7 @@ const SanctifiedComp = ({ set_Id, setModal, dedications }) => {
           >
             <Image
               src={"/img_forward_mob.png"}
-              alt="Slika"
+              alt="Puščica desno - naslednja slika"
               width={1000}
               height={1000}
               className="h-[13.79px] w-[8.43px]"

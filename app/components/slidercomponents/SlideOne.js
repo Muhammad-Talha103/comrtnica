@@ -29,13 +29,12 @@ const SlideOne = () => {
                 Vse navedeno je BREZPLAČNO.
               </p>
 
-              <Link href={"/zalna-stran"}>
-                <h3>
-                  <button className="shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] px-[25px] py-[12px] rounded-[8px] mt-[81px] w-[175px]">
-                    Več o žalni strani
-                  </button>
-                </h3>
-
+              <h3 className="sr-only">Več o žalni strani</h3>
+              <Link
+                href={"/zalna-stran"}
+                className="inline-flex shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] px-[25px] py-[12px] rounded-[8px] mt-[81px] w-[175px] items-center justify-center"
+              >
+                Več o žalni strani
               </Link>
             </div>
           </div>
@@ -69,12 +68,12 @@ const SlideOne = () => {
                 Vse navedeno je BREZPLAČNO.
               </p>
 
-              <Link href={"/zalna-stran"}>
-                <h3>
-                  <button className="shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] px-[25px] py-[12px] rounded-[8px] mt-[81px] max-w-[175px]">
-                    Več o žalni strani
-                  </button>
-                </h3>
+              <h3 className="sr-only">Več o žalni strani</h3>
+              <Link
+                href={"/zalna-stran"}
+                className="inline-flex shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] px-[25px] py-[12px] rounded-[8px] mt-[81px] max-w-[175px] items-center justify-center"
+              >
+                Več o žalni strani
               </Link>
             </div>
           </div>
@@ -107,12 +106,12 @@ const SlideOne = () => {
               loading="lazy"
             />
           </div>
-          <Link href={"/zalna-stran"}>
-            <h3>
-              <button className="px-[25px] rounded-[8px] py-[12px] shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]">
-                Več o žalni strani
-              </button>
-            </h3>
+          <h3 className="sr-only">Več o žalni strani</h3>
+          <Link
+            href={"/zalna-stran"}
+            className="inline-flex px-[25px] rounded-[8px] py-[12px] shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] items-center justify-center"
+          >
+            Več o žalni strani
           </Link>
         </div>
       </div>
@@ -137,12 +136,12 @@ const SlideOne = () => {
           <div className="image-container flex justify-center">
             <img src="/mobile-cards/iPad Landscape.png" alt="iPad Landscape" className=" h-[613px]  object-fill" loading="lazy" />
           </div >
-          <Link href={"/zalna-stran"}>
-            <h3>
-              <button className="px-[25px] rounded-[8px] py-[12px] shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]">
-                Več o žalni strani
-              </button>
-            </h3>
+          <h3 className="sr-only">Več o žalni strani</h3>
+          <Link
+            href={"/zalna-stran"}
+            className="inline-flex px-[25px] rounded-[8px] py-[12px] shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] items-center justify-center"
+          >
+            Več o žalni strani
           </Link>
         </div>
       </div>

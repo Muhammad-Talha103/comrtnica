@@ -311,7 +311,7 @@ const FuneralInFewDays = ({ data }) => {
           <div className="mt-[29px]">
             <Image
               src="/left_gray_icon.png"
-              alt="Slika"
+              alt="Puščica levo - prejšnji dan"
               width={25}
               height={59}
               className="cursor-pointer	"
@@ -365,7 +365,7 @@ const FuneralInFewDays = ({ data }) => {
           <div className="ml-[69px] mt-[29px]">
             <Image
               src="/right_gray_icon.png"
-              alt="Slika"
+              alt="Puščica desno - naslednji dan"
               width={25}
               height={59}
               className="cursor-pointer	"
@@ -415,7 +415,7 @@ const ListView = ({ item, key }) => {
       <div className="flex h-6 w-6 mobile:mr-[-5px] items-center justify-center">
         <Image
           src="/next_img.png"
-          alt="Slika"
+          alt="Puščica desno"
           width={6}
           height={9}
           className=""

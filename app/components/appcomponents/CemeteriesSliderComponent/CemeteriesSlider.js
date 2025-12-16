@@ -58,7 +58,7 @@ export default function ImageCarousel({ images }) {
       >
         <Image
           src="/right_gray_icon.png"
-          alt="Slika"
+          alt="Puščica desno - naslednja slika pokopališča"
           width={16}
           height={20}
           className="cursor-pointer"
@@ -77,7 +77,7 @@ export default function ImageCarousel({ images }) {
       >
         <Image
           src="/left_gray_icon.png"
-          alt="Slika"
+          alt="Puščica levo - prejšnja slika pokopališča"
           width={16}
           height={20}
           className="cursor-pointer"

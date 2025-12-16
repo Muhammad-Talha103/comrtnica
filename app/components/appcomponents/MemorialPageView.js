@@ -126,7 +126,7 @@ const MemorialPageView = () => {
                       <div className="rounded-xl shadow-custom-light-dark-box-image p-1 bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] ">
                         <Image
                           src={imageUrl}
-                          alt="mario_danilo_primo"
+                          alt={item?.name && item?.sirName ? `Fotografija ${item.name} ${item.sirName} - Osmrtnica.com` : "Fotografija pokojnika"}
                           width={1000}
                           height={1000}
                           className="h-[190.11px] w-[136px]  rounded-lg"

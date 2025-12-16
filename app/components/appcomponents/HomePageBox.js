@@ -92,7 +92,7 @@ const HomePageBox = () => {
               <span>
                 <Image
                   src="/mobile-cards/loc-icon.png"
-                  alt=""
+                  alt="Ikona lokacije"
                   width={24}
                   height={24}
                   className="w-[24px] h-[24px] inline-block"

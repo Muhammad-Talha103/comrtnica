@@ -702,7 +702,7 @@ const MegaMenu = () => {
                     {/* title container */}
                     <Image
                       src={"/img_bg_promocija.avif"}
-                      alt=""
+                      alt="Ozadje promocije"
                       layout="fill"
                       objectPosition="cover"
                       className="rounded-[10px]"
@@ -1627,7 +1627,7 @@ const MegaMenu = () => {
                     {/* 1st title container */}
                     <Image
                       src={"/img_bg_promocija.avif"}
-                      alt=""
+                      alt="Ozadje promocije"
                       layout="fill"
                       objectPosition="cover"
                       className="rounded-[10px]"
