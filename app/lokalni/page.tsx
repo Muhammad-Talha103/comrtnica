@@ -23,7 +23,7 @@ export async function generateMetadata({ searchParams }: { searchParams?: Promis
   };
 }
 
-export default function ObituaryList({ searchParams }: { searchParams?: { city?: string | string[]; region?: string | string[] } }) {
+export default async function ObituaryList({ searchParams }: { searchParams?: Promise<{ city?: string | string[]; region?: string | string[] }> }) {
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

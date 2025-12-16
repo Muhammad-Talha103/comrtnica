@@ -82,12 +82,12 @@ const OpeningPromotion = () => {
             <h1 className="text-[26px] text-[#3090D5] font-variation-customOpt26 mobile:text-[20px] mobile:font-variation-customOpt20wght400 mt-[78px] mobile:mt-[0px] ">
               Otvoritvena promocija
             </h1>
-            <h1 className="text-[40px] mobile:text-[28px] mobile:font-variation-customOpt28 text-[#2D3D48] font-variation-customOpt40 desktop:mt-[-12px] flex tablet:hidden">
+            <h2 className="text-[40px] mobile:text-[28px] mobile:font-variation-customOpt28 text-[#2D3D48] font-variation-customOpt40 desktop:mt-[-12px] flex tablet:hidden">
               BREZPLAČNO do 1. maja
-            </h1>
-            <h1 className="text-[40px] text-[#2D3D48] font-variation-customOpt40 mt-[-12px] hidden tablet:flex">
+            </h2>
+            <h2 className="text-[40px] text-[#2D3D48] font-variation-customOpt40 mt-[-12px] hidden tablet:flex">
               BREZPLAČNO do 1. oktobra
-            </h1>
+            </h2>
           </div>
 
           {/*main container for list data for desktop*/}
