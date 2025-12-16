@@ -102,7 +102,14 @@ export default function AdminBenefits() {
             </p>
           </div>}
           <div className="flex gap-[45px] justify-between items-center">
-            <Image src="/keeper_left_arrow.png" alt="Puščica levo - prejšnja prednost" className="w-[23px] shrink-0 mx-auto" width={23} height={40} onClick={() => (activeIndex > 0) && setActiveIndex(activeIndex - 1)} />
+            <button 
+              type="button"
+              onClick={() => (activeIndex > 0) && setActiveIndex(activeIndex - 1)}
+              aria-label="Prejšnja prednost"
+              className="w-[23px] shrink-0 mx-auto bg-transparent border-none p-0 cursor-pointer"
+            >
+              <Image src="/keeper_left_arrow.png" alt="Puščica levo - prejšnja prednost" className="w-[23px]" width={23} height={40} />
+            </button>
             <div className="flex gap-[8px] items-center">
               <div className={`w-[16px] h-[16px] rounded-full cursor-pointer ${activeIndex === 0 ? 'bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]' : 'bg-gradient-to-br from-[#C3C6C8] to-[#E3E5E5]'}`} onClick={() => setActiveIndex(0)}
                 style={{
@@ -121,7 +128,14 @@ export default function AdminBenefits() {
                   boxShadow: activeIndex === 3 ? '5px 5px 10px 0px #C2C2C280, -5px -5px 10px 0px #FFFFFF' : 'none'
                 }}></div>
             </div>
-            <Image src="/keeper_right_arrow.png" alt="Puščica desno - naslednja prednost" className="w-[23px] shrink-0 mx-auto" width={23} height={40} onClick={() => (activeIndex < 3) && setActiveIndex(activeIndex + 1)} />
+            <button 
+              type="button"
+              onClick={() => (activeIndex < 3) && setActiveIndex(activeIndex + 1)}
+              aria-label="Naslednja prednost"
+              className="w-[23px] shrink-0 mx-auto bg-transparent border-none p-0 cursor-pointer"
+            >
+              <Image src="/keeper_right_arrow.png" alt="Puščica desno - naslednja prednost" className="w-[23px]" width={23} height={40} />
+            </button>
           </div>
         </div>
       </div>

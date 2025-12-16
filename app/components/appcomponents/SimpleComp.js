@@ -31,7 +31,7 @@ const SimpleComp = () => {
                     width={64}
                     height={64}
                     className="w-[64px] h-[64px] mt-4"
-                  ></Image>
+                  />
                   <h3 className="text-[20px] h-[46px] text-[#FFFFFF] font-variation-customOpt20wght400 font-semibold mt-[12px]">
                     Registriraj se
                   </h3>
@@ -51,7 +51,7 @@ const SimpleComp = () => {
                     width={70}
                     height={70}
                     className="w-[70px] h-[70px] mt-2"
-                  ></Image>
+                  />
                   <h3 className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-[13px]">
                     Začneš lahko takoj
                   </h3>
@@ -69,7 +69,7 @@ const SimpleComp = () => {
                     width={64}
                     height={64}
                     className="w-[64px] h-[64px] mt-4"
-                  ></Image>
+                  />
                   <h3 className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-[11px]">
                     Povej naprej
                   </h3>

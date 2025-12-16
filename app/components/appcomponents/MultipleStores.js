@@ -55,7 +55,7 @@ const MultipleStores = () => {
             width={336}
             height={217}
             className="w-[336px] h-[217px] self-center mt-[79px] hidden mobile:flex"
-          ></Image>
+          />
 
           {/*image for tablet*/}
           <img

@@ -272,10 +272,12 @@ const FuneralInFewDays = ({ data }) => {
                     onClick={() => prevDates()}
                     className="hidden mobile:flex tablet:flex w-[48px] h-[48px] mobile:w-[36px] mobile:h-[36px] rounded-lg text-black justify-center items-center shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]"
                   >
-                    <img
+                    <Image
                       src="/icon_left.png"
-                      alt="imgPrevious"
-                      className=" w-[8.43px] h-[13.79px]"
+                      alt="Puščica levo - prejšnji dan"
+                      width={8.43}
+                      height={13.79}
+                      className="w-[8.43px] h-[13.79px]"
                     />
                   </button>
 
@@ -283,10 +285,12 @@ const FuneralInFewDays = ({ data }) => {
                     onClick={() => nextDates()}
                     className="hidden mobile:flex tablet:flex ml-[52px] w-[48px] h-[48px] mobile:w-[36px] mobile:ml-[18px] mobile:h-[36px] rounded-lg text-black justify-center items-center shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]"
                   >
-                    <img
+                    <Image
                       src="/icon_right.png"
-                      alt="imgPrevious"
-                      className=" w-[8.43px] h-[13.79px]"
+                      alt="Puščica desno - naslednji dan"
+                      width={8.43}
+                      height={13.79}
+                      className="w-[8.43px] h-[13.79px]"
                     />
                   </button>
                 </div>

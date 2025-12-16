@@ -45,7 +45,8 @@ const Indispensable = () => {
               alt="Ozadje za sekcijo pomoč pri delu"
               fill
               className="object-cover"
-              loading="lazy"
+              loading="eager"
+              sizes="100vw"
             />
           </div>
 
@@ -55,7 +56,8 @@ const Indispensable = () => {
               alt="Ozadje za sekcijo pomoč pri delu"
               fill
               className="object-cover"
-              loading="lazy"
+              loading="eager"
+              sizes="100vw"
             />
           </div>
 

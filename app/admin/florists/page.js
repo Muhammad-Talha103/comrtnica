@@ -701,7 +701,7 @@ const FloristFirst = () => {
                       width={24}
                       height={24}
                       className=""
-                    ></Image>
+                    />
                     <p className="font-sourcesans text-[13px] font-normal leading-[15.23px] text-[#D4D4D4] mt-[5px]">
                       10 €
                     </p>
@@ -966,7 +966,7 @@ const FloristFirst = () => {
                       width={5}
                       height={5}
                       className="w-[24px] h-[30px] m-[0]"
-                    ></Image>
+                    />
                   </div>
                 </th>
 
@@ -980,7 +980,7 @@ const FloristFirst = () => {
                       width={5}
                       height={5}
                       className="w-[24px] h-[30px] m-[0]"
-                    ></Image>
+                    />
                   </div>
                 </th>
 
@@ -1005,7 +1005,7 @@ const FloristFirst = () => {
                       width={8}
                       height={12}
                       //   className="w-[24px] h-[30px] m-[0]"
-                    ></Image>
+                    />
                   </div>
                 </th>
 

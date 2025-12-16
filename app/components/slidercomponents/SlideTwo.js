@@ -6,7 +6,16 @@ import { useBreakpoint } from "../../hooks/useBreakpoint";
 const SlideTwo = () => {
   const breakpoint = useBreakpoint();
 
-
+  if (breakpoint === null) {
+    return (
+      <div className="bg-[#F5F0E8] text-[#22281C] w-full h-[891px] flex items-center justify-center">
+        <div className="animate-pulse flex flex-col items-center gap-4">
+          <div className="h-8 w-64 bg-[#D4D4D4] rounded"></div>
+          <div className="h-4 w-96 bg-[#D4D4D4] rounded"></div>
+        </div>
+      </div>
+    );
+  }
 
   // === Desktop Layout ===
   if (breakpoint === "desktop") {

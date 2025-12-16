@@ -20,7 +20,7 @@ const RegisterComp = () => {
                   height={64}
                   className="w-[64px] h-[64px] mx-auto"
                   alt="Ikona registracije"
-                ></Image>
+                />
                 <h3 className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 text-center font-semibold mt-3">
                   Registrirajte se
                 </h3>
@@ -37,7 +37,7 @@ const RegisterComp = () => {
                   height={64}
                   className="w-[64px] h-[64px] mx-auto"
                   alt="Ikona objave"
-                ></Image>
+                />
                 <h3 className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 text-center font-semibold mt-3">
                   Objava v 48 urah
                 </h3>
@@ -57,7 +57,7 @@ const RegisterComp = () => {
                   height={64}
                   className="w-[64px] h-[64px] mx-auto"
                   alt="Ikona fleksibilnosti"
-                ></Image>
+                />
                 <h3 className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 text-center font-semibold mt-3">
                   Fleksibilnost
                 </h3>
@@ -74,7 +74,7 @@ const RegisterComp = () => {
                   height={64}
                   className="w-[64px] h-[64px]"
                   alt="Ikona prilagojenosti vsem napravam"
-                ></Image>
+                />
                 <h3 className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 text-center font-semibold mt-3">
                   Prilagojeno vsem napravam
                 </h3>
@@ -94,7 +94,7 @@ const RegisterComp = () => {
               height={64}
               className="w-[64px] h-[64px]"
               alt="Ikona registracije"
-            ></Image>
+            />
             <h3 className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-[13px]">
               Registrirajte se
             </h3>
@@ -106,7 +106,7 @@ const RegisterComp = () => {
 
           {/*C2 container for desktop*/}
           <div className="w-[295.42px] h-[200px] flex-col items-center flex desktop:ml-16 tablet:hidden mobile:mt-6 mobile:w-full mobile:max-w-[480px] mobile:px-2">
-            <Image src="/image_posting.png" width={64} height={64} className="w-[64px] h-[64px]" alt="Ikona objave"></Image>
+            <Image src="/image_posting.png" width={64} height={64} className="w-[64px] h-[64px]" alt="Ikona objave"/>
             <h3 className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-[13px]">
               Objava v 48 urah
             </h3>
@@ -124,14 +124,14 @@ const RegisterComp = () => {
               height={64}
               className="w-[64px] h-[64px] hidden desktop:flex"
               alt="Ikona fleksibilnosti"
-            ></Image>
+            />
             <Image
               src="/image_tablet_flexibility.png"
               width={64}
               height={64}
               className="w-[64px] h-[64px] mx-auto hidden mobile:flex"
               alt="Ikona fleksibilnosti"
-            ></Image>
+            />
             <h3 className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-[13px]">
               Fleksibilnost
             </h3>
