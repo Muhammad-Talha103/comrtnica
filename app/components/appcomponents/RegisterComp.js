@@ -119,7 +119,7 @@ const RegisterComp = () => {
           {/*C3 container for desktop*/}
           <div className="w-[295.42px] h-[200px] flex-col items-center flex desktop:ml-16 tablet:hidden mobile:mt-6 mobile:w-full mobile:max-w-[480px] mobile:px-2">
             <Image
-              src="/image_ flexibility.png"
+              src="/image_flexibility.png"
               width={64}
               height={64}
               className="w-[64px] h-[64px] hidden desktop:flex"
