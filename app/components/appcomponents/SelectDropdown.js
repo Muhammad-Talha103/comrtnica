@@ -95,6 +95,8 @@ export const SelectDropdown = ({
 
     return lowerCaseLabel.startsWith(lowerCaseInput);
   };
+  const inputId = `select-${label?.toLowerCase().replace(/\s+/g, '-') || 'dropdown'}`;
+  
   return (
     <div className={`dropdown ${getContainerClass()}`}>
       {heading && (
@@ -102,7 +104,12 @@ export const SelectDropdown = ({
         {heading}
       </h3>
     )}
+      <label htmlFor={inputId} className="sr-only">
+        {label || heading || "Izbira"}
+      </label>
       <Select
+        inputId={inputId}
+        aria-label={label || heading || "Izbira"}
         options={options}
         isDisabled={isDisabled}
         value={options.find((opt) => opt.value === selectedValue) || null}
@@ -111,7 +118,7 @@ export const SelectDropdown = ({
         styles={customStyles}
         isSearchable={true}
         components={{
-          IndicatorSeparator: () => null, // This is to remove the verivcal line
+          IndicatorSeparator: () => null,
         }}
         filterOption={customFilter}
       />
