@@ -14,7 +14,7 @@ export function generateMetadata({ searchParams }: { searchParams?: { city?: str
     title: city ? `Lokalni izvajalci in partnerji v ${city} | Osmrtnica.com` : "Lokalni izvajalci in partnerji | Osmrtnica.com",
     description: "Lokalni izvajalci in partnerji s slikami storitev ter neposrednimi povezavami do spletnih strani. Kamnoseštvo, svečarstvo, graverstvo, QR kode za nagrobnike, prevozi pokojnih, sedmine, govorniki.",
     alternates: {
-      canonical: city ? `https://www.osmrtnica.com/lokalni?city=${encodeURIComponent(city)}` : "https://www.osmrtnica.com/lokalni",
+      canonical: city ? `${APP_BASE_URL}/lokalni?city=${encodeURIComponent(city)}` : `${APP_BASE_URL}/lokalni`,
     },
   };
 }
