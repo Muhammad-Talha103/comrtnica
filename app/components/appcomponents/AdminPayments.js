@@ -230,7 +230,7 @@ const AdminPayments = () => {
                 </div>
                 <Image
                   src={"/ico_down_arrow_memory.png"}
-                  alt=""
+                  alt="Razvrsti"
                   width={24}
                   height={24}
                 />
@@ -251,7 +251,7 @@ const AdminPayments = () => {
                   </div>
                   <Image
                     src={"/ico_down_arrow_memory.png"}
-                    alt=""
+                    alt="Razvrsti"
                     width={24}
                     height={24}
                   />
@@ -271,7 +271,7 @@ const AdminPayments = () => {
                   </div>
                   <Image
                     src={"/ico_down_arrow_memory.png"}
-                    alt=""
+                    alt="Razvrsti"
                     width={24}
                     height={24}
                   />
@@ -285,7 +285,7 @@ const AdminPayments = () => {
                   </div>
                   <Image
                     src={"/ico_down_arrow_memory.png"}
-                    alt=""
+                    alt="Razvrsti"
                     width={24}
                     height={24}
                   />
@@ -407,14 +407,14 @@ const AdminPayments = () => {
                   <Image src={data.rejecticon} width={28} height={28}></Image>
                 </td> */}
                 <td className="w-[250px] pl-[68px] h-[64px] text-center text-[13px] text-[#3C3E41] ">
-                  <Image src={data.rejecticon} alt="" width={21} height={21} />
+                  <Image src={data.rejecticon} alt="Zavrni" width={21} height={21} />
                 </td>
 
                 <td className="w-[124px] pl-[25px] h-[64px] text-start text-[13px]  text-[#3C3E41]  ">
-                  <Image src={data.delete} alt="" width={21} height={21} />
+                  <Image src={data.delete} alt="Izbriši" width={21} height={21} />
                 </td>
                 <td className="w-[124px] pl-[25px] h-[64px] text-start text-[13px]  text-[#3C3E41]  ">
-                  <Image src={"/reject.png"} alt="" width={21} height={21} />
+                  <Image src={"/reject.png"} alt="Zavrni" width={21} height={21} />
                 </td>
                 {/* <td className="w-[120px] pl-[33px] h-[64px] text-center text-[12px]  text-[#3C3E41] py-3  ">
                   <Image src={"/reject.png"} width={28} height={28}></Image>

@@ -88,7 +88,7 @@ export default function CompanySidebar({
           <div className="w-[186px] cursor-pointer rounded-[10px] shadow-custom-light-dark-box-image relative mt-5 overflow-hidden" onClick={() => router.push(absolutePath + `/${user?.slugKey}` + "/menu")}>
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#0D94E8] to-[#530CC6] rounded-[8px]" />
             <div className="h-[40px] bg-[#ffffff] relative z-10 m-[2px] border-[1px] border-[#FFFFFF40] flex justify-center items-center rounded-[7px]">
-              <img src="/dodaj-com.png" alt="" />
+              <img src="/dodaj-com.png" alt="Dodaj vsebino" />
             </div>
           </div>
         </div>
@@ -164,7 +164,7 @@ export default function CompanySidebar({
           >
             <div className="h-[48px] flex justify-start items-center rounded-[8px]">
               <div className="ml-[15px]">
-                <Image src={"/ico_logout.png"} alt="" width={24} height={24} />
+                <Image src={"/ico_logout.png"} alt="Odjava iz računa" width={24} height={24} />
               </div>
 
               <div

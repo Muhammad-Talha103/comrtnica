@@ -31,7 +31,7 @@ const ButtonLightGreen = ({ placeholderText, isOpen, isMobile = false }) => {
                   ? "/ico_back_arrow.png"
                   : "/ico_right_arrow_user.png"
               }
-              alt=""
+              alt="Puščica za navigacijo"
               width={24}
               height={24}
               className="mr-[15px]"

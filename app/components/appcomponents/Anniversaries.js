@@ -565,13 +565,13 @@ const Anniversaries = () => {
 
       <div className="tabletUserAcc:hidden desktopUserAcc:hidden flex flex-col mt-[20px]  ">
         <div className="flex items-center ml-[90px]">
-          <Image src={"/rect_blue_icon.png"} alt="" width={19} height={10} />
+          <Image src={"/rect_blue_icon.png"} alt="Modri indikator - stran ima Skrbnika" width={19} height={10} />
           <div className=" ml-3 text-[#717B8C] text-[12px] font-normal ">
             obarvano ozadje - stran ima Skrbnika
           </div>
         </div>
         <div className="flex items-center ml-[90px]">
-          <Image src={"/rect_perp_icon.png"} alt="" width={19} height={10} />
+          <Image src={"/rect_perp_icon.png"} alt="Vijolični indikator - kjer si ti Skrbnik" width={19} height={10} />
           <div className="ml-3 text-[#717B8C] text-[12px] font-normal ">
             vijolični okvir - kjer si ti Skrbnik
           </div>

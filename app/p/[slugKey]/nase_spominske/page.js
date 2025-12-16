@@ -246,11 +246,11 @@ export default function Spominske() {
                       </div>
                       <div className="flex justify-between items-center px-[6px] pb-[6px]">
                         {obituary.hasKeeper === true ? (
-                          <img src="/dodana.png" alt="" className="h-[10px]" />
+                          <img src="/dodana.png" alt="Dodano" className="h-[10px]" />
                         ) : (
                           <img
                             src="/ico_pregled.png"
-                            alt=""
+                            alt="Pregled"
                             className="h-[10px]"
                           />
                         )}

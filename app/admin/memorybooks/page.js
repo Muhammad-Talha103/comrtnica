@@ -258,7 +258,7 @@ const MemoryBook = () => {
                     Memory page
                     <Image
                       src={"/ico_down_arrow_memory.png"}
-                      alt=""
+                      alt="Razvrsti"
                       width={24}
                       height={24}
                     />
@@ -270,7 +270,7 @@ const MemoryBook = () => {
                     <div className="">CITY</div>
                     <Image
                       src={"/ico_down_arrow_memory.png"}
-                      alt=""
+                      alt="Razvrsti"
                       width={24}
                       height={24}
                     />
@@ -392,7 +392,7 @@ const MemoryBook = () => {
                         <div className="flex flex-col items-start gap-y-[4px]">
                           <Image
                             src={tableData[0].obitPage}
-                            alt=""
+                            alt="Osmrtnica"
                             width={16}
                             height={18}
                             className={"block"}
@@ -404,7 +404,7 @@ const MemoryBook = () => {
                         <div className="flex flex-col items-start gap-y-[4px]">
                           <Image
                             src={tableData[0].keeper}
-                            alt=""
+                            alt="Skrbnik"
                             width={16}
                             height={18}
                             className={`${
@@ -456,7 +456,7 @@ const MemoryBook = () => {
                         <div className="flex flex-row justify-center items-center">
                           <Image
                             src={tableData[0].notes}
-                            alt=""
+                            alt="Opombe"
                             width={14}
                             height={14}
                             className={`h-[18.9px] w-[18.9px] ${"block "}`}
@@ -468,7 +468,7 @@ const MemoryBook = () => {
                         <div className="flex flex-row justify-center items-center">
                           <Image
                             src={tableData[0].email}
-                            alt=""
+                            alt="E-pošta"
                             width={20}
                             height={19}
                             className={`${"block "}`}
@@ -480,7 +480,7 @@ const MemoryBook = () => {
                         <div className="flex flex-row justify-center items-center">
                           <Image
                             src={tableData[0].grantCode}
-                            alt=""
+                            alt="Koda za dostop"
                             width={22}
                             height={18}
                             className={`${"block "}`}

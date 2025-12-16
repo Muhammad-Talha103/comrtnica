@@ -165,9 +165,9 @@ const OpeningPromotion = () => {
 
               <div className="flex w-full h-full flex-col mt-4">
                 <div className="flex w-full justify-between ">
-                  <h className="text-[32px] mobile:text-[24px] mobile:font-variation-customOpt24 text-[#3C3E41] font-variation-customOpt32 font-bold mt-[-10px]">
+                  <h3 className="text-[32px] mobile:text-[24px] mobile:font-variation-customOpt24 text-[#3C3E41] font-variation-customOpt32 font-bold mt-[-10px]">
                     {list[currentIndex].heading}
-                  </h>
+                  </h3>
                   <span className="text-[24px] text-[#3C3E41] font-variation-customOpt24 font-bold mt-[-10px] hidden mobile:flex">
                     {currentIndex + 1}/4
                   </span>

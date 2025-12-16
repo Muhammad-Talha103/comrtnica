@@ -13,7 +13,7 @@ const FuneralPromo1 = () => {
             </div>
 
             <div className="inner-container my-[40px] md:my-[89.76px] w-full md:w-[90%] lg:w-[700px] mx-auto text-[#3C3E41] px-4 md:px-0">
-                <img src="/funeralpromo/check-circle.png" className='w-[60px] h-[60px] md:w-[91.42px] md:h-[91.42px] mx-auto' alt="" />
+                <img src="/funeralpromo/check-circle.png" className='w-[60px] h-[60px] md:w-[91.42px] md:h-[91.42px] mx-auto' alt="Ikona potrditve - označeno" />
 
                 <div className="text-container w-auto h-auto md:h-[103px] mx-auto text-center mt-[12.5px]">
                     <h2 className='text-3xl md:text-[40px] leading-[1.2] md:leading-[48px] font-light'>Brezplačno je</h2>

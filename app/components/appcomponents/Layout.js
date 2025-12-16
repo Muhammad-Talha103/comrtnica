@@ -145,6 +145,7 @@ const Layout = ({
             <img
               className="object-cover h-full w-full"
               src="/payment-hero.jpg"
+              alt="Ozadje za sekcijo cenika - Osmrtnica.com"
             />
             <h1 className="absolute text-[#1E2125] border border-[#ffffff] mobile:text-[28px] text-[40px] top-[35%] mx-auto left-0 right-0 flex items-center justify-center mobile:w-[114px] mobile:h-[65px] w-[137px] h-[79px] bg-gradient-to-r from-[#ffffff] to-[#ffffff]/[30%] rounded-[8px]">
               Cenik
