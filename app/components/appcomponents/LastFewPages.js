@@ -93,8 +93,8 @@ const LastFewPages = () => {
               <Image
                 src="/img_back_mob.png"
                 alt="Back"
-                width={8}
-                height={14}
+                width={8.43}
+                height={13.79}
                 className="h-[13.79px] w-[8.43px]"
               />
             </button>
@@ -105,8 +105,8 @@ const LastFewPages = () => {
               <Image
                 src="/img_forward_mob.png"
                 alt="Forward"
-                width={8}
-                height={14}
+                width={8.43}
+                height={13.79}
                 className="h-[13.79px] w-[8.43px]"
               />
             </button>

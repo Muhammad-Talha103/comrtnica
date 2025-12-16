@@ -102,7 +102,7 @@ const ObituaryCard = ({
           >
             <Image
               src={imageUrl}
-              alt={`Fotografija ${data.name} ${data.sirName} - Osmrtnica.com`}
+              alt={`Fotografija ${[data.name || '', data.sirName || ''].filter(Boolean).join(' ') || 'osoba'} - Osmrtnica.com`}
               width={1000}
               height={1000}
               className="mobile:h-[98.53px] tablet:h-[130px]

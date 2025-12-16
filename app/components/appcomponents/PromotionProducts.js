@@ -107,7 +107,7 @@ const AdministratorCard = () => {
 
         <Image
           src="/iPhone-x-7.png"
-          alt="Digitalne mobi kartice - prikaz na mobilni napravi"
+          alt="Skrbnik spominske strani - prikaz administratorske stranice na mobilni napravi"
           className="w-[150px] h-auto shrink-0 self-center mx-auto hidden mobile:block"
           width={150}
           height={221}

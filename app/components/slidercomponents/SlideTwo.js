@@ -49,11 +49,12 @@ const SlideTwo = () => {
             </div>
           </div>
           <div className="img-container">
-            <img
+            <Image
               className="mx-[111px] object-cover h-full"
               src="/mobile-cards/slider-mobile.png"
               alt="Prikaz spominske strani na mobilni napravi - Osmrtnica.com"
-              loading="lazy"
+              width={300}
+              height={600}
             />
           </div>
         </div>
@@ -101,11 +102,12 @@ const SlideTwo = () => {
             </div>
           </div>
           <div className="img-container">
-            <img
+            <Image
               className="mx-[111px]"
               src="/mobile-cards/slider-mobile.png"
               alt="Prikaz spominske strani na mobilni napravi - Osmrtnica.com"
-              loading="lazy"
+              width={300}
+              height={600}
             />
           </div>
         </div>
@@ -145,11 +147,12 @@ const SlideTwo = () => {
             </p>
           </div>
 
-          <img
+          <Image
             className="mt-[33px] mx-auto"
             src="/mobile-cards/slider-mobile.png"
             alt="Prikaz spominske strani na mobilni napravi - Osmrtnica.com"
-            loading="lazy"
+            width={200}
+            height={400}
           />
 
           <div className="btn-container text-center">

@@ -65,14 +65,14 @@ const ownWebsite = () => {
 
                     {/*C2 container for desktop*/}
                     <div className='w-[295.42px] h-[224px] flex-col items-center desktop:ml-[64px] mobile:mt-12 flex tablet:hidden'>
-                        <img src='/image_no_picture.png' alt="Ikona - še nimate slik" className='w-[88px] h-[88px]'></img>
+                        <Image src='/image_no_picture.png' alt="Ikona - še nimate slik" width={88} height={88} className='w-[88px] h-[88px]'></Image>
                         <div className='text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-3'>Še nimate slik? Ni problema!</div>
                         <div className='text-[18px] text-[#3C3E41] font-variation-customOpt18 text-center mt-[13px]'>Če primernih slik trenutno še nimate,  lahko uporabite naše, ki so  priložene in svoje prilepite kasneje.</div>
                     </div>
 
                     {/*C3 container for desktop*/}
                     <div className='w-[295.42px] h-[224px] flex-col items-center desktop:ml-[64px] mobile:mt-12 flex tablet:hidden'>
-                        <img src='/image_devices.png' alt="Ikona naprav - prilagojeno vsem napravam" className='w-[88px] h-[88px]'></img>
+                        <Image src='/image_devices.png' alt="Ikona naprav - prilagojeno vsem napravam" width={88} height={88} className='w-[88px] h-[88px]'></Image>
                         <div className='text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-3'>Prilagojeno vsem napravam</div>
                         <div className='text-[18px] text-[#3C3E41] font-variation-customOpt18 text-center mt-[13px]'>Vaša spletna stran bo profesionalnega videza na računalniku, tablici in telefonu.</div>
                     </div>

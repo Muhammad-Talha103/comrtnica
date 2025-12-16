@@ -109,9 +109,9 @@ const SimpleComp = () => {
                 height={70}
                 className="w-[70px] h-[70px] mt-2"
               />
-              <div className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-4 mobile:mt-3">
+              <h3 className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-4 mobile:mt-3">
                 Začneš lahko takoj
-              </div>
+              </h3>
               <div className="text-[16px] h-[72px] text-[#3C3E41] font-variation-customOpt16 text-center mt-4 desktop:mx-3">
                 Odpri osmrtnico svojih dragih in z izrekanji sožalja, vpisi v
                 Žalno knjigo, prižiganjem svečk, lahko pričneš takoj.
@@ -127,9 +127,9 @@ const SimpleComp = () => {
                 height={64}
                 className="w-[64px] h-[64px] mt-4"
               />
-              <div className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-[14px] mobile:mt-3">
+              <h3 className="text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-[14px] mobile:mt-3">
                 Povej naprej
-              </div>
+              </h3>
               <div className="text-[16px] h-[72px] text-[#3C3E41] font-variation-customOpt16 text-center mt-4 mobile:mt-3 desktop:mx-3">
               V svoji lokalni cvetličarni brezplačno dobiš tudi digitalne kartice za pošiljanje naprej; in nekaj časa tudi Skrbnika.   
               </div>

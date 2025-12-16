@@ -18,7 +18,7 @@ export default function Darila() {
           
           </div>
           <div className="flex items-center gap-5 absolute top-[2px] left-[2px] w-[calc(100%-55px)] h-[51px] bg-white rounded-s-md px-3">
-            <Image src="/user/plus.png" alt="predloge" width={24} height={24} className="w-6 h-6 object-contain" />
+            <Image src="/user/plus.png" alt="Plus ikona" width={24} height={24} className="w-6 h-6 object-contain" />
             <h2 className="text-[16px] text-[#6D778E] leading-none">PODARI SKRBNIKA</h2>
           </div>
         </Link>
@@ -32,7 +32,7 @@ export default function Darila() {
           
           </div>
           <div className="flex items-center gap-5 absolute top-[2px] left-[2px] w-[calc(100%-55px)] h-[51px] bg-white rounded-s-md px-3">
-            <Image src="/user/plus.png" alt="predloge" width={24} height={24} className="w-6 h-6 object-contain" />
+            <Image src="/user/plus.png" alt="Plus ikona" width={24} height={24} className="w-6 h-6 object-contain" />
             <h2 className="text-[16px] text-[#6D778E] leading-none">MOBI PREDLOGE</h2>
           </div>
         </Link>
@@ -86,7 +86,7 @@ export default function Darila() {
                 </td>
 
                 <td className="py-[19px] border-t border-b border-r rounded-r border-[#A1B1D4] tabletUserAcc:hidden mobileUserAcc:hidden">
-                  <Image src="/icon_right_light.png" alt="clock" width={24} height={24} className="w-[24px] h-[24px] mr-3" />
+                  <Image src="/icon_right_light.png" alt="Puščica desno" width={24} height={24} className="w-[24px] h-[24px] mr-3" />
                 </td>
               </tr>
               <tr className="bg-white/40 text-[#3C3E41]">
@@ -118,7 +118,7 @@ export default function Darila() {
                 </td>
 
                 <td className="py-[19px] border-t border-b border-r rounded-r border-[#A1B1D4] tabletUserAcc:hidden mobileUserAcc:hidden">
-                  <Image src="/icon_right_light.png" alt="clock" width={24} height={24} className="w-[24px] h-[24px] mr-3" />
+                  <Image src="/icon_right_light.png" alt="Puščica desno" width={24} height={24} className="w-[24px] h-[24px] mr-3" />
                 </td>
               </tr>
               <tr className="bg-white/40 text-[#3C3E41]">
@@ -150,7 +150,7 @@ export default function Darila() {
                 </td>
 
                 <td className="py-[19px] border-t border-b border-r rounded-r border-[#A1B1D4] tabletUserAcc:hidden mobileUserAcc:hidden">
-                  <Image src="/icon_right_light.png" alt="clock" width={24} height={24} className="w-[24px] h-[24px] mr-3" />
+                  <Image src="/icon_right_light.png" alt="Puščica desno" width={24} height={24} className="w-[24px] h-[24px] mr-3" />
                 </td>
               </tr>
               <tr className="bg-white/40 text-[#3C3E41]">
@@ -182,7 +182,7 @@ export default function Darila() {
                 </td>
 
                 <td className="py-[19px] border-t border-b border-r rounded-r border-[#A1B1D4] tabletUserAcc:hidden mobileUserAcc:hidden">
-                  <Image src="/icon_right_light.png" alt="clock" width={24} height={24} className="w-[24px] h-[24px] mr-3" />
+                  <Image src="/icon_right_light.png" alt="Puščica desno" width={24} height={24} className="w-[24px] h-[24px] mr-3" />
                 </td>
               </tr>
               <tr className="bg-white/40 text-[#3C3E41]">
@@ -214,7 +214,7 @@ export default function Darila() {
                 </td>
 
                 <td className="py-[19px] border-t border-b border-r rounded-r border-[#A1B1D4] tabletUserAcc:hidden mobileUserAcc:hidden">
-                  <Image src="/icon_right_light.png" alt="clock" width={24} height={24} className="w-[24px] h-[24px] mr-3" />
+                  <Image src="/icon_right_light.png" alt="Puščica desno" width={24} height={24} className="w-[24px] h-[24px] mr-3" />
                 </td>
               </tr>
               <tr className="bg-white/40 text-[#3C3E41]">
@@ -246,7 +246,7 @@ export default function Darila() {
                 </td>
 
                 <td className="py-[19px] border-t border-b border-r rounded-r border-[#A1B1D4] tabletUserAcc:hidden mobileUserAcc:hidden">
-                  <Image src="/icon_right_light.png" alt="clock" width={24} height={24} className="w-[24px] h-[24px] mr-3" />
+                  <Image src="/icon_right_light.png" alt="Puščica desno" width={24} height={24} className="w-[24px] h-[24px] mr-3" />
                 </td>
               </tr>
               <tr className="bg-white/40 text-[#3C3E41]">
@@ -278,7 +278,7 @@ export default function Darila() {
                 </td>
 
                 <td className="py-[19px] border-t border-b border-r rounded-r border-[#A1B1D4] tabletUserAcc:hidden mobileUserAcc:hidden">
-                  <Image src="/icon_right_light.png" alt="clock" width={24} height={24} className="w-[24px] h-[24px] mr-3" />
+                  <Image src="/icon_right_light.png" alt="Puščica desno" width={24} height={24} className="w-[24px] h-[24px] mr-3" />
                 </td>
               </tr>
               <tr className="bg-[#e3e9f0] text-[#3C3E41]">
@@ -310,7 +310,7 @@ export default function Darila() {
                 </td>
 
                 <td className="py-[19px] border-t border-b border-r rounded-r border-[#A1B1D4] tabletUserAcc:hidden mobileUserAcc:hidden ">
-                  <Image src="/icon_right_light.png" alt="clock" width={24} height={24} className="w-[24px] h-[24px] mr-3" />
+                  <Image src="/icon_right_light.png" alt="Puščica desno" width={24} height={24} className="w-[24px] h-[24px] mr-3" />
                 </td>
               </tr>
             </tbody>
