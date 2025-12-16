@@ -97,9 +97,9 @@ const PartnersServicesSectionDesktop = ({
         className="flex flex-row gap-4 items-center h-[64px] mb-6 cursor-pointer select-none"
         onClick={() => setActiveSection(isOpen ? "region" : "services")}
       >
-        <h1 className="flex font-normal text-[40px] leading-[48px] tracking-normal text-black">
+        <h2 className="flex font-normal text-[40px] leading-[48px] tracking-normal text-black">
           Storitve
-        </h1>
+        </h2>
 
         <Image
           src={IconDown}
@@ -182,9 +182,9 @@ const PartnersServicesSectionTablet = ({
         className="flex flex-row gap-4 items-center h-[64px] mb-9 cursor-pointer select-none"
         onClick={() => setActiveSection(isOpen ? "region" : "services")}
       >
-        <h1 className="flex font-normal text-[40px] leading-[48px] tracking-normal text-black">
+        <h2 className="flex font-normal text-[40px] leading-[48px] tracking-normal text-black">
           Storitve
-        </h1>
+        </h2>
 
         <Image
           src={IconDown}
@@ -267,9 +267,9 @@ const PartnersServicesSectionMobile = ({
         className="flex flex-row gap-4 items-center h-[64px] mb-6 cursor-pointer select-none"
         onClick={() => setActiveSection(isOpen ? "region" : "services")}
       >
-        <h1 className="flex font-normal text-[28px] leading-[48px] tracking-normal text-black">
+        <h2 className="flex font-normal text-[28px] leading-[48px] tracking-normal text-black">
           Storitve
-        </h1>
+        </h2>
 
         <Image
           src={IconDown}

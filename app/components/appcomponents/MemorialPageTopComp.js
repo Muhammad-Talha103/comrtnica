@@ -231,7 +231,7 @@ const MemorialPageTopComp = ({
       >
         <Image
           src={"/memory_page_bg.png"}
-          alt=""
+          alt="Ozadje spominske strani"
           width={1280}
           height={1091}
           className="absolute top-0 left-0 w-full h-[120%] pointer-events-none -z-10"
@@ -278,7 +278,7 @@ const MemorialPageTopComp = ({
                     >
                       <Image
                         src={data?.image || "/user5.jpeg"}
-                        alt="Slika"
+                        alt={data?.name && data?.sirName ? `Fotografija ${data.name} ${data.sirName} - Osmrtnica.com` : "Fotografija pokojnika"}
                         width={1000}
                         height={1000}
                         className="h-[266.87px] w-[195px] 
@@ -362,7 +362,7 @@ const MemorialPageTopComp = ({
                         {data?.symbol === "1" && (
                           <Image
                             src={"/icon_cross.png"}
-                            alt="Slika"
+                            alt="Verski simbol - križ"
                             width={1000}
                             height={1000}
                             className="h-[94.29px] w-[73.19px] tablet:h-[116px] tablet:w-[89px] desktop:h-[105px] desktop:w-[89px] "
@@ -371,7 +371,7 @@ const MemorialPageTopComp = ({
                         {data?.symbol === "2" && (
                           <Image
                             src={"/img_plus2.png"}
-                            alt="Slika"
+                            alt="Verski simbol"
                             width={1000}
                             height={1000}
                             className="h-[94.29px] w-[73.19px] tablet:h-[116px] tablet:w-[89px] desktop:h-[105px] desktop:w-[89px] "
@@ -380,7 +380,7 @@ const MemorialPageTopComp = ({
                         {data?.symbol === "3" && (
                           <Image
                             src={"/img_moon_star.png"}
-                            alt="Slika"
+                            alt="Verski simbol - luna in zvezda"
                             width={1000}
                             height={1000}
                             className="h-[94.29px] w-[73.19px] tablet:h-[95px] tablet:w-[89px] desktop:h-[85px] desktop:w-[89px] "
@@ -389,7 +389,7 @@ const MemorialPageTopComp = ({
                         {data?.symbol === "4" && (
                           <Image
                             src={"/img_plus3.png"}
-                            alt="Slika"
+                            alt="Verski simbol"
                             width={1000}
                             height={1000}
                             className="h-[94.29px] w-[73.19px] tablet:h-[116px] tablet:w-[89px] desktop:h-[105px] desktop:w-[89px] "
@@ -398,7 +398,7 @@ const MemorialPageTopComp = ({
                         {data?.symbol === "5" && (
                           <Image
                             src={"/img_star.png"}
-                            alt="Slika"
+                            alt="Verski simbol - zvezda"
                             width={1000}
                             height={1000}
                             className="h-[94.29px] w-[73.19px] tablet:h-[116px] tablet:w-[89px] desktop:h-[105px] desktop:w-[89px] "
@@ -411,7 +411,7 @@ const MemorialPageTopComp = ({
                         {data?.symbol === "1" && (
                           <Image
                             src={"/icon_cross.png"}
-                            alt="Slika"
+                            alt="Verski simbol - križ"
                             width={1000}
                             height={1000}
                             className="h-[80.29px] w-[60.19px] "
@@ -420,7 +420,7 @@ const MemorialPageTopComp = ({
                         {data?.symbol === "2" && (
                           <Image
                             src={"/img_plus2.png"}
-                            alt="Slika"
+                            alt="Verski simbol"
                             width={1000}
                             height={1000}
                             className="h-[80.29px] w-[60.19px] "
@@ -429,7 +429,7 @@ const MemorialPageTopComp = ({
                         {data?.symbol === "3" && (
                           <Image
                             src={"/img_moon_star.png"}
-                            alt="Slika"
+                            alt="Verski simbol - luna in zvezda"
                             width={1000}
                             height={1000}
                             className="h-[65.29px] w-[60.19px] "
@@ -438,7 +438,7 @@ const MemorialPageTopComp = ({
                         {data?.symbol === "4" && (
                           <Image
                             src={"/img_plus3.png"}
-                            alt="Slika"
+                            alt="Verski simbol"
                             width={1000}
                             height={1000}
                             className="h-[80.29px] w-[60.19px] "
@@ -448,7 +448,7 @@ const MemorialPageTopComp = ({
                         {data?.symbol === "5" && (
                           <Image
                             src={"/img_star.png"}
-                            alt="Slika"
+                            alt="Verski simbol - zvezda"
                             width={1000}
                             height={1000}
                             className="h-[80.29px] w-[60.19px] "
@@ -483,9 +483,9 @@ const MemorialPageTopComp = ({
                   }}
                 >
                   <div className="flex items-center h-[39px] ">
-                    <div className="text-[20px] text-[#1E2125] font-variation-customOpt20 font-normal">
+                    <h2 className="text-[20px] text-[#1E2125] font-variation-customOpt20 font-normal">
                       Osmrtnica
-                    </div>
+                    </h2>
                   </div>
                   <div className="bg-[#D4D4D4] h-[1px] w-[100%] my-4 " />
                   {/* <div className="flex h-[79px] desktop:h-[71px] bg-yellow-400"> */}
@@ -530,7 +530,7 @@ const MemorialPageTopComp = ({
                     <> */}
                   <Image
                     src={"/pan.png"}
-                    alt="Slika"
+                    alt="Ikona"
                     width={12}
                     height={12}
                     className=""
@@ -597,9 +597,9 @@ const MemorialPageTopComp = ({
                       }}
                     >
                       <div className="flex  h-[38px] items-center">
-                        <div className="text-[20px] text-[#1E2125] font-variation-customOpt20 font-normal  ">
+                        <h2 className="text-[20px] text-[#1E2125] font-variation-customOpt20 font-normal  ">
                           Dogodki
-                        </div>
+                        </h2>
                       </div>
                       <div className="bg-[#D4D4D4] h-[1px] w-[100%] my-4 " />
                       {[
@@ -812,7 +812,7 @@ const MemorialPageTopComp = ({
                   <div className=" flex tablet:hidden desktop:hidden my-[14px] self-end items-center pr-[7px]">
                     <Image
                       src={"/placeholder_icon.png"}
-                      alt="Slika"
+                      alt="Ikona označevalca"
                       width={18}
                       height={18}
                       className=""
@@ -854,9 +854,9 @@ const MemorialPageTopComp = ({
                     className="flex flex-col tablet:flex-row desktop:flex-row tablet:justify-between 
                   desktop:justify-between h-[39px] "
                   >
-                    <div className="text-[20px] text-[#1E2125] font-variation-customOpt20 font-normal desktop:mt-[2px] ">
+                    <h2 className="text-[20px] text-[#1E2125] font-variation-customOpt20 font-normal desktop:mt-[2px] ">
                       Prižgi svečko v spomin
-                    </div>
+                    </h2>
                     {/* <div className="hidden  tablet:flex desktop:flex text-[12px] text-[#1E2125] font-normal mt-[10px]">
                       Skupno ta teden: {data?.currentWeekVisits}
                     </div> */}
@@ -880,7 +880,7 @@ const MemorialPageTopComp = ({
                     >
                       <Image
                         src={"/candle.png"}
-                        alt="Slika"
+                        alt="Ikona svečke"
                         width={36}
                         height={44}
                         className=""
@@ -912,7 +912,7 @@ const MemorialPageTopComp = ({
                     <>
                       <Image
                         src={"/placeholder_icon.png"}
-                        alt="Slika"
+                        alt="Ozadje spominske strani"
                         width={18}
                         height={18}
                         className=""
@@ -948,9 +948,9 @@ const MemorialPageTopComp = ({
                   }}
                 >
                   <div className="flex items-center  h-[39px]">
-                    <div className="text-[20px] text-[#1E2125] font-variation-customOpt20 font-normal  ">
+                    <h2 className="text-[20px] text-[#1E2125] font-variation-customOpt20 font-normal  ">
                       Povabi družino in prijatelje
-                    </div>
+                    </h2>
                   </div>
                   <div className="bg-[#D4D4D4] h-[1px] w-[100%] my-4 " />
                   <div
@@ -967,7 +967,7 @@ const MemorialPageTopComp = ({
                     >
                       <Image
                         src={"/message_icon.png"}
-                        alt="Slika"
+                        alt="Ikona sporočila"
                         width={17}
                         height={15}
                         className=""
@@ -979,7 +979,7 @@ const MemorialPageTopComp = ({
                     <div className="flex mt-[20px] tablet:mt-0 desktop:mt-0 flex-row items-center h-[50px] w-[209px] justify-center bg-[#DAF3F8] border-[#00B4D8] border-[2px] rounded-lg ">
                       <Image
                         src={"/facebook_icon.png"}
-                        alt="Slika"
+                        alt="Ikona Facebook"
                         width={17}
                         height={17}
                         className=""
@@ -1021,7 +1021,7 @@ const MemorialPageTopComp = ({
                     </span>
                     <Image
                       src={"/qr_demo.png"}
-                      alt="Slika"
+                      alt="Primer QR kode"
                       width={72}
                       height={72}
                       className=""
@@ -1099,7 +1099,7 @@ const MemorialPageTopComp = ({
                   >
                     <Image
                       src={"/flag.png"}
-                      alt="Slika"
+                      alt="Ikona zastave"
                       width={13}
                       height={13}
                       className=""
@@ -1186,7 +1186,7 @@ const MemorialPageTopComp = ({
             >
               <Image
                 src={"/round_add.png"}
-                alt="Slika"
+                alt="Ikona dodajanja"
                 width={100}
                 height={100}
                 className="w-[12px] mb-[2px] h-[12px] mr-[10px]"
@@ -1206,7 +1206,7 @@ const MemorialPageTopComp = ({
             >
               <Image
                 src={"/round_add.png"}
-                alt="Slika"
+                alt="Ikona dodajanja"
                 width={100}
                 height={100}
                 className="w-[12px] mb-[2px] h-[12px] mr-[10px]"
@@ -1223,9 +1223,9 @@ const MemorialPageTopComp = ({
           <div className="flex flex-col w-full items-center">
             <div className="flex flex-col w-full items-center mt-[100px] ">
               <div className="flex items-center justify-center h-[33px] tablet:h-[47px] desktop:h-[47px] relative mobile:mb-[16px]">
-                <div className="text-[#1E2125] text-[28px] tablet:text-[40px] desktop:text-[40px] font-variation-customOpt28 tablet:font-variation-customOpt40 desktop:font-variation-customOpt40 font-normal">
+                <h2 className="text-[#1E2125] text-[28px] tablet:text-[40px] desktop:text-[40px] font-variation-customOpt28 tablet:font-variation-customOpt40 desktop:font-variation-customOpt40 font-normal">
                   Posvetilo
-                </div>
+                </h2>
                 {/* <div className="text-[#0A85C2] text-[24px] font-[400] absolute top-[-3px] right-[-38px]">
                   22
                 </div> */}
@@ -1253,7 +1253,7 @@ const MemorialPageTopComp = ({
             >
               <Image
                 src={"/round_add.png"}
-                alt="Slika"
+                alt="Ikona dodajanja"
                 width={100}
                 height={100}
                 className="w-[12px] mb-[2px] h-[12px] mr-[10px]"
@@ -1271,9 +1271,9 @@ const MemorialPageTopComp = ({
         <div className="w-full pb-[150px]">
           <div className="flex flex-col w-full items-center">
             <div className="flex items-center justify-center h-[33px] tablet:h-[47px] desktop:h-[47px] relative">
-              <div className="text-[#1E2125] text-[28px] tablet:text-[40px] desktop:text-[40px] font-variation-customOpt28 tablet:font-variation-customOpt40 desktop:font-variation-customOpt40 font-normal">
+              <h2 className="text-[#1E2125] text-[28px] tablet:text-[40px] desktop:text-[40px] font-variation-customOpt28 tablet:font-variation-customOpt40 desktop:font-variation-customOpt40 font-normal">
                 Nepozabni trenutki
-              </div>
+              </h2>
               {/* <div className="text-[#0A85C2] text-[24px] font-[400] absolute top-[-3px] right-[-38px]">
                 22
               </div> */}
@@ -1291,7 +1291,7 @@ const MemorialPageTopComp = ({
             >
               <Image
                 src={"/memory_page_plus_icon.png"}
-                alt="Slika"
+                alt="Ikona dodajanja vsebine"
                 width={20}
                 height={20}
                 className=""
@@ -1309,7 +1309,7 @@ const MemorialPageTopComp = ({
             >
               <Image
                 src={"/memory_page_plus_icon.png"}
-                alt="Slika"
+                alt="Ozadje spominske strani"
                 width={16}
                 height={16}
                 className=""
@@ -1331,7 +1331,7 @@ const MemorialPageTopComp = ({
                     >
                       <Image
                         src={item.fileUrl}
-                        alt="Slika"
+                        alt={data?.name && data?.sirName ? `Fotografija spomina za ${data.name} ${data.sirName}` : "Fotografija spomina"}
                         width={200}
                         height={200}
                         className="w-[175px] mobile:w-[125px] mobile:h-[125px] h-[175px] rounded-[8px] object-cover object-center"
@@ -1352,7 +1352,7 @@ const MemorialPageTopComp = ({
                     >
                       <Image
                         src={item.fileUrl}
-                        alt="Slika"
+                        alt={data?.name && data?.sirName ? `Fotografija spomina za ${data.name} ${data.sirName}` : "Fotografija spomina"}
                         width={200}
                         height={200}
                         className="w-[175px] mobile:w-[125px] mobile:h-[125px] h-[175px] rounded-[8px] object-cover object-center"
@@ -1367,9 +1367,9 @@ const MemorialPageTopComp = ({
 
       <div className="w-[1024px] tablet:w-[678.78px]   mobile:w-[341px] h-auto  flex flex-col items-center ">
         <div className="flex flex-row h-[47px] items-center relative">
-          <div className="font-variation-customOpt40 text-[40px] leading-[46.88px] mr-[8px] mobile:text-[28px] mobile:leading-[32.9px] mobile:font-variation-customOpt28 text-[#1E2125] ">
+          <h2 className="font-variation-customOpt40 text-[40px] leading-[46.88px] mr-[8px] mobile:text-[28px] mobile:leading-[32.9px] mobile:font-variation-customOpt28 text-[#1E2125] ">
             Sožalja
-          </div>
+          </h2>
           {/* <div className="text-[#0A85C2] text-[24px] font-[400] absolute top-[-3px] right-[-29px]">
             22
           </div> */}
@@ -1387,7 +1387,7 @@ const MemorialPageTopComp = ({
         >
           <Image
             src={"/memory_page_plus_icon.png"}
-            alt="Slika"
+            alt="Ozadje spominske strani"
             width={20}
             height={20}
             className=""
@@ -1494,7 +1494,7 @@ const MemorialPageTopComp = ({
         >
           <Image
             src={"/memory_down.png"}
-            alt="Slika"
+            alt="Puščica navzdol"
             width={74}
             height={74}
             // className="mt-[24px] mb-[71px] mx-auto"
@@ -1532,7 +1532,7 @@ const UserCircles = ({ onTextClick, onCircle, users }) => {
       >
         <Image
           src={"/memory_page_plus_icon.png"}
-          alt="Slika"
+          alt="Ozadje spominske strani"
           width={20}
           height={20}
           className=""

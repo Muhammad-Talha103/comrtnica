@@ -272,10 +272,12 @@ const FuneralInFewDays = ({ data }) => {
                     onClick={() => prevDates()}
                     className="hidden mobile:flex tablet:flex w-[48px] h-[48px] mobile:w-[36px] mobile:h-[36px] rounded-lg text-black justify-center items-center shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]"
                   >
-                    <img
+                    <Image
                       src="/icon_left.png"
-                      alt="imgPrevious"
-                      className=" w-[8.43px] h-[13.79px]"
+                      alt="Puščica levo - prejšnji dan"
+                      width={8.43}
+                      height={13.79}
+                      className="w-[8.43px] h-[13.79px]"
                     />
                   </button>
 
@@ -283,10 +285,12 @@ const FuneralInFewDays = ({ data }) => {
                     onClick={() => nextDates()}
                     className="hidden mobile:flex tablet:flex ml-[52px] w-[48px] h-[48px] mobile:w-[36px] mobile:ml-[18px] mobile:h-[36px] rounded-lg text-black justify-center items-center shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]"
                   >
-                    <img
+                    <Image
                       src="/icon_right.png"
-                      alt="imgPrevious"
-                      className=" w-[8.43px] h-[13.79px]"
+                      alt="Puščica desno - naslednji dan"
+                      width={8.43}
+                      height={13.79}
+                      className="w-[8.43px] h-[13.79px]"
                     />
                   </button>
                 </div>
@@ -311,7 +315,7 @@ const FuneralInFewDays = ({ data }) => {
           <div className="mt-[29px]">
             <Image
               src="/left_gray_icon.png"
-              alt="Slika"
+              alt="Puščica levo - prejšnji dan"
               width={25}
               height={59}
               className="cursor-pointer	"
@@ -365,7 +369,7 @@ const FuneralInFewDays = ({ data }) => {
           <div className="ml-[69px] mt-[29px]">
             <Image
               src="/right_gray_icon.png"
-              alt="Slika"
+              alt="Puščica desno - naslednji dan"
               width={25}
               height={59}
               className="cursor-pointer	"
@@ -415,7 +419,7 @@ const ListView = ({ item, key }) => {
       <div className="flex h-6 w-6 mobile:mr-[-5px] items-center justify-center">
         <Image
           src="/next_img.png"
-          alt="Slika"
+          alt="Puščica desno"
           width={6}
           height={9}
           className=""

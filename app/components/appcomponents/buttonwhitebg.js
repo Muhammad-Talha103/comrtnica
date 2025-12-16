@@ -31,7 +31,7 @@ const ButtonWhiteBG = ({
           </div>
         ) : (
           <div className="ml-[15px]">
-            <Image src={placeholderImg} alt="" width={24} height={24} />
+            <Image src={placeholderImg} alt="Ikona za navigacijo" width={24} height={24} />
           </div>
         )}
 
@@ -56,7 +56,7 @@ const ButtonWhiteBG = ({
                   ? "/ico_back_arrow.png"
                   : "/ico_right_arrow_user.png"
               }
-              alt=""
+              alt="Puščica za navigacijo"
               width={24}
               height={24}
               className={`mr-[15px]`}
@@ -97,7 +97,7 @@ const ButtonWhiteBGCap = ({
           </div>
         ) : (
           <div className="ml-[15px]">
-            <Image src={placeholderImg} alt="" width={24} height={24} />
+            <Image src={placeholderImg} alt="Ikona za navigacijo" width={24} height={24} />
           </div>
         )}
 
@@ -124,7 +124,7 @@ const ButtonWhiteBGCap = ({
                 ? "/ico_back_arrow.png"
                 : "/ico_right_arrow_user.png"
             }
-            alt=""
+            alt="Puščica za navigacijo"
             width={24}
             height={24}
             className={`mr-[15px]`}

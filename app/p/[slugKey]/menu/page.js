@@ -547,7 +547,7 @@ export default function Funeral() {
                 <h3 className="text-[14px] font-semibold text-[#2198D3]">MESEČNI PREGLED IN STATISTIKE</h3>
                 <Link href="/user/funeral/notifications" className="bg-white rounded-lg py-4 px-6 flex items-center gap-4 justify-between shadow-[5px_5px_10px_rgba(194,194,194,0.5)] border-[2px] border-[rgba(13,148,232,0.1)] mb-1">
                   <div className="flex items-center gap-5">
-                    <img src="/user/omsrtnice.png" alt="omsrtnice" className="w-6 h-6 object-contain" />
+                    <Image src="/user/omsrtnice.png" alt="omsrtnice" width={24} height={24} className="w-6 h-6 object-contain" />
                     <h2 className="text-lg text-[#6D778E]">OSMRTNICE</h2>
                   </div>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="#6D778E" className="size-4">
@@ -556,7 +556,7 @@ export default function Funeral() {
                 </Link>
                 <Link href="/user/funeral/notifications" className="bg-white rounded-lg py-4 px-6 flex items-center gap-4 justify-between shadow-[5px_5px_10px_rgba(194,194,194,0.5)] border-[2px] border-[rgba(13,148,232,0.1)] mb-1">
                   <div className="flex items-center gap-5">
-                    <img src="/user/spominske.png" alt="spominki" className="w-6 h-6 object-contain" />
+                    <Image src="/user/spominske.png" alt="spominki" width={24} height={24} className="w-6 h-6 object-contain" />
                     <h2 className="text-lg text-[#6D778E]">SPOMINKI</h2>
                   </div>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="#6D778E" className="size-4">
@@ -566,7 +566,7 @@ export default function Funeral() {
                 
                 <Link href="/user/funeral/notifications" className="bg-white rounded-lg py-4 px-6 flex items-center gap-4 justify-between shadow-[5px_5px_10px_rgba(194,194,194,0.5)] border-[2px] border-[rgba(13,148,232,0.1)] mb-1">
                   <div className="flex items-center gap-5">
-                    <img src="/user/mobi_predloge.png" alt="predloge" className="w-6 h-6 object-contain" />
+                    <Image src="/user/mobi_predloge.png" alt="predloge" width={24} height={24} className="w-6 h-6 object-contain" />
                     <h2 className="text-lg text-[#6D778E]">MOBI PREDLOGE </h2>
                   </div>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="#6D778E" className="size-4">
@@ -579,7 +579,7 @@ export default function Funeral() {
 
                 <Link href="/user/funeral/notifications" className="bg-white rounded-lg py-4 px-6 flex items-center gap-4 justify-between shadow-[5px_5px_10px_rgba(194,194,194,0.5)] border-[2px] border-[rgba(13,148,232,0.1)] mb-1">
                   <div className="flex items-center gap-5">
-                    <img src="/user/post.png" alt="predloge" className="w-6 h-6 object-contain" />
+                    <Image src="/user/post.png" alt="predloge" width={24} height={24} className="w-6 h-6 object-contain" />
                     <h2 className="text-lg text-[#6D778E]">NAŠA SPLETNA STRAN</h2>
                   </div>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="#6D778E" className="size-4">
@@ -588,7 +588,7 @@ export default function Funeral() {
                 </Link>
                 <Link href="/user/funeral/notifications" className="bg-white rounded-lg py-4 px-6 flex items-center gap-4 justify-between shadow-[5px_5px_10px_rgba(194,194,194,0.5)] border-[2px] border-[rgba(13,148,232,0.1)] mb-1">
                   <div className="flex items-center gap-5">
-                    <img src="/user/post.png" alt="predloge" className="w-6 h-6 object-contain" />
+                    <Image src="/user/post.png" alt="predloge" width={24} height={24} className="w-6 h-6 object-contain" />
                     <h2 className="text-lg text-[#6D778E]">NAŠ RAČUN</h2>
                   </div>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="#6D778E" className="size-4">
@@ -600,7 +600,7 @@ export default function Funeral() {
               <div className="flex flex-col gap-3">
                 <Link href="/user/funeral/notifications" className="bg-white rounded-lg py-4 px-6 flex items-center gap-4 justify-between shadow-[5px_5px_10px_rgba(194,194,194,0.5)] border-[2px] border-[rgba(13,148,232,0.1)] mb-1">
                   <div className="flex items-center gap-5">
-                    <img src="/user/post.png" alt="predloge" className="w-6 h-6 object-contain" />
+                    <Image src="/user/post.png" alt="predloge" width={24} height={24} className="w-6 h-6 object-contain" />
                     <h2 className="text-lg text-[#6D778E]">NAZAJ NA SPLETNO STRAN</h2>
                   </div>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="#6D778E" className="size-4">
@@ -609,7 +609,7 @@ export default function Funeral() {
                 </Link>
                 <Link href="/user/funeral/notifications" className="bg-white rounded-lg py-4 px-6 flex items-center gap-4 justify-between shadow-[5px_5px_10px_rgba(194,194,194,0.5)] border-[2px] border-[rgba(13,148,232,0.1)] mb-1">
                   <div className="flex items-center gap-5">
-                    <img src="/user/post.png" alt="predloge" className="w-6 h-6 object-contain" />
+                    <Image src="/user/post.png" alt="predloge" width={24} height={24} className="w-6 h-6 object-contain" />
                     <h2 className="text-lg text-[#6D778E]">POGOSTA VPRAŠANJA</h2>
                   </div>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="#6D778E" className="size-4">
@@ -629,7 +629,7 @@ export default function Funeral() {
                  
                   </div>
                   <div className="flex items-center gap-5 absolute top-[2px] left-[2px] w-[calc(100%-55px)] h-[56px] bg-white rounded-s-md px-3">
-                    <img src="/user/plus.png" alt="predloge" className="w-6 h-6 object-contain" />
+                    <Image src="/user/plus.png" alt="predloge" width={24} height={24} className="w-6 h-6 object-contain" />
                     <h2 className="text-lg text-[#6D778E]">PODARI SKRBNIKA</h2>
                   </div>
                 </Link>
@@ -643,7 +643,7 @@ export default function Funeral() {
                  
                   </div>
                   <div className="flex items-center gap-5 absolute top-[2px] left-[2px] w-[calc(100%-55px)] h-[56px] bg-white rounded-s-md px-3">
-                    <img src="/user/plus.png" alt="predloge" className="w-6 h-6 object-contain" />
+                    <Image src="/user/plus.png" alt="predloge" width={24} height={24} className="w-6 h-6 object-contain" />
                     <h2 className="text-lg text-[#6D778E]">DODAJ OSMRTNICO</h2>
                   </div>
                 </Link>
@@ -659,7 +659,7 @@ export default function Funeral() {
                  
                   </div>
                   <div className="flex items-center gap-5 absolute top-[2px] left-[2px] w-[calc(100%-55px)] h-[56px] bg-white rounded-s-md px-3">
-                    <img src="/user/plus.png" alt="predloge" className="w-6 h-6 object-contain" />
+                    <Image src="/user/plus.png" alt="predloge" width={24} height={24} className="w-6 h-6 object-contain" />
                     <h2 className="text-lg text-[#6D778E]">DODAJ OSMRTNICO</h2>
                   </div>
                 </Link>

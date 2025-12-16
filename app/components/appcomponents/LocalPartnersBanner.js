@@ -41,7 +41,7 @@ const PartnersBannerDesktop = ({ label, categories, screen }) => {
         text-[40px] 
         font-normal leading-[48px] whitespace-nowrap"
       >
-        {label}
+        {label === "LOKALNI PARTNERJI" ? "Lokalni partnerji" : label}
       </h1>
       <LocalPartnersCarousal categories={categories} screen={screen} />
     </div>
@@ -58,7 +58,7 @@ const PartnersBannerTablet = ({ label, categories, screen }) => {
         text-[40px] 
         font-normal leading-[48px] whitespace-nowrap"
       >
-        {label}
+        {label === "LOKALNI PARTNERJI" ? "Lokalni partnerji" : label}
       </h1>
       <LocalPartnersCarousal categories={categories} screen={screen} />
     </div>
@@ -75,7 +75,7 @@ const PartnersBannerMobile = ({ label, categories, screen }) => {
         text-[28px]
         font-normal leading-[48px] whitespace-nowrap"
       >
-        {label}
+        {label === "LOKALNI PARTNERJI" ? "Lokalni partnerji" : label}
       </h1>
       <LocalPartnersCarousal categories={categories} screen={screen} />
     </div>

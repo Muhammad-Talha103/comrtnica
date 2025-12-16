@@ -74,7 +74,7 @@ const SponsorComponent = ({ text = "", region, city }) => {
                 const logoContent = (
                   <img
                     src={logoUrl}
-                    alt="sponser2 of the image"
+                    alt={`Partner – ${item?.name || ''}${item?.city ? `, ${item.city}` : ''}`}
                     className="max-w-[100%]"
                   />
                 );
@@ -102,24 +102,24 @@ const SponsorComponent = ({ text = "", region, city }) => {
             <div className="flex justify-center items-center">
               <Image
                 src={sponser6}
-                alt="sponser2 of the image"
+                alt="Logotip sponzorja - Osmrtnica.com"
                 className="flex  w-[230px] mobile:w-[150px]  filter grayscale"
               />
               <Image
                 src={sponser7}
-                alt="sponser2 of the image"
+                alt="Logotip sponzorja - Osmrtnica.com"
                 className="flex w-[250px] mobile:w-[150px]   filter grayscale"
               />
 
               <Image
                 src={sponser6}
-                alt="sponser2 of the image"
+                alt="Logotip sponzorja - Osmrtnica.com"
                 className="flex  w-[230px]  filter grayscale tablet:hidden mobile:hidden"
               />
 
               <Image
                 src={sponser7}
-                alt="sponser2 of the image"
+                alt="Logotip sponzorja - Osmrtnica.com"
                 className="flex  w-[250px]  filter grayscale tablet:hidden mobile:hidden"
               />
             </div>

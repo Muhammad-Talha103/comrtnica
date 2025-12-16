@@ -542,7 +542,7 @@ const FuneralCompanyData = () => {
                         width={8}
                         height={12}
                       //   className="w-[24px] h-[30px] m-[0]"
-                      ></Image>
+                      />
                     </div>
                   </th>
 
@@ -557,7 +557,7 @@ const FuneralCompanyData = () => {
                         width={5}
                         height={5}
                         className="w-[24px] h-[30px] m-[0]"
-                      ></Image>
+                      />
                     </div>
                   </th>
 
@@ -571,7 +571,7 @@ const FuneralCompanyData = () => {
                         width={5}
                         height={5}
                         className="w-[24px] h-[30px] m-[0]"
-                      ></Image>
+                      />
                     </div>
                   </th>
 
@@ -616,7 +616,7 @@ const FuneralCompanyData = () => {
                         width={8}
                         height={12}
                       //   className="w-[24px] h-[30px] m-[0]"
-                      ></Image>
+                      />
                     </div>
                   </th>
 
@@ -685,7 +685,7 @@ const FuneralCompanyData = () => {
                         width={8}
                         height={12}
                       //   className="w-[24px] h-[30px] m-[0]"
-                      ></Image>
+                      />
                     </div>
                   </th>
 
@@ -901,7 +901,7 @@ const FuneralCompanyData = () => {
               width={15}
               height={10}
               className="mr-[14px]"
-            ></Image>
+            />
             <p className="font-sourcesans text-[12px] font-normal leading-[16px] text-[#6D778E]">
               Opens that company’s page for more info
             </p>
@@ -1231,7 +1231,7 @@ const FuneralCompanyData = () => {
                         width={5}
                         height={5}
                         className="w-[24px] h-[30px] m-[0] pb-[15px]"
-                      ></Image>
+                      />
                     </div>
                   </th>
 
@@ -1246,7 +1246,7 @@ const FuneralCompanyData = () => {
                         width={5}
                         height={5}
                         className="w-[24px] h-[30px] m-[0] pb-[15px]"
-                      ></Image>
+                      />
                     </div>
                   </th>
 
@@ -1329,7 +1329,7 @@ const FuneralCompanyData = () => {
                       width={5}
                       height={5}
                       className="w-[15px] h-[25px] m-[0] pb-[15px] ml-[30px]"
-                    ></Image>
+                    />
                   </th>
 
                   <th className="w-[70px] text-center   pt-[12px] relative ">
@@ -1341,7 +1341,7 @@ const FuneralCompanyData = () => {
                       width={5}
                       height={5}
                       className="w-[24px] h-[40px] m-[0] pb-[15px] ml-[40px] absolute z-10 top-[48px] left-[-11px]"
-                    ></Image>
+                    />
                   </th>
 
                   <th className="w-[70px] text-center pt-[12px] relative">
@@ -1353,7 +1353,7 @@ const FuneralCompanyData = () => {
                       width={5}
                       height={5}
                       className="w-[24px] h-[40px] m-[0] pb-[15px] ml-[40px] absolute z-10 top-[48px] left-[-11px]"
-                    ></Image>
+                    />
                   </th>
 
                   <th className="w-[400px] text-justify pl-[13px] pt-[12px] relative">
@@ -1365,7 +1365,7 @@ const FuneralCompanyData = () => {
                       width={5}
                       height={5}
                       className="w-[24px] h-[40px] m-[0] pb-[15px] ml-[40px] absolute z-10 top-[48px] left-[-11px]"
-                    ></Image>
+                    />
                   </th>
                 </tr>
               </thead>
@@ -1759,7 +1759,7 @@ const FuneralCompanyData = () => {
               width={5}
               height={5}
               className="w-[15px] h-[25px] pb-[15px] mt-[5px] mr-[12px]"
-            ></Image>
+            />
 
             <p className="font-sourcesans text-[13px] font-normal leading-[15.23px] text-[#3C3E41]  m-[0]">
               Opens a popup with more info
@@ -1772,7 +1772,7 @@ const FuneralCompanyData = () => {
               width={5}
               height={5}
               className="w-[20px] h-[23px] absolute right-[145px] top-[-3px]"
-            ></Image>
+            />
             <p className="font-sourcesans text-[13px] font-normal leading-[15.23px] text-[#3C3E41]  m-[0]">
               Distributes in a column
             </p>
@@ -1963,7 +1963,7 @@ const FuneralCompanyData = () => {
                       width={5}
                       height={5}
                       className="w-[24px] h-[30px] m-[0]"
-                    ></Image>
+                    />
                   </div>
                 </th>
 
@@ -1977,7 +1977,7 @@ const FuneralCompanyData = () => {
                       width={5}
                       height={5}
                       className="w-[24px] h-[30px] m-[0]"
-                    ></Image>
+                    />
                   </div>
                 </th>
 
@@ -2001,7 +2001,7 @@ const FuneralCompanyData = () => {
                       width={8}
                       height={12}
                     //   className="w-[24px] h-[30px] m-[0]"
-                    ></Image>
+                    />
                   </div>
                 </th>
 

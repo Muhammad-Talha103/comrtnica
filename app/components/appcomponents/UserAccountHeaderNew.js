@@ -252,7 +252,7 @@ function UserAccountHeaderNew({
                       <div className="ml-[15px]">
                         <Image
                           src={"/ico_plus_round_white.png"}
-                          alt=""
+                          alt="Dodaj"
                           width={24}
                           height={24}
                           className="w-8 h-6"
@@ -274,7 +274,7 @@ function UserAccountHeaderNew({
                       <div className="flex-1 flex justify-end">
                         <Image
                           src={"/ico_right_white.png"}
-                          alt=""
+                          alt="Naprej"
                           width={32}
                           height={32}
                           className="mr-[20px] w-6 h-6"

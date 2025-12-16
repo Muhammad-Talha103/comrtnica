@@ -36,7 +36,7 @@ const cityOptions =  [
       <div className='relative flex tablet:justify-start desktop:justify-center items-center flex-row w-full mx-auto desktop:h-[300px] tablet:h-[284px] mobile:h-[235px]'>
         <img
           src='/pogrebi-flowers.jpg'
-          alt='pogrebi-flowers'
+          alt='ozadje za cvetličarne'
           className='h-full  w-full object-cover'
         />
 
@@ -51,9 +51,9 @@ const cityOptions =  [
             tablet:w-[476px]'
           >
             <div className='tablet:mb-[32px] desktop:mb-[20px] mb-[21px]'>
-              <div className='text-[24px] tablet:text-[32px] desktop:text-[40px] customOpt40 leading-7 tablet:leading-[46.88px] desktop:leading-[46.88px] font-[400px] text-[#3C3E41]  desktop:text-[#ffff]  whitespace-nowrap'>
+              <h2 className='text-[24px] tablet:text-[32px] desktop:text-[40px] customOpt40 leading-7 tablet:leading-[46.88px] desktop:leading-[46.88px] font-[400px] text-[#3C3E41]  desktop:text-[#ffff]  whitespace-nowrap'>
                 Lokalne cvetličarne
-              </div>
+              </h2>
               
             </div>
             <div className='flex h-[48px] w-[277px] tablet:w-[333px] desktop:w-[476px]'>

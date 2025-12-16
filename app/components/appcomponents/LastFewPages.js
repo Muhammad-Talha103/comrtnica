@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 
 const images = [
   "/img_ipad_slide.avif",
@@ -89,9 +90,11 @@ const LastFewPages = () => {
               onClick={handlePrev}
               className="flex h-[48px] rounded-3xl shadow-custom-light-dark bg-gradient-to-r from-[#E3E8EC] to-[#FFFFFF] justify-center items-center w-[48px]"
             >
-              <img
-                src="img_back_mob.png"
+              <Image
+                src="/img_back_mob.png"
                 alt="Back"
+                width={8.43}
+                height={13.79}
                 className="h-[13.79px] w-[8.43px]"
               />
             </button>
@@ -99,9 +102,11 @@ const LastFewPages = () => {
               onClick={handleNext}
               className="flex h-[48px] rounded-3xl shadow-custom-light-dark bg-gradient-to-r from-[#E3E8EC] to-[#FFFFFF] justify-center items-center w-[48px]"
             >
-              <img
-                src="img_forward_mob.png"
+              <Image
+                src="/img_forward_mob.png"
                 alt="Forward"
+                width={8.43}
+                height={13.79}
                 className="h-[13.79px] w-[8.43px]"
               />
             </button>

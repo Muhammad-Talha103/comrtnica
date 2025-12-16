@@ -2,6 +2,7 @@
 import { Suspense, useEffect, useRef } from "react";
 import { useState } from "react";
 import Layout from "../../components/appcomponents/Layout";
+import Breadcrumbs from "../../components/appcomponents/Breadcrumbs";
 import ObituaryPublished from "../../components/appcomponents/ObituaryPublished";
 import FlowerShops from "../../components/appcomponents/FlowerShops";
 import ShippingNotifications from "../../components/appcomponents/ShippingNotifications";
@@ -133,6 +134,36 @@ const MemoryPageContent = ({ params, obituaryDataFromServer }) => {
     }
   };
 
+  const fullName =
+    obituary?.name && obituary?.sirName
+      ? `${obituary.name} ${obituary.sirName}`
+      : obituary?.name || "";
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Domov",
+        item: `${APP_BASE_URL}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Osmrtnice",
+        item: `${APP_BASE_URL}/osmrtnice`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: fullName || "Žalna stran",
+        item: `${APP_BASE_URL}/m/${slugKey}`,
+      },
+    ],
+  };
+
   // Convert and Upload image
   const handleFacebookShare = async () => {
     try {
@@ -162,6 +193,17 @@ const MemoryPageContent = ({ params, obituaryDataFromServer }) => {
         forFooter={"memorypage"}
       >
         <div className="flex flex-1 flex-col mx-auto bg-[#ecf0f3] pt-[20px] max-w-[100vw] overflow-x-hidden">
+          <Breadcrumbs
+            items={[
+              { label: "Domov", href: "/" },
+              { label: "Osmrtnice", href: "/osmrtnice" },
+              { label: fullName || "Žalna stran" },
+            ]}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+          />
           <ModalLibrary
             isShowModal={isShowModal}
             setIsShowModal={setIsShowModal}

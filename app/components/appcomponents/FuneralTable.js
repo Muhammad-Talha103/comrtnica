@@ -15,11 +15,12 @@ const FuneralTable = () => {
           <span className="font-bold  text-[#EB1D1D]"> 25+ </span> brezplačnih
           možnosti
         </h1>
+        <h2 className="sr-only">Primerjava žalne strani in spominske strani</h2>
 
         <div className="tablet:w-[686px] w-[765px] mx-auto flex items-end flex-col h-20 text-[#3C3E41] mobile:hidden">
           <div className="flex flex-col items-start">
             <div className="inline-flex">
-              <img src="/table_check_sm.png" className="mr-3 object-contain" />
+              <img src="/table_check_sm.png" alt="Označeno" className="mr-3 object-contain" />
               Brezplačno
             </div>
 
@@ -123,11 +124,11 @@ const FuneralTable = () => {
                 Dnevna svečka
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
               {/* <td className="p-2 border border-gray-300 tablet:pl-[48px] desktop:pl-[67px]"><img src="/table_star.png" className="object-contain"/></td> */}
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -136,10 +137,10 @@ const FuneralTable = () => {
                 Vpis v Žalno knjigo
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -148,10 +149,10 @@ const FuneralTable = () => {
                 Izrekanje sožalja (izbira)
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -160,10 +161,10 @@ const FuneralTable = () => {
                 Podrobne informacije o straneh, ki nas zanimajo
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -172,10 +173,10 @@ const FuneralTable = () => {
                 Opomniki za obletnice
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
             <tr className="border-b  h-[45px]">
@@ -183,10 +184,10 @@ const FuneralTable = () => {
                 Deljenje na Facebooku
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
             <tr className="border-b  h-[45px]">
@@ -194,10 +195,10 @@ const FuneralTable = () => {
                 Brezplačna QR koda
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
           </tbody>
@@ -219,7 +220,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -229,7 +230,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -240,7 +241,7 @@ const FuneralTable = () => {
               {/* <td className="p-2 border border-gray-300 tablet:pl-[48px] desktop:pl-[67px]"><img src="/table_star.png" className="object-contain"/></td> */}
               <td className="p-2 border border-gray-300 tablet:pl-[48px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -268,7 +269,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -278,7 +279,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -288,7 +289,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -298,7 +299,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -308,7 +309,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -318,7 +319,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -328,7 +329,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -338,7 +339,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -348,7 +349,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -359,7 +360,7 @@ const FuneralTable = () => {
               {/* <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"><img src="/table_star.png" className="object-contain"/></td> */}
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -375,7 +376,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -385,7 +386,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -395,7 +396,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -405,7 +406,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"></td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check.png" className="object-contain" />
+                <img src="/table_check.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
           </tbody>
@@ -499,7 +500,7 @@ const FuneralTable = () => {
                 Objava osmrtnice
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check_green.png" className="object-contain" />
+                <img src="/table_check_green.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -508,7 +509,7 @@ const FuneralTable = () => {
                 Izdelava Žalne strani na podlagi osmrtnice
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check_green.png" className="object-contain" />
+                <img src="/table_check_green.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -517,7 +518,7 @@ const FuneralTable = () => {
                 Brezplačni mesečni skrbnik
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check_green.png" className="object-contain" />
+                <img src="/table_check_green.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -526,7 +527,7 @@ const FuneralTable = () => {
                 Digitalne kartice
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_check_green.png" className="object-contain" />
+                <img src="/table_check_green.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
           </tbody>
@@ -555,7 +556,7 @@ const FuneralTable = () => {
                 Poudarjena osmrtnica
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_star.png" className="object-contain" />
+                <img src="/table_star.png" alt="Zvezdica" className="object-contain" />
               </td>
             </tr>
 
@@ -564,7 +565,7 @@ const FuneralTable = () => {
                 Letni / 6-letni Skrbnik
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_star.png" className="object-contain" />
+                <img src="/table_star.png" alt="Zvezdica" className="object-contain" />
               </td>
             </tr>
 
@@ -574,7 +575,7 @@ const FuneralTable = () => {
                 dodanim imenom
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_star.png" className="object-contain" />
+                <img src="/table_star.png" alt="Zvezdica" className="object-contain" />
               </td>
             </tr>
 
@@ -583,7 +584,7 @@ const FuneralTable = () => {
                 Izdelava spominske strani za pred časom umrle (brez osmrtnice)
               </td>
               <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]">
-                <img src="/table_star.png" className="object-contain" />
+                <img src="/table_star.png" alt="Zvezdica" className="object-contain" />
               </td>
             </tr>
           </tbody>
@@ -608,17 +609,17 @@ const FuneralTable = () => {
                 <tbody>
                     <tr className="border-b  h-[45px]">
                         <td className="p-2 border border-gray-300 mobile:pl-4 pl-[34px] underline decoration-dotted text-[15px] text-[#2B5D80] decoration-[#ACAAAA] underline-offset-4 decoration-[2px]">Poudarjena osmrtnica</td>
-                        <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"><img src="/table_check.png" className="object-contain"/></td>
+                        <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"><img src="/table_check.png" alt="Označeno" className="object-contain"/></td>
                     </tr>
 
                     <tr className="border-b  h-[45px]">
                         <td className="p-2 border border-gray-300 mobile:pl-4 pl-[34px] underline decoration-dotted text-[15px] text-[#2B5D80] decoration-[#ACAAAA] underline-offset-4 decoration-[2px]">Letni / 6-letni  Skrbnik</td>
-                        <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"><img src="/table_check.png" className="object-contain"/></td>
+                        <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"><img src="/table_check.png" alt="Označeno" className="object-contain"/></td>
                     </tr>
 
                     <tr className="border-b  h-[45px]">
-                        <td className="p-2 border border-gray-300 mobile:pl-4 pl-[34px] underline decoration-dotted text-[15px] text-[#2B5D80] decoration-[#ACAAAA] underline-offset-4 decoration-[2px]">Animirana virtualna svečka, ki ‘gori’ eno leto ali 6 let; z dodanim imenom <span className="text-[#EB1D1D]">*</span> </td>
-                        <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"><img src="/table_check.png" className="object-contain"/></td>
+                        <td className="p-2 border border-gray-300 mobile:pl-4 pl-[34px] underline decoration-dotted text-[15px] text-[#2B5D80] decoration-[#ACAAAA] underline-offset-4 decoration-[2px]">Animirana virtualna svečka, ki 'gori' eno leto ali 6 let; z dodanim imenom <span className="text-[#EB1D1D]">*</span> </td>
+                        <td className="p-2 border border-gray-300 tablet:pl-[45px] desktop:pl-[67px]"><img src="/table_check.png" alt="Označeno" className="object-contain"/></td>
                     </tr>
 
                 </tbody>
@@ -698,10 +699,10 @@ const FuneralTable = () => {
                 Dnevna svečka
               </td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -710,10 +711,10 @@ const FuneralTable = () => {
                 Vpis v Žalno knjigo
               </td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -722,10 +723,10 @@ const FuneralTable = () => {
                 Izrekanje sožalja (izbira)
               </td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -734,10 +735,10 @@ const FuneralTable = () => {
                 Podrobne informacije o straneh, ki nas zanimajo
               </td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -746,10 +747,10 @@ const FuneralTable = () => {
                 Opomniki za obletnice
               </td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
             <tr className="border-b  h-[40px]">
@@ -757,10 +758,10 @@ const FuneralTable = () => {
                 Deljenje na Facebooku
               </td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
             <tr className="border-b  h-[40px]">
@@ -768,10 +769,10 @@ const FuneralTable = () => {
                 Brezplačna QR koda
               </td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
           </tbody>
@@ -802,7 +803,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 pl-[22px]"></td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -812,7 +813,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 pl-[24px]"></td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -822,7 +823,7 @@ const FuneralTable = () => {
               </td>
               <td className="p-2 border border-gray-300 pl-[24px]"></td>
               <td className="p-2 border border-gray-300 pl-[22px]">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -857,7 +858,7 @@ const FuneralTable = () => {
                 Vsi pridobijo možnost objavljati dodatne vsebine
               </td>
               <td className="  border-gray-300 ">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -866,7 +867,7 @@ const FuneralTable = () => {
                 Skrbnik odloča, kaj je objavljeno in kaj ne
               </td>
               <td className="  border-gray-300 ">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -875,7 +876,7 @@ const FuneralTable = () => {
                 Nastavitve zasebnosti (dostop preko gesla)
               </td>
               <td className="  border-gray-300 ">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -884,7 +885,7 @@ const FuneralTable = () => {
                 Dodajanje religioznega simbola{" "}
               </td>
               <td className="  border-gray-300 ">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
             <tr className="border-b  h-[40px]">
@@ -892,7 +893,7 @@ const FuneralTable = () => {
                 Spreminjanje osmrtnice
               </td>
               <td className="  border-gray-300 ">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -901,7 +902,7 @@ const FuneralTable = () => {
                 Dodajanje glasbe
               </td>
               <td className="  border-gray-300 ">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -910,7 +911,7 @@ const FuneralTable = () => {
                 Dodajanje verza ali misli
               </td>
               <td className="  border-gray-300 ">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -919,7 +920,7 @@ const FuneralTable = () => {
                 Spreminjanje ozadja
               </td>
               <td className="  border-gray-300 ">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -928,7 +929,7 @@ const FuneralTable = () => {
                 Dodajanje dogodkov
               </td>
               <td className="  border-gray-300 ">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -938,7 +939,7 @@ const FuneralTable = () => {
                 {/* <img src="/table_star_sm.png" className="object-contain absolute right-12 top-[14px]"/>     */}
               </td>
               <td className="  border-gray-300 ">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -955,7 +956,7 @@ const FuneralTable = () => {
                 Povabi dodatnega skrbnika
               </td>
               <td className="  border-gray-300 ">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -964,7 +965,7 @@ const FuneralTable = () => {
                 Podrobni pregled na straneh, kjer smo Skrbnik
               </td>
               <td className="  border-gray-300 ">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -973,7 +974,7 @@ const FuneralTable = () => {
                 Obveščanje o spremembah, kjer smo Skrbnik
               </td>
               <td className="  border-gray-300 ">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
 
@@ -982,7 +983,7 @@ const FuneralTable = () => {
                 MOBI predloge za Skrbnika
               </td>
               <td className="  border-gray-300 ">
-                <img src="/table_check_sm.png" className="object-contain" />
+                <img src="/table_check_sm.png" alt="Označeno" className="object-contain" />
               </td>
             </tr>
           </tbody>
@@ -1107,17 +1108,17 @@ const FuneralTable = () => {
 
                 <tr className="border-b  h-[40px]">
                     <td className="p-2 pr-0  border-gray-300 mobile:pl-4 text-[14px]  text-[#2B5D80]">Mesečni Skrbnik </td>
-                    <td className="  border-gray-300 "><img src="/table_check_sm.png" className="object-contain"/></td>
+                    <td className="  border-gray-300 "><img src="/table_check_sm.png" alt="Označeno" className="object-contain"/></td>
                 </tr>
 
                  <tr className="border-b  h-[40px]">
                     <td className="p-2 pr-0  border-gray-300 mobile:pl-4 text-[14px]  text-[#2B5D80]">MOBI predloge </td>
-                    <td className="  border-gray-300 "><img src="/table_check_sm.png" className="object-contain"/></td>
+                    <td className="  border-gray-300 "><img src="/table_check_sm.png" alt="Označeno" className="object-contain"/></td>
                 </tr>
 
                  <tr className="border-b  h-[40px]">
                     <td className="p-2 pr-0  border-gray-300 mobile:pl-4 text-[14px] whitespace-nowrap text-[#2B5D80]">Posvetilo, Zadnji klic, Zahvala, deljenje zgodb</td>
-                    <td className="  border-gray-300 "><img src="/table_check_sm.png" className="object-contain"/></td>
+                    <td className="  border-gray-300 "><img src="/table_check_sm.png" alt="Označeno" className="object-contain"/></td>
                 </tr>
 
             </tbody>
@@ -1146,7 +1147,7 @@ const FuneralTable = () => {
                 Poudarjena osmrtnica
               </td>
               <td className="  border-gray-300 pl-1">
-                <img src="/table_star_sm.png" className="object-contain" />
+                <img src="/table_star_sm.png" alt="Zvezdica" className="object-contain" />
               </td>
             </tr>
 
@@ -1155,7 +1156,7 @@ const FuneralTable = () => {
                 Letni / 6-letni Skrbnik
               </td>
               <td className="  border-gray-300 pl-1">
-                <img src="/table_star_sm.png" className="object-contain" />
+                <img src="/table_star_sm.png" alt="Zvezdica" className="object-contain" />
               </td>
             </tr>
 
@@ -1165,7 +1166,7 @@ const FuneralTable = () => {
                 Animirana virtualna svečka, ki...
               </td>
               <td className="  border-gray-300 pl-1">
-                <img src="/table_star_sm.png" className="object-contain" />
+                <img src="/table_star_sm.png" alt="Zvezdica" className="object-contain" />
               </td>
             </tr>
             <tr className="border-b  h-[40px]">
@@ -1174,7 +1175,7 @@ const FuneralTable = () => {
                 {/* Izdelava spominske strani za pred časom umrle (brez osmrtnice)  */}
               </td>
               <td className="  border-gray-300 pl-1">
-                <img src="/table_star_sm.png" className="object-contain" />
+                <img src="/table_star_sm.png" alt="Zvezdica" className="object-contain" />
               </td>
             </tr>
           </tbody>

@@ -57,9 +57,9 @@ export const FrequentlyAskedQuestionView = ({ from, data }) => {
       >
         <div className="h-full  mx-auto max-w-[700px] px-5 w-full flex flex-col items-start tablet:items-center mobile:items-center">
           <div className="flex mb-8 mobile:flex-col w-full justify-between ">
-            <div className="self-start text-[#1E2125] text-[40px] mobile:text-[24px] font-normal leading-[47px] mobile:leading-[33px]">
+            <h2 className="self-start text-[#1E2125] text-[40px] mobile:text-[24px] font-normal leading-[47px] mobile:leading-[33px]">
               Pogosta vprašanja
-            </div>
+            </h2>
             {from == "7" || from == "8" ? null : (
               <div className="self-end">
                 <div className="flex mobile:mt-3 items-center rounded-lg py-3 px-6 justify-center border-[#0A85C270] border-2 shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]">
@@ -157,9 +157,9 @@ export const FrequentlyAskedQuestionView2 = ({ from, data }) => {
       >
         <div className="h-full  mx-auto max-w-[700px] px-4 w-full flex flex-col items-start tablet:items-center mobile:items-center">
           <div className="flex mobile:flex-col w-full justify-between mb-[27px]">
-            <div className="self-start text-[#1E2125] text-[40px] mobile:text-[24px] font-normal leading-[47px] mobile:leading-[33px]">
+            <h2 className="self-start text-[#1E2125] text-[40px] mobile:text-[24px] font-normal leading-[47px] mobile:leading-[33px]">
               Pogosta vprašanja
-            </div>
+            </h2>
           </div>
 
           {faqs && faqs.length > 0
@@ -176,13 +176,13 @@ export const FrequentlyAskedQuestionView2 = ({ from, data }) => {
                       visibleIndexes[index] ? "bg-[#083545] mobile:px-3.5" : ""
                     }`}
                   >
-                    <div
+                    <h3
                       className={`flex font-variation-customOpt16 font-normal text-[18px] mobile:text-[16px] leading-6 text-[#1E2125] text-left mobile:text-left ${
                         visibleIndexes[index] ? "text-[#FFFFFF]" : ""
                       }`}
                     >
                       {faq.question}
-                    </div>
+                    </h3>
 
                     <Image
                       src={
@@ -238,7 +238,7 @@ export const FrequentlyAskedQuestionView3 = ({ from, data }) => {
                     : ""
                 }`}
               >
-                <div
+                <h3
                   className={`flex font-variation-customOpt16 font-medium text-[18px] leading-6 text-[#1E2125] text-start ${
                     visibleIndexes[index]
                       ? "text-[#FFFFFF] mobile:text-[#1E2125]"
@@ -246,7 +246,7 @@ export const FrequentlyAskedQuestionView3 = ({ from, data }) => {
                   }`}
                 >
                   {faq.question}
-                </div>
+                </h3>
 
                 <Image
                   src={visibleIndexes[index] ? icon_cancel_white : icon_plus}

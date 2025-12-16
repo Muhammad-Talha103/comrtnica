@@ -9,12 +9,12 @@ const MemorialPage = () => {
         <div className="flex w-[1039px] h-[584px] tablet:w-[600px] tablet:h-[504px] mobile:w-[296px] mobile:h-[771px] items-center flex-col">
           {/*Header Container*/}
           <div className="flex w-full h-[102px] mobile:h-[163px] desktop:mt-[55px] tablet:mt-1 items-center flex-col">
-            <div className="text-[40px] mobile:text-[28px] text-[#3C3E41] font-variation-customOpt40 mobile:font-variation-customOpt28 flex text-center mobile:leading-10">
+            <h1 className="text-[40px] mobile:text-[28px] text-[#3C3E41] font-variation-customOpt40 mobile:font-variation-customOpt28 flex text-center mobile:leading-10">
               Spominska stran s Skrbnikom
-            </div>
-            <div className="text-[24px] mobile:text-[20px] text-[#3C3E41] font-bold mobile:font-variation-customOpt20wght400 mobile:font-bold mobile:text-center font-variation-customOpt24 mt-[6px] mobile:mt-[3px] mobile:leading-10">
+            </h1>
+            <h2 className="text-[24px] mobile:text-[20px] text-[#3C3E41] font-bold mobile:font-variation-customOpt20wght400 mobile:font-bold mobile:text-center font-variation-customOpt24 mt-[6px] mobile:mt-[3px] mobile:leading-10">
               Nadgradnja v pravo spominsko stran
-            </div>
+            </h2>
           </div>
 
           {/*H2 container*/}
@@ -45,9 +45,9 @@ const MemorialPage = () => {
           </Link>
 
           {/*H4 Container*/}
-          <div className="flex w-[792px] h-[57px] tablet:w-[600px] tablet:h-[27px] mobile:w-[296px] mobile:h-[27px] text-center text-[18px] text-[#3C3E41] font-variation-customOpt18 mt-[9px] mobile:mt-[31px] tablet:mt-6 items-end justify-center leading-[27px]">
+          <h3 className="flex w-[792px] h-[57px] tablet:w-[600px] tablet:h-[27px] mobile:w-[296px] mobile:h-[27px] text-center text-[18px] text-[#3C3E41] font-variation-customOpt18 mt-[9px] mobile:mt-[31px] tablet:mt-6 items-end justify-center leading-[27px]">
             Primerjava obeh podrobno
-          </div>
+          </h3>
         </div>
       </div>
     </div>

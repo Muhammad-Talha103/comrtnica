@@ -50,7 +50,7 @@ export function CommonViewUserAccSidebar({
             </div>
           ) : (
             <div className="ml-[15px]">
-              <Image src={imgPath} alt="" width={24} height={24} />
+              <Image src={imgPath} alt="Ikona navigacije" width={24} height={24} />
             </div>
           )}
           <div
@@ -112,7 +112,7 @@ export function CommonViewBusinessAccSidebar({
             </div>
           ) : (
             <div className="ml-[15px]">
-              <Image src={imgPath} alt="" width={24} height={24} />
+              <Image src={imgPath} alt="Ikona navigacije" width={24} height={24} />
             </div>
           )}
           <div
@@ -203,7 +203,7 @@ export function CommonView({ onPress, isSelected, imgPath, title }) {
           </div>
         ) : (
           <div className="ml-[15px]">
-            <Image src={imgPath} alt="" width={24} height={24} />
+            <Image src={imgPath} alt="Ikona navigacije" width={24} height={24} />
           </div>
         )}
         <div
@@ -236,7 +236,7 @@ export function IconView({ iconPath, name, openCloseSideMenuMobile }) {
     >
       <Image
         src={iconPath}
-        alt=""
+        alt="Ikona za navigacijo"
         width={35}
         height={35}
         className="h-[35px] w-[35px] tabletUserAcc:h-[40px] tabletUserAcc:w-[40px] mobileUserAcc:w-[30px] mobileUserAcc:h-[30px] self-center object-contain"

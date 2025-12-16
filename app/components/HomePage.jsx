@@ -310,12 +310,11 @@ export default function HomeContent(props) {
         desktop:mt-[60.73px] tablet:mt-[67.73px] mobile:mt-[22px]
         desktop:h-[47px] tablet:h-[47px] mobile:h-[33px]"
           >
-            <Link
-              href={"/moj-racun"}
-              className="mobile:font-variation-customOpt28 tablet:font-variation-customOpt40 desktop:font-variation-customOpt40 desktop:text-[40px] tablet:text-[40px] mobile:text-[28px]  text-[#1E2125] leading-[46.88px] "
-            >
-              Zadnje osmrtnice
-            </Link>
+            <h2 className="mobile:font-variation-customOpt28 tablet:font-variation-customOpt40 desktop:font-variation-customOpt40 desktop:text-[40px] tablet:text-[40px] mobile:text-[28px]  text-[#1E2125] leading-[46.88px] ">
+              <Link href={"/moj-racun"}>
+                Zadnje osmrtnice
+              </Link>
+            </h2>
           </div>
           <div
             className="flex flex-col desktop:flex-row 
@@ -362,6 +361,7 @@ export default function HomeContent(props) {
                 isFromObituary={false}
               /> */}
               <SelectDropdown
+                heading={"Išči po regiji"}
                 label={"Išči po regiji"}
                 isFromNotification={false}
                 isFromFlower={false}
@@ -382,6 +382,7 @@ export default function HomeContent(props) {
                 isFromFlowerGreenBgTablet={false}
               /> */}
               <SelectDropdown
+                heading={"Išči po kraju"}
                 data={cityOptions}
                 label={"Išči po kraju"}
                 isFromNotification={false}
@@ -477,12 +478,12 @@ export default function HomeContent(props) {
           <div className="relative flex max-w-[1280px] mx-auto justify-center overflow-visible dekstop:h-[284px] tablet:h-[284px] mobile:h-[235px]">
             <img
               src="/viola_ozadje.avif"
-              alt="viola_ozadje"
+              alt="Cvetličarne po občinah"
               className="h-[284px] w-[1280px] object-cover object-center mobile:h-[235px]"
             />
             <div className="absolute flex flex-col items-center self-center desktop:h-[143px] desktop:w-[476px] desktop:right-[140px] tablet:h-[127px] tablet:w-[302px] tablet:left-1/2 mobile:right-[15px] mobile:h-[113px] mobile:w-[299px]">
               <div className="tablet:mb-[32px] desktop:mb-[48px] mobile:mb-[32px] mobile:text-right mobile:w-full">
-                <div
+                <h2
                   className="
               mobile:text-[28px]
               text-[40px]  leading-[46.88px] 
@@ -490,7 +491,7 @@ export default function HomeContent(props) {
                 mobile:leading-[32.81px] whitespace-nowrap mobile:text-right mobile:w-full"
                 >
                   Lokalne cvetličarne
-                </div>
+                </h2>
               </div>
               <div className="relative">
                 <SelectDropdown
