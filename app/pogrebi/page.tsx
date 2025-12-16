@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import Layout from "../components/appcomponents/Layout";
 import PogrebiListContent from "./PogrebiListContent";
+import { APP_BASE_URL } from "@/config/apiConfig";
 
 export const dynamic = "force-dynamic";
 
@@ -15,7 +16,7 @@ export async function generateMetadata({ searchParams }: { searchParams?: Promis
       ? `Pogrebi v ${city} v naslednjih dneh. Pregled datumov in časov pogrebov po dnevih z možnostjo iskanja po imenu, kraju ali regiji.`
       : "Pogrebi v naslednjih dneh. Pregled datumov in časov pogrebov po dnevih z možnostjo iskanja po imenu, kraju ali regiji.",
     alternates: {
-      canonical: city ? `https://www.osmrtnica.com/pogrebi?city=${encodeURIComponent(city)}` : "https://www.osmrtnica.com/pogrebi",
+      canonical: city ? `${APP_BASE_URL}/pogrebi?city=${encodeURIComponent(city)}` : `${APP_BASE_URL}/pogrebi`,
     },
   };
 }
