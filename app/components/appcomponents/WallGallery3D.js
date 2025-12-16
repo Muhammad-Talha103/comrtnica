@@ -19,6 +19,7 @@ export default function WallGallery3D({ photos = [] }) {
   const tiltTimeoutRef = useRef(null);
   const scrollPosRef = useRef(0);
   const maxScrollRef = useRef(0);
+  const [aspectMap, setAspectMap] = useState({});
 
   useEffect(() => {
     scrollPosRef.current = scrollPos;
@@ -193,26 +194,41 @@ export default function WallGallery3D({ photos = [] }) {
             justifyContent: isCentered ? "center" : "flex-start",
           }}
         >
-          {items.map((item) => (
-            <figure className="wg-photo" key={item.id}>
-              <div className="wg-img-wrap">
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  width={320}
-                  height={220}
-                  sizes="(max-width: 768px) 90vw, 320px"
-                  className="wg-img"
-                  loading="lazy"
-                />
-                {item.alt && (
-                  <figcaption className="wg-caption-overlay">
-                    {item.alt}
-                  </figcaption>
-                )}
-              </div>
-            </figure>
-          ))}
+          {items.map((item) => {
+            const orientation = aspectMap[item.id];
+            return (
+              <figure
+                className={`wg-photo ${
+                  orientation ? `wg-photo-${orientation}` : ""
+                }`}
+                key={item.id}
+              >
+                <div className="wg-img-wrap">
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    width={520}
+                    height={420}
+                    sizes="(max-width: 768px) 90vw, 520px"
+                    className="wg-img"
+                    loading="lazy"
+                    onLoadingComplete={(img) => {
+                      const isPortrait = img.naturalHeight > img.naturalWidth;
+                      setAspectMap((prev) => ({
+                        ...prev,
+                        [item.id]: isPortrait ? "portrait" : "landscape",
+                      }));
+                    }}
+                  />
+                  {item.alt && (
+                    <figcaption className="wg-caption-overlay">
+                      {item.alt}
+                    </figcaption>
+                  )}
+                </div>
+              </figure>
+            );
+          })}
         </div>
       </div>
 
@@ -264,12 +280,13 @@ export default function WallGallery3D({ photos = [] }) {
           gap: 10px;
           transition: transform 0.28s ease, filter 0.28s ease;
           transform-style: preserve-3d;
-          padding: 0 18px 16px 10px;
+          padding: 0 14px 16px 10px;
           touch-action: pan-y;
+          align-items: flex-start;
         }
         .wg-track::after {
           content: "";
-          flex: 0 0 32px;
+          flex: 0 0 22px;
         }
         .wg-track.centered {
           gap: 14px;
@@ -295,19 +312,27 @@ export default function WallGallery3D({ photos = [] }) {
           background: #ffffff;
           margin-right: 0;
           max-width: 100%;
+          display: inline-flex;
+          height: 420px;
+        }
+        .wg-photo-landscape {
+          width: 520px;
+        }
+        .wg-photo-portrait {
+          width: 320px;
         }
         .wg-img-wrap {
           position: relative;
           padding: 0;
           background: transparent;
+          width: 100%;
+          height: 100%;
         }
         .wg-img {
           display: block;
-          height: auto;
-          width: auto;
-          max-height: 210px;
-          max-width: 294px;
-          object-fit: contain;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
           background: transparent;
         }
         .wg-caption-overlay {
@@ -342,9 +367,14 @@ export default function WallGallery3D({ photos = [] }) {
           .wg-photo {
             padding: 6px;
           }
-          .wg-img {
-            max-height: 150px;
-            max-width: 224px;
+          .wg-photo {
+            height: 340px;
+          }
+          .wg-photo-landscape {
+            width: 420px;
+          }
+          .wg-photo-portrait {
+            width: 260px;
           }
           .wg-track {
             gap: 6px;
@@ -356,9 +386,14 @@ export default function WallGallery3D({ photos = [] }) {
           }
         }
         @media (max-width: 480px) {
-          .wg-img {
-            max-height: 140px;
-            max-width: 210px;
+          .wg-photo {
+            height: 260px;
+          }
+          .wg-photo-landscape {
+            width: 320px;
+          }
+          .wg-photo-portrait {
+            width: 200px;
           }
           .wg-photo {
             border-width: 4px;
