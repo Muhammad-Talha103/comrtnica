@@ -27,9 +27,9 @@ const LocalFloristCompo = () => {
             className="flex flex-col
             w-full items-center"
           >
-            <div className="text-[40px] mobile:text-[28px] leading-[48px] mobile:leading-[33px] text-[#000000] font-normal">
+            <h2 className="text-[40px] mobile:text-[28px] leading-[48px] mobile:leading-[33px] text-[#000000] font-normal">
               Prednosti lokalnih cvetličarn
-            </div>
+            </h2>
             <div className="text-[24px] mobile:text-[20px] leading-[28px] mobile:leading-[23px] font-semibold mobile:font-normal text-[#1E2125]">
               (napram cvetju iz velikih trgovin)
             </div>
@@ -76,9 +76,9 @@ const LocalFloristCompo = () => {
                   </p>
                 </div>
                 <div className="w-full px-[13px] tablet:px-[7px] desktop:py-4 desktop:mt-4">
-                  <div className="text-[16px] leading-[19px] tablet:leading-[24px] text-[#1E2125] font-medium tablet:font-normal">
-                    Znanja in dolgoletne izkušnje
-                  </div>
+                  <h3 className="text-[16px] leading-[19px] tablet:leading-[24px] text-[#1E2125] font-medium tablet:font-normal">
+                    1. dolgoletne izkušnje
+                  </h3>
                   <div
                     className="tablet:hidden flex"
                     style={{
@@ -137,9 +137,9 @@ const LocalFloristCompo = () => {
                     </p>
                   </div>
                   <div className="w-full px-[13px]  desktop:py-4 desktop:bg-[#FFFFFF50]  desktop:mt-4">
-                    <div className="text-[16px] leading-[19px] tablet:leading-[24px] text-[#1E2125] font-medium tablet:font-normal">
-                      Obstojnost cvetja je praviloma večja{" "}
-                    </div>
+                    <h3 className="text-[16px] leading-[19px] tablet:leading-[24px] text-[#1E2125] font-medium tablet:font-normal">
+                      2. Velika obstojnost cvetja{" "}
+                    </h3>
                     <div
                       className="tablet:hidden flex"
                       style={{
@@ -198,9 +198,9 @@ const LocalFloristCompo = () => {
                   </p>
                 </div>
                 <div className="w-full px-[13px] desktop:py-4 desktop:mt-4">
-                  <div className="text-[16px] leading-[19px] tablet:leading-[24px] text-[#1E2125] font-medium tablet:font-normal">
-                    Cvetje prilagojeno vsaki priložnosti
-                  </div>
+                  <h3 className="text-[16px] leading-[19px] tablet:leading-[24px] text-[#1E2125] font-medium tablet:font-normal">
+                    3. za vsako priložnost
+                  </h3>
                   <div
                     className="tablet:hidden flex"
                     style={{
@@ -250,9 +250,9 @@ const LocalFloristCompo = () => {
                     </p>
                   </div>
                   <div className="w-full px-[10.08px] mt-6">
-                    <div className="text-[16px] leading-[24px]  text-[#1E2125] font-normal">
-                      Znanja in dolgoletne izkušnje
-                    </div>
+                    <h3 className="text-[16px] leading-[24px]  text-[#1E2125] font-normal">
+                      1. dolgoletne izkušnje
+                    </h3>
                     <div
                       className="tablet:hidden flex"
                       style={{
@@ -295,9 +295,9 @@ const LocalFloristCompo = () => {
                     </p>
                   </div>
                   <div className="w-full px-[10.08px] mt-6 mb-5 pb-1 pt-3 bg-[#ffffff50]">
-                    <div className="text-[16px] leading-[24px]  text-[#1E2125] font-normal">
-                      Obstojnost cvetja je praviloma večja{" "}
-                    </div>
+                    <h3 className="text-[16px] leading-[24px]  text-[#1E2125] font-normal">
+                      2. Velika obstojnost cvetja{" "}
+                    </h3>
                     <div
                       className="tablet:hidden flex"
                       style={{
@@ -339,9 +339,9 @@ const LocalFloristCompo = () => {
                     </p>
                   </div>
                   <div className="w-full px-[10.08px] mt-6">
-                    <div className="text-[16px] leading-[24px]  text-[#1E2125] font-normal">
-                      Cvetje prilagojeno vsaki priložnosti{" "}
-                    </div>
+                    <h3 className="text-[16px] leading-[24px]  text-[#1E2125] font-normal">
+                      3. za vsako priložnost{" "}
+                    </h3>
                     <div
                       className="tablet:hidden flex"
                       style={{

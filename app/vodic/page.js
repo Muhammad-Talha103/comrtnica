@@ -233,7 +233,7 @@ function DriverPage() {
                     </div>
                     <Image
                       src="/seznam-c.png"
-                      alt="admin-benefit-1"
+                      alt="Seznam lokalnih cvetličarn - prikaz na računalniku"
                       className="w-[180px] shrink-0 desktop:hidden tablet:block mobile:hidden"
                       width={281}
                       height={221}
@@ -293,7 +293,7 @@ function DriverPage() {
                 </div>
                 <Image
                   src="/seznam-c.png"
-                  alt="admin-benefit-1"
+                  alt="Seznam lokalnih cvetličarn - prikaz na računalniku"
                   className="w-[235px] shrink-0 tablet:hidden mobile:hidden"
                   width={281}
                   height={221}
@@ -321,7 +321,7 @@ function DriverPage() {
               <div className="flex flex-row mobile:flex-col-reverse mobile:gap-0 tablet:gap-[70px] desktop:gap-[100px] tablet:items-start justify-normal mobile:justify-center items-center w-full h-full">
                 <Image
                   src="/vector.png"
-                  alt="admin-benefit-1"
+                  alt="Lastna spletna stran - prikaz na računalniku"
                   className="w-[180px] desktop:w-[235px] shrink-0 mt-[20px] tablet:mt-[55px] mobile:hidden"
                   width={281}
                   height={221}
@@ -368,7 +368,7 @@ function DriverPage() {
 
                   <Image
                     src="/vector.png"
-                    alt="admin-benefit-1"
+                    alt="Lastna spletna stran - prikaz na računalniku"
                     className="w-[187px] shrink-0 mx-auto hidden mobile:block"
                     width={281}
                     height={221}

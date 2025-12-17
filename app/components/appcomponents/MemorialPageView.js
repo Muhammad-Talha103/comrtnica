@@ -30,7 +30,6 @@ const MemorialPageView = () => {
       setObituaries(sortedObituaries);
     } catch (err) {
       console.error("Error fetching obituary:", err);
-      toast.error(err.message || "Failed to fetch obituary.");
     }
   };
 
@@ -40,12 +39,12 @@ const MemorialPageView = () => {
         <div className="relative w-full overflow-hidden mx-auto flex justify-center">
           <img
             src="/spominska_ozadje.avif"
-            alt="spominska_ozadje.avif"
+            alt="spominska knjiga ozadje"
             className="h-[919px] mobile:h-[916px] w-full object-cover flex mobile:hidden"
           />
           <img
             src="/ozadje_mobile.jpg"
-            alt="ozadje_mobile"
+            alt="spominska knjiga ozadje"
             className="h-[916px] w-full object-cover hidden mobile:flex"
           />
 
@@ -57,13 +56,14 @@ const MemorialPageView = () => {
             <div className="absolute inset-0 bg-transparent z-50 cursor-not-allowed"></div>
             <div className="flex flex-col items-center justify-center desktop:w-[904px] tablet:w-[90%] mobile:w-[331px] mx-auto h-[430px] mobile:h-[448px] mt-[79px] mobile:mt-[72px] mobile:mb-[56.15px] mb-[65.15px] rounded-lg border-2 border-[#FFFFFF] backdrop-blur-md bg-[#ffffff90]">
               <div className="h-[303px] mobile:h-auto  w-[750px] mobile:w-[295px] tablet:w-[556px] flex flex-col items-center">
-                <div
+                <h2
                   className="text-[#1E2125] 
           mobile:text-[28px] tablet:text-[40px] desktop:text-[40px] 
           font-normal leading-[47px]  mobile:leading-[33px]"
                 >
-                  Odpri Spominsko stran
-                </div>
+                  Odpri spominsko stran
+                </h2>
+                <h3 className="sr-only">Naprej</h3>
                 <p className="font-variation-customOpt16 mb-12 mobile:mb-4 mt-4 text-[#3C3E41] text-[16px] text-center leading-6 font-normal w-[629.27px] tablet:w-[596px] mobile:w-[301px]">
                   Spomini niso večni. Prehitro nam uidejo, čarobni trenutki se
                   pozabijo, slike zbledijo. Povežite spomine na najdražje v
@@ -107,9 +107,9 @@ const MemorialPageView = () => {
               </div>
             </div>
 
-            <div className="text-[24px] font-semibold text-[#1E2125] leading-[28px] font-variation-customOpt24">
-              Zadnje Spominske strani
-            </div>
+            <h3 className="text-[24px] font-semibold text-[#1E2125] leading-[28px] font-variation-customOpt24">
+              Zadnje spominske strani
+            </h3>
 
             <div
               className=" flex flex-row items-center 
@@ -126,7 +126,7 @@ const MemorialPageView = () => {
                       <div className="rounded-xl shadow-custom-light-dark-box-image p-1 bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] ">
                         <Image
                           src={imageUrl}
-                          alt="mario_danilo_primo"
+                          alt={item?.name && item?.sirName ? `Fotografija ${item.name} ${item.sirName} - Osmrtnica.com` : "Fotografija pokojnika"}
                           width={1000}
                           height={1000}
                           className="h-[190.11px] w-[136px]  rounded-lg"

@@ -18,7 +18,7 @@ const FuneralPromo2 = () => {
           <img
             src="/funeralpromo/check-circle.png"
             className="w-[90px] h-[90px] mx-auto"
-            alt=""
+            alt="Ikona potrditve - označeno"
           />
 
           <div className="text-container w-auto h-[103px] mx-auto text-center mt-[12.5px] px-2 sm:px-4">

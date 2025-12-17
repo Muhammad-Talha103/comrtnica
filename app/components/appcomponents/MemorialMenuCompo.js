@@ -379,7 +379,7 @@ const MemorialMenuCompo = ({ setActiveButton }) => {
         <div className="flex relative flex-col w-[270px] gap-y-[6px] shadow-custom-dark-bottom text-black rounded-[10px]">
           <Image
             src={"/img_bg_promocija.avif"}
-            alt=""
+            alt="Ozadje za promocijo"
             layout="fill"
             objectPosition="cover"
             className="rounded-[10px]"

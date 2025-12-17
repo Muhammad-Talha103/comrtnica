@@ -79,15 +79,15 @@ const OpeningPromotion = () => {
         <div className="flex w-[1086px] tablet:w-[744px] mobile:h-[547px] mobile:w-full flex-col mb-[78px] mobile:mt-[60px]  ">
           {/*header container*/}
           <div className="flex w-full h-[185px] mobile:w-[339px] mobile:mx-auto mobile:h-[97px] flex-col tablet:items-start tablet:justify-center tablet:pl-12">
-            <div className="text-[26px] text-[#3090D5] font-variation-customOpt26 mobile:text-[20px] mobile:font-variation-customOpt20wght400 mt-[78px] mobile:mt-[0px] ">
+            <h1 className="text-[26px] text-[#3090D5] font-variation-customOpt26 mobile:text-[20px] mobile:font-variation-customOpt20wght400 mt-[78px] mobile:mt-[0px] ">
               Otvoritvena promocija
-            </div>
-            <div className="text-[40px] mobile:text-[28px] mobile:font-variation-customOpt28 text-[#2D3D48] font-variation-customOpt40 desktop:mt-[-12px] flex tablet:hidden">
+            </h1>
+            <h2 className="text-[40px] mobile:text-[28px] mobile:font-variation-customOpt28 text-[#2D3D48] font-variation-customOpt40 desktop:mt-[-12px] flex tablet:hidden">
               BREZPLAČNO do 1. maja
-            </div>
-            <div className="text-[40px] text-[#2D3D48] font-variation-customOpt40 mt-[-12px] hidden tablet:flex">
+            </h2>
+            <h2 className="text-[40px] text-[#2D3D48] font-variation-customOpt40 mt-[-12px] hidden tablet:flex">
               BREZPLAČNO do 1. oktobra
-            </div>
+            </h2>
           </div>
 
           {/*main container for list data for desktop*/}
@@ -106,9 +106,9 @@ const OpeningPromotion = () => {
                 />
 
                 <div className="flex ml-4 w-full h-full flex-col">
-                  <h className="text-[32px] text-[#3C3E41] font-variation-customOpt32 font-bold mt-[-10px]">
+                  <h2 className="text-[32px] text-[#3C3E41] font-variation-customOpt32 font-bold mt-[-10px]">
                     {item.heading}
-                  </h>
+                  </h2>
                   <div className="text-[24px] text-[#3C3E41] font-variation-customOpt24">
                     {item.title}
                   </div>
@@ -137,9 +137,9 @@ const OpeningPromotion = () => {
                 />
 
                 <div className="flex w-full h-full flex-col mt-4">
-                  <h className="text-[32px] text-[#3C3E41] font-variation-customOpt32 font-bold mt-[-10px]">
+                  <h2 className="text-[32px] text-[#3C3E41] font-variation-customOpt32 font-bold mt-[-10px]">
                     {item.heading}
-                  </h>
+                  </h2>
                   <div className="text-[24px] text-[#3C3E41] font-variation-customOpt24">
                     {item.title}
                   </div>
@@ -165,12 +165,12 @@ const OpeningPromotion = () => {
 
               <div className="flex w-full h-full flex-col mt-4">
                 <div className="flex w-full justify-between ">
-                  <h className="text-[32px] mobile:text-[24px] mobile:font-variation-customOpt24 text-[#3C3E41] font-variation-customOpt32 font-bold mt-[-10px]">
+                  <h2 className="text-[32px] mobile:text-[24px] mobile:font-variation-customOpt24 text-[#3C3E41] font-variation-customOpt32 font-bold mt-[-10px]">
                     {list[currentIndex].heading}
-                  </h>
-                  <h className="text-[24px] text-[#3C3E41] font-variation-customOpt24 font-bold mt-[-10px] hidden mobile:flex">
+                  </h2>
+                  <span className="text-[24px] text-[#3C3E41] font-variation-customOpt24 font-bold mt-[-10px] hidden mobile:flex">
                     {currentIndex + 1}/4
-                  </h>
+                  </span>
                 </div>
 
                 <div className="text-[24px] text-[#3C3E41] mobile:text-[20px] mobile:font-variation-customOpt20wght400 font-variation-customOpt24">

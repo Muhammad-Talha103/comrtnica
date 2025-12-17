@@ -437,7 +437,7 @@ const Subscription = () => {
             <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
               <div className="w-full flex items-center gap-4">
                 <h2 className="mobile:text-[24px] text-[32px] text-[#000000]">
-                  Cvetličarne
+                  za cvetličarne
                 </h2>
               </div>
 
@@ -585,7 +585,7 @@ const Subscription = () => {
             <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
               <div className="w-full flex items-center gap-4">
                 <h2 className="mobile:text-[24px] text-[32px] text-[#000000]">
-                  Oglaševalci
+                  za oglaševalce
                 </h2>
               </div>
               <p className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[16px] text-[16px]">
@@ -788,7 +788,7 @@ const Subscription = () => {
             <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
               <div className="w-full flex items-center gap-4">
                 <h2 className="mobile:text-[24px] text-[32px] text-[#000000]">
-                  Pogrebna podjetja
+                  za pogrebna podjetja
                 </h2>
               </div>
               <p className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">

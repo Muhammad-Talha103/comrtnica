@@ -81,7 +81,7 @@ export default function Obituaries() {
 
                 <Image
                   src={"/ico_right_white.png"}
-                  alt=""
+                  alt="Naprej"
                   width={32}
                   height={32}
                   className="w-6 h-6 absolute top-1/2 right-[20px] -translate-y-1/2"
@@ -98,7 +98,7 @@ export default function Obituaries() {
 
                 <Image
                   src={"/ico_right_white.png"}
-                  alt=""
+                  alt="Naprej"
                   width={32}
                   height={32}
                   className="w-6 h-6 absolute top-1/2 right-[20px] -translate-y-1/2 opacity-50"
@@ -108,7 +108,7 @@ export default function Obituaries() {
 
             <Image
               src={"/ico_right_white.png"}
-              alt=""
+              alt="Naprej"
               width={32}
               height={32}
               className="w-6 h-6 absolute top-1/2 right-[20px] -translate-y-1/2"
@@ -127,7 +127,7 @@ export default function Obituaries() {
 
               <Image
                 src={"/ico_right_white.png"}
-                alt=""
+                alt="Naprej"
                 width={32}
                 height={32}
                 className="w-6 h-6 absolute top-1/2 right-[20px] -translate-y-1/2"
@@ -221,7 +221,7 @@ export default function Obituaries() {
                             {obituary.hasKeeper === true ? (
                               <img
                                 src="/tick.png"
-                                alt=""
+                                alt="Označeno"
                                 className="w-[24px] h-[24px]"
                               />
                             ) : null}
@@ -234,13 +234,13 @@ export default function Obituaries() {
                               {obituary.image === null ? (
                                 <img
                                   src="/cross.png"
-                                  alt=""
+                                  alt="Ni"
                                   className="w-[28px] h-[28px]"
                                 />
                               ) : (
                                 <img
                                   src="/tick_green.png"
-                                  alt=""
+                                  alt="Da"
                                   className="w-[28px] h-[28px]"
                                 />
                               )}
@@ -250,13 +250,13 @@ export default function Obituaries() {
                               {obituary.funeralTimestamp === null ? (
                                 <img
                                   src="/cross.png"
-                                  alt=""
+                                  alt="Ni"
                                   className="w-[28px] h-[28px]"
                                 />
                               ) : (
                                 <img
                                   src="/tick_green.png"
-                                  alt=""
+                                  alt="Da"
                                   className="w-[28px] h-[28px]"
                                 />
                               )}
@@ -274,7 +274,7 @@ export default function Obituaries() {
                           >
                             <img
                               src="/edit.png"
-                              alt=""
+                              alt="Uredi"
                               className="w-[26px] h-[26px] mobile:hidden block"
                             />
                             <span className="text-[16px] text-[#6D778E] leading-none">

@@ -72,9 +72,9 @@ export default function LoginFooter() {
                       height={18}
                     />
                   </div>
-                  <h className="font-variation-customOpt16 ml-[16px]">
+                  <span className="font-variation-customOpt16 ml-[16px]">
                     386 05 05 05 05
-                  </h>
+                  </span>
                 </a>
                 <a
                   href="#"
@@ -88,9 +88,9 @@ export default function LoginFooter() {
                       height={18}
                     />
                   </div>
-                  <h className="font-variation-customOpt16 ml-[16px]">
+                  <span className="font-variation-customOpt16 ml-[16px]">
                     best@website.com
-                  </h>
+                  </span>
                 </a>
 <a
   href="https://www.facebook.com/osmrtnicacom/"

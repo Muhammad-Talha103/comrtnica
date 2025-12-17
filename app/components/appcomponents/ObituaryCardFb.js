@@ -83,7 +83,7 @@ const ObituaryCardFb = ({
           >
             <Image
               src={imageUrl}
-              alt="Slika"
+              alt={data?.name && data?.sirName ? `Fotografija ${data.name} ${data.sirName} - Osmrtnica.com` : "Fotografija pokojnika"}
               width={1000}
               height={1000}
               className="h-full w-full bg-center rounded-lg"
@@ -140,7 +140,7 @@ const ObituaryCardFb = ({
           >
             <Image
               src={religionImages[data?.symbol]}
-              alt="Slika"
+              alt="Verski simbol"
               width={1000}
               height={1000}
               className={`w-[51px] ${
@@ -158,7 +158,7 @@ const ObituaryCardFb = ({
           >
             <Image
               src={religionImages[data.symbol]}
-              alt="Slika"
+              alt="Verski simbol"
               width={500}
               height={500}
               className={` w-[37.66px] tablet:h-[65px] tablet:w-[51px] ${

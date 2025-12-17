@@ -72,7 +72,7 @@ export function MemoryDetailModal({
                         >
                             <Image
                                 src={cancle_icon}
-                                alt="imgCall"
+                                alt="Zapri modalno okno"
                                 className="w-[46px] h-[46px] mobile:w-[33px] mobile:h-[33px] cursor-pointer relative top-4 right-4"
                             />
                         </div>
@@ -94,7 +94,7 @@ export function MemoryDetailModal({
                                         </div>
                                         <img
                                             src={interaction?.fileUrl}
-                                            alt="img"
+                                            alt={data?.userName ? `Slika, objavljena od ${data.userName}` : "Objavljena slika"}
                                             className="w-[auto] h-[auto]"
                                         />
                                     </div> :

@@ -47,7 +47,7 @@ const Pride = ({ data }) => {
           {data?.secondary_image ? (
             <Image
               src={data.secondary_image}
-              alt="Pride_img"
+              alt={data?.secondary_title ? `Slika za ${data.secondary_title}` : "Slika projekta"}
               width={0}
               height={0}
               sizes="100vw"
@@ -61,7 +61,7 @@ const Pride = ({ data }) => {
           ) : (
             <Image
               src={`/pokopalisce.avif`}
-              alt="Pride_img"
+              alt={data?.secondary_title ? `Slika za ${data.secondary_title}` : "Slika pokopališča"}
               width={0}
               height={0}
               sizes="100vw"

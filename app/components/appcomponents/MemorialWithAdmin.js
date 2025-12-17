@@ -15,10 +15,10 @@ const MemorialWithAdmin = () => {
                                 Spominska stran s <span className="text-[#0A85C2] font-semibold">Skrbnikom</span>
                             </h1>
 
-                            <p className="text-[24px] mobile:text-[20px] tablet:text-[22px] mobile:text-center tablet:text-center mobile:leading-[28px] tablet:leading-[30px] leading-[48px] mobile:mt-[12px] tablet:mt-[15px] mt-[5px] font-bold mobile:font-variation-customOpt24
+                            <h2 className="text-[24px] mobile:text-[20px] tablet:text-[22px] mobile:text-center tablet:text-center mobile:leading-[28px] tablet:leading-[30px] leading-[48px] mobile:mt-[12px] tablet:mt-[15px] mt-[5px] font-bold mobile:font-variation-customOpt24
                          font-variation-customOpt24 text-[#3C3E41]">
                                 Nadgradnja v pravo spominsko stran
-                            </p>
+                            </h2>
 
                             <p className="mt-[16px] mobile:mt-[12px] tablet:mt-[15px] text-[#3C3E41] tablet:text-center mobile:text-center text-[18px] mobile:text-[16px] tablet:text-[17px] leading-[27px] mobile:leading-[24px] tablet:leading-[25px] font-variation-customOpt18">
                                 Skrbnik (običajno nekdo, ki je bil pokojnemu blizu) omogoči številne dodatne
@@ -32,7 +32,7 @@ const MemorialWithAdmin = () => {
                         </div>
 
                         <div className="desktop:flex-1 desktop:flex desktop:justify-center desktop:items-start desktop:mt-[70px] tablet:w-full mobile:w-full flex justify-center">
-                            <img src="spominska_laptop.png" alt="memory_mac" className="desktop:max-w-[900px] desktop:w-full desktop:h-auto tablet:max-w-[500px] tablet:w-full tablet:h-auto mobile:max-w-[280px] mobile:w-full mobile:h-auto object-contain" />
+                            <img src="spominska_laptop.png" alt="Prikaz spominske strani na računalniku - Osmrtnica.com" className="desktop:max-w-[900px] desktop:w-full desktop:h-auto tablet:max-w-[500px] tablet:w-full tablet:h-auto mobile:max-w-[280px] mobile:w-full mobile:h-auto object-contain" />
                         </div>
                     </div>
 

@@ -116,9 +116,9 @@ const AdditionalOptions = () => {
         <div className="flex flex-col items-center mobile:mt-10 pt-[114px] pb-[86px]">
           {/*Header container*/}
           <div className="flex w-[617.64px] h-[170px] tablet:h-[136px] mobile:h-[127px] mobile:w-[360px] flex-col items-center">
-            <h className="w-full flex justify-center h-12 text-[40px] mobile:text-[28px] text-[#1E2125] font-variation-customOpt40 mobile:font-variation-customOpt28 mobile:text-center ">
+            <h2 className="w-full flex justify-center h-12 text-[40px] mobile:text-[28px] text-[#1E2125] font-variation-customOpt40 mobile:font-variation-customOpt28 mobile:text-center ">
               Dodatne možnosti
-            </h>
+            </h2>
             <div className="w-full h-[27px] text-[24px] mobile:text-[20px] mobile:font-variation-customOpt20wght400 text-[#3C3E41] font-bold font-variation-customOpt24 flex justify-center mt-2 mobile:mt-[2px]">
               na spominski strani{" "}
               <span className="text-[#0A85C2] ml-1"> s Skrbnikom</span>

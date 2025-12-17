@@ -1,7 +1,9 @@
 // components/Dropdown.js
+import { useId } from "react";
 import Select from "react-select";
 
 export const SelectDropdown = ({
+  heading,
   label,
   isFromNotification,
   isFromFlower,
@@ -12,6 +14,7 @@ export const SelectDropdown = ({
   selectedValue = "",
   onSelect,
   isDisabled = false,
+  id,
 }) => {
   const options = data.map((item) => ({
     label: item.place,
@@ -94,9 +97,25 @@ export const SelectDropdown = ({
 
     return lowerCaseLabel.startsWith(lowerCaseInput);
   };
+  
+  const uniqueId = useId();
+  const baseId = id || uniqueId;
+  const sanitizedLabel = label?.toLowerCase().replace(/\s+/g, '-') || 'dropdown';
+  const inputId = `select-${sanitizedLabel}-${baseId}`;
+  
   return (
     <div className={`dropdown ${getContainerClass()}`}>
+      {heading && (
+      <h3 className="sr-only">
+        {heading}
+      </h3>
+    )}
+      <label htmlFor={inputId} className="sr-only">
+        {label || heading || "Izbira"}
+      </label>
       <Select
+        inputId={inputId}
+        aria-label={label || heading || "Izbira"}
         options={options}
         isDisabled={isDisabled}
         value={options.find((opt) => opt.value === selectedValue) || null}
@@ -105,7 +124,7 @@ export const SelectDropdown = ({
         styles={customStyles}
         isSearchable={true}
         components={{
-          IndicatorSeparator: () => null, // This is to remove the verivcal line
+          IndicatorSeparator: () => null,
         }}
         filterOption={customFilter}
       />

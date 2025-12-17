@@ -1,12 +1,21 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useBreakpoint } from "../../hooks/useBreakpoint";
 
 const SlideTwo = () => {
   const breakpoint = useBreakpoint();
-  console.log(breakpoint)
 
-  
+  if (breakpoint === null) {
+    return (
+      <div className="bg-[#F5F0E8] text-[#22281C] w-full h-[891px] flex items-center justify-center">
+        <div className="animate-pulse flex flex-col items-center gap-4">
+          <div className="h-8 w-64 bg-[#D4D4D4] rounded"></div>
+          <div className="h-4 w-96 bg-[#D4D4D4] rounded"></div>
+        </div>
+      </div>
+    );
+  }
 
   // === Desktop Layout ===
   if (breakpoint === "desktop") {
@@ -42,17 +51,19 @@ const SlideTwo = () => {
             </div>
             <div className="btn-container ">
               <Link href={"/spominska"}>
-              <button className="px-[25px] py-[12px] w-[155px] rounded-[8px] mt-[47px] shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]">
-                Več o Skrbniku
-              </button>
+                <button className="px-[25px] py-[12px] w-[155px] rounded-[8px] mt-[47px] shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]">
+                  Več o Skrbniku
+                </button>
               </Link>
             </div>
           </div>
           <div className="img-container">
-            <img
+            <Image
               className="mx-[111px] object-cover h-full"
               src="/mobile-cards/slider-mobile.png"
-              alt="iPad Landscape"
+              alt="Prikaz spominske strani na mobilni napravi - Osmrtnica.com"
+              width={300}
+              height={600}
             />
           </div>
         </div>
@@ -93,17 +104,19 @@ const SlideTwo = () => {
             </div>
             <div className="btn-container px-[89px]">
               <Link href={"/spominska"}>
-              <button className="px-[25px] py-[12px] w-[155px] rounded-[8px] mt-[47px] shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]">
-                Več o Skrbniku
-              </button>
+                <button className="px-[25px] py-[12px] w-[155px] rounded-[8px] mt-[47px] shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]">
+                  Več o Skrbniku
+                </button>
               </Link>
             </div>
           </div>
           <div className="img-container">
-            <img
+            <Image
               className="mx-[111px]"
               src="/mobile-cards/slider-mobile.png"
-              alt="iPad Landscape"
+              alt="Prikaz spominske strani na mobilni napravi - Osmrtnica.com"
+              width={300}
+              height={600}
             />
           </div>
         </div>
@@ -143,17 +156,19 @@ const SlideTwo = () => {
             </p>
           </div>
 
-          <img
+          <Image
             className="mt-[33px] mx-auto"
             src="/mobile-cards/slider-mobile.png"
-            alt="iPad Landscape"
+            alt="Prikaz spominske strani na mobilni napravi - Osmrtnica.com"
+            width={200}
+            height={400}
           />
 
           <div className="btn-container text-center">
             <Link href={"/spominska"}>
-            <button className="px-[25px] py-[12px] rounded-[8px] mt-[44px] shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]">
-              Več o Skrbniku
-            </button>
+              <button className="px-[25px] py-[12px] rounded-[8px] mt-[44px] shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]">
+                Več o Skrbniku
+              </button>
             </Link>
           </div>
         </div>
@@ -172,22 +187,24 @@ const SlideTwo = () => {
             <span className="text-[#de222e] font-medium">s skrbnikom</span>
           </h2>
           <p className="text-[#414141] text-[16px] mt-[16px] leading-6 mobile:text-left">
-            Nadgradnja osnovne žalne strani, kjer pokojnemu bližnji prevzame skrb nad objavljenimi vsebinami vseh ostalih in s tem omogoči izdelavo prave spominske strani, na katero se bodo bližnji radi vračali in jo dopolnjevali tudi kasneje. 
-            Upravljanje je enostavno; vsak je lahko Skrbnik. 
+            Nadgradnja osnovne žalne strani, kjer pokojnemu bližnji prevzame skrb nad objavljenimi vsebinami vseh ostalih in s tem omogoči izdelavo prave spominske strani, na katero se bodo bližnji radi vračali in jo dopolnjevali tudi kasneje.
+            Upravljanje je enostavno; vsak je lahko Skrbnik.
 
           </p>
 
-          <img
+          <Image
             className="mt-[33px] mx-auto w-[150px] h-[300px]"
             src="/mobile-cards/slider-mobile.png"
-            alt="iPad Landscape"
+            alt="Prikaz spominske strani na mobilni napravi - Osmrtnica.com"
+            width={150}
+            height={300}
           />
 
           <div className="btn-container text-center mt-[22px]">
             <Link href={"/spominska"}>
-            <button className="px-[25px] py-[12px] rounded-[8px] shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]">
-              Več o Skrbniku
-            </button>
+              <button className="px-[25px] py-[12px] rounded-[8px] shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]">
+                Več o Skrbniku
+              </button>
             </Link>
           </div>
 

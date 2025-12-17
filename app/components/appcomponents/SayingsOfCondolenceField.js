@@ -13,7 +13,7 @@ const SayingsOfCondolenceField = ({name, key, onPress}) => {
                 <div className="w-[22px] h-[22px]">
                     <Image
                     src={"/ico_add_condolence.png"}
-                    alt=""
+                    alt="Dodaj sožalje"
                     width={22}
                     height={22}
                     />

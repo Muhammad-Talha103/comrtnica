@@ -13,9 +13,9 @@ const PartnersCompo = () => {
        mobile:w-[340px] "
         >
           {/*Header text*/}
-          <div className="flex text-[40px] text-[#083545] font-variation-customOpt40 mobile:text-[28px] mobile:font-variation-customOpt28 mobile:mt-[43px] mt-[65px] tablet:mt-[51px]">
-            Postani partner!
-          </div>
+          <h2 className="flex text-[40px] text-[#083545] font-variation-customOpt40 mobile:text-[28px] mobile:font-variation-customOpt28 mobile:mt-[43px] mt-[65px] tablet:mt-[51px]">
+            Postani partner
+          </h2>
 
           {/*Main content contianer*/}
           <div className="flex w-full h-[288px] tablet:h-[600px] mobile:h-[912px] mt-[23px] tablet:mt-[30px] mobile:mt-[47px] tablet:flex-col mobile:flex-col ">

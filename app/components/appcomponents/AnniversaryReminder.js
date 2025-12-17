@@ -12,10 +12,10 @@ const AnniversaryReminder = () => {
                             KORISTNO
                         </div>
 
-                        <div className="text-[40px] mobile:mt-[4px] mobile:text-[28px] mobile:font-variation-customOpt28 
+                        <h2 className="text-[40px] mobile:mt-[4px] mobile:text-[28px] mobile:font-variation-customOpt28 
                     mobile:leading-[32.81px] mt-[-4px] text-[#1E2125] font-variation-customOpt40">
                             Opomnik za obletnice
-                        </div>
+                        </h2>
 
                         <div className="text-[#686868] mt-[3px] mobile:mt-[23px] text-[16px] font-variation-customOpt16 leading-[20.8px]">
                             <p className="block mobile:hidden">Spominske strani na katerih sodelujete (oddate sožalje, se vpišete v Žalno knjigo, itd.)

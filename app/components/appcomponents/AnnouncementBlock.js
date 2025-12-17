@@ -5,12 +5,12 @@ export default function AnnouncementBlock() {
     <div className="bg-[#083545] border border-[#0F0671]">
       <div className="max-w-[1200px] mx-auto py-[37px] mobile:pb-[24px] px-[32px] flex items-end justify-between mobile:flex-col mobile:items-center mobile:gap-[24px]">
         <div className="flex flex-col gap-[16px] mobile:gap-[10px]">
-          <h4 className="text-[20px] mobile:text-[18px] leading-[100%] text-[#FFFFFF] font-variation-customOpt24 font-normal relative">
+          <h2 className="text-[20px] mobile:text-[18px] leading-[100%] text-[#FFFFFF] font-variation-customOpt24 font-normal relative">
             Postani skrbnik te spominske strani
             <a className="text-[#81D6F1] text-[20px] hidden tablet:inline px-[5px] absolute right-[-20px] top-[-10px]">
               ?
             </a>
-          </h4>
+          </h2>
           <p className="text-[16px] mobile:text-[14px] mobile:text-center leading-[24px] text-[#EDF1F3] font-variation-customOpt16 font-normal">
             Naredi stran bolj osebno, bolj toplo.
           </p>
