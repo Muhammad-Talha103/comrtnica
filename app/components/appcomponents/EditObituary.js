@@ -129,7 +129,9 @@ const AddObituary = ({ set_Id, setModal }) => {
 
       try {
         setInputValueFuneralEnd(response?.funeralLocation || "");
-        setInputValueFuneralCemetery(response.Cemetry?.id || "pokopalisce");
+        // Check new Cemeteries first, then fallback to old Cemetry for backward compatibility
+        const cemeteryId = response.Cemeteries?.id || response.Cemetry?.id || "pokopalisce";
+        setInputValueFuneralCemetery(cemeteryId);
         setFuneralDate(
           response?.funeralTimestamp
             ? new Date(response?.funeralTimestamp)
@@ -922,10 +924,12 @@ const AddObituary = ({ set_Id, setModal }) => {
                   {selectedCity}
                 </div>
 
-                <div className="flex w-[231px] mobile:w-full py-2 justify-between border-b-[1px] border-[#D4D4D4]">
+                <div className="flex w-[340px] mobile:w-full py-2 border-b-[1px] border-[#D4D4D4]">
                   <Dropdown
                     label="Izberi pokopališče"
                     isFromObituary={"obituaryform"}
+                    isCemeteryCompact
+                    hideIcon
                     data={funeralCemeteryOptions}
                     selectedValue={selectedCemeteryLabel}
                     onSelect={handleFuneralCemeterySelect}
@@ -1623,10 +1627,7 @@ const AddObituary = ({ set_Id, setModal }) => {
                         </div>
 
                         <div className="text-[18px] font-normal text-[#1E2125] mobile:text-[16px] mobile:mt-1">
-                          {inputValueFuneralCemetery || ""}
-                          {inputValueFuneralEnd
-                            ? `, ${inputValueFuneralEnd}`
-                            : ""}
+                          {selectedCemeteryLabel || inputValueFuneralCemetery || ""}
                         </div>
                       </div>
                     </div>

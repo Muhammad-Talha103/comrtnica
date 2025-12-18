@@ -26,6 +26,7 @@ const SideMenuAdmin = ({
     { text: "Obituaries", imgSrc: "/ico_user.png", path: "/admin/Obituaries" },
     { text: "Memory Books", imgSrc: "/ico_funerals.png", path: "/admin/memorybooks" },
     { text: "Sponsors", imgSrc: "/ico_funerals.png", path: "/admin/sponsors" },
+    { text: "Local Partners", imgSrc: "/ico_funerals.png", path: "/admin/lokalni" },
     // { text: "Approval Requests", imgSrc: "/ico_funerals.png", path: "/admin/approval-requests" },
     {
       text: "Funeral Companies",
@@ -36,6 +37,7 @@ const SideMenuAdmin = ({
     { text: "Users", imgSrc: "/user_active_icon.png", imgActive: "/ico_funeral_comp.png", path: "/admin/users" },
     { text: "Keepers", imgSrc: "/ico_funeral_comp.png", path: "/admin/keepers" },
     { text: "Contacts", imgSrc: "/ico_funeral_comp.png", path: "/admin/contacts" },
+    { text: "Cemeteries", imgSrc: "/ico_funerals.png", path: "/admin/cemeteries" },
     {
       text: "Financials",
       imgSrc: "/ico_cursor.png",

@@ -19,20 +19,22 @@ import { shouldShowBack } from "@/utils/navigationUtils";
 const headerLinkSets = {
   "/osmrtnice": [
     { label: "Osmrtnice", path: "/osmrtnice", active: false },
-    { label: "Pogrebi", path: "/pogrebi", active: false },
+    { label: "Pogrebi", path: "/pogrebi?city=Celje", active: false },
   ],
   "/pogrebi": [
     { label: "Osmrtnice", path: "/osmrtnice", active: false },
-    { label: "Pogrebi", path: "/pogrebi", active: false },
+    { label: "Pogrebi", path: "/pogrebi?city=Celje", active: false },
   ],
 
   "/pogrebna-p": [
     { label: "Cvetličarne", path: "/cvetlicarne", active: false },
     { label: "Pogrebna podjetja", path: "/pogrebna-p", active: false },
+    { label: "Lokalni", path: "/lokalni", active: false },
   ],
   "/cvetlicarne": [
     { label: "Cvetličarne", path: "/cvetlicarne", active: false },
     { label: "Pogrebna podjetja", path: "/pogrebna-p", active: false },
+    { label: "Lokalni", path: "/lokalni", active: false },
   ],
   "/zalna-stran": [
     { label: "QR kode", path: "/qr-kode", active: false },
@@ -43,6 +45,11 @@ const headerLinkSets = {
     { label: "QR kode", path: "/qr-kode", active: false },
     { label: "Žalna stran", path: "/zalna-stran", active: false },
     { label: " Spominska", path: "/spominska", active: false },
+  ],
+  "/lokalni": [
+    { label: "Cvetličarne", path: "/cvetlicarne", active: false },
+    { label: "Pogrebna podjetja", path: "/pogrebna-p", active: false },
+    { label: "Lokalni", path: "/lokalni", active: false },
   ],
   "/spominska": [
     { label: "QR kode", path: "/qr-kode", active: false },
@@ -165,7 +172,7 @@ function CommonHeader({ currentPage }) {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
-        {/* Show TopBar only for specific pages */}
+        {/* TODO: Temporarily disabled pending TopBar redesign - restore by 2026-01-31
         {(currentPage === "pogrebi" || currentPage === "osmrtnice") && (
           <TopBar
             setIsModalVisible={setIsModalVisible}
@@ -176,7 +183,7 @@ function CommonHeader({ currentPage }) {
             }
             onLocalQuickReviewClick={handleLocalQuickReviewClick}
           />
-        )}
+        )} */}
 
         <div className="flex w-full justify-between">
           <div className="flex w-full h-[68px] tablet:w-[744px] mx-auto tablet:h-[80px] px-5 tablet:px-6 desktop:w-[1200px] desktop:h-[92.02px] desktop:px-[12px]">
@@ -198,7 +205,7 @@ function CommonHeader({ currentPage }) {
                 <div className="hidden tablet:flex desktop:flex tablet:mr-[30px] desktop:mr-[38px]">
                   <ul className="flex items-center gap-[32px] tablet:gap-[16px]">
                     {linksToRender.map((link, index) =>
-                      link.label === "Pogrebna podjetja" && link.path==="" ? (
+                      link.label === "Pogrebna podjetja" && link.path === "" ? (
                         <li
                           key={index}
                           className="flex mobile:h-[16px] tablet:h-[24px] desktop:h-[24px] items-center"
@@ -213,8 +220,12 @@ function CommonHeader({ currentPage }) {
                               <span className="text-[#EB1D1D]">{">>"}</span>
                             )}
                             <div className="relative">
-                              <p className="absolute text-[10px] text-[#EB1D1D] right-0 top-[-10px]">KMALU</p>
-                              <p className="relative text-[#1E21254D]">{link.label}</p>
+                              <p className="absolute text-[10px] text-[#EB1D1D] right-0 top-[-10px]">
+                                KMALU
+                              </p>
+                              <p className="relative text-[#1E21254D]">
+                                {link.label}
+                              </p>
                             </div>
                           </Link>
                         </li>
@@ -259,7 +270,7 @@ function CommonHeader({ currentPage }) {
                 {/* Back Button */}
                 {canShowBack && (
                   <button
-                    onClick={() => router.back()}
+                    onClick={() => router.push("/")}
                     className="p-1 rounded-lg hover:bg-gray-100 transition-colors duration-200 "
                     title="Nazaj"
                   >
