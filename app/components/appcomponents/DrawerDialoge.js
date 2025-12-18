@@ -47,7 +47,7 @@ const DrawerDialoge = ({
         <div className="flex items-center justify-between">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <img className="h-10 w-auto" src="/vercel.svg" alt="" />
+            <img className="h-10 w-auto" src="/vercel.svg" alt="Logotip podjetja" />
           </a>
           <button
             type="button"

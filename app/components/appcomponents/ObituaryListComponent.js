@@ -275,6 +275,7 @@ const ObituaryListComponent = ({ city }) => {
       <div className=" flex flex-col items-center w-full tablet:w-full mobile:w-full">
         {/* Main container for inputs main container */}
         <div className="w-full tablet:w-full mobile:w-full flex flex-col items-center">
+          <h2 className="sr-only">search buttons</h2>
           {/* Inputs main Container */}
           <div
             className="w-[777px] tablet:w-[600px] h-[48px] tablet:h-[112px] tablet:columns-2 mobile:w-[296px] mobile:h-[240px] mobile:flex-wrap 
@@ -329,13 +330,13 @@ const ObituaryListComponent = ({ city }) => {
           className="flex desktop:ml-[0px] desktop:h-[78px] tablet:w-[650px] tablet:h-[70px] tablet:justify-center mobile:w-[330px] mobile:flex-col desktop:flex-col"
           ref={cardTopRef}
         >
-          <div className="hidden desktop:flex text-[32px] font-[400px] leading-[28.13px] text-[#1E2125]">
+          <h2 className="hidden desktop:flex text-[32px] font-[400px] leading-[28.13px] text-[#1E2125]">
             Hitri izbor
-          </div>
+          </h2>
           <div className="flex desktop:hidden items-center mr-[24px] tablet:mr-[18px] whitespace-nowrap h-7">
-            <div className="text-[24px] font-[400px] leading-[28.13px] text-[#1E2125]">
+            <h2 className="text-[24px] font-[400px] leading-[28.13px] text-[#1E2125]">
               Hitri izbor
-            </div>
+            </h2>
             <div className="hidden tablet:flex desktop:hidden text-[24px] text-[#1E2125]">
               :
             </div>

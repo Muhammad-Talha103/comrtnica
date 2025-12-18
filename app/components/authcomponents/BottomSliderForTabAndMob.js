@@ -53,9 +53,9 @@ const BottomSliderForTabAndMob = ({ data }) => {
                   </p>
                 </div>
                 <div className="flex w-[140.17px] h-[34px] items-center justify-center rounded-lg bg-blue-100 transition-colors hover:bg-blue-200">
-                  <h className="text-[14px] self-center  text-blue-800 line-clamp-1">
+                  <span className="text-[14px] self-center  text-blue-800 line-clamp-1">
                     Več informacij
-                  </h>
+                  </span>
                 </div>
               </div>
             </SwiperSlide>

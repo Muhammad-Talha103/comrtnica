@@ -56,21 +56,21 @@ const Card1 = ({ data, cardRefs, index, cemetery }) => {
     >
       <div className="ml-[35px] mt-[63.35px]">
         <div className="w-[138px] bg-[#3b3b3b] rounded-t-full overflow-hidden border-[6px] border-[#3b3b3b] shadow-2xl flex items-start justify-center pt-1">
-          <img src={data?.image ?? '/user5.jpeg'} className="w-auto max-h-[188px]" />
+          <img src={data?.image ?? '/user5.jpeg'} alt={data?.name && data?.sirName ? `Fotografija ${data.name} ${data.sirName}` : "Fotografija pokojnika"} className="w-auto max-h-[188px]" />
         </div>
 
         <br />
-        <h2 className="text-[#fff] font-greatVibes text-[36px] font-normal leading-[30px] tracking-[0px]">
+        <span className="text-[#fff] font-greatVibes text-[36px] font-normal leading-[30px] tracking-[0px] block">
           V spomin
-        </h2>
+        </span>
 
         <div className="mt-4">
-          <h5 className="text-[#D89B1C] text-[42px] font-[500]">
+          <span className="text-[#D89B1C] text-[42px] font-[500] block">
             {data?.name}
-          </h5>
-          <h5 className="text-[#D89B1C] translate-y-[-14px] text-[42px] font-[500]">
+          </span>
+          <span className="text-[#D89B1C] translate-y-[-14px] text-[42px] font-[500] block">
             {data?.sirName}
-          </h5>
+          </span>
 
           <p className="text-[24px]">
 
@@ -84,9 +84,9 @@ const Card1 = ({ data, cardRefs, index, cemetery }) => {
         </div>
 
         <div className="mt-[153px]">
-          <h1 className="text-[#D89B1C] text-[24px] font-semibold">
+          <span className="text-[#D89B1C] text-[24px] font-semibold block">
             {data?.funeralTimestamp ? `${dayName} ob ${time}` : "\u00A0"}
-          </h1>
+          </span>
 
           <p>
             {data?.funeralTimestamp ? (
@@ -100,7 +100,7 @@ const Card1 = ({ data, cardRefs, index, cemetery }) => {
             {/* {data?.funeralTimestamp ? (
               <>{data?.Cemetry?.funeralCemetery ?? cemetery}</>
             ) : (
-              <>&nbsp;</>
+              <>&nbsp;</> 
             )} */}
           </p>
         </div>

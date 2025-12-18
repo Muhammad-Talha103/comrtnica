@@ -61,7 +61,7 @@ const FloristsComp = () => {
           />
           <img
             src="/zel_ozadje.avif"
-            alt="Slika"
+            alt="Zeleno ozadje za sekcijo cvetličarn - Osmrtnica.com"
             className="h-full w-full tablet:hidden desktop:hidden object-cover"
           />
           <div

@@ -10,11 +10,32 @@ import SponsorComponent from "../app/components/appcomponents/SponsorComponent";
 import FloristsFlower from "../app/components/appcomponents/FloristsFlower";
 import FloristList from "../app/components/appcomponents/FloristList";
 import CommonFooter from "../app/components/appcomponents/CommonFooter";
+import Breadcrumbs from "../app/components/appcomponents/Breadcrumbs";
+import { APP_BASE_URL } from "@/config/apiConfig";
 
 const CveltComp = () => {
   const searchParams = useSearchParams();
   const region = searchParams.get("region");
   const city = searchParams.get("city");
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Domov",
+        item: `${APP_BASE_URL}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Lokalne cvetličarne",
+        item: `${APP_BASE_URL}/cvetlicarne`,
+      },
+    ],
+  };
 
   return (
     <Layout
@@ -25,7 +46,21 @@ const CveltComp = () => {
       isMegaMenuVisible={false}
     >
       <div className="flex flex-col mx-auto bg-[#F5F7F9] border-b-[1px] border-[#D4D4D4] w-full">
-        <ObituaryListBanner image={"/roza_ozadje.avif"} label={"Cvetličarne"} />
+        <ObituaryListBanner
+          image={"/roza_ozadje.avif"}
+          label={"Lokalne cvetličarne"}
+          alt="ozadje za cvetličarne"
+        />
+        <Breadcrumbs
+          items={[
+            { label: "Domov", href: "/" },
+            { label: "Lokalne cvetličarne" },
+          ]}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
         <FloristList />
         <LocalFloristCompo />
 

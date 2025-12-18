@@ -4,7 +4,7 @@ import { useBreakpoint } from "../../hooks/useBreakpoint";
 const SlideOne = () => {
   const breakpoint = useBreakpoint();
 
-  
+
   if (breakpoint === "desktop") {
     return (
       <>
@@ -14,7 +14,8 @@ const SlideOne = () => {
               <img
                 className="h-[761.1px]"
                 src="/mobile-cards/iPad Landscape.png"
-                alt="iPad Landscape"
+                alt="Prikaz žalne strani na tabličnem računalniku - Osmrtnica.com"
+                loading="lazy"
               />
             </div>
             <div className="text-container w-1/2 pl-[35px] pt-[179px]">
@@ -27,11 +28,12 @@ const SlideOne = () => {
               <p className="text-[20px] font-medium mt-[16px]">
                 Vse navedeno je BREZPLAČNO.
               </p>
-              
-              <Link href={"/zalna-stran"}>
-              <button className="shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] px-[25px] py-[12px] rounded-[8px] mt-[81px] w-[175px]">
+
+              <Link
+                href={"/zalna-stran"}
+                className="inline-flex shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] px-[25px] py-[12px] rounded-[8px] mt-[81px] w-[175px] items-center justify-center"
+              >
                 Več o žalni strani
-              </button>
               </Link>
             </div>
           </div>
@@ -50,7 +52,8 @@ const SlideOne = () => {
               <img
                 className="h-[761.1px]"
                 src="/mobile-cards/iPad Landscape.png"
-                alt="iPad Landscape"
+                alt="Prikaz žalne strani na tabličnem računalniku - Osmrtnica.com"
+                loading="lazy"
               />
             </div>
             <div className="text-container w-1/2 pl-[35px] pt-[179px]">
@@ -63,11 +66,12 @@ const SlideOne = () => {
               <p className="text-[20px] font-medium mt-[16px]">
                 Vse navedeno je BREZPLAČNO.
               </p>
-              
-              <Link href={"/zalna-stran"}>
-              <button className="shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] px-[25px] py-[12px] rounded-[8px] mt-[81px] max-w-[175px]">
+
+              <Link
+                href={"/zalna-stran"}
+                className="inline-flex shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] px-[25px] py-[12px] rounded-[8px] mt-[81px] max-w-[175px] items-center justify-center"
+              >
                 Več o žalni strani
-              </button>
               </Link>
             </div>
           </div>
@@ -96,13 +100,15 @@ const SlideOne = () => {
             <img
               className="h-[761.1px]"
               src="/mobile-cards/iPad Landscape.png"
-              alt="iPad Landscape"
+              alt="Prikaz žalne strani na tabličnem računalniku - Osmrtnica.com"
+              loading="lazy"
             />
-          </div>        
-          <Link href={"/zalna-stran"}>
-          <button className="px-[25px] rounded-[8px] py-[12px] shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]">
+          </div>
+          <Link
+            href={"/zalna-stran"}
+            className="inline-flex px-[25px] rounded-[8px] py-[12px] shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] items-center justify-center"
+          >
             Več o žalni strani
-          </button>
           </Link>
         </div>
       </div>
@@ -125,12 +131,13 @@ const SlideOne = () => {
             </p>
           </div>
           <div className="image-container flex justify-center">
-            <img src="/mobile-cards/iPad Landscape.png" alt="iPad Landscape" className=" h-[613px]  object-fill" />
-          </div >         
-          <Link href={"/zalna-stran"}>
-          <button className="px-[25px] rounded-[8px] py-[12px] shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]">
+            <img src="/mobile-cards/iPad Landscape.png" alt="Prikaz žalne strani na tabličnem računalniku - Osmrtnica.com" className=" h-[613px]  object-fill" loading="lazy" />
+          </div>
+          <Link
+            href={"/zalna-stran"}
+            className="inline-flex px-[25px] rounded-[8px] py-[12px] shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] items-center justify-center"
+          >
             Več o žalni strani
-          </button>
           </Link>
         </div>
       </div>

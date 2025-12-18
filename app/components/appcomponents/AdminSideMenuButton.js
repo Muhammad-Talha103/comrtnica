@@ -49,7 +49,7 @@ const AdminSideMenuButton = ({
   flex justify-start items-center rounded-[4px]`}
       >
         <div className="ml-[15px]">
-          <Image src={placeholderImg} alt="" width={20} height={20} />
+          <Image src={placeholderImg} alt="Ikona menija" width={20} height={20} />
         </div>
 
         <div

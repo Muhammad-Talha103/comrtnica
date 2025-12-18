@@ -398,7 +398,7 @@ const AdminFlorists = () => {
                 </div>
                 <Image
                   src={"/ico_down_arrow_memory.png"}
-                  alt=""
+                  alt="Razvrsti"
                   width={24}
                   height={24}
                 />
@@ -410,7 +410,7 @@ const AdminFlorists = () => {
                   </div>
                   <Image
                     src={"/ico_down_arrow_memory.png"}
-                    alt=""
+                    alt="Razvrsti"
                     width={24}
                     height={24}
                   />
@@ -423,7 +423,7 @@ const AdminFlorists = () => {
                   </div>
                   <Image
                     src={"/ico_down_arrow_memory.png"}
-                    alt=""
+                    alt="Razvrsti"
                     width={24}
                     height={24}
                   />
@@ -463,7 +463,7 @@ const AdminFlorists = () => {
                   </div>
                   <Image
                     src={"/ico_down_arrow_memory.png"}
-                    alt=""
+                    alt="Razvrsti"
                     width={24}
                     height={24}
                   />
@@ -476,7 +476,7 @@ const AdminFlorists = () => {
                   </div>
                   <Image
                     src={"/ico_down_arrow_memory.png"}
-                    alt=""
+                    alt="Razvrsti"
                     width={24}
                     height={24}
                   />
@@ -489,7 +489,7 @@ const AdminFlorists = () => {
                   </div>
                   <Image
                     src={"/ico_down_arrow_memory.png"}
-                    alt=""
+                    alt="Razvrsti"
                     width={24}
                     height={24}
                   />
@@ -548,7 +548,7 @@ const AdminFlorists = () => {
                     <div className={`${"block h-[12px] w-[2px]"}`}>
                       <Image
                         src={"/ico_separator_memory.png"}
-                        alt=""
+                        alt="Ločilnik"
                         width={2}
                         height={12}
                         className="w-[2px] h-[12px]"
@@ -611,12 +611,12 @@ const AdminFlorists = () => {
                   )}
                 </td>
                 <td className="w-[103px] pl-[40px] h-[64px] text-[13px] ">
-                  <Image src={"/filecut.png"} alt="" width={22} height={100} />
+                  <Image src={"/filecut.png"} alt="Ločilna črta" width={22} height={100} />
                 </td>
                 <td className="w-[170px] h-[64px] text-center text-[13px]  text-[#6D778E] pl-[42px]">
                   <Image
                     src={"/img_left_arrow_admin.png"}
-                    alt=""
+                    alt="Puščica levo"
                     width={24}
                     height={24}
                   />

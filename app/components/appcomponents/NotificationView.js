@@ -81,8 +81,9 @@ const NotificationView = () => {
                       {isSelected && (
                         <img
                           src="/check_ico.png"
-                          alt="Facebook"
+                          alt="Ikona potrditve"
                           className="w-[10px] h-[10px]"
+                          loading="lazy"
                         />
                       )}
                     </div>
@@ -109,8 +110,9 @@ const NotificationView = () => {
                       {isSelectedEnkrat && (
                         <img
                           src="/check_ico.png"
-                          alt="Facebook"
+                          alt="Ikona potrditve"
                           className="w-[10px] h-[10px]"
+                          loading="lazy"
                         />
                       )}
                     </div>
@@ -122,9 +124,9 @@ const NotificationView = () => {
               <div className="w-full flex flex-col items-center mt-6 mobile:mt-[39.5px] pt-[2px]">
                 <Link href={'/funeralcompany'} className="w-[276px] h-[47px]">
                   <div className="rounded-lg w-[276px] h-full flex justify-center items-center shadow-custom-light-dark  bg-[#CAF0F8] transition duration-100 ">
-                    <h className="text-[#1E2125] text-[16px] font-variation-customOpt16">
+                    <span className="text-[#1E2125] text-[16px] font-variation-customOpt16">
                       Prijava
-                    </h>
+                    </span>
                   </div>
                 </Link>
                 <div className="flex justify-center items-center h-6 mt-2 mobile:mt-[7px]">

@@ -71,7 +71,7 @@ const SpecialOffer = ({ data }) => {
           aria-label="Previous slide"
           className="mobile:hidden flex my-auto mr-[30px] tablet:ml-[30px]"
         >
-          <img src="/img_back.png" alt="" className="h-[40px] w-[17px]" />
+          <img src="/img_back.png" alt="Puščica levo - prejšnji diapozitiv" className="h-[40px] w-[17px]" />
         </button>
 
         {slides && slides.length > 0 && (
@@ -103,7 +103,7 @@ const SpecialOffer = ({ data }) => {
                 >
                   <img
                     src="/img_back_mob.png"
-                    alt=""
+                    alt="Puščica levo - prejšnji diapozitiv"
                     className="h-[13.79px] w-[8.43px]"
                   />
                 </button>
@@ -117,7 +117,7 @@ const SpecialOffer = ({ data }) => {
                 >
                   <img
                     src="/img_forward_mob.png"
-                    alt=""
+                    alt="Puščica desno - naslednji diapozitiv"
                     className="h-[13.79px] w-[8.43px]"
                   />
                 </button>
@@ -132,7 +132,7 @@ const SpecialOffer = ({ data }) => {
           aria-label="Next slide"
           className="mobile:hidden flex my-auto ml-[30px] tablet:mr-[30px] disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <img src="/img_forward.png" alt="" className="h-[40px] w-[17px]" />
+          <img src="/img_forward.png" alt="Puščica desno - naslednji diapozitiv" className="h-[40px] w-[17px]" />
         </button>
       </div>
     </div>

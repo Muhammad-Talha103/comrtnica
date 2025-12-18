@@ -6,12 +6,12 @@ const HomeBackHeader = () => {
     <div className="mobile:pb-[90px] relative max-w-[1280px] overflow-hidden mx-auto desktop:mt-[137.02px] mobile:mt-[115px] tablet:mt-[124px] flex justify-center">
       <img
         src="/samotna_klop.avif"
-        alt="samotna_klop"
+        alt="Naj spomin ne zbledi"
         className="mobile:hidden h-[605.27px] mobile:h-[257px] w-[1280px] object-cover"
       />
       <img
         src="/klop_naslovna.avif"
-        alt="Slika"
+        alt="Naj spomin ne zbledi"
         className="mobile:flex hidden h-[257px] w-[1280px] object-cover"
       />
       <div className="h-[170px] smmobile:w-[160px] smmobile:h-[332px] w-[288.58px] left-[25.41px] smmobile:left-[14px] top-2 rounded-lg border border-[#D4D4D4] absolute mobile:flex hidden overflow-hidden shadow-custom-light-dark-banner bg-gradient-to-br from-[#FFFFFF] to-[#FFFFFF10] backdrop-blur-sm">

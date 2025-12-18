@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 import "../qr-kode/qr-kode.css";
 import "../qr-kode/qr-kode-responsive.css";
 import Layout from "../components/appcomponents/Layout";
@@ -20,6 +19,15 @@ import facebook_icon from "@/public/qr-kode/facebook_icon.svg";
 import twitter_icon from "@/public/qr-kode/twitter_icon.svg";
 import linnked_in_icons from "@/public/qr-kode/linnked_in_icons.svg";
 import instagram_icon from "@/public/qr-kode/instagram_icon.svg";
+
+export const metadata = {
+  title: "Spominska stran – Ustvarite trajen spomin | Osmrtnica.com",
+  description: "Spominska stran s Skrbnikom, kjer lahko družina in bližnji dodajajo slike, spomine, dogodke in sožalje. Ustvarite osebno in trajno spominsko stran najdražjega brezplačno.",
+  alternates: {
+    canonical: "https://www.osmrtnica.com/spominska",
+  },
+};
+
 const Keeperpromo = () => {
   const faqData = {
     faqs: [
@@ -53,12 +61,6 @@ Na žalni strani so možnosti za sodelovanje omejene, medtem ko je možnosti na 
   };
   return (
     <>
-      <Head>
-        <title>Spominska stran | Osmrtnica</title>
-        <link rel="canonical" href="https://www.osmrtnica.com/spominska" />
-        <meta name="description" content="Ustvarite spominsko stran za vaše najdražje. Delite spomine, fotografije in zgodbe." />
-      </Head>
-
       <Layout from={"18"} forFooter={"memorypage"} currentPage="spominska">
       <div className="flex w-full flex-col  bg-gradient-to-br from-[#ECF0F3] to-[#F2F6F9]">
         <div className="h-[72px] tablet:h-[80px] desktop:h-[92.02px] " />

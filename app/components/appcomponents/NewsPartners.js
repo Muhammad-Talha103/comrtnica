@@ -32,9 +32,9 @@ const NewsPartnersComponentDesktop = ({ screen }) => {
   };
   return (
     <div className="w-full max-w-5xl mx-auto text-left my-28 px-2">
-      <h1 className="text-[#1E2125] text-[40px] leading-[100%] text-[#1E2125] mb-11 ">
+      <h2 className="text-[#1E2125] text-[40px] leading-[100%] mb-11 ">
         Lokalne novice
-      </h1>
+      </h2>
       <NewsPartnersListDesktop partners={partners} />
     </div>
   );
@@ -58,9 +58,9 @@ const NewsPartnersComponentTablet = ({ screen }) => {
   };
   return (
     <div className="w-full max-w-[680px] mx-auto text-left my-28 px-2">
-      <h1 className="text-[#1E2125] text-[40px] leading-[100%] text-[#1E2125] mb-11 ">
+      <h2 className="text-[#1E2125] text-[40px] leading-[100%] mb-11 ">
         Lokalne novice
-      </h1>
+      </h2>
       <NewsPartnersListTablet partners={partners} />
     </div>
   );
@@ -84,9 +84,9 @@ const NewsPartnersComponentMobile = ({ screen }) => {
   };
   return (
     <div className="w-full max-w-[340px] mx-auto text-left my-24 px-4">
-      <h1 className="text-[#1E2125] text-[28px] leading-[100%] text-[#1E2125] mb-11 ">
+      <h2 className="text-[#1E2125] text-[28px] leading-[100%] mb-11 ">
         Lokalne novice
-      </h1>
+      </h2>
       <NewsPartnersListMobile partners={partners} />
     </div>
   );

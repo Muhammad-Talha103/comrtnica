@@ -571,7 +571,7 @@ const PostConfirmation = () => {
                   >
                     <Image
                       src={rightImg}
-                      alt=""
+                      alt="Objavi"
                       className="w-[21px] h-[21px]"
                     />
                   </div>
@@ -597,7 +597,7 @@ const PostConfirmation = () => {
                   >
                     <Image
                       src={crossImage}
-                      alt=""
+                      alt="Zavrni"
                       className="w-[21px] h-[21px]"
                     />
                   </div>
@@ -613,7 +613,7 @@ const PostConfirmation = () => {
                       background: "linear-gradient(135deg, #E3E8EC, #FFFFFF)",
                     }}
                   >
-                    <Image src={danger} alt="" className="w-[21px] h-[21px]" />
+                    <Image src={danger} alt="Prijavi" className="w-[21px] h-[21px]" />
                   </div>
                   <p className="text-[#717B8C] text-[14px] mt-2 text-center">
                     Prijavi
@@ -622,7 +622,7 @@ const PostConfirmation = () => {
 
                 <div className="mobileUserAcc:hidden p-4 flex flex-col items-center">
                   <div className="w-[40px] h-[40px] flex items-center justify-center">
-                    <Image src={filter} alt="" className="w-[21px] h-[21px]" />
+                    <Image src={filter} alt="Status" className="w-[21px] h-[21px]" />
                   </div>
                   <p className="text-[#717B8C] text-[14px] mt-2 text-center">
                     Status
@@ -805,7 +805,7 @@ const PostConfirmation = () => {
                             ? crossImage
                             : ""
                       }
-                      alt=""
+                      alt={item.status === "approved" ? "Odobreno" : item.status === "rejected" ? "Zavrnjeno" : "Status"}
                       className="w-[21px] h-[21px]"
                     />
                   </div>

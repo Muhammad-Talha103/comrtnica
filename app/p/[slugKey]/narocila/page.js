@@ -105,11 +105,11 @@ const Mycontributions = () => {
 
         <div className="space-y-[49px] tabletUserAcc:hidden mobileUserAcc:hidden">
           <div className="bg-gradient-to-b from-[#0D94E8] to-[#1860A3] rounded-lg p-[2px] h-[72px] w-[252px] shadow-lg flex items-center justify-center gap-[16px] border-[2px] border-[#0A85C2] cursor-pointer">
-            <img src={"/circle_plus_white.png"} alt="check" className="w-[24px] h-[24px]" />
+            <Image src={"/circle_plus_white.png"} alt="check" width={24} height={24} className="w-[24px] h-[24px]" />
             <span className="text-[18px] text-[#FFFFFF] font-normal leading-none uppercase w-[120px]">naročnina</span>
           </div>
           <div className="bg-[#E7FEFFCC] rounded-lg p-[2px] h-[72px] w-[252px] shadow-lg flex items-center justify-center gap-[16px] border-[2px] border-[#0A85C2] cursor-pointer">
-            <img src={"/plus_blue.png"} alt="check" className="w-[24px] h-[24px]" />
+            <Image src={"/plus_blue.png"} alt="check" width={24} height={24} className="w-[24px] h-[24px]" />
             <span className="text-[18px] text-[#0A85C2] font-normal leading-none uppercase w-[120px]">oglaševanje</span>
           </div>
         </div>

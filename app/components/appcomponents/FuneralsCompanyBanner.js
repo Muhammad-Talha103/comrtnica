@@ -257,14 +257,14 @@ const FuneralsCompanyBanner = ({ data }) => {
               width={265}
               height={256}
               src={data?.funeral_section_one_image_one || "/pokopalisce_gabrsko1.avif"}
-              alt="Slika"
+              alt={data?.title ? `Slika za ${data.title}` : "Slika pogrebnega podjetja"}
               className=" desktop:h-[256px]  desktop:w-[367.21px] w-[266.98px] h-[186.63px] object-cover rounded-lg border-[3px] border-white"
             />
             <Image
               width={162}
               height={156}
               src={data?.funeral_section_one_image_two || "/pokopalisce_gabrsko2.avif"}
-              alt="Slika"
+              alt={data?.title ? `Dodatna slika za ${data.title}` : "Dodatna slika pogrebnega podjetja"}
               className="desktop:h-[156px] desktop:w-[222.72px] w-[162.59px] h-[114.38px] object-cover absolute bottom-0 left-0 rounded-lg border-[3px] border-white"
             />
           </div>

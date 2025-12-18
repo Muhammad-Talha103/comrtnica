@@ -111,9 +111,9 @@ export default function MainOptions() {
         tablet:w-[680px]
         mobile:pb-[63px] pb-[83px] mobile:mb-[62.76px] mobile:w-[310px] "
       >
-        <h1 className="text-[#1E2125] text-[28px] tablet:text-[32px] desktop:text-[40px] font-regular text-center mb-3 tablet:mb-7 desktop:mb-7">
-          Ponekod vam podarijo virtualno svečko
-        </h1>
+        <h2 className="text-[#1E2125] text-[28px] tablet:text-[32px] desktop:text-[40px] font-regular text-center mb-3 tablet:mb-7 desktop:mb-7">
+          Brezplačne ugodnosti
+        </h2>
         <p className="text-[#3C3E41] text-center text-[16px] tablet:text-2xl desktop:text-2xl font-light mb-10 tablet:mb-[68px] desktop:mb-[86px]">Pri nas dobite več</p>
         
         <div className="flex gap-[130px] mobile:flex-col tablet:gap-[80px] mobile:gap-[40px] justify-center items-center">
@@ -171,7 +171,7 @@ export default function MainOptions() {
                       ? "/landing_features/landing_right_light.png"
                       : "/landing_features/landing_right_dark.png"
                   }
-                  alt={item.title}
+                  alt={item.isRedIcon ? "Puščica desno - označeno" : index === selectedIndex ? "Puščica desno - izbrano" : "Puščica desno"}
                   width={27}
                   height={27}
                 />
@@ -182,7 +182,7 @@ export default function MainOptions() {
             {selectedIndex === 13 ? (
               <Image
                 src="/landing_features/10.png"
-                alt="landing_right_light"
+                alt="Prikaz dodatnih možnosti na spominski strani"
                 width={210}
                 height={420}
               />
@@ -234,6 +234,7 @@ export default function MainOptions() {
                 {selectedIndex === 13 && (
                   <Image
                     src={"/landing_features/landing_right_light.png"}
+                    alt="Puščica desno - izbrano"
                     width={27}
                     height={27}
                   />
@@ -242,6 +243,7 @@ export default function MainOptions() {
               <div className="flex gap-[7px] items-center text-[14px] font-light text-[#1860A3] mobile:hidden">
                 <Image
                   src="/landing_features/landing_right_red.png"
+                  alt="Puščica desno - označeno"
                   width={24}
                   height={24}
                 />

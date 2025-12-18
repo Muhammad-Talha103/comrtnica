@@ -76,9 +76,9 @@ const FlowerShops = ({ setIsOpen, data, showShop }) => {
       <div className="mx-auto jdmobile:flex-col jdmobile:items-center jdmobile:w-[370px] jdmobile:px-[30px] jdtablet:w-[650px] jddesktop:w-[900px]">
         {" "}
         <div className="flex justify-between jdmobile:gap-[12px]">
-          <div className="leading-[46.88px] cursor-pointer text-[28px] desktop:text-[40px] font-variation-customOpt40 text-[#1E2125]  ">
+          <h2 className="leading-[46.88px] cursor-pointer text-[28px] desktop:text-[40px] font-variation-customOpt40 text-[#1E2125]  ">
             Cvetličarne
-          </div>
+          </h2>
           <img
             src="/memory_page_cross.png"
             alt="trbovlje"
@@ -171,9 +171,9 @@ export const FlowerShops2 = ({ setIsOpen, showShop }) => {
     >
       <div className="mx-auto mobile:flex-col mobile:items-center desktop:w-[800px] tablet:mt-[110px] tablet:w-[600px] mobile:max-w-[560.17px] mobile:px-[30px] mobile:w-full">
         <div className="flex justify-between mobile:flex-col-reverse mobile:items-end mobile:gap-[12px]">
-          <div className="leading-[46.88px] cursor-pointer text-[28px] desktop:text-[40px] mobile:flex mobile:justify-center font-variation-customOpt40 text-[#1E2125] mobile:w-full">
+          <h2 className="leading-[46.88px] cursor-pointer text-[28px] desktop:text-[40px] mobile:flex mobile:justify-center font-variation-customOpt40 text-[#1E2125] mobile:w-full">
             Cvetličarne
-          </div>
+          </h2>
         </div>
 
         <div className="text-[#3C3E41] text-[16px] leading-[24px] mt-[16px] mobile:w-full mobile:text-center">

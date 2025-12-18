@@ -157,7 +157,7 @@ function SidebarDekstop({
           >
             <div className="h-[48px] flex justify-start items-center rounded-[8px]">
               <div className="ml-[15px]">
-                <Image src={"/ico_logout.png"} alt="" width={24} height={24} />
+                <Image src={"/ico_logout.png"} alt="Odjava iz računa" width={24} height={24} />
               </div>
 
               <div

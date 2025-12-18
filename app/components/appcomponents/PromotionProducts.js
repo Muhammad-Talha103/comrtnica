@@ -11,7 +11,7 @@ const DigitalMobiCard = () => {
       <div className="col-span-4 mobile:col-span-12 w-full">
         <Image
           src="/digital-mobi.png"
-          alt="admin-benefit-1"
+          alt="Digitalne mobi kartice - prikaz na mobilni napravi"
           className="w-[250px] desktop:w-[300px] h-auto shrink-0 mx-auto mobile:hidden"
           width={281}
           height={221}
@@ -39,7 +39,7 @@ const DigitalMobiCard = () => {
 
         <Image
           src="/digital-mobi.png"
-          alt="admin-benefit-1"
+          alt="Digitalne mobi kartice - prikaz na mobilni napravi"
           className="w-[150px] h-auto shrink-0 self-center mx-auto hidden mobile:block"
           width={150}
           height={221}
@@ -78,7 +78,7 @@ const AdministratorCard = () => {
       <div className="col-span-4 mobile:col-span-12 w-full">
         <img
           src="/iPhone-x-7.png"
-          alt="admin-benefit-1"
+          alt="Skrbnik spominske strani - prikaz na mobilni napravi"
           className="w-[250px] desktop:w-[300px] h-auto shrink-0 mx-auto mobile:hidden"
           // width={281}
           // height={221}
@@ -107,7 +107,7 @@ const AdministratorCard = () => {
 
         <Image
           src="/iPhone-x-7.png"
-          alt="admin-benefit-1"
+          alt="Skrbnik spominske strani - prikaz administratorske stranice na mobilni napravi"
           className="w-[150px] h-auto shrink-0 self-center mx-auto hidden mobile:block"
           width={150}
           height={221}
@@ -147,7 +147,7 @@ const QRCodeInfo = () => {
       <div className="col-span-4 mobile:col-span-12 w-full">
         <Image
           src="/qr-code.png"
-          alt="admin-benefit-1"
+          alt="Digitalne mobi kartice - prikaz na mobilni napravi"
           className="w-[250px] desktop:w-[300px] h-auto shrink-0 mx-auto mobile:hidden"
           width={281}
           height={221}
@@ -179,7 +179,7 @@ const QRCodeInfo = () => {
 
         <Image
           src="/qr-code.png"
-          alt="admin-benefit-1"
+          alt="Digitalne mobi kartice - prikaz na mobilni napravi"
           className="w-[251px] h-auto shrink-0 self-center mx-auto hidden mobile:block"
           width={251}
           height={221}
@@ -214,7 +214,7 @@ const PublishingObituaries = () => {
       <div className="col-span-4 mobile:col-span-12 w-full">
         <Image
           src="/prva-c.png"
-          alt="admin-benefit-1"
+          alt="Digitalne mobi kartice - prikaz na mobilni napravi"
           className="w-[250px] desktop:w-[300px] h-auto shrink-0 mx-auto mobile:hidden"
           width={281}
           height={221}
@@ -241,7 +241,7 @@ const PublishingObituaries = () => {
         </div>
         <Image
           src="/prva-c.png"
-          alt="admin-benefit-1"
+          alt="Digitalne mobi kartice - prikaz na mobilni napravi"
           className="w-[150px] h-auto shrink-0 self-center mx-auto hidden mobile:block"
           width={150}
           height={221}

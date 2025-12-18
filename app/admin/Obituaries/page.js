@@ -407,7 +407,7 @@ const Obituaries = () => {
                   </div>
                   <Image
                     src={"/ico_down_arrow_memory.png"}
-                    alt=""
+                    alt="Razvrsti"
                     width={24}
                     height={24}
                   />
@@ -418,7 +418,7 @@ const Obituaries = () => {
                     <div className="flex flex-row items-center pl-[20px]">
                       <Image
                         src={"/bottom_purple_arrow.png"}
-                        alt=""
+                        alt="Razvrsti navzdol"
                         width={12}
                         height={12}
                         className="w-[12px] h-[8.33px]"
@@ -431,7 +431,7 @@ const Obituaries = () => {
                     <div className="">CITY</div>
                     <Image
                       src={"/ico_down_arrow_memory.png"}
-                      alt=""
+                      alt="Razvrsti"
                       width={24}
                       height={24}
                     />
@@ -443,7 +443,7 @@ const Obituaries = () => {
                     <div className="">DIED</div>
                     <Image
                       src={"/ico_down_arrow_memory.png"}
-                      alt=""
+                      alt="Razvrsti"
                       width={24}
                       height={24}
                     />
@@ -458,7 +458,7 @@ const Obituaries = () => {
                     <div className="">CEMETERY</div>
                     <Image
                       src={"/ico_down_arrow_memory.png"}
-                      alt=""
+                      alt="Razvrsti"
                       width={24}
                       height={24}
                     />
@@ -473,7 +473,7 @@ const Obituaries = () => {
                     <div className="">DATE</div>
                     <Image
                       src={"/ico_down_arrow_memory.png"}
-                      alt=""
+                      alt="Razvrsti"
                       width={24}
                       height={24}
                     />
@@ -596,7 +596,7 @@ const Obituaries = () => {
                       >
                         <Image
                           src={data.expiresImg}
-                          alt=""
+                          alt="Poteklo"
                           width={18}
                           height={18}
                           className={`${
@@ -611,7 +611,7 @@ const Obituaries = () => {
                     <div className="flex items-start gap-x-[8px]">
                       <Image
                         src={data.photo_funeral_one}
-                        alt=""
+                        alt="Fotografija pogreba"
                         width={18}
                         height={18}
                         className={`${
@@ -623,7 +623,7 @@ const Obituaries = () => {
                       )}
                       <Image
                         src={data.photo_funeral_two}
-                        alt=""
+                        alt="Fotografija pogreba"
                         width={18}
                         height={18}
                         className={`${
@@ -642,7 +642,7 @@ const Obituaries = () => {
                       >
                         <Image
                           src={data.memoryPage}
-                          alt=""
+                          alt="Spominska stran"
                           width={16}
                           height={18}
                           className={`${
@@ -657,7 +657,7 @@ const Obituaries = () => {
                     <div className="flex flex-col items-start gap-y-[4px]">
                       <Image
                         src={data.keeper}
-                        alt=""
+                        alt="Skrbnik"
                         width={16}
                         height={18}
                         className={`${data.keeper === "" ? "hidden" : "block"}`}
@@ -674,7 +674,7 @@ const Obituaries = () => {
                       >
                         <Image
                           src={data.delete}
-                          alt=""
+                          alt="Izbriši"
                           width={18}
                           height={20}
                           className={`${data.delete === "" ? "hidden" : "block"}`}
@@ -691,7 +691,7 @@ const Obituaries = () => {
                       >
                         <Image
                           src={data.hide}
-                          alt=""
+                          alt="Skrij"
                           width={18}
                           height={18}
                           className={`${data.hide === "" ? "hidden" : "block"}`}
@@ -708,7 +708,7 @@ const Obituaries = () => {
                       >
                         <Image
                           src={data.block}
-                          alt=""
+                          alt="Blokiraj"
                           width={18}
                           height={18}
                           className={`${data.block === "" ? "hidden" : "block"}`}
@@ -725,7 +725,7 @@ const Obituaries = () => {
                       >
                         <Image
                           src={data.notes}
-                          alt=""
+                          alt="Opombe"
                           width={14}
                           height={14}
                           className={`h-[18.9px] w-[18.9px] ${
@@ -740,7 +740,7 @@ const Obituaries = () => {
                     <div className="flex flex-row justify-center items-center">
                       <Image
                         src={data.grantCode}
-                        alt=""
+                        alt="Koda za dostop"
                         width={22}
                         height={18}
                         className={`${

@@ -188,7 +188,7 @@ export default function Footer() {
                   />
                   <div className="mobile:mt-[21.93px] desktop:mt-[37px] tablet:mt-[22.93px] items-center desktop:h-[24px] desktop:w-[212px] ">
                     <div className="hidden desktop:flex ">
-                      <h
+                      <span
                         style={{
                           fontSize: "17px",
                           lineHeight: "24px",
@@ -199,10 +199,10 @@ export default function Footer() {
                         }}
                       >
                         Naj spomin nanje ne zbledi.
-                      </h>
+                      </span>
                     </div>
                     <div className="flex desktop:hidden  mobile:h-[25px] items-center">
-                      <h
+                      <span
                         style={{
                           fontSize: "16px",
                           lineHeight: "24px",
@@ -213,7 +213,7 @@ export default function Footer() {
                         }}
                       >
                         Naj spomin nanje ne zbledi.
-                      </h>
+                      </span>
                     </div>
                   </div>
                   <div className="ml-[-15px] desktop:mt-[30px] mobile:mt-[15px] mobile:hidden tablet:hidden">
@@ -237,9 +237,9 @@ export default function Footer() {
                         height={27}
                       />
                     </div>
-                    <h className="font-variation-customOpt16 ml-[16px]">
+                    <span className="font-variation-customOpt16 ml-[16px]">
                       Facebook
-                    </h>
+                    </span>
                   </a>
                 </div>
                 <div
@@ -451,9 +451,9 @@ export default function Footer() {
                         alt="Facebook Icon"
                         className=" h-12 w-12  mt-2"
                       />
-                      <h className="font-variation-customOpt14 ml-[5px] text-[14px]">
+                      <span className="font-variation-customOpt14 ml-[5px] text-[14px]">
                         Facebook
-                      </h>
+                      </span>
                     </a>
                   </div>
                 </div>

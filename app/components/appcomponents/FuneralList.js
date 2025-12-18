@@ -137,6 +137,7 @@ const FuneralList = () => {
     <div className="max-w-[1920px] w-full pb-[81px] tablet:pb-[55px] desktop:pb-[121px] tablet:w-full mobile:w-full mx-auto flex flex-col items-center desktop:bg-[#F5F7F9] mobile:bg-white tablet:bg-white">
       <div className="flex flex-col items-center w-full tablet:w-full mobile:w-full">
         <div className="w-full tablet:w-full mobile:w-full flex flex-col items-center">
+          <h2 className="sr-only">Seznam pogrebnih podjetij</h2>
           {/* Filter Section */}
           <div className="flex flex-col tablet:flex-row desktop:flex-row gap-4 mt-[63px] mb-[63px] mobile:w-[311px] tablet:w-[612px] desktop:w-[1088px] tablet:mt-[63px] tablet:mb-[60px] desktop:mt-[80px] desktop:mb-10 tablet:justify-end desktop:justify-end">
             {/* Mobile: Dropdown + Search Icon in same row */}
@@ -271,9 +272,9 @@ const FuneralBlock = ({ item, index, obituaryCount }) => {
             <div className="flex flex-1 flex-col w-full">
               <div className="flex justify-between h-[19px] mobile:items-center tablet:h-7 desktop:h-7 w-full desktop:pr-[10px]">
                 <div className="flex items-center h-full">
-                  <div className="font-variation-customOpt16 desktop:font-variation-customOpt24 tablet:font-variation-customOpt24 font-semibold tablet:font-normal desktop:font-normal text-left desktop:text-[24px] tablet:text-[24px] text-[16px] text-[#1E2125] leading-[28.13px]">
+                  <h3 className="font-variation-customOpt16 desktop:font-variation-customOpt24 tablet:font-variation-customOpt24 font-semibold tablet:font-normal desktop:font-normal text-left desktop:text-[24px] tablet:text-[24px] text-[16px] text-[#1E2125] leading-[28.13px]">
                     {item?.CompanyPage?.name || item?.name}
-                  </div>
+                  </h3>
                 </div>
               </div>
 

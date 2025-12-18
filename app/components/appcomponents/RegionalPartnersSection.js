@@ -101,9 +101,9 @@ const RegionalPartnersSectionDesktop = ({
         className="flex flex-row gap-4 items-center h-[64px] mb-9 cursor-pointer select-none"
         onClick={() => setActiveSection(isOpen ? "services" : "region")}
       >
-        <h1 className="flex font-normal text-[40px] leading-[48px] tracking-normal text-black">
+        <h2 className="flex font-normal text-[40px] leading-[48px] tracking-normal text-black">
           Regijsko
-        </h1>
+        </h2>
 
         <Image
           src={IconDown}
@@ -210,9 +210,9 @@ const RegionalPartnersSectionTablet = ({
         className="flex flex-row gap-4 items-center h-[64px] mb-9 cursor-pointer select-none"
         onClick={() => setActiveSection(isOpen ? "services" : "region")}
       >
-        <h1 className="flex font-normal text-[40px] leading-[48px] tracking-normal text-black">
+        <h2 className="flex font-normal text-[40px] leading-[48px] tracking-normal text-black">
           Regijsko
-        </h1>
+        </h2>
 
         <Image
           src={IconDown}
@@ -319,9 +319,9 @@ const RegionalPartnersSectionMobile = ({
         className="flex flex-row gap-4 items-center h-[64px] mb-9 cursor-pointer select-none"
         onClick={() => setActiveSection(isOpen ? "services" : "region")}
       >
-        <h1 className="flex font-normal text-[28px] leading-[48px] tracking-normal text-black">
+        <h2 className="flex font-normal text-[28px] leading-[48px] tracking-normal text-black">
           Regijsko
-        </h1>
+        </h2>
 
         <Image
           src={IconDown}

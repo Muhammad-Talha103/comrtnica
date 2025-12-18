@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link';
+import Image from 'next/image';
 
 const ownWebsite = () => {
     return (
@@ -27,13 +28,13 @@ const ownWebsite = () => {
                         {/*1st coloum container*/}
                         <div className='flex h-[313px]'>
                             <div className='flex w-[295.42px] h-[224px] flex-col items-center'>
-                                <img src='/image_check.png' className='w-[88px] h-[88px]'></img>
+                                <Image src='/image_check.png' width={88} height={88} className='w-[88px] h-[88px]' />
                                 <div className='text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-3'>Enostavna izdelava</div>
                                 <div className='text-[18px] text-[#3C3E41] font-variation-customOpt18 text-center mt-[13px]'>Vse je avtomatizirano. Skopirajte vsebino iz svoje obstoječe spletne strani in zamenjajte slike s svojimi.</div>
                             </div>
 
                             <div className='flex w-[295.42px] h-[224px] flex-col items-center ml-[32px]'>
-                                <img src='/image_no_picture.png' className='w-[88px] h-[88px]'></img>
+                                <Image src='/image_no_picture.png' width={88} height={88} className='w-[88px] h-[88px]' />
                                 <div className='text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-3'>Še nimate slik? Ni problema!</div>
                                 <div className='text-[18px] text-[#3C3E41] font-variation-customOpt18 text-center mt-[13px]'>Če primernih slik trenutno še nimate,  lahko uporabite naše, ki so  priložene in svoje prilepite kasneje.</div>
                             </div>
@@ -42,13 +43,13 @@ const ownWebsite = () => {
                         {/*2nd coloum container*/}
                         <div className='flex h-[313px] mt-10'>
                             <div className='flex w-[295.42px] h-[224px] flex-col items-center '>
-                                <img src='/image_devices.png' className='w-[88px] h-[88px]'></img>
+                                <Image src='/image_devices.png' width={88} height={88} className='w-[88px] h-[88px]' />
                                 <div className='text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-3'>Prilagojeno vsem napravam</div>
                                 <div className='text-[18px] text-[#3C3E41] font-variation-customOpt18 text-center mt-[13px]'>Vaša spletna stran bo profesionalnega videza na računalniku, tablici in telefonu.</div>
                             </div>
 
                             <div className='flex w-[295.42px] h-[224px] bg-[#0A85C2] flex-col items-center ml-[32px]'>
-                                <img src='/image_registration.png' className='w-[72px] h-[72px] mt-4'></img>
+                                <Image src='/image_registration.png' width={72} height={72} className='w-[72px] h-[72px] mt-4' />
                                 <div className='text-[20px] text-[#FFFFFF] font-variation-customOpt20wght400 font-semibold mt-[13px]'>Registracija</div>
                                 <button className="w-[81px] h-[48px] rounded-lg text-[#3C3E41] justify-center items-center self-center mt-[17px] shadow-custom-light-dark bg-gradient-to-r from-[#E3E8EC] to-[#FFFFFF] hidden tablet:flex">Vpis</button>
                             </div>
@@ -57,21 +58,21 @@ const ownWebsite = () => {
 
                     {/*C1 container for desktop*/}
                     <div className='w-[295.42px] h-[224px] flex-col items-center flex tablet:hidden'>
-                        <img src='/image_check.png' className='w-[88px] h-[88px]'></img>
+                        <img src='/image_check.png' alt="Ikona potrditve - enostavna izdelava" className='w-[88px] h-[88px]'></img>
                         <div className='text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-3'>Enostavna izdelava</div>
                         <div className='text-[18px] text-[#3C3E41] font-variation-customOpt18 text-center mt-[13px]'>Vse je avtomatizirano. Skopirajte vsebino iz svoje obstoječe spletne strani in zamenjajte slike s svojimi.</div>
                     </div>
 
                     {/*C2 container for desktop*/}
                     <div className='w-[295.42px] h-[224px] flex-col items-center desktop:ml-[64px] mobile:mt-12 flex tablet:hidden'>
-                        <img src='/image_no_picture.png' className='w-[88px] h-[88px]'></img>
+                        <Image src='/image_no_picture.png' alt="Ikona - še nimate slik" width={88} height={88} className='w-[88px] h-[88px]' />
                         <div className='text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-3'>Še nimate slik? Ni problema!</div>
                         <div className='text-[18px] text-[#3C3E41] font-variation-customOpt18 text-center mt-[13px]'>Če primernih slik trenutno še nimate,  lahko uporabite naše, ki so  priložene in svoje prilepite kasneje.</div>
                     </div>
 
                     {/*C3 container for desktop*/}
                     <div className='w-[295.42px] h-[224px] flex-col items-center desktop:ml-[64px] mobile:mt-12 flex tablet:hidden'>
-                        <img src='/image_devices.png' className='w-[88px] h-[88px]'></img>
+                        <Image src='/image_devices.png' alt="Ikona naprav - prilagojeno vsem napravam" width={88} height={88} className='w-[88px] h-[88px]' />
                         <div className='text-[20px] text-[#1E2125] font-variation-customOpt20wght400 font-semibold mt-3'>Prilagojeno vsem napravam</div>
                         <div className='text-[18px] text-[#3C3E41] font-variation-customOpt18 text-center mt-[13px]'>Vaša spletna stran bo profesionalnega videza na računalniku, tablici in telefonu.</div>
                     </div>

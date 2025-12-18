@@ -7,9 +7,9 @@ const WorkTogetherComp = () => {
     <div className="h-[270px] tablet:h-[280px] mobile:h-[289px] overflow-hidden flex items-center max-w-[1920px] mx-auto ">
     <div className="h-full max-w-[1920px] w-full flex justify-center mx-auto overflow-hidden ">
       <div className="h-full mx-auto max-w-[953px] w-full flex flex-col items-start tablet:items-center mobile:items-center">
-        <div className="text-[#DAEBF1] desktop:ml-[12px] mt-[60px] tablet:mt-[46px] mobile:mt-[38px] mobile:text-[28px] text-[40px] font-[400px] leading-[46.88px] font-variation-customOpt40">
-          Sodelujmo!
-        </div>
+        <h2 className="text-[#DAEBF1] desktop:ml-[12px] mt-[60px] tablet:mt-[46px] mobile:mt-[38px] mobile:text-[28px] text-[40px] font-[400px] leading-[46.88px] font-variation-customOpt40">
+          Sodelujmo
+        </h2>
         <div className="text-[#D4D4D4] text-[16px] font-[400px] leading-[24px] tablet:leading-[16px] desktop:ml-[12px] desktop:mt-[15px] tablet:mt-[13px] mobile:mt-[13px]">
         Imate ideje, vprašanja, predloge?
         </div>

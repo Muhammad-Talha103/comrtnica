@@ -10,20 +10,20 @@ export default function Home(props) {
 }
 
 export const metadata = {
-  title: "Osmrtnica – Naj spomin nanje ne zbledi",
+  title: "Osmrtnice in pogrebi v Sloveniji | Osmrtnica.com",
   description:
-    "Osmrtnica.com je portal za hitri pregled lokalnih osmrtnic in pogrebov. Prinaša številne sodobne rešitve, spominske strani in celoviti pregled lokalnih cvetličarn.",
+    "Osmrtnica.com – Celovit pregled osmrtnic in pogrebov po vsej Sloveniji. Žalne strani in spominske ter vse povezane storitve na enem mestu.",
   alternates: {
-    canonical: "https://www.osmrtnica.com",
+    canonical: "/",
   },
   openGraph: {
-    url: "https://www.osmrtnica.com",
-    title: "Osmrtnica – Naj spomin nanje ne zbledi",
-    description: "Platforma, kjer lahko svojci delijo svoje spomine na pokojne",
-    site_name: "Osmrtnica",
+    url: "/",
+    title: "Osmrtnice in pogrebi v Sloveniji | Osmrtnica.com",
+    description: "Osmrtnica.com – Celovit pregled osmrtnic in pogrebov po vsej Sloveniji. Žalne strani in spominske ter vse povezane storitve na enem mestu.",
+    siteName: "Osmrtnica",
     images: [
       {
-        url: "https://www.osmrtnica.com/og-image.jpg",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Osmrtnica",

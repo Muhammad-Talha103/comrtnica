@@ -9,18 +9,18 @@ const AdministratorCompo = () => {
         <div className="flex w-[1088px] h-[487px] tablet:w-[618px] tablet:h-[982px] mobile:h-[993px]  flex-col">
           {/*Header container*/}
           <div className="flex mx-auto h-[90px] flex-col">
-            <h className="text-[40px] text-[#1E2125] font-variation-customOpt40 mobile:text-[28px] mobile:font-variation-customOpt28 text-center">
+            <h2 className="text-[40px] text-[#1E2125] font-variation-customOpt40 mobile:text-[28px] mobile:font-variation-customOpt28 text-center">
               Cenik za Skrbnika
-            </h>
+            </h2>
           </div>
 
           {/*Three container*/}
           <div className="flex desktop:mt-12 mt-10 desktop:flex-row flex-col">
             {/*c1 container*/}
             <div className="flex w-[332px] h-[266px] tablet:w-[333px] mobile:w-[348px] mobile:h-[258px] bg-[#FFFFFF] border-t-8 border-[#EB1D1D] flex-col mx-auto desktop:mx-0">
-              <h className="text-[24px] text-[#3C3E41] font-variation-customOpt24 font-semibold text-center mt-[23.5px] tablet:mt-[30px]">
+              <h3 className="text-[24px] text-[#3C3E41] font-variation-customOpt24 font-semibold text-center mt-[23.5px] tablet:mt-[30px]">
                 Mesečna svečka
-              </h>
+              </h3>
               <div
                 style={{
                   textShadow: "0px 3px 4px #00000050",
@@ -37,9 +37,9 @@ const AdministratorCompo = () => {
               {/* <div className="text-[14px] text-[#3090D5] font-variation-customOpt14 text-center mt-[20px]">
                 TEKOM OTVORITVENE AKCIJE
               </div> */}
-              <h className="text-[24px] text-[#3090D5] font-variation-customOpt32 text-center mt-[40px]">
+              <h3 className="text-[24px] text-[#3090D5] font-variation-customOpt32 text-center mt-[40px]">
                 SAMO
-              </h>
+              </h3>
               <div className="text-[24px] text-[#3090D5] font-variation-customOpt14 text-center mt-[3px]">
                 V VAŠI CVETLIČARNI
               </div>
@@ -47,9 +47,9 @@ const AdministratorCompo = () => {
 
             {/*c2 container*/}
             <div className="flex w-[332px] h-[266px] tablet:w-[333px] bg-[#FFFFFF] mobile:w-[348px] mobile:h-[258px] border-t-4 desktop:ml-[43.5px] tablet:mt-[25px] mobile:mt-10 border-[#0A85C2] flex-col mx-auto desktop:mx-0">
-              <h className="text-[24px] text-[#3C3E41] font-variation-customOpt24 font-semibold text-center mt-[27.5px] tablet:mt-[35px]">
+              <h3 className="text-[24px] text-[#3C3E41] font-variation-customOpt24 font-semibold text-center mt-[27.5px] tablet:mt-[35px]">
                 Letna svečka
-              </h>
+              </h3>
               <div
                 style={{
                   textShadow: "0px 3px 4px #00000050",
@@ -84,9 +84,9 @@ const AdministratorCompo = () => {
               {/* <h className="text-[24px] font-variation-customOpt24 font-semibold text-center mt-[27.5px] text-[#E6E6E6]">
                 <span className="text-[#E6E6E680]">n</span><span>a</span> <span>s</span><span className="text-[#E6E6E680]">v</span><span className="#E6E6E640">e</span>
               </h> */}
-              <h className="text-[24px] text-[#3C3E41] font-variation-customOpt24 font-semibold text-center mt-[27.5px] tablet:mt-[35px]">
+              <h3 className="text-[24px] text-[#3C3E41] font-variation-customOpt24 font-semibold text-center mt-[27.5px] tablet:mt-[35px]">
                 6-letna svečka
-              </h>
+              </h3>
               <div
                 style={{
                   textShadow: "0px 3px 4px #00000050",

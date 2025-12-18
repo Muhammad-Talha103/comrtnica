@@ -9,7 +9,7 @@ const ColdObituary = () => {
 
                 {/*Header contianer*/}
                 <div className='flex w-[618px] h-[102px] tablet:w-[600px] mobile:w-[296px] mobile:h-[165px] flex-col items-center'>
-                    <div className='text-[40px] mobile:text-[28px] text-[#3C3E41] font-variation-customOpt40 mobile:font-variation-customOpt28 text-center mt-[-2px]'>Celovita rešitev v koraku s časom</div>
+                    <h2 className='text-[40px] mobile:text-[28px] text-[#3C3E41] font-variation-customOpt40 mobile:font-variation-customOpt28 text-center mt-[-2px]'>Celovita rešitev v koraku s časom</h2>
                     <div className='text-[24px] mobile:text-[20px] text-[#3C3E41] font-variation-customOpt24 mobile:font-variation-customOpt20wght400 mobile:font-bold font-bold text-center mt-[5px] mobile:mt-[26px]'>Ne gre samo za hladno osmrtnico</div>
                 </div>
 
@@ -40,7 +40,7 @@ const ColdObituary = () => {
                                 fontSize: '32px',
                                 fontVariationSettings: '"slnt" -10, "wght" 500, "opsz" 32',
                             }}>01.</div>
-                            <div className=' h-[27px] mt-2 ml-3 text-[16px] text-[#3C3E41]'>Vse informacije o pokojniku/ci in pogrebu</div>
+                            <h3 className=' h-[27px] mt-2 ml-3 text-[16px] text-[#3C3E41]'>Informacije o pokojniku in pogrebu</h3>
                         </div>
 
                         {/*text2 contianer*/}
@@ -54,7 +54,7 @@ const ColdObituary = () => {
                                 fontSize: '32px',
                                 fontVariationSettings: '"slnt" -10, "wght" 500, "opsz" 32',
                             }}>02.</div>
-                            <div className=' h-[27px] mt-2 ml-3 text-[16px] text-[#3C3E41]'>Vpis v žalno knjigo</div>
+                            <h3 className=' h-[27px] mt-2 ml-3 text-[16px] text-[#3C3E41]'>Vpis v žalno knjigo</h3>
                         </div>
 
                         {/*text3 contianer*/}
@@ -70,7 +70,7 @@ const ColdObituary = () => {
                                     fontVariationSettings: '"slnt" -10, "wght" 500, "opsz" 32',
                                 }}
                             >03.</div>
-                            <div className=' h-[27px] mt-2 ml-3 text-[16px] text-[#3C3E41]'>Izrekanje sožalja</div>
+                            <h3 className=' h-[27px] mt-2 ml-3 text-[16px] text-[#3C3E41]'>Izrekanje sožalja</h3>
                         </div>
 
                         {/*text4 contianer*/}
@@ -86,7 +86,7 @@ const ColdObituary = () => {
                                     fontVariationSettings: '"slnt" -10, "wght" 500, "opsz" 32',
                                 }}
                             >04.</div>
-                            <div className=' h-[27px] mt-2 ml-3 text-[16px] text-[#3C3E41]'>Prižig svečke v spomin</div>
+                            <h3 className=' h-[27px] mt-2 ml-3 text-[16px] text-[#3C3E41]'>Prižig svečke v spomin</h3>
                         </div>
 
                         {/*text5 contianer*/}
@@ -104,7 +104,7 @@ const ColdObituary = () => {
 
 
                             >05.</div>
-                            <div className=' h-[44px] mt-2 ml-3 text-[16px] text-[#3C3E41]'>Že pripravljena Obvestila o času pogreba za pošiljanje preko mobilnega telefona. Enako pripravljene tudi Zahvala in Izreki sožalja.</div>
+                            <h3 className=' h-[44px] mt-2 ml-3 text-[16px] text-[#3C3E41]'>Obveščanje o času pogreba</h3>
                         </div>
 
                         {/*text6 contianer*/}
@@ -123,7 +123,7 @@ const ColdObituary = () => {
 
 
                             >06.</div>
-                            <div className=' h-[44px] mt-2 ml-3 text-[16px] text-[#3C3E41]'>Direktno kontaktiranje bližnjih cvetličarn preko strani na način, kot ste ga vajeni </div>
+                            <h3 className=' h-[44px] mt-2 ml-3 text-[16px] text-[#3C3E41]'>Kontaktiranje bližnjih</h3>
                         </div>
 
                         {/*text7 contianer*/}
@@ -143,7 +143,7 @@ const ColdObituary = () => {
 
 
                             >07.</div>
-                            <div className=' h-[44px] mt-2 ml-3 text-[16px] text-[#3C3E41] leading-[22px]'>Opomniki, ki vas avtomatsko obveščajo pred obletnicami vseh, pri katerih ste se vpisali v Žalno knjigo ali izrekli sožalje</div>
+                            <h3 className=' h-[44px] mt-2 ml-3 text-[16px] text-[#3C3E41] leading-[22px]'>Opomniki za obletnice</h3>
                         </div>
 
                         {/*text8 contianer*/}
@@ -162,7 +162,7 @@ const ColdObituary = () => {
 
 
                             >08.</div>
-                            <div className=' h-[27px] mt-2 ml-3 text-[16px] text-[#3C3E41]'>Obveščanje o osmrtnicah v domačem kraju</div>
+                            <h3 className=' h-[27px] mt-2 ml-3 text-[16px] text-[#3C3E41]'>Obveščanje o osmrtnicah na domačem kraju</h3>
                         </div>
 
                         {/*text9 contianer*/}
