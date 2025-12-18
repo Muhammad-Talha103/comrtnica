@@ -92,7 +92,7 @@ const ObituaryCard = ({
       className="mobile:w-[100%] mobile:max-w-[400px] tablet:w-[466px] desktop:w-[466px] 
       mobile:h-[126px] tablet:h-[170px] desktop:h-[170px]  border-2
        border-white shadow-custom-light-dark-box
-        bg-gradient-to-br from-[#E3EAEF] to-[#F3F6F8] rounded-lg flex justify-center items-center "
+        bg-gradient-to-br from-[#E3EAEF] to-[#F3F6F8] rounded-lg flex justify-center items-center"
     >
       <div className="flex mobile:w-[100%] mobile:px-3">
         <div className="mobile:w-[100%] tablet:w-[420.33px] desktop:w-[428px] flex">
@@ -118,7 +118,7 @@ const ObituaryCard = ({
               <div className="flex flex-1 flex-col">
                 <span
                   className="font-variation-customOpt24 text-left desktop:text-[24px]
-                   tablet:text-[24px] mobile:text-[16px]  text-[#1E2125] leading-[28.13px] font-semibold"
+                   tablet:text-[24px] mobile:text-[16px]  text-[#1E2125] leading-[28.13px]"
                 >
                   {data.name} {data.sirName}
                 </span>
