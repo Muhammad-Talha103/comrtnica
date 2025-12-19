@@ -12,6 +12,7 @@ import obituaryService from "@/services/obituary-service";
 import { useParams } from "next/navigation";
 import ModalDropBox from "./ModalDropBox";
 import cemetryService from "@/services/cemetry-service";
+import adminService from "@/services/admin-service";
 import { useAuth } from "@/hooks/useAuth";
 
 const AddObituary = ({ set_Id, setModal }) => {
@@ -238,12 +239,34 @@ const AddObituary = ({ set_Id, setModal }) => {
   }, [selectedCity]);
   const getCemeteries = async (query) => {
     try {
-      let queryParams = {};
-      queryParams.city = query;
-      const response = await cemetryService.getCemeteries(queryParams);
-      setCemeteries(response.cemetries);
+      // NEW: Try fetching from admin cemeteries endpoint first (new cemeteries table)
+      const response = await adminService.getCemeteries();
+      if (response && response.data) {
+        // Filter by city if provided
+        let filteredCemeteries = response.data;
+        if (query && query.trim() !== "") {
+          filteredCemeteries = response.data.filter(
+            (cemetery) => cemetery.city === query
+          );
+        }
+        setCemeteries(filteredCemeteries || []);
+        return; // Success, exit early
+      }
     } catch (error) {
-      console.log(error);
+      // console.log("Error fetching cemeteries from admin:", error);
+    }
+    
+    // FALLBACK: Use original service if admin service fails (preserves old functionality)
+    try {
+      let queryParams = {};
+      if (query && query.trim() !== "") {
+        queryParams.city = query;
+      }
+      const response = await cemetryService.getCemeteries(queryParams);
+      setCemeteries(response?.cemetries || []);
+    } catch (fallbackError) {
+      // console.log("Error fetching cemeteries from user service:", fallbackError);
+      setCemeteries([]);
     }
   };
 
@@ -371,8 +394,16 @@ const AddObituary = ({ set_Id, setModal }) => {
       formData.append("birthDate", formattedBirthDate);
       formData.append("deathDate", formattedDeathDate);
       formData.append("funeralLocation", inputValueFuneralEnd);
+      // Use new funeralCemeteryId field for new cemeteries table
+      // Keep old funeralCemetery for backward compatibility (old entries)
       if (inputValueFuneralCemetery !== "pokopalisce") {
-        formData.append("funeralCemetery", inputValueFuneralCemetery);
+        // Check if it's a number (ID from new cemeteries table) or old format
+        const cemeteryId = parseInt(inputValueFuneralCemetery);
+        if (!isNaN(cemeteryId)) {
+          formData.append("funeralCemeteryId", cemeteryId);
+        } else {
+          formData.append("funeralCemetery", inputValueFuneralCemetery);
+        }
       }
       if (formattedFuneralTimestamp) {
         formData.append("funeralTimestamp", formattedFuneralTimestamp);
