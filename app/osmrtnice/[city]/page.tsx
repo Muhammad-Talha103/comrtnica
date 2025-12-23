@@ -1,34 +1,12 @@
-import React, { Suspense } from "react";
 import type { Metadata } from "next";
-import Layout from "../../components/appcomponents/Layout";
-import ObituaryListContent from "../ObituaryListContent";
+import React, { Suspense } from "react";
+
 import { slugToCity } from "@/utils/citySlug";
-import API_BASE_URL from "@/config/apiConfig";
+import ObituaryListContent from "../ObituaryListContent";
+import { fetchObituaries } from "@/utils/obituaryFetcher";
+import Layout from "../../components/appcomponents/Layout";
 
 export const dynamic = "force-dynamic";
-
-async function fetchObituaries(city?: string, region?: string) {
-  try {
-    const queryParams = new URLSearchParams();
-    if (city) queryParams.append("city", city);
-    if (region) queryParams.append("region", region);
-    
-    const url = `${API_BASE_URL}/obituary${queryParams.toString() ? `?${queryParams.toString()}` : ""}`;
-    const response = await fetch(url, {
-      cache: "no-store",
-    });
-    
-    if (!response.ok) {
-      return { obituaries: [] };
-    }
-    
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching obituaries:", error);
-    return { obituaries: [] };
-  }
-}
 
 const cityMetadata = {
   "ljubljana": {
@@ -114,8 +92,8 @@ export default async function CityObituaryList({ params }: { params: Promise<{ c
   const cityName = slugToCity(resolvedParams.city);
   
   const { default: regionsAndCities } = await import("@/utils/regionAndCities");
-  const region = Object.keys(regionsAndCities).find((region) =>
-    regionsAndCities[region].includes(cityName)
+  const region = Object.keys(regionsAndCities).find((regionKey) =>
+    regionsAndCities[regionKey as keyof typeof regionsAndCities].includes(cityName)
   );
   
   const initialData = await fetchObituaries(cityName, region);
