@@ -120,6 +120,7 @@ export default async function ObituaryList({
       <div className="flex flex-col mx-auto bg-[#F5F7F9] w-full">
         <Suspense fallback={<div>Loading...</div>}>
           <ObituaryListContent
+            cityParam={city}
             h1Text="Zadnje osmrtnice"
             initialObituaries={initialData.obituaries || []}
           />

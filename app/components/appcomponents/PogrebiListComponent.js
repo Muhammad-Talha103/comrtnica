@@ -1,67 +1,39 @@
 "use client";
-import React, { useEffect, useState, Suspense } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import Dropdown from "@/app/components/appcomponents/Dropdown";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import ObituaryCard from "@/app/components/appcomponents/ObituaryCard";
-import imgPrevious from "@/public/previous_img.png";
-import imgNext from "@/public/next_img.png";
-import Image from "next/image";
+
 import { toast } from "react-hot-toast";
-import obituaryService from "@/services/obituary-service";
-import regionsAndCities from "@/utils/regionAndCities";
+import React, { Suspense, useEffect, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
 import { SelectDropdown } from "./SelectDropdown";
-import { set } from "date-fns";
-import { cityToSlug, slugToCity } from "@/utils/citySlug";
-
-const findCityFromSlug = (slug) => {
-  if (!slug) return null;
-  
-  const normalizedSlug = slug.toLowerCase().trim();
-
-  for (const region of Object.values(regionsAndCities)) {
-    for (const cityName of region) {
-      const citySlug = cityToSlug(cityName);
-      if (citySlug.toLowerCase() === normalizedSlug) {
-        return cityName;
-      }
-    }
-  }
-  
-  return slugToCity(slug);
-};
+import regionsAndCities from "@/utils/regionAndCities";
+import obituaryService from "@/services/obituary-service";
+import { cityToSlug, slugToCity, findCityFromSlug } from "@/utils/citySlug";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
 const ObituaryListComponent = ({ city }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
-  // Initialize state from URL params or prop
   const [selectedCity, setSelectedCity] = useState(
     searchParams.get("city") || city || "Celje"
   );
   const [selectedRegion, setSelectedRegion] = useState(
     searchParams.get("region") || null
   );
-  
-  // Update city when route changes (for dynamic routes like /pogrebi/ljubljana)
+
   useEffect(() => {
     if (pathname?.startsWith('/pogrebi/') && pathname !== '/pogrebi') {
-      // Prioritize city prop if available (already converted by parent component)
       if (city) {
         setSelectedCity(city);
       } else {
         const citySlug = pathname.split('/pogrebi/')[1];
         if (citySlug) {
-          // findCityFromSlug searches all 150+ cities in regionsAndCities
-          // Falls back to slugToCity only if no match is found
+
           const cityFromRoute = findCityFromSlug(citySlug);
-          // Set the city whenever we get a result (truthy check handles both mapped and unmapped cities)
-          // This ensures the API call uses the correct city name
           if (cityFromRoute) {
             setSelectedCity(cityFromRoute);
-            
-            // Also set the region if we can find it in regionsAndCities
+
             const region = Object.keys(regionsAndCities).find((region) =>
               regionsAndCities[region].includes(cityFromRoute)
             );
@@ -72,10 +44,8 @@ const ObituaryListComponent = ({ city }) => {
         }
       }
     } else if (pathname === '/pogrebi') {
-      // If on main page with no city, navigate to default city using path parameter
       const cityFromQuery = searchParams.get("city");
       if (cityFromQuery) {
-        // Convert query param to path param
         const citySlug = cityToSlug(cityFromQuery);
         if (citySlug) {
           router.push(`/pogrebi/${citySlug}`);
@@ -83,7 +53,6 @@ const ObituaryListComponent = ({ city }) => {
       } else if (city) {
         setSelectedCity(city);
       } else {
-        // Navigate to default city using path parameter instead of query parameter
         setSelectedCity("Celje");
         const defaultCitySlug = cityToSlug("Celje");
         if (defaultCitySlug) {
@@ -101,7 +70,7 @@ const ObituaryListComponent = ({ city }) => {
   const [allCities, setAllCities] = useState(defaultCities);
   const [suggestion, setSuggestion] = useState([]);
   const suggestionComponentRef = React.useRef(null);
-  
+
   const quickSelectCities = [
     "Ljubljana",
     "Maribor",
@@ -113,8 +82,7 @@ const ObituaryListComponent = ({ city }) => {
     "Velenje",
     "Nova Gorica",
   ];
-  
-  // Dropdown options
+
   const allRegionsOption = {
     place: "- Pokaži vse regije -",
     id: "allRegions",
@@ -125,7 +93,6 @@ const ObituaryListComponent = ({ city }) => {
     id: "allCities",
   };
 
-  // Region options
   const regionOptions = [
     allRegionsOption,
     ...Object.keys(regionsAndCities).map((region) => ({
@@ -163,7 +130,6 @@ const ObituaryListComponent = ({ city }) => {
     })),
   ];
 
-  // Update URL with query parameters
   const updateURL = (city, region, search) => {
     const params = new URLSearchParams(window.location.search);
     if (city && city !== "allCities" && city !== "- Pokaži vse občine -") {
@@ -194,14 +160,13 @@ const ObituaryListComponent = ({ city }) => {
     router.replace(newURL, { scroll: false });
   };
 
-  // Handle region selection
   const handleRegionSelect = (item) => {
     if (item.id === "allRegions" || item.place === "- Pokaži vse regije -") {
       setSelectedRegion(null);
-      updateURL("", null, searchTerm); // selectedCity
+      updateURL("", null, searchTerm);
     } else {
       setSelectedRegion(item.place);
-      updateURL("", item.place, searchTerm); // selectedCity
+      updateURL("", item.place, searchTerm);
     }
   };
 
@@ -219,7 +184,6 @@ const ObituaryListComponent = ({ city }) => {
     }
   };
 
-  // Handle search input change
   const handleSearchChange = (e) => {
     const value = e.target.value;
     if (value && value.length > 0) {
@@ -247,21 +211,16 @@ const ObituaryListComponent = ({ city }) => {
       setSuggestion([]);
     }
     setSearchTerm(value);
-    // updateURL(selectedCity, selectedRegion, value);
   };
 
-  // Handle quick selection (for the quick select buttons)
   const handleQuickSelect = (cityName) => {
     const citySlug = cityToSlug(cityName);
     if (citySlug) {
-      // Set the selectedCity state immediately with the capitalized city name
       setSelectedCity(cityName);
-      // Navigate to clean URL without query parameter
       router.push(`/pogrebi/${citySlug}`);
     }
   };
 
-  // Handle search/filter
   const handleSearch = () => {
     if (selectedCity && selectedCity.length > 0) {
       updateURL(selectedCity, selectedRegion, searchTerm);

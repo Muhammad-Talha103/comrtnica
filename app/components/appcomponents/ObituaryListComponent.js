@@ -9,27 +9,10 @@ import imgNext from "@/public/next_img.png";
 import { SelectDropdown } from "./SelectDropdown";
 import imgPrevious from "@/public/previous_img.png";
 import regionsAndCities from "@/utils/regionAndCities";
-import { cityToSlug, slugToCity } from "@/utils/citySlug";
 import obituaryService from "@/services/obituary-service";
+import { cityToSlug, findCityFromSlug } from "@/utils/citySlug";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import ObituaryCard from "@/app/components/appcomponents/ObituaryCard";
-
-const findCityFromSlug = (slug) => {
-  if (!slug) return null;
-
-  const normalizedSlug = slug.toLowerCase().trim();
-
-  for (const region of Object.values(regionsAndCities)) {
-    for (const cityName of region) {
-      const citySlug = cityToSlug(cityName);
-      if (citySlug.toLowerCase() === normalizedSlug) {
-        return cityName;
-      }
-    }
-  }
-
-  return slugToCity(slug);
-};
 
 const ObituaryListComponent = ({ city, initialObituaries = [] }) => {
   const searchParams = useSearchParams();
@@ -90,21 +73,13 @@ const ObituaryListComponent = ({ city, initialObituaries = [] }) => {
       ];
 
   useEffect(() => {
-    console.log('[cityOptions-effect] cityOptions changed, selectedCity:', selectedCity, 'selectedRegion:', selectedRegion);
-    console.log('[cityOptions-effect] cityOptions length:', cityOptions.length, 'has selectedCity in options:', cityOptions.some(opt => opt.place === selectedCity));
-  }, [cityOptions, selectedCity, selectedRegion]);
-
-  useEffect(() => {
-    console.log('[useEffect-pathname] pathname:', pathname, 'selectedCity:', selectedCity, 'city prop:', city);
     if (pathname?.startsWith('/osmrtnice/') && pathname !== '/osmrtnice') {
       const citySlug = pathname.split('/osmrtnice/')[1];
-      console.log('[useEffect-pathname] citySlug from path:', citySlug);
       if (citySlug) {
         const cityFromRoute = findCityFromSlug(citySlug);
-        console.log('[useEffect-pathname] cityFromRoute from findCityFromSlug:', cityFromRoute, 'current selectedCity:', selectedCity, 'city prop:', city);
+
         if (cityFromRoute) {
           if (selectedCity !== cityFromRoute) {
-            console.log('[useEffect-pathname] UPDATING selectedCity from', selectedCity, 'to', cityFromRoute, '(ensuring capitalized)');
             setSelectedCity(cityFromRoute);
           } else {
             console.log('[useEffect-pathname] selectedCity already matches, not updating');
@@ -116,7 +91,6 @@ const ObituaryListComponent = ({ city, initialObituaries = [] }) => {
           console.log('[useEffect-pathname] Found region:', region, 'current selectedRegion:', selectedRegion);
           if (region) {
             if (selectedRegion !== region) {
-              console.log('[useEffect-pathname] UPDATING selectedRegion from', selectedRegion, 'to', region);
               setSelectedRegion(region);
             } else {
               console.log('[useEffect-pathname] selectedRegion already matches, not updating');
@@ -130,11 +104,9 @@ const ObituaryListComponent = ({ city, initialObituaries = [] }) => {
       }
     } else if (pathname === '/osmrtnice') {
       const cityFromQuery = searchParams.get("city");
-      console.log('[useEffect-pathname] On main page, cityFromQuery:', cityFromQuery, 'city prop:', city);
       if (cityFromQuery || city) {
         setSelectedCity(cityFromQuery || city || null);
       } else if (!cityFromQuery && !city) {
-        console.log('[useEffect-pathname] Clearing selectedCity');
         setSelectedCity(null);
       }
     }
@@ -176,10 +148,10 @@ const ObituaryListComponent = ({ city, initialObituaries = [] }) => {
 
   useEffect(() => {
     if (selectedCity) {
-      document.title = `Osmrtnice v ${selectedCity} – Žalne strani in spominske | Osmrtnica.com`;
+      document.title = `Osmrtnice v občini ${selectedCity} | Osmrtnica.com`;
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
-        metaDescription.setAttribute("content", `Osmrtnice v ${selectedCity}. Celovit pregled osmrtnic z datumi pogrebov, pokopališči ter možnostjo iskanja po imenu, kraju ali regiji.`);
+        metaDescription.setAttribute("content", `Osmrtnice v občini ${selectedCity}. Celovit pregled osmrtnic z datumi pogrebov, pokopališči ter možnostjo iskanja po imenu, kraju ali regiji.`);
       }
     } else if (selectedRegion) {
       document.title = `Osmrtnice v regiji ${selectedRegion} | Osmrtnica.com`;

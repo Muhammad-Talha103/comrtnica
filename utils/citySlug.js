@@ -28,3 +28,22 @@ export function slugToCity(slug) {
   
   return cityMap[slug.toLowerCase()] || slug;
 }
+
+import regionsAndCities from "@/utils/regionAndCities";
+
+export function findCityFromSlug(slug) {
+  if (!slug) return null;
+
+  const normalizedSlug = slug.toLowerCase().trim();
+
+  for (const region of Object.values(regionsAndCities)) {
+    for (const cityName of region) {
+      const citySlug = cityToSlug(cityName);
+      if (citySlug.toLowerCase() === normalizedSlug) {
+        return cityName;
+      }
+    }
+  }
+
+  return slugToCity(slug);
+}
