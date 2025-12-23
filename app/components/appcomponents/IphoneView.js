@@ -26,9 +26,9 @@ const IphoneView = () => {
         Enako vam cvetličarne podarjajo tudi digitalne kartice Sožalje, Zahvala in tudi mesečnega Skrbnika, nekatere pa tudi možnost vpisa osmrtnice. Op. Na naši strani mi teh kartic in mesečnega Skrbnika ne ponujamo.
       </p>
       <div className="inner-div mt-[32px]">
-        <h3 className="text-[#22281C] text-[20px] font-medium">
+        <div className="text-[#22281C] text-[20px] font-medium">
           BREZPLAČNO v vaši cvetličarni.
-        </h3>
+        </div>
       </div>
     </div>
     <div className="text-container mt-[98px] z-50">
@@ -70,9 +70,9 @@ const IphoneView = () => {
         Enako vam cvetličarne podarjajo tudi digitalne kartice Sožalje, Zahvala in tudi mesečnega Skrbnika, nekatere pa tudi možnost vpisa osmrtnice. Op. Na naši strani mi teh kartic in mesečnega Skrbnika ne ponujamo.
       </p>
       <div className="inner-div mt-[32px]">
-        <h3 className="text-[#22281C] text-[20px] font-medium">
+        <div className="text-[#22281C] text-[20px] font-medium">
           BREZPLAČNO v vaši cvetličarni.
-        </h3>
+        </div>
       </div>
     </div>
     <div className="text-container mt-[98px] z-50">
@@ -112,7 +112,7 @@ Op. Na naši strani mi teh kartic in mesečnega Skrbnika ne ponujamo. </p>
                           />
             </div>
               <div className="inner-div mt-[45px] text-center">
-                 <h3 className="text-[#22281C] text-[20px] font-medium">BREZPLAČNO v vaši cvetličarni.</h3>
+                 <div className="text-[#22281C] text-[20px] font-medium">BREZPLAČNO v vaši cvetličarni.</div>
                </div> 
         </div>
       </div>
@@ -138,7 +138,7 @@ Op. Na naši strani mi teh kartic in mesečnega Skrbnika ne ponujamo. </p>
     />
             </div>
               <div className="inner-div mt-[45px] text-center">
-                 <h3 className="text-[#22281C] text-[20px] font-medium">BREZPLAČNO v vaši cvetličarni.</h3>
+                 <div className="text-[#22281C] text-[20px] font-medium">BREZPLAČNO v vaši cvetličarni.</div>
                </div> 
         </div>
       </div>

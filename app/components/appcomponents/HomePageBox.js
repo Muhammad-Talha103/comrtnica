@@ -49,7 +49,6 @@ const HomePageBox = () => {
               na vrhu strani.
             </p>
 
-            <h3 className="sr-only">Prijavi se za dostop do lokalnih informacij</h3>
             <Link 
               href={"/registracija"}
               className="shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] text-[#414141] rounded-[8px] px-[25px] py-[12px] mt-[24px] w-[113px] inline-block text-center"
@@ -102,7 +101,6 @@ const HomePageBox = () => {
               na vrhu strani.
             </p>
 
-            <h3 className="sr-only">Prijavi se za dostop do lokalnih informacij</h3>
             <Link 
               href={"/registracija"}
               className="shadow-custom-light-dark bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF] text-[#414141] rounded-[8px] px-[25px] py-[12px] mt-[24px] w-[113px] inline-block text-center"

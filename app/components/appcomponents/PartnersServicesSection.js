@@ -121,6 +121,17 @@ const PartnersServicesSectionDesktop = ({
             items={categories}
             title="services"
           />
+          {selectedItem && (
+            <h3 className="text-[24px] font-normal text-[#1E2125] leading-[28px]">
+              {(() => {
+                const foundItem = categories?.find(cat => cat.name === selectedItem || cat.link === selectedItem);
+                const foundDefault = defaultItems.find(item => item.name === selectedItem || item.link === selectedItem);
+                if (foundItem) return foundItem.name;
+                if (foundDefault) return foundDefault.name;
+                return selectedItem.charAt(0).toUpperCase() + selectedItem.slice(1);
+              })()}
+            </h3>
+          )}
           <PartnersServicesListDesktop partners={partners} />
         </div>
       )}
@@ -206,6 +217,17 @@ const PartnersServicesSectionTablet = ({
             items={categories}
             title="services"
           />
+          {selectedItem && (
+            <h3 className="text-[24px] font-normal text-[#1E2125] leading-[28px]">
+              {(() => {
+                const foundItem = categories?.find(cat => cat.name === selectedItem || cat.link === selectedItem);
+                const foundDefault = defaultItems.find(item => item.name === selectedItem || item.link === selectedItem);
+                if (foundItem) return foundItem.name;
+                if (foundDefault) return foundDefault.name;
+                return selectedItem.charAt(0).toUpperCase() + selectedItem.slice(1);
+              })()}
+            </h3>
+          )}
           <PartnersServicesListTablet partners={partners} />
         </div>
       )}
@@ -291,6 +313,17 @@ const PartnersServicesSectionMobile = ({
             items={categories}
             title="services"
           />
+          {selectedItem && (
+            <h3 className="text-[24px] font-normal text-[#1E2125] leading-[28px]">
+              {(() => {
+                const foundItem = categories?.find(cat => cat.name === selectedItem || cat.link === selectedItem);
+                const foundDefault = defaultItems.find(item => item.name === selectedItem || item.link === selectedItem);
+                if (foundItem) return foundItem.name;
+                if (foundDefault) return foundDefault.name;
+                return selectedItem.charAt(0).toUpperCase() + selectedItem.slice(1);
+              })()}
+            </h3>
+          )}
           <PartnersServicesListMobile partners={partners} />
         </div>
       )}

@@ -13,6 +13,12 @@ const formatObituaryDate = (dateString) => {
   return format(date, "yyyy");
 };
 
+const formatDateForDatetime = (dateString) => {
+  if (!dateString) return "";
+  const date = new Date(dateString);
+  return format(date, "yyyy");
+};
+
 const calculateAge = (birthDate, deathDate) => {
   const birth = new Date(birthDate);
   const death = new Date(deathDate);
@@ -128,20 +134,17 @@ const ObituaryCard = ({
                   desktop:text-[16px] tablet:text-[16px] mobile:text-[14px]  text-[#414141] leading-[24px]"
                 >
                   {data?.birthDate?.includes('1025') ? (
-                    <>{formattedDeathDate}</>
+                    <time datetime={formatDateForDatetime(data?.deathDate)}>{formattedDeathDate}</time>
                   ) : (
-                    <>{formattedBirthDate} – {formattedDeathDate} ({age} let)</>
+                    <>
+                      <time datetime={formatDateForDatetime(data?.birthDate)}>{formattedBirthDate}</time> – <time datetime={formatDateForDatetime(data?.deathDate)}>{formattedDeathDate}</time> ({age} let)
+                    </>
                   )}
                 </p>
-                <div
-                  className="flex h-[18px] tablet:h-6 
-                 desktop:h-6 items-center tablet:mt-[4px] desktop:mt-[4px]"
-                >
-                  <p className="font-variation-customOpt14 tablet:font-variation-customOpt16 desktop:font-variation-customOpt16 text-left desktop:text-[16px] tablet:text-[16px] mobile:text-[14px]  text-[#414141] leading-[24px]">
-                    {data.location}
-                    {key}
-                  </p>
-                </div>
+                <p className="font-variation-customOpt14 tablet:font-variation-customOpt16 desktop:font-variation-customOpt16 text-left desktop:text-[16px] tablet:text-[16px] mobile:text-[14px]  text-[#414141] leading-[24px] tablet:mt-[4px] desktop:mt-[4px]">
+                  {data.location}
+                  {key}
+                </p>
               </div>
             </div>
 

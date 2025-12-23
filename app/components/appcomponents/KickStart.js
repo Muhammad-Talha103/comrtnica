@@ -12,10 +12,10 @@ export default function KickStart({ cUrl = "", showButton = "false" }) {
       />
       <div className="flex gap-[25px] flex-col justify-between items-center">
         <div className="flex flex-col w-full desktop:w-[169px] mt-[10px]">
-          <div className="text-[40px] mobile:text-[28px] text-[#3C3E41] font-light text-center leading-[48px]">
+          <h2 className="text-[40px] mobile:text-[28px] text-[#3C3E41] font-light text-center leading-[48px]">
             {/* Kaj zdaj, kako naj začnem? */}
             Sodelujmo
-          </div>
+          </h2>
           {/* <div className="text-[22px] mobile:hidden mobile:text-[20px] text-[#3C3E41] font-bold mt-[5px] font-variation-customOpt24 text-center leading-[48px]">
                 Pogosta vprašanja in preprosti napotki
                 </div>

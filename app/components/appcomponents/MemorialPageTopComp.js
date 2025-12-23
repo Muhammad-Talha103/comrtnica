@@ -124,6 +124,22 @@ const MemorialPageTopComp = ({
     return format(date, "dd.MM.yyyy");
   };
 
+  const formatDateForDatetime = (dateString) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    
+    // If date is 31st December → return only year
+    if (day === 31 && month === 12) {
+      return `${year}`;
+    }
+    
+    // Otherwise, return full ISO date
+    return format(date, "yyyy-MM-dd");
+  };
+
   const formattedBirthDate = formatObituaryDate(data?.birthDate);
   const formattedDeathDate = formatObituaryDate(data?.deathDate);
 
@@ -322,22 +338,18 @@ const MemorialPageTopComp = ({
                         </h1>
                       )}
                     </div>
-                    <div className="flex items-center justify-center mt-[14px] h-[21px] tablet:h-[23px] desktop:h-[20px] ">
-                      <div className="text-[#1E2125] text-[18px] tablet:text-[20px] desktop:text-[20px] font-variation-customOpt18 tablet:font-variation-customOpt20 desktop:font-variation-customOpt20 font-normal">
-                        {data?.birthDate?.includes("1025") ? (
-                          <>{formattedDeathDate}</>
-                        ) : (
-                          <>
-                            {formattedBirthDate} - {formattedDeathDate}
-                          </>
-                        )}
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-center mt-[14px] h-[21px] tablet:h-[23px] desktop:h-[20px] ">
-                      <div className="text-[#414141] text-[18px] tablet:text-[20] desktop:text-[20px] font-variation-customOpt18 tablet:font-variation-customOpt20 desktop:font-variation-customOpt20 font-normal">
-                        {data?.location ? formatTitleCase(data?.location) : ""}
-                      </div>
-                    </div>
+                    <p className="flex items-center justify-center mt-[14px] h-[21px] tablet:h-[23px] desktop:h-[20px] text-[#1E2125] text-[18px] tablet:text-[20px] desktop:text-[20px] font-variation-customOpt18 tablet:font-variation-customOpt20 desktop:font-variation-customOpt20 font-normal">
+                      {data?.birthDate?.includes("1025") ? (
+                        <time datetime={formatDateForDatetime(data?.deathDate)}>{formattedDeathDate}</time>
+                      ) : (
+                        <>
+                          <time datetime={formatDateForDatetime(data?.birthDate)}>{formattedBirthDate}</time> - <time datetime={formatDateForDatetime(data?.deathDate)}>{formattedDeathDate}</time>
+                        </>
+                      )}
+                    </p>
+                    <p className="flex items-center justify-center mt-[14px] h-[21px] tablet:h-[23px] desktop:h-[20px] text-[#414141] text-[18px] tablet:text-[20] desktop:text-[20px] font-variation-customOpt18 tablet:font-variation-customOpt20 desktop:font-variation-customOpt20 font-normal">
+                      {data?.location ? formatTitleCase(data?.location) : ""}
+                    </p>
                     <div className="flex flex-col w-[100%] mt-[40px] tablet:[31px] desktop:mt-[30px] h-auto ">
                       <p className="text-[24px] text-[#414141] font-normal font-greatVibes text-center mb-[72px]">
                         {data?.verse

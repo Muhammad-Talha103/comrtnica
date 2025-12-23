@@ -11,12 +11,9 @@ export async function generateMetadata({ searchParams }: { searchParams?: Promis
   const resolvedSearchParams = await searchParams;
   const city = typeof resolvedSearchParams?.city === 'string' ? resolvedSearchParams.city : Array.isArray(resolvedSearchParams?.city) ? resolvedSearchParams.city[0] : "";
   
-  const defaultDescription = "Lokalni izvajalci in partnerji s slikami storitev ter neposrednimi povezavami do spletnih strani. Kamnoseštvo, svečarstvo, graverstvo, QR kode za nagrobnike, prevozi pokojnih, sedmine, govorniki.";
-  const cityDescription = city ? `Lokalni izvajalci in partnerji v ${city} s slikami storitev ter neposrednimi povezavami do spletnih strani. Kamnoseštvo, svečarstvo, graverstvo, QR kode za nagrobnike, prevozi pokojnih, sedmine, govorniki.` : defaultDescription;
-  
   return {
-    title: city ? `Lokalni izvajalci in partnerji v ${city} | Osmrtnica.com` : "Lokalni izvajalci in partnerji | Osmrtnica.com",
-    description: cityDescription,
+    title: "Lokalni partnerji in oglaševalci | Osmrtnica.com",
+    description: "Predstavitev lokalnih podjetij in partnerjev, ki opravljajo dela v zvezi s pogrebnimi slovesnostmi ter predstavitev njihovih produktov in storitev",
     alternates: {
       canonical: city ? `${APP_BASE_URL}/lokalni?city=${encodeURIComponent(city)}` : `${APP_BASE_URL}/lokalni`,
     },

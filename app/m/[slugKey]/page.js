@@ -10,11 +10,36 @@ export async function generateMetadata({ params }) {
   const obituary = response?.obituary || {};
 
   const lastName = obituary?.sirName || "";
-  const fullName = obituary?.name && lastName ? `${obituary.name} ${lastName}` : obituary?.name || "";
-  const titleText = fullName ? `${fullName} – žalna stran` : "Žalna stran";
-  const descriptionText = fullName 
-    ? `${fullName} – žalna stran, kjer uporabnik lahko prižge svečko, izrazi sožalje, deli spomine in slike ter prevzame digitalne kartice in QR kode.`
-    : "Žalna stran, kjer uporabnik lahko prižge svečko, izrazi sožalje, deli spomine in slike ter prevzame digitalne kartice in QR kode.";
+  const firstName = obituary?.name || "";
+  const city = obituary?.city || "";
+  
+  const titleText = firstName && lastName && city 
+    ? `${firstName} ${lastName} ${city} - Osmrtnica`
+    : firstName && lastName
+    ? `${firstName} ${lastName} - Osmrtnica`
+    : firstName
+    ? `${firstName} - Osmrtnica`
+    : "Osmrtnica";
+    
+  const descriptionText = firstName && lastName && city
+    ? `Osmrtnica za ${firstName} ${lastName} ${city} – tu lahko prižgete svečko, delite spomine in najdete informacije o pogrebu. Enostavno in brezplačno.`
+    : firstName && lastName
+    ? `Osmrtnica za ${firstName} ${lastName} – tu lahko prižgete svečko, delite spomine in najdete informacije o pogrebu. Enostavno in brezplačno.`
+    : firstName
+    ? `Osmrtnica za ${firstName} – tu lahko prižgete svečko, delite spomine in najdete informacije o pogrebu. Enostavno in brezplačno.`
+    : "Osmrtnica – tu lahko prižgete svečko, delite spomine in najdete informacije o pogrebu. Enostavno in brezplačno.";
+
+  const twitterTitle = firstName && lastName
+    ? `${firstName} ${lastName} - žalna stran | Osmrtnica.com`
+    : firstName
+    ? `${firstName} - žalna stran | Osmrtnica.com`
+    : "Žalna stran | Osmrtnica.com";
+
+  const twitterDescription = firstName && lastName
+    ? `Žalna stran ${firstName} ${lastName}. Prižgite svečko, izrazite sožalje, delite spomine in najdete informacije o pogrebu. Enostavno in brezplačno.`
+    : firstName
+    ? `Žalna stran ${firstName}. Prižgite svečko, izrazite sožalje, delite spomine in najdete informacije o pogrebu. Enostavno in brezplačno.`
+    : "Žalna stran. Prižgite svečko, izrazite sožalje, delite spomine in najdete informacije o pogrebu. Enostavno in brezplačno.";
 
   return {
     title: titleText,
@@ -36,6 +61,12 @@ export async function generateMetadata({ params }) {
         },
       ],
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: twitterTitle,
+      description: twitterDescription,
+      images: [image],
     },
   };
 }

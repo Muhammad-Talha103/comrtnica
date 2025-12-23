@@ -50,6 +50,7 @@ const CveltComp = () => {
           image={"/roza_ozadje.avif"}
           label={"Lokalne cvetličarne"}
           alt="ozadje za cvetličarne"
+          h1Text="Lokalne cvetličarne"
         />
         <Breadcrumbs
           items={[

@@ -40,9 +40,9 @@ const SlideTwo = () => {
               se bodo bližnji radi vračali in jo dopolnjevali.{" "}
             </p>
             <div className="inner-div mt-[77px]">
-              <h3 className="text-[#22281C] text-[24px] font-medium">
+              <div className="text-[#22281C] text-[24px] font-medium">
                 Spomini niso večni
-              </h3>
+              </div>
               <p className="text-[#414141] text-[16px] mt-[8px]">
                 Prehitro nam uidejo, čarobni trenutki se pozabijo, slike
                 zbledijo. Povežimo spomine na naše najdražje v celoto v
@@ -93,9 +93,9 @@ const SlideTwo = () => {
               se bodo bližnji radi vračali in jo dopolnjevali.{" "}
             </p>
             <div className="inner-div mt-[77px]">
-              <h3 className="text-[#22281C] text-[24px] font-medium">
+              <div className="text-[#22281C] text-[24px] font-medium">
                 Spomini niso večni
-              </h3>
+              </div>
               <p className="text-[#414141] text-[16px] mt-[8px]">
                 Prehitro nam uidejo, čarobni trenutki se pozabijo, slike
                 zbledijo. Povežimo spomine na naše najdražje v celoto v
@@ -146,9 +146,9 @@ const SlideTwo = () => {
             se bodo bližnji radi vračali in jo dopolnjevali.{" "}
           </p>
           <div className="inner-div mt-[79px]">
-            <h3 className="text-[#22281C] text-[24px] font-medium]">
+            <div className="text-[#22281C] text-[24px] font-medium]">
               Spomini niso večni
-            </h3>
+            </div>
             <p className="mt-[16px]">
               Prehitro nam uidejo, čarobni trenutki se pozabijo, slike zbledijo.
               Povežimo spomine na naše najdražje v celoto v digitalni obliki in
@@ -209,9 +209,9 @@ const SlideTwo = () => {
           </div>
 
           <div className="inner-div mt-[54px] w-[313px] mobile:w-full">
-            <h3 className="text-[#22281C] text-[24px] font-medium mt-[16px] mobile:text-left">
+            <div className="text-[#22281C] text-[24px] font-medium mt-[16px] mobile:text-left">
               Spomini niso večni
-            </h3>
+            </div>
             <p className="mt-[16px] mobile:text-left">
               Prehitro nam uidejo, čarobni trenutki se pozabijo, slike zbledijo.{" "}
               <br /> Povežimo spomine na naše najdražje v celoto v digitalni

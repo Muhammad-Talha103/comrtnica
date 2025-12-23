@@ -15,6 +15,7 @@ export const SelectDropdown = ({
   onSelect,
   isDisabled = false,
   id,
+  name,
 }) => {
   const options = data.map((item) => ({
     label: item.place,
@@ -105,16 +106,12 @@ export const SelectDropdown = ({
   
   return (
     <div className={`dropdown ${getContainerClass()}`}>
-      {heading && (
-      <h3 className="sr-only">
-        {heading}
-      </h3>
-    )}
       <label htmlFor={inputId} className="sr-only">
         {label || heading || "Izbira"}
       </label>
       <Select
         inputId={inputId}
+        name={name}
         aria-label={label || heading || "Izbira"}
         options={options}
         isDisabled={isDisabled}

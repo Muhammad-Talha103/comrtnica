@@ -11,6 +11,7 @@ import { toast } from "react-hot-toast";
 import obituaryService from "@/services/obituary-service";
 import regionsAndCities from "@/utils/regionAndCities";
 import { SelectDropdown } from "./SelectDropdown";
+import { cityToSlug } from "@/utils/citySlug";
 
 const ObituaryListComponent = ({ city }) => {
   const searchParams = useSearchParams();
@@ -156,16 +157,10 @@ const ObituaryListComponent = ({ city }) => {
   };
 
   const handleCitySelectQuickLinks = (city) => {
-    setSelectedCity(city);
-    setSelectedRegion(null);
-    updateUrlParams(city);
-    // const region = Object.keys(regionsAndCities).find((region) =>
-    //   regionsAndCities[region].includes(item.place)
-    // );
-
-    // if (region) {
-    //   setSelectedRegion(region);
-    // }
+    const citySlug = cityToSlug(city);
+    if (citySlug) {
+      router.push(`/osmrtnice/${citySlug}`);
+    }
   };
 
   useEffect(() => {
@@ -275,7 +270,6 @@ const ObituaryListComponent = ({ city }) => {
       <div className=" flex flex-col items-center w-full tablet:w-full mobile:w-full">
         {/* Main container for inputs main container */}
         <div className="w-full tablet:w-full mobile:w-full flex flex-col items-center">
-          <h2 className="sr-only">search buttons</h2>
           {/* Inputs main Container */}
           <div
             className="w-[777px] tablet:w-[600px] h-[48px] tablet:h-[112px] tablet:columns-2 mobile:w-[296px] mobile:h-[240px] mobile:flex-wrap 

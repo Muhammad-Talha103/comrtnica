@@ -12,19 +12,37 @@ import obituaryService from "@/services/obituary-service";
 import regionsAndCities from "@/utils/regionAndCities";
 import { SelectDropdown } from "./SelectDropdown";
 import { set } from "date-fns";
+import { cityToSlug, slugToCity } from "@/utils/citySlug";
 
 const ObituaryListComponent = ({ city }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
-  // Initialize state from URL params
+  // Initialize state from URL params or prop
   const [selectedCity, setSelectedCity] = useState(
     searchParams.get("city") || city || "Celje"
   );
   const [selectedRegion, setSelectedRegion] = useState(
     searchParams.get("region") || null
   );
+  
+  // Update city when route changes (for dynamic routes like /pogrebi/ljubljana)
+  useEffect(() => {
+    if (pathname?.startsWith('/pogrebi/') && pathname !== '/pogrebi') {
+      const citySlug = pathname.split('/pogrebi/')[1];
+      if (citySlug) {
+        const cityFromRoute = slugToCity(citySlug);
+        if (cityFromRoute) {
+          setSelectedCity(cityFromRoute);
+        }
+      }
+    } else if (pathname === '/pogrebi') {
+      // Reset to default when on main page
+      const cityFromQuery = searchParams.get("city");
+      setSelectedCity(cityFromQuery || city || "Celje");
+    }
+  }, [pathname, searchParams, city]);
   const [searchTerm, setSearchTerm] = useState("");
   const [obituaries, setObituaries] = useState([]);
   const defaultCities = Object.values(regionsAndCities)
@@ -33,6 +51,19 @@ const ObituaryListComponent = ({ city }) => {
   const [allCities, setAllCities] = useState(defaultCities);
   const [suggestion, setSuggestion] = useState([]);
   const suggestionComponentRef = React.useRef(null);
+  
+  const quickSelectCities = [
+    "Ljubljana",
+    "Maribor",
+    "Celje",
+    "Kranj",
+    "Koper",
+    "Novo Mesto",
+    "Domžale",
+    "Velenje",
+    "Nova Gorica",
+  ];
+  
   // Dropdown options
   const allRegionsOption = {
     place: "- Pokaži vse regije -",
@@ -170,14 +201,10 @@ const ObituaryListComponent = ({ city }) => {
 
   // Handle quick selection (for the quick select buttons)
   const handleQuickSelect = (cityName) => {
-    // Find the region for this city (optional, can be used for reference)
-    const region = Object.keys(regionsAndCities).find((region) =>
-      regionsAndCities[region].includes(cityName)
-    );
-
-    setSelectedCity(cityName);
-    // Don't automatically set the region, keep current region selection
-    updateURL(cityName, selectedRegion, searchTerm);
+    const citySlug = cityToSlug(cityName);
+    if (citySlug) {
+      router.push(`/pogrebi/${citySlug}`);
+    }
   };
 
   // Handle search/filter
@@ -243,7 +270,6 @@ const ObituaryListComponent = ({ city }) => {
       <div className="flex flex-col items-center w-full tablet:w-full mobile:w-full">
         {/* DESKTOP VERSION */}
         <div className={`w-full hidden desktop:flex tablet:w-full mobile:w-full flex-col ${pathname?.includes('/u/') ? '' : 'items-center'}`}>
-          <h2 className="sr-only">Iskanje pogrebov</h2>
           <div className={`w-[777px] tablet:w-[600px] h-[48px] flex flex-row gap-4 ${pathname?.includes('/u/') ? '' : 'mt-[69.07px] mb-[23.93px]'}`}>
             {/* Search Input */}
             <div className="flex relative w-[227px] h-[48px] justify-center items-center">
@@ -318,7 +344,6 @@ const ObituaryListComponent = ({ city }) => {
 
         {/* TABLET VERSION */}
         <div className={`w-full tablet:w-full mobile:w-full tablet:flex hidden flex-col ${pathname?.includes('/u/') ? '' : 'items-center'}`}>
-          <h2 className="sr-only">Iskanje pogrebov</h2>
           <div className={`w-[600px] h-[112px] columns-2 flex flex-wrap flex-row gap-4 ${pathname?.includes('/u/') ? '' : 'mt-[63px] mb-[53px]'}`}>
             {!hideDropdowns ? (
               <>
@@ -407,7 +432,6 @@ const ObituaryListComponent = ({ city }) => {
 
         {/* MOBILE VERSION */}
         <div className={`w-full tablet:w-full mobile:w-full mobile:flex hidden flex-col ${pathname?.includes('/u/') ? '' : 'items-center'}`}>
-          <h2 className="sr-only">Iskanje pogrebov</h2>
           <div className={`w-[296px] ${pathname?.includes('/u/') ? '' : 'h-[240px] mt-[40px] mb-[42px]'} flex-wrap flex flex-row gap-4`}>
             {/* Search Input */}
             <div className={`flex relative ${pathname?.includes('/u/') ? '' : 'w-[296px]'} h-[48px] justify-center items-center`}>
@@ -494,8 +518,46 @@ const ObituaryListComponent = ({ city }) => {
           </div>
         </div>
 
-        {/* Quick Selection remains the same... */}
-        {/* ... rest of your existing quick selection code ... */}
+        {/* Quick Selection - City Tabs */}
+        {!pathname?.includes('/u/') && (
+          <div className="flex flex-col desktop:flex-row tablet:flex-row mobile:flex-col items-center desktop:justify-center tablet:justify-center mobile:justify-start desktop:mt-[48px] tablet:mt-[48px] mobile:mt-[32px] desktop:mb-[48px] tablet:mb-[48px] mobile:mb-[32px]">
+            <div className="flex desktop:hidden items-center mr-[24px] tablet:mr-[18px] whitespace-nowrap h-7">
+              <h2 className="text-[24px] font-[400px] leading-[28.13px] text-[#1E2125]">
+                Hitri izbor
+              </h2>
+              <div className="hidden tablet:flex desktop:hidden text-[24px] text-[#1E2125]">
+                :
+              </div>
+            </div>
+            <div className="flex mobile:w-[330px] tablet:w-[480px] desktop:mt-4">
+              <ul className="flex flex-row list-none flex-wrap mobile:ml-[0px]">
+                {quickSelectCities.map((cityName, index) => (
+                  <li
+                    key={cityName}
+                    className="flex items-center mobile:w-[104px]"
+                  >
+                    <button
+                      onClick={() => {
+                        handleQuickSelect(cityName);
+                      }}
+                      className={`border border-[#C3C6C8] rounded-sm text-[#3C3E41] mobile:mt-[16px] hover:bg-gray-100 transition-colors cursor-pointer ${index == quickSelectCities.length - 1
+                        ? "ml-[0px]"
+                        : index == 5
+                          ? "mobile:ml-[0px] tablet:mx-[6px] desktop:mr-[17px]"
+                          : "mobile:ml-[0px] tablet:mx-[6px] desktop:mr-[17px]"
+                        } ${index < 6 ? "tablet:mb-[18px]" : "tablet:mb-[18px]"} ${selectedCity === cityName
+                          ? "bg-[#414141] text-white"
+                          : "bg-gradient-to-br from-[#E3E8EC] to-[#FFFFFF]"
+                        } text-[14px] mobile:text-[13px] font-extrabold tablet:font-bold mobile:font-bold italic leading-[16.41px] mobile:px-[6px] px-[7.5px] py-[4px]`}
+                    >
+                      {cityName}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

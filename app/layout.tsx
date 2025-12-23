@@ -10,11 +10,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.osmrtnica.com"),
   title: {
     default: "Osmrtnice in pogrebi v Sloveniji | Osmrtnica.com",
-    template: "%s | Osmrtnica.com",
+    template: "%s",
   },
   description:
     "Osmrtnica.com – Celovit pregled osmrtnic in pogrebov po vsej Sloveniji. Žalne strani in spominske ter vse povezane storitve na enem mestu.",
-  keywords: ["osmrtnice", "pogrebi", "žalne strani", "spominske strani", "Slovenija"],
   authors: [{ name: "Osmrtnica" }],
   creator: "Osmrtnica",
   publisher: "Osmrtnica",

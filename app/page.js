@@ -10,16 +10,16 @@ export default function Home(props) {
 }
 
 export const metadata = {
-  title: "Osmrtnice in pogrebi v Sloveniji | Osmrtnica.com",
+  title: "Vse osmrtnice in pogrebi | Osmrtnica.com",
   description:
-    "Osmrtnica.com – Celovit pregled osmrtnic in pogrebov po vsej Sloveniji. Žalne strani in spominske ter vse povezane storitve na enem mestu.",
+    "Osmrtnica.com | Pregled osmrtnic, pogrebov in spominskih strani po Sloveniji. Prižgite svečko, delite spomine, izrazite sožalje in ohranite spomin na najdražje.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     url: "/",
-    title: "Osmrtnice in pogrebi v Sloveniji | Osmrtnica.com",
-    description: "Osmrtnica.com – Celovit pregled osmrtnic in pogrebov po vsej Sloveniji. Žalne strani in spominske ter vse povezane storitve na enem mestu.",
+    title: "Vse osmrtnice in pogrebi | Osmrtnica.com",
+    description: "Osmrtnica.com | Pregled osmrtnic, pogrebov in spominskih strani po Sloveniji. Prižgite svečko, delite spomine, izrazite sožalje in ohranite spomin na najdražje.",
     siteName: "Osmrtnica",
     images: [
       {

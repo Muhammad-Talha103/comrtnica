@@ -117,7 +117,6 @@ const FloristList = () => {
     <div className="max-w-[1920px] w-full pb-[81px] tablet:pb-[55px] desktop:pb-[121px] tablet:w-full mobile:w-full mx-auto flex flex-col items-center desktop:bg-[#F5F7F9] mobile:bg-white tablet:bg-white">
       <div className="flex flex-col items-center w-full tablet:w-full mobile:w-full">
         <div className="w-full tablet:w-full mobile:w-full flex flex-col items-center">
-          <h2 className="sr-only">Lokalne cvetličarne po kraju</h2>
           {/* Filter Section */}
           <div className="flex flex-col tablet:flex-row desktop:flex-row gap-4 mt-[63px] mb-[40px] mobile:w-[311px] tablet:w-[612px] desktop:w-[1088px] tablet:mt-[63px] tablet:mb-[40px] desktop:mt-[80px] desktop:mb-[40px] tablet:justify-end desktop:justify-end">
             {/* Mobile Filter Row */}

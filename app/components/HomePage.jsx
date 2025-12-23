@@ -310,11 +310,11 @@ export default function HomeContent(props) {
         desktop:mt-[60.73px] tablet:mt-[67.73px] mobile:mt-[22px]
         desktop:h-[47px] tablet:h-[47px] mobile:h-[33px]"
           >
-            <h2 className="mobile:font-variation-customOpt28 tablet:font-variation-customOpt40 desktop:font-variation-customOpt40 desktop:text-[40px] tablet:text-[40px] mobile:text-[28px]  text-[#1E2125] leading-[46.88px] ">
+            <h1 className="mobile:font-variation-customOpt28 tablet:font-variation-customOpt40 desktop:font-variation-customOpt40 desktop:text-[40px] tablet:text-[40px] mobile:text-[28px]  text-[#1E2125] leading-[46.88px] ">
               <Link href={"/moj-racun"}>
                 Zadnje osmrtnice
               </Link>
-            </h2>
+            </h1>
           </div>
           <div
             className="flex flex-col desktop:flex-row 
@@ -325,10 +325,19 @@ export default function HomeContent(props) {
             {obitLoading ? (
               <div className="absolute top-0 left-0 h-full w-full z-50"></div>
             ) : null}
-            <div className="flex flex-col w-full items-center tablet:flex-row desktop:flex-row desktop:space-x-[16px] tablet:justify-between mobile:h-[112px] tablet:h-[48px] desktop:h-[48px]">
+            <form 
+              role="search" 
+              aria-label="Iskanje osmrtnic"
+              onSubmit={(e) => {
+                e.preventDefault();
+                fetchObituary();
+              }}
+              className="flex flex-col w-full items-center tablet:flex-row desktop:flex-row desktop:space-x-[16px] tablet:justify-between mobile:h-[112px] tablet:h-[48px] desktop:h-[48px]"
+            >
               <div className="hidden desktop:flex h-[48px]">
                 <input
                   type="text"
+                  name="ime"
                   placeholder="Išči po imenu / priimku"
                   style={{
                     fontSize: "16px",
@@ -349,20 +358,10 @@ export default function HomeContent(props) {
                 />
               </div>
 
-              {/* <SelectDropdown
-                label={"Išči po regiji"}
-                data={regionOptions}
-                selectedValue={selectedRegion}
-                onSelect={handleRegionSelect}
-                isFromNotification={false}
-                isFromFlower={false}
-                isFrom={"mainPage"}
-                isFromFlowerGreenBgTablet={false}
-                isFromObituary={false}
-              /> */}
               <SelectDropdown
                 heading={"Išči po regiji"}
                 label={"Išči po regiji"}
+                name="regija"
                 isFromNotification={false}
                 isFromFlower={false}
                 data={regionOptions}
@@ -370,47 +369,41 @@ export default function HomeContent(props) {
                 onSelect={handleRegionSelect}
               />
               <div className="flex h-[16px] w-[360px] tablet:hidden desktop:hidden" />
-              {/* <SelectDropdown
-                label={"Išči po kraju"}
-                data={cityOptions}
-                selectedValue={selectedCity}
-                onSelect={handleCitySelect}
-                isFromNotification={false}
-                isFromObituary={false}
-                isFromFlower={false}
-                isFrom={"mainPage"}
-                isFromFlowerGreenBgTablet={false}
-              /> */}
               <SelectDropdown
                 heading={"Išči po kraju"}
                 data={cityOptions}
                 label={"Išči po kraju"}
+                name="kraj"
                 isFromNotification={false}
                 isFromFlower={false}
                 selectedValue={selectedCity}
                 onSelect={handleCitySelect}
               />
-            </div>
-            <div
-              onClick={() => fetchObituary()}
-              className="hidden desktop:flex justify-center  w-12 items-center h-full desktop:aspect-square rounded-lg bg-[#414141]"
-            >
-              <MagnifyingGlassIcon className="w-5 h-5 text-white hidden desktop:block" />
-            </div>
-          </div>
-
-          <div className="flex desktop:hidden h-[48px] mt-4 w-[296px] tablet:w-[292px] bg-[#414141] rounded-[8px] justify-center items-center ">
-            <div
-              style={{
-                fontSize: "16px",
-                lineHeight: "24px",
-                fontWeight: 400,
-                color: "#F6F6F6",
-                fontVariationSettings: "'opsz' 16",
-              }}
-            >
-              Prikaži
-            </div>
+              <button
+                type="submit"
+                onClick={() => fetchObituary()}
+                className="hidden desktop:flex justify-center w-12 items-center h-full desktop:aspect-square rounded-lg bg-[#414141]"
+              >
+                <MagnifyingGlassIcon className="w-5 h-5 text-white hidden desktop:block" />
+              </button>
+              <button
+                type="submit"
+                onClick={() => fetchObituary()}
+                className="flex desktop:hidden h-[48px] mt-4 w-[296px] tablet:w-[292px] bg-[#414141] rounded-[8px] justify-center items-center"
+              >
+                <div
+                  style={{
+                    fontSize: "16px",
+                    lineHeight: "24px",
+                    fontWeight: 400,
+                    color: "#F6F6F6",
+                    fontVariationSettings: "'opsz' 16",
+                  }}
+                >
+                  Prikaži
+                </div>
+              </button>
+            </form>
           </div>
 
           <div className="mx-auto hidden tablet:hidden desktop:grid desktop:grid-cols-2 grid-cols-1 tablet:gap-6 desktop:gap-6 mt-[43px] tablet:mt-[64px] desktop:mt-[47.93px] justify-between">

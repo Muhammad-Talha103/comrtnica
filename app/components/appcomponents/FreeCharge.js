@@ -14,9 +14,9 @@ const FreeCharge = ({ mbZero = false }) => {
         <div className="w-[669px] h-[616px] tablet:w-[637px] tablet:h-[685px] mobile:w-[100%] mobile:max-w-[480px] mobile:h-[483px] flex flex-col">
           {/*header container*/}
           <div className="flex mobile:w-[100%] mobile:h-[228px] tablet:h-[228px] mx-auto flex-col">
-            <div className="text-[40px] text-[#3C3E41] mobile:text-[28px] mobile:font-variation-customOpt28 text-center font-variation-customOpt40  tablet:mt-[1px] tablet:truncate mobile:mt-[1px] leading-[48px] mobile:leading-10">
+            <h2 className="text-[40px] text-[#3C3E41] mobile:text-[28px] mobile:font-variation-customOpt28 text-center font-variation-customOpt40  tablet:mt-[1px] tablet:truncate mobile:mt-[1px] leading-[48px] mobile:leading-10">
               Spletno stran si sami izdelate v 30 minutah
-            </div>
+            </h2>
 
             {/*text for desktop*/}
             <div className="text-[24px] text-[#3C3E41] self-center font-variation-customOpt24 font-bold mt-[12px] mobile:mt-[15px] hidden desktop:flex">

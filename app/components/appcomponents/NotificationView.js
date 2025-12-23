@@ -33,7 +33,6 @@ const NotificationView = () => {
   };
   return (
     <div className="w-full bg-[#fffbf4] flex justify-center mobile:h-[529px] relative">
-      {/* Transparent overlay to make section unclickable */}
       <div className="absolute inset-0 bg-transparent cursor-not-allowed"></div>
       <div
         className="
@@ -44,14 +43,12 @@ const NotificationView = () => {
         <div className="flex flex-col desktop:w-[1088px] items-center">
           <div className="desktop:w-[636px] desktop:h-[297.48px] desktop:mt-[80.26px] mobile:w-full">
             <div className="w-full flex flex-col items-center mobile:text-center">
-              <div className="w-full flex justify-center items-center">
-                <div className="text-[20px] tablet:text-[28px] desktop:text-[32px] leading-[24px] tablet:leading-[32px] desktop:leading-[37.5px] font-normal text-[#1E2125] font-variation-customOpt32 tablet:whitespace-nowrap desktop:whitespace-nowrap text-center">
-                  <span className="hidden mobile:inline text-[24px] leading-[28px]">
-                    Obveščanje o<br />lokalnih osmrtnicah (kmalu)
-                  </span>
-                  <span className="mobile:hidden text-[24px]">Obveščanje o osmrtnicah v domačem kraju (kmalu)</span>
-                </div>
-              </div>
+              <h2 className="text-[20px] tablet:text-[28px] desktop:text-[32px] leading-[24px] tablet:leading-[32px] desktop:leading-[37.5px] font-normal text-[#1E2125] font-variation-customOpt32 tablet:whitespace-nowrap desktop:whitespace-nowrap text-center">
+                <span className="hidden mobile:inline text-[24px] leading-[28px]">
+                  Obveščanje o<br />lokalnih osmrtnicah (kmalu)
+                </span>
+                <span className="mobile:hidden text-[24px]">Obveščanje o osmrtnicah v domačem kraju (kmalu)</span>
+              </h2>
 
               <div className="flex flex-row items-center justify-between gap-6 mobile:gap-4 mt-6 w-full mobile:w-[320px] mobile:flex-col ">
                 <Dropdown

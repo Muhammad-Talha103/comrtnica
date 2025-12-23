@@ -75,13 +75,13 @@ const PartnerAdItem = ({ partner }) => {
       >
         <div className="content flex flex-col gap-[2px] ml-3 mt-[18px] relative z-10">
           <Link target="_blank" rel="noopener noreferrer" href={website}>
-            <h2 className="text-[#0A85C2] text-sm uppercase leading-6 font-light max-w-[250px] overflow-hidden text-ellipsis whitespace-nowrap mb-[2px]">
+            <div className="text-[#0A85C2] text-sm uppercase leading-6 font-light max-w-[250px] overflow-hidden text-ellipsis whitespace-nowrap mb-[2px]">
               {isHoveredImage &&
               partner.secondaryImage &&
               partner.secondaryImageDescription
                 ? partner?.secondaryImageDescription
                 : partner?.mainImageDescription || ""}
-            </h2>
+            </div>
           </Link>
 
           <p className="text-[#1E2125] text-lg leading-[100%] font-light max-w-[250px] overflow-hidden text-ellipsis whitespace-nowrap mb-[26px]">

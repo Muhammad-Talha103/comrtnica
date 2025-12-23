@@ -10,8 +10,8 @@ import RegisterComp from "../components/appcomponents/RegisterComp";
 import './local.css';
 
 export const metadata = {
-  title: "Rešitve za cvetličarne | Osmrtnica",
-  description: "Spletne rešitve za cvetličarne - brezplačna spletna stran, vpis v imenik lokalnih cvetličarn in dodatne promocijske možnosti. Enostavna izdelava v 30 minutah.",
+  title: "Spletne rešitve za cvetličarne – Enostavna izdelava strani | Osmrtnica.com",
+  description: "Rešitve za cvetličarne – izdelajte si brezplačno spletno stran, vpišite se v imenik cvetličarn in povečajte spletno vidnost. Enostavna izdelava v 30 minutah.",
   robots: "index, follow",
 };
 

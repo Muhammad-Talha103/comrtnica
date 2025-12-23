@@ -1,9 +1,12 @@
 import React from "react";
 
-const ObituaryListBanner = ({ image, label, alt }) => {
+const ObituaryListBanner = ({ image, label, alt, h1Text }) => {
   const defaultAlt = label === "Osmrtnice" ? "osmrtnice ozadje" : label === "Pogrebi" ? "pogrebi ozadje" : label === "Lokalne cvetličarne" ? "ozadje za cvetličarne" : label === "Pogrebna podjetja" ? "ozadje za pogrebna podjetja" : `${label} ozadje`;
+
+  const displayText = h1Text || (label === "Osmrtnice" ? "Osmrtnice" : label === "Pogrebi" ? "Pogrebi" : label === "Lokalne cvetličarne" ? "Lokalne cvetličarne" : label === "Pogrebna podjetja" ? "Pogrebna podjetja" : label);
+
   return (
-    <div className="relative w-full overflow-hidden mx-auto desktop:mt-[92.02px] mobile:mt-[68px] tablet:mt-[80px] flex justify-center items-center">
+    <div className="relative w-full overflow-hidden mx-auto desktop:mt-[70.02px] mobile:mt-[45px] tablet:mt-[52px] flex justify-center items-center">
       <img
         src={image}
         alt={alt || defaultAlt}
@@ -16,7 +19,7 @@ const ObituaryListBanner = ({ image, label, alt }) => {
         mobile:text-[28px] text-[40px] 
         font-normal leading-[47px] mobile:leading-[33px] whitespace-nowrap"
       >
-        {label === "Osmrtnice" ? "osmrtnice" : label === "Pogrebi" ? "Pogrebi" : label === "Lokalne cvetličarne" ? "Lokalne cvetličarne" : label === "Pogrebna podjetja" ? "Pogrebna podjetja" : label}
+        {displayText}
       </h1>
     </div>
   );

@@ -7,17 +7,11 @@ import { APP_BASE_URL } from "@/config/apiConfig";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ searchParams }) {
-  const resolvedSearchParams = await searchParams;
-  const region = typeof resolvedSearchParams?.region === 'string' ? resolvedSearchParams.region : Array.isArray(resolvedSearchParams?.region) ? resolvedSearchParams.region[0] : "";
-  const sanitizedRegion = region.trim();
-  
   return {
-    title: sanitizedRegion ? `Pogrebna podjetja v ${sanitizedRegion} regiji – Seznam podjetij | Osmrtnica.com` : "Pogrebna podjetja – Seznam podjetij | Osmrtnica.com",
-    description: sanitizedRegion
-      ? `Osmrtnica.com - pogrebna podjetja v ${sanitizedRegion} regiji. Pregled lokalnih izvajalcev storitev z naslovom in povezavo do spletne strani. Pridružite se kot partner.`
-      : "Osmrtnica.com - pogrebna podjetja v Sloveniji. Pregled lokalnih izvajalcev storitev z naslovom in povezavo do spletne strani. Pridružite se kot partner.",
+    title: "Pogrebna podjetja po regijah v Sloveniji | Osmrtnica.com",
+    description: "Seznam pogrebnih podjetij po regijah s kontaktnimi podatki in povezavo do njihovih spletnih strani. Pridružite se in postanite partner platforme osmrtnica.com",
     alternates: {
-      canonical: sanitizedRegion ? `${APP_BASE_URL}/pogrebna-p?region=${encodeURIComponent(sanitizedRegion)}` : `${APP_BASE_URL}/pogrebna-p`,
+      canonical: `${APP_BASE_URL}/pogrebna-p`,
     },
   };
 }
