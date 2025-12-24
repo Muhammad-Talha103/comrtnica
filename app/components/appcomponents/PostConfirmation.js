@@ -11,6 +11,7 @@ import obituaryService from "@/services/obituary-service";
 import { toast } from "react-hot-toast";
 import Link from "next/link";
 import { MemoryDetailModal } from "./MemoryDetailModal";
+import { FaTrash } from "react-icons/fa";
 const PostConfirmation = () => {
   const [isTableVisible, setIsTableVisible] = useState(false);
   const [interactionModal, setInteractionModal] = useState(null);
@@ -159,6 +160,14 @@ const PostConfirmation = () => {
       hour: "2-digit",
       minute: "2-digit",
     });
+  };
+
+  const formatDateCompact = (timestamp) => {
+    const date = timestamp ? new Date(timestamp) : new Date();
+    const d = date.getDate().toString().padStart(2, '0');
+    const m = (date.getMonth() + 1).toString().padStart(2, '0');
+    const y = date.getFullYear();
+    return `${d}.${m}.${y}`;
   };
 
   //To be deleted
@@ -540,10 +549,11 @@ const PostConfirmation = () => {
                 </h4>
                 {/* 17 October 2024 */}
                 <div
-                  className="mobileUserAcc:w-[78px] h-[32px] flex items-center justify-center shadow-lg rounded w-[154px]"
+                  className="mobileUserAcc:w-[78px] h-[32px] flex items-center justify-center shadow-lg rounded w-[154px] cursor-pointer"
                   style={{
                     background: "linear-gradient(135deg, #E3E8EC, #FFFFFF)",
                   }}
+                  onClick={() => setInteractionModal(item)}
                 >
                   <p className="text-[#717B8C] text-[12px] mt-[0px]">Odpri</p>
                 </div>
@@ -661,8 +671,11 @@ const PostConfirmation = () => {
                       <th className="w-[350px] uppercase px-4 py-2 text-[14px]  font-semibold text-[#3c3e41] text-center">
                         kdo i kaj
                       </th>
-                      <th className="w-[280px] uppercase px-4 py-2 text-[14px] font-semibold text-[#3c3e41] text-left">
+                      <th className="w-[140px] uppercase px-4 py-2 text-[14px] font-semibold text-[#3c3e41] text-left">
                         datum
+                      </th>
+                      <th className="w-[60px] uppercase px-4 py-2 text-[14px] font-semibold text-[#3c3e41] text-left">
+                        Izbriši
                       </th>
                       <th className="w-[80px] uppercase px-4 py-2 text-[14px] font-semibold text-[#3c3e41] text-left">
                         STATUS
@@ -688,7 +701,10 @@ const PostConfirmation = () => {
                         </td>
                         <td className="w-[350px]  p-2 border-t border-b border-[#A1B1D4]">
                           <div className="flex items-center justify-start">
-                            <AiOutlineExport className="ml-2 w-[24px] h-[24px] text-[#6D778E] mr-4" />
+                            <AiOutlineExport 
+                              className="ml-2 w-[24px] h-[24px] text-[#6D778E] mr-4 cursor-pointer" 
+                              onClick={() => setInteractionModal(item)}
+                            />
                             <span className="flex flex-col text-[14px] font-medium text-[#6D778E]">
                               Anonymous
                               <span className="text-[16px] font-medium text-[#3C3E41]">
@@ -697,15 +713,30 @@ const PostConfirmation = () => {
                             </span>
                           </div>
                         </td>
-                        <td className="w-[80px] p-2 border-t border-b border-[#A1B1D4]">
+                        <td className="w-[140px] p-2 border-t border-b border-[#A1B1D4]">
                           <div className="">
                             <span className="flex flex-col text-[14px] font-medium text-[#6D778E]">
                               {formatTime(item?.createdTimestamp)}
-                              <span className="text-[16px] font-medium text-[#3C3E41]">
-                                {formatDate(item?.createdTimestamp)}
+                              <span className="text-[14px] font-medium text-[#3C3E41]">
+                                {formatDateCompact(item?.createdTimestamp)}
                               </span>
                             </span>
                           </div>
+                        </td>
+                        <td className="w-[60px] p-2 border-t border-b border-[#A1B1D4]">
+                             <div 
+                               className="w-[24px] h-[24px] flex items-center justify-center cursor-pointer"
+                               onClick={() =>
+                                approvePost(
+                                  item?.interactionId,
+                                  item?.type,
+                                  item?.id,
+                                  "rejected"
+                                )
+                              }
+                             >
+                                <FaTrash className="text-red-500 w-4 h-4" />
+                             </div>
                         </td>
                         <td className="w-[150px] p-2 border-t border-b border-r rounded-r border-[#A1B1D4] ml-auto">
                           <Image

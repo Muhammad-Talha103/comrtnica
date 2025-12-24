@@ -46,7 +46,7 @@ function UserAccountHeaderNew({
       <header className="fixed top-0 left-0 right-0 bg-white shadow-lg z-50 ">
         <div className=" flex w-full justify-center">
           {/* 17 October 2024 */}
-          <div className="flex w-full h-[68px] tablet:w-[744px] mobile:px-5 mx-auto tablet:h-[80px] px-4 tablet:px-6 desktop:w-[1200px] desktop:h-[92.02px] desktop:px-[18px]">
+          <div className="flex w-full desktop:h-[92.02px] mobile:h-[72px] tablet:h-[79px] desktop:w-[1200px] desktop:pl-[23px] desktop:pr-[27px] tablet:pl-[23px] tablet:pr-[27px] mobile:px-[20px] mx-auto">
             <div className="flex items-center gap-3 justify-between w-full mx-5">
               <Link href="/" className="flex">
                 <Image
@@ -102,13 +102,15 @@ function UserAccountHeaderNew({
                   ) : (
                     <span
                       className="p-1 rounded-lg hover:bg-gray-100 transition-colors duration-200"
-                      title="Nazaj"
+                      title="Menu"
                     >
-                      <Link href={`/`}>
+                      <Link href={`/u/${parsedUser?.slugKey}/menu`}>
                         <Image
-                          src={backIcon}
-                          alt="Back"
-                          className="h-8 w-8 mobile:h-7 mobile:w-7"
+                          src={"/icon_menu_black.png"}
+                          width={32}
+                          height={25}
+                          className="w-[32px] h-[25px]"
+                          alt="Menu"
                         />
                       </Link>
                     </span>
