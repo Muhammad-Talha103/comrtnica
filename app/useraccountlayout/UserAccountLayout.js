@@ -126,7 +126,7 @@ const UserAccountLayout = ({ children }) => {
       case "/potrditev-objave":
         setHeadingOne(
           innnerSize || (window.innerWidth >= 745 && window.innerWidth <= 991)
-            ? "Potrebna potrditev"
+            ? "Potrdi ali zavrni"
             : "Potrebna potrditev s tvoje strani"
         );
         setHeadingTwo(window.innerWidth >= 744 ? "Moji Skrbniki" : "");
@@ -230,7 +230,7 @@ const UserAccountLayout = ({ children }) => {
                     style={{
                       fontVariationSettings: "'wdth' 50,'wght' 600,'opsz' 32",
                     }}
-                    className="pt-[10px] flex text-[32px] text-[#0A85C2] font-medium mobileUserAcc:text-[28px] "
+                    className="pt-[10px] flex text-[32px] text-[#0A85C2] font-medium mobileUserAcc:text-[24px] tabletUserAcc:text-[28px] mobileUserAcc:font-medium tabletUserAcc:font-medium "
                   >
                     {headingOne}
                     {pathname === "/potrditev-objave" ? (
@@ -271,7 +271,7 @@ const UserAccountLayout = ({ children }) => {
                           fontVariationSettings:
                             "'wdth' 50,'wght' 400,'opsz' 18",
                         }}
-                        className="text-[18px] font-normal text-[#0A85C2]"
+                        className="text-[18px] mobileUserAcc:text-[16px] tabletUserAcc:text-[20px] font-normal text-[#0A85C2]"
                       >
                         {headingTwo}
                       </div>
@@ -305,7 +305,7 @@ const UserAccountLayout = ({ children }) => {
                             fontVariationSettings:
                               "'wdth' 50,'wght' 400,'opsz' 18",
                           }}
-                          className="text-[18px] text-[#0A85C2] font-normal px-3 mobileUserAcc:px-0"
+                          className="text-[18px] mobileUserAcc:text-[16px] tabletUserAcc:text-[20px] text-[#0A85C2] font-normal px-3 mobileUserAcc:px-0"
                         >
                           {headingThree}
                         </div>

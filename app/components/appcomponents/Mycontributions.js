@@ -148,31 +148,31 @@ const Mycontributions = () => {
           <div className="hidden mobileUserAcc:flex flex-row  mobileUserAcc:mt-[50px] gap-x-[13px]">
             <div className="flex flex-col gap-y-4">
               <GradientPurple
-                num={logs?.approvedContributions?.sorrowbook}
+                num={logs?.approvedContributions?.sorrowbook || 0}
                 text={"Žalna knjiga"}
               />
               <GradientPurple
-                num={logs?.approvedContributions?.condolence}
+                num={logs?.approvedContributions?.condolence || 0}
                 text={"Izreki sožalja"}
               />
               <GradientPurple
-                num={logs?.approvedContributions?.dedication}
+                num={logs?.approvedContributions?.dedication || 0}
                 text={"Posvetila"}
                 isFor={"Gray"}
               />
               <GradientPurple
-                num={logs?.approvedContributions?.photo}
+                num={logs?.approvedContributions?.photo || 0}
                 text={"Dodane slike"}
                 isFor={"Gray"}
               />
               <GradientPurple
-                num={logs?.approvedContributions?.candle}
+                num={logs?.approvedContributions?.candle || 0}
                 text={"Dnevne sveče"}
               />
             </div>
 
             <div className="flex flex-col gap-y-4">
-              <GradientBlue num={logs?.myAdministrator} text={"Moji Skrbniki"} />
+              <GradientBlue num={logs?.myAdministrator || 0} text={"Moji Skrbniki"} />
               <GradientBlue
                 num={"0"}
                 text={"Podarjeni skrbniki"}
@@ -187,31 +187,31 @@ const Mycontributions = () => {
         <div className="flex flex-row  mobileUserAcc:hidden gap-x-[13px]">
           <div className="flex flex-col gap-y-4">
             <GradientPurple
-              num={logs?.approvedContributions?.sorrowbook}
+              num={logs?.approvedContributions?.sorrowbook || 0}
               text={"Žalna knjiga"}
             />
             <GradientPurple
-              num={logs?.approvedContributions?.condolence}
+              num={logs?.approvedContributions?.condolence || 0}
               text={"Izreki sožalja"}
             />
             <GradientPurple
-              num={logs?.approvedContributions?.dedication}
+              num={logs?.approvedContributions?.dedication || 0}
               text={"Posvetila"}
               isFor={"Gray"}
             />
             <GradientPurple
-              num={logs?.approvedContributions?.photo}
+              num={logs?.approvedContributions?.photo || 0}
               text={"Dodane slike"}
               isFor={"Gray"}
             />
             <GradientPurple
-              num={logs?.approvedContributions?.candle}
+              num={logs?.approvedContributions?.candle || 0}
               text={"Dnevne sveče"}
             />
           </div>
 
           <div className="flex flex-col gap-y-4">
-            <GradientBlue num={logs?.myAdministrator} text={"Moji Skrbniki"} />
+            <GradientBlue num={logs?.myAdministrator || 0} text={"Moji Skrbniki"} />
             <GradientBlue
               num={"0"}
               text={"Podarjeni skrbniki"}
