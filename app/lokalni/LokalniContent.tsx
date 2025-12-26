@@ -47,7 +47,17 @@ const LokalniContent = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       const response = await categoryService.getAllCategories();
-      setCategories(Array.isArray(response) ? response : []);
+      // Filter out "Sedmina" from categories (case-insensitive check)
+      const filteredCategories = Array.isArray(response) 
+        ? response.filter(cat => {
+            // Check name property (API returns only name, not link)
+            const name = cat?.name?.toLowerCase().trim() || '';
+            // Filter out "sedmina" and "sedmine" variations
+            return name !== 'sedmina' && name !== 'sedmine';
+          })
+        : [];
+        console.log("filteredCategories", filteredCategories);
+      setCategories(filteredCategories);
     };
     fetchCategories();
   }, []);

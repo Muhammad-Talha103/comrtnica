@@ -1,19 +1,23 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
-import Dropdown from "@/app/components/appcomponents/Dropdown";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import ObituaryCard from "@/app/components/appcomponents/ObituaryCard";
-import imgPrevious from "@/public/previous_img.png";
-import imgNext from "@/public/next_img.png";
+
 import Image from "next/image";
 import { toast } from "react-hot-toast";
-import obituaryService from "@/services/obituary-service";
-import regionsAndCities from "@/utils/regionAndCities";
-import { SelectDropdown } from "./SelectDropdown";
+import React, { useEffect, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-const ObituaryListComponent = ({ city }) => {
+import imgNext from "@/public/next_img.png";
+import { SelectDropdown } from "./SelectDropdown";
+import imgPrevious from "@/public/previous_img.png";
+import regionsAndCities from "@/utils/regionAndCities";
+import obituaryService from "@/services/obituary-service";
+import { cityToSlug, findCityFromSlug } from "@/utils/citySlug";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import ObituaryCard from "@/app/components/appcomponents/ObituaryCard";
+
+const ObituaryListComponent = ({ city, initialObituaries = [] }) => {
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
   const regionParam1 = searchParams.get("region");
   const languages = [
     "Ljubljana",
@@ -26,14 +30,14 @@ const ObituaryListComponent = ({ city }) => {
     "Velenje",
     "Nova Gorica",
   ];
-  const [obituaries, setObituaries] = useState([]);
+  const [obituaries, setObituaries] = useState(initialObituaries);
   const [obitLoading, setObitLoading] = useState(false);
   const allRegionsOption = {
     place: "- Pokaži vse regije -",
     id: "allRegions",
   };
   const allCitiesOption = { place: "- Pokaži vse občine -", id: "allCities" };
-  const [selectedCity, setSelectedCity] = useState(city ? city : null);
+  const [selectedCity, setSelectedCity] = useState(null);
   const [selectedRegion, setSelectedRegion] = useState(regionParam1 ?? null);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10); // default to mobile
@@ -67,55 +71,131 @@ const ObituaryListComponent = ({ city }) => {
           }))
           .sort((a, b) => a.place.localeCompare(b.place, "sl")),
       ];
-  const router = useRouter();
 
   useEffect(() => {
-    const cityParam = searchParams.get("city");
-    const regionParam = searchParams.get("region");
+    if (pathname?.startsWith('/osmrtnice/') && pathname !== '/osmrtnice') {
+      const citySlug = pathname.split('/osmrtnice/')[1];
+      if (citySlug) {
+        const isShowAllSlug = citySlug.includes('pokazi-vse') || citySlug === 'allCities';
+        if (isShowAllSlug) {
+          setSelectedCity("- Pokaži vse občine -");
+          setSelectedRegion("- Pokaži vse regije -");
+          router.push("/osmrtnice");
+          return;
+        }
+        
+        const cityFromRoute = findCityFromSlug(citySlug);
 
-    if (cityParam) {
-      setSelectedCity(cityParam);
-
-      const region = Object.keys(regionsAndCities).find((region) =>
-        regionsAndCities[region].includes(cityParam)
-      );
-      if (region) {
-        setSelectedRegion(region);
+        if (cityFromRoute && !cityFromRoute.includes('pokazi-vse')) {
+          if (selectedCity !== cityFromRoute) {
+            setSelectedCity(cityFromRoute);
+          }
+          setSelectedRegion(null);
+        } else {
+          setSelectedCity(null);
+          setSelectedRegion(null);
+        }
+      }
+    } else if (pathname === '/osmrtnice') {
+      const cityFromQuery = searchParams.get("city");
+      const regionFromQuery = searchParams.get("region");
+      
+      if (regionFromQuery) {
+        if (regionFromQuery === '- Pokaži vse regije -' || regionFromQuery === 'allRegions') {
+          setSelectedRegion("- Pokaži vse regije -");
+          setSelectedCity("- Pokaži vse občine -");
+        } else {
+          setSelectedRegion(regionFromQuery);
+          setSelectedCity(null);
+        }
+      } else if (cityFromQuery || city) {
+        const cityValue = cityFromQuery || city;
+        const isShowAll = !cityValue || cityValue === '- Pokaži vse občine -' || cityValue === 'allCities' || cityValue.includes('pokazi-vse');
+        if (isShowAll) {
+          setSelectedCity('- Pokaži vse občine -');
+        } else {
+          setSelectedCity(cityValue);
+        }
+        setSelectedRegion(null);
+      } else if (!cityFromQuery && !city && !regionFromQuery) {
+        setSelectedCity(null);
+        setSelectedRegion(null);
       }
     }
-  }, []);
+  }, [pathname, searchParams]);
 
-  const updateUrlParams = (city) => {
-    const params = new URLSearchParams();
-
-    if (city && city.trim() !== "") {
-      params.set("city", city);
+  const hasInitialData = React.useRef(initialObituaries.length > 0);
+  const initialCity = React.useRef(city);
+  const initialRegion = React.useRef(regionParam1);
+  
+  useEffect(() => {
+    if (pathname?.startsWith('/osmrtnice/') && pathname !== '/osmrtnice' && !selectedCity) {
+      console.log('[selectedCity-effect] Skipping fetch - on dynamic route but selectedCity is null (will be set by pathname effect)');
+      return;
     }
 
-    const newUrl = params.toString()
-      ? `?${params.toString()}`
-      : window.location.pathname;
+    if (pathname?.startsWith('/osmrtnice/') && pathname !== '/osmrtnice') {
+      const citySlug = pathname.split('/osmrtnice/')[1];
+      const cityFromPath = findCityFromSlug(citySlug);
+      if (cityFromPath && cityFromPath !== selectedCity) {
+        console.log('[selectedCity-effect] Skipping fetch - pathname city (', cityFromPath, ') does not match selectedCity (', selectedCity, ') - navigation in progress');
+        return;
+      }
+      if (cityFromPath && cityFromPath === selectedCity) {
+        console.log('[selectedCity-effect] City matches pathname, fetching data');
+      }
+    }
 
-    router.push(newUrl, { scroll: false });
-  };
+    if (hasInitialData.current && !selectedName && selectedCity === initialCity.current && selectedRegion === initialRegion.current) {
+      hasInitialData.current = false;
+      return;
+    }
+
+    fetchObituary();
+  }, [selectedCity, selectedRegion, pathname]);
 
   useEffect(() => {
-    fetchObituary();
+    console.log('[selectedCity-tracker] selectedCity value:', selectedCity, 'type:', typeof selectedCity);
+  }, [selectedCity]);
+
+  useEffect(() => {
+    if (selectedCity) {
+      document.title = `Osmrtnice v občini ${selectedCity} | Osmrtnica.com`;
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute("content", `Osmrtnice v občini ${selectedCity}. Celovit pregled osmrtnic z datumi pogrebov, pokopališči ter možnostjo iskanja po imenu, kraju ali regiji.`);
+      }
+    } else if (selectedRegion) {
+      document.title = `Osmrtnice v regiji ${selectedRegion} | Osmrtnica.com`;
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute("content", `Pregled osmrtnic v regiji ${selectedRegion}. Celovit pregled osmrtnic z datumi pogrebov, pokopališči ter možnostjo iskanja po imenu, kraju ali regiji.`);
+      }
+    } else {
+      document.title = "Zadnje osmrtnice po Sloveniji | Osmrtnica.com";
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute("content", "Pregled vseh osmrtnic s povezavo do njihove žalne/spominske strani. Osmrtnice na Gorenjskem, Dolenjskem, Pomurju, Goriškem, Zasavju, Primorskem, Notranjskem");
+      }
+    }
   }, [selectedCity, selectedRegion]);
 
   const handleRegionSelect = (item) => {
     if (item.id === "allRegions") {
-      setSelectedRegion(null);
-      setSelectedCity(null);
+      setSelectedRegion("- Pokaži vse regije -");
+      setSelectedCity("- Pokaži vse občine -");
+      router.push("/osmrtnice");
       return;
     }
     setSelectedRegion(item.place);
     setSelectedCity(null);
-    updateURL('', item.place, '');
+    const params = new URLSearchParams();
+    params.set("region", item.place);
+    router.push(`/osmrtnice?${params.toString()}`);
   };
 
-  // Update URL with query parameters
   const updateURL = (city, region, search) => {
+    console.log('[updateURL] Called with city:', city, 'region:', region);
     const params = new URLSearchParams(window.location.search);
     if (city && city !== "allCities" && city !== "- Pokaži vse občine -") {
       params.set("city", city);
@@ -123,6 +203,7 @@ const ObituaryListComponent = ({ city }) => {
       params.delete("city");
     }
     if (!city) {
+      console.log('[updateURL] Clearing selectedCity because city is falsy');
       setSelectedCity('');
       params.delete("city");
     }
@@ -134,41 +215,39 @@ const ObituaryListComponent = ({ city }) => {
 
     const queryString = params.toString();
     const newURL = queryString ? `?${queryString}` : window.location.pathname;
+    console.log('[updateURL] Navigating to:', newURL);
     router.replace(newURL, { scroll: false });
   };
 
   const handleCitySelect = (item) => {
-    if (item.id === "allCities") {
-      setSelectedCity(null);
+    if (item.id === "allCities" || item.place === "- Pokaži vse občine -") {
+      setSelectedCity("- Pokaži vse občine -");
+      setSelectedRegion(null);
+      router.push("/osmrtnice");
       return;
     }
-    setSelectedCity(item.place);
-    setSelectedRegion(null);
-    updateURL(item.place, null, '')
-    // updateUrlParams(item.place);
-    // const region = Object.keys(regionsAndCities).find((region) =>
-    //   regionsAndCities[region].includes(item.place)
-    // );
 
-    // if (region) {
-    //   setSelectedRegion(region);
-    // }
+    setSelectedRegion(null);
+    const citySlug = cityToSlug(item.place);
+    if (citySlug) {
+      router.push(`/osmrtnice/${citySlug}`);
+    }
   };
 
   const handleCitySelectQuickLinks = (city) => {
-    setSelectedCity(city);
-    setSelectedRegion(null);
-    updateUrlParams(city);
-    // const region = Object.keys(regionsAndCities).find((region) =>
-    //   regionsAndCities[region].includes(item.place)
-    // );
-
-    // if (region) {
-    //   setSelectedRegion(region);
-    // }
+    const citySlug = cityToSlug(city);
+    if (citySlug) {
+      router.push(`/osmrtnice/${citySlug}`);
+    }
   };
 
   useEffect(() => {
+    if (!selectedName) {
+      console.log('[selectedName-effect] Skipping fetch - selectedName is empty');
+      return;
+    }
+
+    console.log('[selectedName-effect] Fetching with selectedName:', selectedName);
     fetchObituary();
   }, [selectedName]);
 
@@ -176,10 +255,22 @@ const ObituaryListComponent = ({ city }) => {
     try {
       const queryParams = {};
 
-      if (selectedCity && selectedCity != '- Pokaži vse občine -') queryParams.city = selectedCity;
+      const isShowAllCities = !selectedCity || 
+        selectedCity === '- Pokaži vse občine -' || 
+        selectedCity === 'allCities' ||
+        (selectedCity && selectedCity.includes && selectedCity.includes('pokazi-vse')) ||
+        selectedCity === '';
+      
+      if (selectedCity && !isShowAllCities) queryParams.city = selectedCity;
 
-      if (selectedRegion && selectedRegion != '- Pokaži vse regije -') queryParams.region = selectedRegion;
+      const isShowAllRegions = !selectedRegion || 
+        selectedRegion === '- Pokaži vse regije -' || 
+        selectedRegion === 'allRegions';
+      
+      if (selectedRegion && !isShowAllRegions) queryParams.region = selectedRegion;
       if (selectedName) queryParams.name = selectedName;
+
+      console.log('[fetchObituary] Calling API with params:', queryParams, 'pathname:', pathname);
       setObitLoading(true);
       const response = await obituaryService.getObituary(queryParams);
       setObitLoading(false);
@@ -269,13 +360,59 @@ const ObituaryListComponent = ({ city }) => {
     }
   }, [currentPage]);
 
+  const generateJsonLd = () => {
+    const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://www.osmrtnica.com';
+    const currentUrl = typeof window !== 'undefined' ? window.location.href : baseUrl;
+    
+    const itemListElement = obituaries.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((obituary, index) => ({
+      "@type": "ListItem",
+      "position": (currentPage - 1) * itemsPerPage + index + 1,
+      "item": {
+        "@type": "Person",
+        "name": `${obituary.name} ${obituary.sirName}`,
+        "deathDate": obituary.deathDate ? new Date(obituary.deathDate).toISOString().split('T')[0] : undefined,
+        "birthDate": obituary.birthDate && !obituary.birthDate.includes('1025') ? new Date(obituary.birthDate).toISOString().split('T')[0] : undefined,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": obituary.location || obituary.city || "",
+        },
+        "url": `${baseUrl}/m/${obituary.slugKey}`,
+      }
+    }));
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": selectedCity 
+        ? `Osmrtnice v ${selectedCity}`
+        : selectedRegion
+        ? `Osmrtnice v regiji ${selectedRegion}`
+        : "Osmrtnice po Sloveniji",
+      "description": selectedCity
+        ? `Pregled osmrtnic v ${selectedCity}`
+        : selectedRegion
+        ? `Pregled osmrtnic v regiji ${selectedRegion}`
+        : "Pregled osmrtnic po Sloveniji",
+      "url": currentUrl,
+      "numberOfItems": obituaries.length,
+      "itemListElement": itemListElement,
+    };
+
+    return jsonLd;
+  };
+
   return (
     <div className="max-w-[1920px] w-full tablet:w-full mobile:w-full mx-auto flex flex-col items-center desktop:bg-[#F5F7F9] mobile:bg-white tablet:bg-white">
+      {obituaries.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateJsonLd()) }}
+        />
+      )}
       {/* Main Container */}
       <div className=" flex flex-col items-center w-full tablet:w-full mobile:w-full">
         {/* Main container for inputs main container */}
         <div className="w-full tablet:w-full mobile:w-full flex flex-col items-center">
-          <h2 className="sr-only">search buttons</h2>
           {/* Inputs main Container */}
           <div
             className="w-[777px] tablet:w-[600px] h-[48px] tablet:h-[112px] tablet:columns-2 mobile:w-[296px] mobile:h-[240px] mobile:flex-wrap 
@@ -330,16 +467,11 @@ const ObituaryListComponent = ({ city }) => {
           className="flex desktop:ml-[0px] desktop:h-[78px] tablet:w-[650px] tablet:h-[70px] tablet:justify-center mobile:w-[330px] mobile:flex-col desktop:flex-col"
           ref={cardTopRef}
         >
-          <h2 className="hidden desktop:flex text-[32px] font-[400px] leading-[28.13px] text-[#1E2125]">
+          <h2 className="flex items-center text-[32px] mobile:text-[24px] tablet:text-[24px] font-[400px] leading-[28.13px] text-[#1E2125] whitespace-nowrap mobile:h-7 tablet:h-7 desktop:h-auto">
             Hitri izbor
+            <span className="hidden tablet:inline desktop:hidden text-[24px] text-[#1E2125] ml-0">:</span>
           </h2>
           <div className="flex desktop:hidden items-center mr-[24px] tablet:mr-[18px] whitespace-nowrap h-7">
-            <h2 className="text-[24px] font-[400px] leading-[28.13px] text-[#1E2125]">
-              Hitri izbor
-            </h2>
-            <div className="hidden tablet:flex desktop:hidden text-[24px] text-[#1E2125]">
-              :
-            </div>
           </div>
           <div className="flex mobile:w-[330px] tablet:w-[480px] desktop:mt-4">
             <ul className="flex flex-row list-none flex-wrap mobile:ml-[0px]">

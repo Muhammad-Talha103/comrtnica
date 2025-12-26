@@ -6,10 +6,10 @@ const NotJustObituaries = () => {
       <div className='max-w-[1920px] w-full py-[65px] desktop:py-[105px] tablet:py-[75px] overflow-hidden mx-auto flex justify-center items-center'>
         <div className='dekstop:w-[796px] tablet:w-[677px] mobile:w-[100%] mobile:max-w-[480px] mobile:px-2 flex flex-col items-center'>
 
-          <div className='text-[40px] text-center leading-[48px] mobile:text-[28px] mobile:leading-[40px] 
+          <h2 className='text-[40px] text-center leading-[48px] mobile:text-[28px] mobile:leading-[40px] 
             mobile:font-variation-customOpt28 font-variation-customOpt40 text-[#3C3E41] mobile:w-[340px] font-normal'>
             Ne gre samo za osmrtnice in žalni program
-          </div>
+          </h2>
 
           <div className='text-[20px] text-center leading-[27px] mt-[16px] font-variation-customOpt20 font-bold text-[#3C3E41]'>
             Gre za biti na pravem mestu ob pravem času, ko vas vaše stranke rabijo

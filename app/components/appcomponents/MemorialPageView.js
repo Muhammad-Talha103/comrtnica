@@ -63,7 +63,6 @@ const MemorialPageView = () => {
                 >
                   Odpri spominsko stran
                 </h2>
-                <h3 className="sr-only">Naprej</h3>
                 <p className="font-variation-customOpt16 mb-12 mobile:mb-4 mt-4 text-[#3C3E41] text-[16px] text-center leading-6 font-normal w-[629.27px] tablet:w-[596px] mobile:w-[301px]">
                   Spomini niso večni. Prehitro nam uidejo, čarobni trenutki se
                   pozabijo, slike zbledijo. Povežite spomine na najdražje v
@@ -107,9 +106,9 @@ const MemorialPageView = () => {
               </div>
             </div>
 
-            <h3 className="text-[24px] font-semibold text-[#1E2125] leading-[28px] font-variation-customOpt24">
+            <h2 className="text-[24px] font-semibold text-[#1E2125] leading-[28px] font-variation-customOpt24">
               Zadnje spominske strani
-            </h3>
+            </h2>
 
             <div
               className=" flex flex-row items-center 

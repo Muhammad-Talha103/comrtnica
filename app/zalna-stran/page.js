@@ -15,8 +15,8 @@ import Image from "next/image";
 import CommonFooter from "../components/appcomponents/CommonFooter";
 
 export const metadata = {
-  title: "Žalna stran – Ustvarite spomin na najdražje | Osmrtnica.com",
-  description: "Žalna stran, kjer lahko uporabniki prižgejo svečko, izrazijo sožalje, delijo spomine in slike. Skrbnik lahko nadgradi stran v polno spominsko stran svojega najdražjega. Brezplačno in enostavno.",
+  title: "Žalna stran – Toplejši način objavljanja osmrtnic",
+  description: "Brezplačna žalna stran, kjer lahko prižgemo svečko, izrazimo sožalje, delimo spomine. Skrbnik jo lahko nadgradi v pravo spominsko stran najdražjih.",
   alternates: {
     canonical: "https://www.osmrtnica.com/zalna-stran",
   },

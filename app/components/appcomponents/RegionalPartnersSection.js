@@ -10,6 +10,17 @@ import Image from "next/image";
 import IconDown from "../../../public/lokalni/down.png"; // ADDED
 import screenSizes from "@/app/lokalni/constant";
 
+const getRegionH3Text = (selectedItem, regionOptions, defaultItems) => {
+  if (!selectedItem) return null;
+  
+  const foundItem = regionOptions.find(reg => reg.name === selectedItem || reg.link === selectedItem);
+  const foundDefault = defaultItems.find(item => item.name === selectedItem || item.link === selectedItem);
+  
+  if (foundItem) return foundItem.name;
+  if (foundDefault) return foundDefault.name;
+  return selectedItem.charAt(0).toUpperCase() + selectedItem.slice(1);
+};
+
 const regionOptions = Object.keys(regionsAndCities).map((region) => ({
   name: region,
   link: region,
@@ -125,7 +136,11 @@ const RegionalPartnersSectionDesktop = ({
             items={regionOptions}
             title="region"
           />
-
+          {selectedItem && (
+            <h3 className="text-[24px] mobile:text-[24px] tablet:text-[24px] desktop:text-[24px] font-normal text-[#1E2125] leading-[28px]">
+              {getRegionH3Text(selectedItem, regionOptions, defaultItems)}
+            </h3>
+          )}
           <RegionalPartnersListDesktop regionalPartners={regionalPartners} />
         </div>
       )}
@@ -234,7 +249,11 @@ const RegionalPartnersSectionTablet = ({
             items={regionOptions}
             title="region"
           />
-
+          {selectedItem && (
+            <h3 className="text-[24px] mobile:text-[24px] tablet:text-[24px] desktop:text-[24px] font-normal text-[#1E2125] leading-[28px]">
+              {getRegionH3Text(selectedItem, regionOptions, defaultItems)}
+            </h3>
+          )}
           <RegionalPartnersListTablet regionalPartners={regionalPartners} />
         </div>
       )}
@@ -343,7 +362,11 @@ const RegionalPartnersSectionMobile = ({
             items={regionOptions}
             title="region"
           />
-
+          {selectedItem && (
+            <h3 className="text-[24px] mobile:text-[24px] tablet:text-[24px] desktop:text-[24px] font-normal text-[#1E2125] leading-[28px]">
+              {getRegionH3Text(selectedItem, regionOptions, defaultItems)}
+            </h3>
+          )}
           <RegionalPartnersListMobile regionalPartners={regionalPartners} />
         </div>
       )}

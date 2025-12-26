@@ -218,7 +218,7 @@ Postopek je enostaven: odprite aplikacijo kamere in jo usmerite na kodo QR. Posk
                   <div className="banner_content">
                     <div className="banner_content_heading">
                       <h1 className="tablet:text-center mobile:text-center text-[40px] leading-[48px] text-[#3c3e41]">QR kode za nagrobnike</h1>
-                      <h2 className="!text-[22px] !tablet:text-center !mobile:text-center !font-bold !text-[#3c3e41] !leading-[48px]">Sodobni in trajni način ohranjanja spomina na najdražje</h2>
+                      <h2 className="!text-[22px] !tablet:text-center !mobile:text-center !font-bold !text-[#3c3e41] !leading-[48px]">Ohranite spomin na vaše najdražje za vedno</h2>
                     </div>
                     <div className="banner_content_detail">
                       <p>Nagrobniki se niso bistveno spremenili v zadnjih nekaj tisoč letih.... do zdaj.</p>
@@ -745,7 +745,6 @@ Postopek je enostaven: odprite aplikacijo kamere in jo usmerite na kodo QR. Posk
                         <strong className="number_2">02.</strong>
                       </div>
                       <div className="e_free_c_list_txt">
-                        <h3 className="sr-only">Brezplačna žalna stran</h3>
                         <p>Istočasno vam izdela brezplačno <span>žalno spominsko stran</span>.</p>
                         <small>(ko urejate dokumente za pokop) </small>
                       </div>
@@ -757,7 +756,6 @@ Postopek je enostaven: odprite aplikacijo kamere in jo usmerite na kodo QR. Posk
                         <strong className="number_3">03.</strong>
                       </div>
                       <div className="e_free_c_list_txt">
-                        <h3 className="sr-only">Brezplačna spominska stran za cel mesec</h3>
                         <p>Vaša lokalna cvetličarna vam brezplačno podari <span>status Skrbnika</span> spominske strani.</p>
                         <small>(ko se dogovarjate za cvetlično ureditev vežice; status Skrbnika je za cel prvi mesec) </small>
                       </div>
@@ -769,7 +767,6 @@ Postopek je enostaven: odprite aplikacijo kamere in jo usmerite na kodo QR. Posk
                         <strong className="number_4">04.</strong>
                       </div>
                       <div className="e_free_c_list_txt">
-                        <h3 className="sr-only">Brezplačne digitalne kartice za pošiljanje preko mobilnega telefona</h3>
                         <p>Vaša lokalna cvetličarna vam brezplačno podari <span>mobi kartice</span> za pošiljanje naprej</p>
                         <small>(ko se dogovarjate za cvetlično ureditev vežice) </small>
                       </div>
@@ -781,7 +778,6 @@ Postopek je enostaven: odprite aplikacijo kamere in jo usmerite na kodo QR. Posk
                         <strong className="number_5">05.</strong>
                       </div>
                       <div className="e_free_c_list_txt">
-                        <h3 className="sr-only">Brezplačna QR koda za nagrobnik</h3>
                         <p>Pogrebno podjetje vam brezplačno podari <span>QR kodo</span> za nagrobnik</p>
                         <small>(digitalna koda je že na žalni / spominski strani; izdelate si jo sami) </small>
                       </div>

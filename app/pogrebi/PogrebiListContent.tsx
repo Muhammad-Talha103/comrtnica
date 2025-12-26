@@ -10,16 +10,17 @@ import MainOptions from "../components/appcomponents/MainOptions";
 import PogrebiLocalFloristComp from "../components/PogrebiLocalFloristComp";
 import CommonFooter from "../components/appcomponents/CommonFooter";
 
-const PogrebiListContent = () => {
+const PogrebiListContent = ({ cityParam, h1Text }: { cityParam?: string; h1Text?: string }) => {
   const urlSearchParams = useSearchParams();
   const region = urlSearchParams.get("region");
-  const city = urlSearchParams.get("city");
+  const city = cityParam || urlSearchParams.get("city");
+  const displayH1 = h1Text || "Pogrebi v naslednjih dneh";
 
   return (
     <>
-      <ObituaryListBanner image={"/pogrebi_ozadje.png"} label={"Pogrebi"} alt="pogrebi ozadje" />
+      <ObituaryListBanner image={"/pogrebi_ozadje.png"} label={"Pogrebi"} alt="pogrebi ozadje" h1Text={displayH1} />
       <PogrebiListComponent city={city || null} />
-      <Carousel />
+      <Carousel city={city || null} region={region || null} />
 
       <hr className="mt-[41px] tablet:mt-[63px] desktop:mt-[115px] mb-[51px] tablet:mb-[83px] desktop:mb-[93px] mobile:h-[2px]  h-2 bg-zinc-300 border-2" />
 

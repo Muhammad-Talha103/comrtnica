@@ -117,7 +117,6 @@ const FloristList = () => {
     <div className="max-w-[1920px] w-full pb-[81px] tablet:pb-[55px] desktop:pb-[121px] tablet:w-full mobile:w-full mx-auto flex flex-col items-center desktop:bg-[#F5F7F9] mobile:bg-white tablet:bg-white">
       <div className="flex flex-col items-center w-full tablet:w-full mobile:w-full">
         <div className="w-full tablet:w-full mobile:w-full flex flex-col items-center">
-          <h2 className="sr-only">Lokalne cvetličarne po kraju</h2>
           {/* Filter Section */}
           <div className="flex flex-col tablet:flex-row desktop:flex-row gap-4 mt-[63px] mb-[40px] mobile:w-[311px] tablet:w-[612px] desktop:w-[1088px] tablet:mt-[63px] tablet:mb-[40px] desktop:mt-[80px] desktop:mb-[40px] tablet:justify-end desktop:justify-end">
             {/* Mobile Filter Row */}
@@ -169,16 +168,11 @@ const FloristList = () => {
           <div className="flex w-full items-center justify-center">
             <div className="flex mobile:flex tablet:flex desktop:flex-row desktop:justify-between mobile:w-[315px] mobile:mb-[59px] tablet:items-center tablet:justify-center tablet:w-[660px] tablet:mb-[42px] desktop:w-[1088px] desktop:mt-[20px] desktop:mb-[68px]">
               <div className="flex desktop:ml-[0px] desktop:h-[78px] tablet:w-[650px] tablet:h-[70px] tablet:justify-center mobile:w-[330px] mobile:flex-col desktop:flex-col">
-                <div className="hidden desktop:flex text-[32px] font-[400px] leading-[28.13px] text-[#1E2125]">
+                <h2 className="flex items-center text-[32px] mobile:text-[24px] tablet:text-[24px] font-[400px] leading-[28.13px] text-[#1E2125] whitespace-nowrap mobile:h-7 tablet:h-7 desktop:h-auto">
                   Hitri izbor
-                </div>
+                  <span className="hidden tablet:inline desktop:hidden text-[24px] text-[#1E2125] ml-0">:</span>
+                </h2>
                 <div className="flex desktop:hidden items-center mr-[24px] tablet:mr-[18px] whitespace-nowrap h-7">
-                  <div className="text-[24px] font-[400px] leading-[28.13px] text-[#1E2125]">
-                    Hitri izbor
-                  </div>
-                  <div className="hidden tablet:flex desktop:hidden text-[24px] text-[#1E2125]">
-                    :
-                  </div>
                 </div>
                 <div className="flex mobile:w-[330px] tablet:w-[480px] desktop:mt-4">
                   <ul className="flex flex-row list-none flex-wrap mobile:ml-[0px]">

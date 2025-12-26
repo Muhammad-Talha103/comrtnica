@@ -264,14 +264,14 @@ const Subscription = () => {
           <div className="mobile:px-1 mobile:max-w-[500px] mobile:mx-auto flex flex-col mb-[40px] w-[766px] mx-auto mobile:gap-y-11 gap-y-9">
             <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4 mb-[40px]">
               <div className="w-full flex items-center gap-4">
-                <h2 className="mobile:text-[24px] text-[32px] text-[#000000]">
+                <div className="mobile:text-[24px] text-[32px] text-[#000000]">
                   Spominska stran
-                </h2>
+                </div>
               </div>
 
               <div className="w-full space-y-[12px] ">
                 <div className="w-[759px] text-[18px] leading-[24px] mobile:w-full tablet:w-full">
-                  <h4 className="text-[#3C3E41]">POZOR:</h4>
+                  <div className="text-[#3C3E41]">POZOR:</div>
                   <p className="text-[#414141]">
                     Če želite postati Skrbnik spominske strani, nas
                     kontaktirajte in bomo to uredili{" "}
@@ -437,9 +437,9 @@ const Subscription = () => {
           <div className="mobile:px-1 mobile:max-w-[500px] w-[766px] mx-auto mobile:mx-auto p-4 mb-[40px] flex flex-col mobile:items-center mobile:justify-center space-y-4">
             <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
               <div className="w-full flex items-center gap-4">
-                <h2 className="mobile:text-[24px] text-[32px] text-[#000000]">
+                <div className="mobile:text-[24px] text-[32px] text-[#000000]">
                 Cvetličarne
-                </h2>
+                </div>
               </div>
 
               {showFullFloristContent ? (
@@ -585,9 +585,9 @@ const Subscription = () => {
           <div className="mobile:px-1 p-4 mobile:max-w-[500px] w-[766px] mx-auto mobile:mx-auto mb-[40px] flex flex-col mobile:items-center mobile:justify-center space-y-4">
             <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
               <div className="w-full flex items-center gap-4">
-                <h2 className="mobile:text-[24px] text-[32px] text-[#000000]">
+                <div className="mobile:text-[24px] text-[32px] text-[#000000]">
                 Oglaševalci
-                </h2>
+                </div>
               </div>
               <p className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[16px] text-[16px]">
                 <p className="text-[14px]"></p>{" "}
@@ -788,9 +788,9 @@ const Subscription = () => {
           <div className="p-4 mb-[40px] mobile:max-w-[500px] w-[766px] mx-auto mobile:mx-auto flex flex-col mobile:items-center mobile:justify-center space-y-4">
             <div className="mobile:w-[99%] w-[550px] flex flex-col gap-4">
               <div className="w-full flex items-center gap-4">
-                <h2 className="mobile:text-[24px] text-[32px] text-[#000000]">
+                <div className="mobile:text-[24px] text-[32px] text-[#000000]">
                 Pogrebna podjetja
-                </h2>
+                </div>
               </div>
               <p className="text-[#414141] flex gap-1 w-full desktop:w-[744px] mobile:text-[14px] text-[16px]">
                 <p className="text-[14px]"></p>{" "}

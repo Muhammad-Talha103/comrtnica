@@ -415,6 +415,7 @@ export default function WallGallery3D({ photos = [] }) {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          object-position: center;
           background: transparent;
           flex-shrink: 0;
         }

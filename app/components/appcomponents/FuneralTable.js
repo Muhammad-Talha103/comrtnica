@@ -15,7 +15,6 @@ const FuneralTable = () => {
           <span className="font-bold  text-[#EB1D1D]"> 25+ </span> brezplačnih
           možnosti
         </h1>
-        <h2 className="sr-only">Primerjava žalne strani in spominske strani</h2>
 
         <div className="tablet:w-[686px] w-[765px] mx-auto flex items-end flex-col h-20 text-[#3C3E41] mobile:hidden">
           <div className="flex flex-col items-start">

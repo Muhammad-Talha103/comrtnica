@@ -21,8 +21,8 @@ import linnked_in_icons from "@/public/qr-kode/linnked_in_icons.svg";
 import instagram_icon from "@/public/qr-kode/instagram_icon.svg";
 
 export const metadata = {
-  title: "Spominska stran – Ustvarite trajen spomin | Osmrtnica.com",
-  description: "Spominska stran s Skrbnikom, kjer lahko družina in bližnji dodajajo slike, spomine, dogodke in sožalje. Ustvarite osebno in trajno spominsko stran najdražjega brezplačno.",
+  title: "Spominska stran s Skrbnikom – Digitalni trajni spomin",
+  description: "Brezplačno ustvarite trajne spominske strani za svoje najdražje. Skrbnik poskrbi, da lahko družina in bližnji dodajajo slike, delijo zgodbe in obujajo spomine.",
   alternates: {
     canonical: "https://www.osmrtnica.com/spominska",
   },

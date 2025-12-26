@@ -15,9 +15,9 @@ const AdditionalPromotion = ({ mbZero = false }) => {
         <div className="w-full tablet:w-[637px] mobile:w-full mobile:max-w-[480px] flex flex-col">
           {/*header container*/}
           <div className="flex mobile:w-full mx-auto flex-col">
-            <div className="text-[40px] text-[#3C3E41] mobile:text-[28px] mobile:font-variation-customOpt28 text-center font-variation-customOpt40  tablet:mt-[1px] tablet:truncate mobile:mt-[1px] leading-[48px] mobile:leading-10">
+            <h2 className="text-[40px] text-[#3C3E41] mobile:text-[28px] mobile:font-variation-customOpt28 text-center font-variation-customOpt40  tablet:mt-[1px] tablet:truncate mobile:mt-[1px] leading-[48px] mobile:leading-10">
               Produkti za vašo dodatno promocijo
-            </div>
+            </h2>
 
             {/*text for desktop*/}
             <div className="text-[24px] text-[#3C3E41] w-full text-center self-center font-variation-customOpt24 font-bold mt-[12px] mobile:mt-[15px] flex justify-center">

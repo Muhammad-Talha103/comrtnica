@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, Suspense } from "react";
+
 import { useSearchParams } from "next/navigation";
 import { useBreakpoint } from "@/app/hooks/useBreakpoint";
 import obituaryService from "@/services/obituary-service";
@@ -48,10 +49,9 @@ const CarouselEntry = ({ item }) => {
             })
           : "--:--"}
       </h1>
-      <h2 className="sr-only">Podrobnosti pogreba</h2>
-      <h3 className="text-[#3C3E41] font-semibold text-[12px] mobile:text-[14px] tablet:text-[16px] desktop:text-[18px] flex-1 min-w-0 pl-[8px] mobile:pl-[12px] tablet:pl-[16px] desktop:pl-[22px] truncate">
+      <div className="text-[#3C3E41] font-semibold text-[12px] mobile:text-[14px] tablet:text-[16px] desktop:text-[18px] flex-1 min-w-0 pl-[8px] mobile:pl-[12px] tablet:pl-[16px] desktop:pl-[22px] truncate">
         {item.name} {item.sirName}
-      </h3>
+      </div>
       <h4 className="text-[#3C3E41] font-normal text-[10px] mobile:text-[12px] tablet:text-[14px] desktop:text-[16px] flex-1 min-w-0 pl-[4px] mobile:pl-[6px] tablet:pl-[8px] desktop:pl-[9px] truncate">
         {item.location || item.city || ""}
       </h4>
@@ -67,15 +67,14 @@ const CarouselEntry = ({ item }) => {
   );
 };
 
-const Carousel = () => {
+const Carousel = ({ city: cityProp, region: regionProp }) => {
   const searchParams = useSearchParams();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [obituaries, setObituaries] = useState([]);
   const breakpoint = useBreakpoint();
 
-  // Get city and region from URL parameters
-  const selectedCity = searchParams.get("city");
-  const selectedRegion = searchParams.get("region");
+  const selectedCity = cityProp || searchParams.get("city");
+  const selectedRegion = regionProp || searchParams.get("region");
   const selectedName = searchParams.get("search");
 
   // Fetch funerals when currentDate, city, or region changes
@@ -271,10 +270,10 @@ const CarouselLoading = () => (
 );
 
 // Wrapper component with Suspense boundary
-const CarouselWrapper = () => {
+const CarouselWrapper = ({ city, region }) => {
   return (
     <Suspense fallback={<CarouselLoading />}>
-      <Carousel />
+      <Carousel city={city} region={region} />
     </Suspense>
   );
 };

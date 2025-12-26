@@ -23,6 +23,7 @@ const FuneralsList = () => {
           image={"/belo_ozadje.jpg"}
           label={"Pogrebna podjetja"}
           alt="ozadje za pogrebna podjetja"
+          h1Text="Pogrebna podjetja"
         />
         <FuneralList />
         <WorkTogetherComp />
