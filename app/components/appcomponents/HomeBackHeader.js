@@ -53,7 +53,7 @@ const HomeBackHeader = () => {
         </nav>
       </div>
       <nav className="justify-center absolute bottom-[74px] w-full px-4  desktop:flex hidden">
-        <ul className="flex gap-x-[260px] w-full justify-center">
+        <ul className="flex gap-x-[350px] w-full justify-center">
           <li>
             <HeaderHeadingText
               head={"OSMRTNICE"}
@@ -89,7 +89,7 @@ const HomeBackHeader = () => {
         </ul>
       </nav>
       <nav className="justify-between absolute bottom-[70px] w-full  tablet:flex hidden px-5  mx-auto">
-        <ul className="flex gap-x-[210px] justify-center w-full px-5">
+        <ul className="flex gap-x-[320px] justify-center w-full px-5">
           <li>
             <HeaderHeadingTextTablet
               head={"OSMRTNICE"}

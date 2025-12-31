@@ -14,6 +14,7 @@ import { cityToSlug, findCityFromSlug } from "@/utils/citySlug";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import ObituaryCard from "@/app/components/appcomponents/ObituaryCard";
 
+
 const ObituaryListComponent = ({ city, initialObituaries = [] }) => {
   const searchParams = useSearchParams();
   const router = useRouter();

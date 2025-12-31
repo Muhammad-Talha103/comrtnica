@@ -9,19 +9,64 @@ import SponsorComponent from "../components/appcomponents/SponsorComponent";
 import MemorialPageView from "../components/appcomponents/MemorialPageView";
 import CommonFooter from "../components/appcomponents/CommonFooter";
 
-const ObituaryListContent = ({ cityParam, h1Text, initialObituaries }: { cityParam?: string; h1Text?: string; initialObituaries?: any[] }) => {
-  const urlSearchParams = useSearchParams();
-  const region = urlSearchParams.get("region");
-  const city = cityParam || urlSearchParams.get("city");
-  const displayH1 = h1Text || "Zadnje osmrtnice";
+/* =======================
+   Obituary Model
+======================= */
+export interface Obituary {
+  id: string;
+  firstName: string;
+  lastName: string;
+  dateOfDeath: string;
+  city?: string;
+  imageUrl?: string;
+}
+
+/* =======================
+   Props Type
+======================= */
+interface ObituaryListContentProps {
+  cityParam?: string;
+  h1Text?: string;
+  initialObituaries?: Obituary[];
+}
+
+/* =======================
+   Component
+======================= */
+const ObituaryListContent: React.FC<ObituaryListContentProps> = ({
+  cityParam,
+  h1Text,
+  initialObituaries = [],
+}) => {
+  const searchParams = useSearchParams();
+
+  const region = searchParams.get("region");
+  const city = cityParam ?? searchParams.get("city");
+  const displayH1 = h1Text ?? "Zadnje osmrtnice";
 
   return (
     <>
-      <ObituaryListBanner image={"/cvetje.avif"} label={"Osmrtnice"} alt="osmrtnice ozadje" h1Text={displayH1} />
-      <ObituaryListComponent city={city || null} initialObituaries={initialObituaries || []} />
+      <ObituaryListBanner
+        image="/cvetje.avif"
+        label="Osmrtnice"
+        alt="osmrtnice ozadje"
+        h1Text={displayH1}
+      />
+
+      <ObituaryListComponent
+        city={city}
+        initialObituaries={initialObituaries}
+      />
+
       <NextFunerals />
       <MemorialPageView />
-      <SponsorComponent text="To stran so omogočili " region={region || null} city={city || null} />
+
+      <SponsorComponent
+        text="To stran so omogočili "
+        region={region}
+        city={city}
+      />
+
       <CommonFooter currentPage="/osmrtnice" />
     </>
   );
