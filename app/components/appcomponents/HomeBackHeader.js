@@ -3,20 +3,20 @@ import Link from "next/link";
 import SideMenu from "../ui/sideMenu";
 const HomeBackHeader = () => {
   return (
-    <div className="mobile:pb-[90px] relative max-w-[1280px] overflow-hidden mx-auto desktop:mt-[137.02px] mobile:mt-[115px] tablet:mt-[124px] flex justify-center">
+    <div className="mobile:pb-[90px] relative max-w-[1280px] overflow-hidden mx-auto  mobile:mt-[115px]  flex justify-center">
       <img
         src="/samotna_klop.avif"
         alt="Naj spomin ne zbledi"
-        className="mobile:hidden h-[605.27px] mobile:h-[257px] w-[1280px] object-cover"
+        className="mobile:hidden mobile:h-[257px] w-[1280px] object-cover"
       />
       <img
         src="/klop_naslovna.avif"
         alt="Naj spomin ne zbledi"
         className="mobile:flex hidden h-[257px] w-[1280px] object-cover"
       />
-      <div className="h-[170px] smmobile:w-[160px] smmobile:h-[332px] w-[288.58px] left-[25.41px] smmobile:left-[14px] top-2 rounded-lg border border-[#D4D4D4] absolute mobile:flex hidden overflow-hidden shadow-custom-light-dark-banner bg-gradient-to-br from-[#FFFFFF] to-[#FFFFFF10] backdrop-blur-sm">
+      <div className=" w-[288.58px] left-[25.41px] smmobile:left-[14px] top-2 rounded-lg border border-[#D4D4D4] absolute mobile:flex hidden overflow-hidden shadow-custom-light-dark-banner bg-gradient-to-br from-[#FFFFFF] to-[#FFFFFF10] backdrop-blur-sm">
         <nav>
-          <ul className="grid grid-cols-2 smmobile:grid-cols-1 gap-[22px] p-4">
+          <ul className="grid grid-cols-1 smmobile:grid-cols-1 gap-[22px] h-auto p-4">
             <li>
               <HeaderHeadingTextMobile
                 head={"OSMRTNICE"}
@@ -33,27 +33,27 @@ const HomeBackHeader = () => {
                 endPoint={"/pogrebi?city=Celje"}
               />
             </li>
-            <li>
+            {/* <li>
               <HeaderHeadingTextMobile
                 head={"SPOMINSKA"}
                 index={"03."}
                 id={3}
                 endPoint={"/osmrtnice"}
               />
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <HeaderHeadingTextMobile
                 head={"CVETLIČARNE"}
-                index={"04."}
+                index={"03."}
                 id={4}
                 endPoint={"/cvetlicarne"}
               />
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>
-      <nav className="justify-center absolute bottom-[44px] -mr-9 desktop:flex hidden">
-        <ul className="flex">
+      <nav className="justify-center absolute bottom-[74px] w-full px-4  desktop:flex hidden">
+        <ul className="flex gap-x-[260px] w-full justify-center">
           <li>
             <HeaderHeadingText
               head={"OSMRTNICE"}
@@ -70,26 +70,26 @@ const HomeBackHeader = () => {
               endPoint={"/pogrebi?city=Celje"}
             />
           </li>
-          <li>
+          {/* <li>
             <HeaderHeadingText
               head={"SPOMINSKA"}
               index={"03."}
               id={3}
               endPoint={"/osmrtnice"}
             />
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <HeaderHeadingText
               head={"CVETLIČARNE"}
-              index={"04."}
+              index={"03."}
               id={4}
               endPoint={"/cvetlicarne"}
             />
-          </li>
+          </li> */}
         </ul>
       </nav>
-      <nav className="justify-between absolute bottom-[70px] w-full max-w-[898.97px] tablet:flex hidden pl-[65px] pr-[50px]">
-        <ul className="flex justify-between w-full">
+      <nav className="justify-between absolute bottom-[70px] w-full  tablet:flex hidden px-5  mx-auto">
+        <ul className="flex gap-x-[210px] justify-center w-full px-5">
           <li>
             <HeaderHeadingTextTablet
               head={"OSMRTNICE"}
@@ -106,22 +106,22 @@ const HomeBackHeader = () => {
               endPoint={"/pogrebi?city=Celje"}
             />
           </li>
-          <li>
+          {/* <li>
             <HeaderHeadingTextTablet
               head={"SPOMINSKA"}
               index={"03."}
               id={3}
               endPoint={"/osmrtnice"}
             />
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <HeaderHeadingTextTablet
               head={"CVETLIČARNE"}
-              index={"04."}
+              index={"03."}
               id={4}
               endPoint={"/cvetlicarne"}
             />
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>
@@ -140,9 +140,9 @@ const HeaderHeadingText = ({ head, index, id, endPoint }) => {
             className="flex"
             style={{
               marginTop: "2px",
-              fontWeight: "200",
+              fontWeight: "600",
               textShadow: "1px 1px 2px #fff",
-              color: "#7C7C7C",
+              color: "#ffffff",
               fontSize: "64px",
               lineHeight: "75px",
               fontVariationSettings: "'opsz' 64",
@@ -180,9 +180,9 @@ const HeaderHeadingTextTablet = ({ head, index, id, endPoint }) => {
             className="flex"
             style={{
               marginTop: "2px",
-              fontWeight: "200",
+              fontWeight: "600",
               textShadow: "1px 1px 2px #fff",
-              color: "#7C7C7C",
+              color: "#ffffff",
               fontSize: "40px",
               lineHeight: "47px",
               fontVariationSettings: "'opsz' 40",
@@ -219,7 +219,7 @@ const HeaderHeadingTextMobile = ({ head, index, id, endPoint }) => {
           <p
             className="flex"
             style={{
-              fontWeight: "200",
+              fontWeight: "600",
               textShadow: "1px 1px 2px #fff",
               color: "#A2A2A2",
               fontSize: "32px",
